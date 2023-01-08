@@ -1,0 +1,204 @@
+.footer {
+  background-color: #44998A;
+  padding: 40px 0 20px 0;
+  @media (max-width: 999px) {
+    padding-bottom: 10px;
+  }
+  &__top {
+    display: flex;
+    @media (max-width: 1899px) {
+      flex-wrap: wrap;
+    }
+    @media (max-width: 999px) {
+      flex-direction: column;
+    }
+  }
+  &__logo {
+    display: flex;
+    margin-right: auto;
+    @media (max-width: 999px) {
+      width: 100%;
+      margin-bottom: 43px;
+    }
+    svg {
+      @media (max-width: 999px) {
+        width: 117px;
+        height: 37px;
+      }
+    }
+  }
+  &__menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px 30px;
+    margin-bottom: auto;
+    @media (max-width: 1899px) {
+      width: calc(100% - 320px);
+    }
+    @media (max-width: 1249px) {
+      width: calc(100% - 200px);
+    }
+    @media (max-width: 999px) {
+      display: none;
+    }
+  }
+  &__link {
+    &:hover {
+      a {
+        color: #FFFFFF;
+      }
+    }
+    a {
+      transition-duration: .4s;
+      color: #131313;
+    }
+  }
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: auto;
+    @media (max-width: 1899px) {
+      margin-top: 40px;
+      margin-right: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 330px);
+      grid-gap: 16px 30px;
+      margin-left: 320px;
+    }
+    @media (max-width: 1549px) {
+      grid-template-columns: repeat(2, 290px);
+    }
+    @media (max-width: 1399px) {
+      grid-template-columns: repeat(2, 250px);
+    }
+    @media (max-width: 1249px) {
+      grid-template-columns: repeat(2, 218px);
+      margin-left: 200px;
+    }
+    @media (max-width: 999px) {
+      display: none;
+    }
+  }
+  &__contact {
+    color: #131313;
+    transition-duration: .4s;
+    &:last-child {
+      pointer-events: none;
+    }
+    &:hover {
+      color: #FFFFFF;
+    }
+    &:not(:last-child) {
+      margin-bottom: 16px;
+      @media (max-width: 1899px) {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__socials {
+    display: flex;
+    margin-left: 35px;
+    @media (max-width: 1899px) {
+      margin-left: 30px;
+      margin-right: auto;
+      margin-top: 40px;
+    }
+    @media (max-width: 999px) {
+      margin-left: 0;
+      margin-top: 30px
+    }
+    @media (max-width: 759px) {
+      margin-top: 20px;
+      margin-left: auto;
+    }
+  }
+  &__social {
+    display: flex;
+    border: 2px solid #99C3BD;
+    border-radius: 50px;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    &:hover {
+      path {
+        fill: #fff;
+      }
+    }
+    svg {
+      path {
+        transition-duration: .4s;
+      }
+    }
+  }
+  &__mob {
+    display: none;
+    @media (max-width: 999px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+    @media (max-width: 759px) {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 30px;
+    }
+    &-col {
+      display: flex;
+      flex-direction: column;
+      &:first-child {
+
+      }
+      &:nth-child(2) {
+        .footer__link {
+          margin-bottom: 20px!important;
+        }
+      }
+      .footer__link {
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+        &:nth-child(2) {
+          margin-bottom: 30px;
+        }
+      }
+      .footer__contact {
+        margin-top: 10px;
+      }
+    }
+  }
+  &__bot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    @media (max-width: 999px) {
+      margin-top: 20px;
+    }
+    @media (max-width: 759px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &-left {
+      color: #131313;
+      @media (max-width: 759px) {
+        margin-bottom: 10px;
+      }
+    }
+    &-right {
+      color: #131313;
+      a {
+        font-weight: 600;
+        color: inherit;
+        transition-duration: .4s;
+        &:hover {
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}

@@ -89,6 +89,9 @@ body {
 
 body {
   margin: 0px;
+  &.scroll {
+    overflow: hidden;
+  }
 }
 
 a {

@@ -1,7 +1,6 @@
-import classNames from "classnames";
-import Head from "next/head";
-import Header from "../common/components/Header";
-import styles from '../styles/Contacts.module.scss'
+import classNames from 'classnames';
+import Head from 'next/head';
+import styles from '../styles/Contacts.module.scss';
 
 export default function Contacts() {
   return (
@@ -10,7 +9,6 @@ export default function Contacts() {
         <title>Úkon.sk - contacts</title>
         <meta name="description" content="Úkon.sk - contacts" />
       </Head>
-      <Header />
       <main>
         <section className="position">
           <div className="container">
@@ -229,5 +227,5 @@ export default function Contacts() {
         </section>
       </main>
     </>
-  )
+  );
 }

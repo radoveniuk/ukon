@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Header from '../common/components/Header';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
@@ -8,10 +7,10 @@ export default function Home() {
       <Head>
         <title>Úkon.sk</title>
         <meta name="description" content="Úkon.sk - home page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header />
       <main className={styles.main}>
       </main>
     </>
-  )
+  );
 };
