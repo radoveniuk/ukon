@@ -617,15 +617,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 }
 
-// .fade-in, .title, .sub {
-//   transition-duration: .8s;
-//   opacity: 0;
-//   visibility: hidden;
-//   transform: translateY(50px);
-// }
-
-// .fade-out {
-//   opacity: 1;
-//   visibility: visible;
-//   transform: translateY(0);
-// }
+.radio {
+  display: flex;
+  align-items: center;
+  &-input {
+    position: relative;
+    margin-right: 10px;
+    input, svg {
+      width: 20px;
+      height: 20px;
+    }
+    input {
+      opacity: 0;
+      &:checked~svg {
+        display: none;
+      }
+      &:checked~.radio-svg-selected {
+        display: block;
+      }
+    }
+    svg {
+      position: absolute;
+      top: 0;
+      pointer-events: none;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  &-svg {
+   &-selected {
+     display: none;
+   }
+  }
+  span {
+    color: #131313;
+  }
+}
