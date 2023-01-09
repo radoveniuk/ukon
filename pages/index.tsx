@@ -1,7 +1,8 @@
-import classNames from 'classnames';
 import Head from 'next/head';
-import Hero from '../common/components/Home/Hero';
-import styles from '../styles/Home.module.scss';
+import Hero from 'common/components/Home/Hero';
+import How from 'common/components/Home/How';
+import Services from 'common/components/Home/Services';
+import We from 'common/components/Home/We';
 
 export default function Home() {
   return (
@@ -13,6 +14,9 @@ export default function Home() {
       </Head>
       <main>
         <Hero />
+        <How />
+        <Services />
+        <We />
       </main>
     </>
   );

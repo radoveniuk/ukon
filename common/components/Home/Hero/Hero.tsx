@@ -4,7 +4,7 @@ import TypewriterComponent from 'typewriter-effect';
 
 import animation from './lottie.json';
 
-import styles from '../../../../styles/components/home/Hero.module.scss';
+import styles from 'styles/components/home/Hero.module.scss';
 
 export default function Hero() {
 
@@ -16,6 +16,7 @@ export default function Hero() {
             Регистрация ООО, ИП<br/>
             и виртуального адреса онлайн
             в Словакии —&nbsp;
+            <br className={classNames(styles['hero-title-br'])} />
             <TypewriterComponent 
               options={{
                 strings:['Úkon.sk'],
