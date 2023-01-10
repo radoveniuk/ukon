@@ -1,0 +1,36 @@
+.text {
+  padding: 80px 0;
+  background-color: #FAFAFA;
+  @media (max-width: 999px) {
+    padding: 40px 0;
+  }
+  &-p {
+    color: #131313;
+    max-width: 1230px;
+    margin-bottom: 30px;
+    -webkit-line-clamp: 2; /* количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    @media (max-width: 1549px) {
+      -webkit-line-clamp: 3;
+      max-width: 930px;
+    }
+    @media (max-width: 999px) {
+      max-width: 100%;
+    }
+    @media (max-width: 759px) {
+      -webkit-line-clamp: 7;
+    }
+  }
+  &.active {
+    .text-p {
+      -webkit-line-clamp: unset; /* количество строк */
+    }
+  }
+  &_service {
+    padding: 0;
+    background-color: transparent;
+  }
+}

@@ -75,6 +75,7 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
@@ -492,46 +493,52 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #fff;
 }
 
-.position {
-  margin: 30px 0 40px 0;
-  position: relative;
-  z-index: 10;
-  @media (max-width: 1549px) {
-    margin: 20px 0 30px 0;
+.btn-transparent {
+  padding: 12px 34px;
+  border: 2px solid #44998A;
+  border-radius: 50px;
+  color: #44998A;
+  cursor: pointer;
+  transition-duration: .4s;
+  &:hover {
+    background-color: #44998A;
+    border-color: #44998A;
+    color: #ffffff;
   }
-  @media (max-width: 999px) {
-    margin: 20px 0;
+  &:active {
+    background-color: #10826E;
   }
-  @media (max-width: 759px) {
-    margin-bottom: 10px;
-  }
-  .container {
-    flex-direction: row;
-    align-items: center;
-  }
-  &__link {
-    display: flex;
-    align-items: center;
-    &:last-child {
-      a {
-        color: #A1A1A1;
-        pointer-events: none;
-      }
-      span {
-        display: none;
-      }
+}
+
+.btn-more {
+  display: flex;
+  transition-duration: .4s;
+  align-items: center;
+  margin-right: auto;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    .btn-more-prev {
+      margin-left: -24px;
+      margin-right: 0;
     }
-    a {
-      color: #131313;
-      transition-duration: .4s;
-      &:hover {
-        color: #44998A;
-      }
+    .btn-more-next {
+      margin-right: 0;
+      margin-left: 10px;
     }
-    span {
-      color: #A1A1A1;
-      margin: 0 10px;
-    }
+  }
+  span {
+    color: #44998A;
+    transition-duration: .4s;
+  }
+  svg {
+    transition-duration: .4s;
+  }
+  &-prev {
+    margin-right: 10px;
+  }
+  &-next {
+    margin-right: -24px;
   }
 }
 

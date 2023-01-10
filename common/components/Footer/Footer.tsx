@@ -40,7 +40,7 @@ export default function Footer () {
             </li>
           </ul>
           <div className={styles.footer__contacts}>
-            <a href="" className={classNames(styles.footer__contacts, 't2')}>+421 00 0000 000</a>
+            <a href="tel:+421 918 384 166" className={classNames(styles.footer__contacts, 't2')}>+421 918 384 166</a>
             <a href="" className={classNames(styles.footer__contacts, 't2')}>info@ufon.com</a>
             <a href="" className={classNames(styles.footer__contacts, 't2')}>Время работы: 9:00 - 18:00</a>
           </div>
@@ -63,7 +63,7 @@ export default function Footer () {
               <div className={styles.footer__link}>
                 <a href="" className="t1">Виртуальный адрес</a>
               </div>
-              <a href="" className={classNames(styles.footer__contacts, 't2')}>+421 00 0000 000</a>
+              <a href="tel:+421 918 384 166" className={classNames(styles.footer__contacts, 't2')}>+421 918 384 166</a>
               <a href="" className={classNames(styles.footer__contacts, 't2')}>info@ufon.com</a>
               <a href="" className={classNames(styles.footer__contacts, 't2')}>Время работы: 9:00 - 18:00</a>
             </div>
