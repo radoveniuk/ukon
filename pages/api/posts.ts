@@ -1,7 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Post } from 'common/types/blog';
 import { DateTime } from 'luxon';
 import type { NextApiRequest, NextApiResponse } from 'next';
+
+const dev = process.env.NODE_ENV !== 'production';
+const server = dev ? 'http://localhost:3000' : 'https://ukon.vercel.app';
 
 type Data = {
   data: Post[]
@@ -33,7 +35,7 @@ export default function handler(
 }
 
 export async function getPosts() {
-  const response = await fetch('http://localhost:3000/api/posts');
+  const response = await fetch(`${server}/api/posts`);
   const jsonData = await response.json();
   return jsonData.data;
 }
