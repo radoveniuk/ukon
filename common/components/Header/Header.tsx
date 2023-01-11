@@ -13,11 +13,12 @@ export default function Header () {
     setMobMenuOpen((prev) => !prev);
     document.body.classList.toggle('scroll');
   };
-
+  
   const router = useRouter();
-
+  
   useEffect(() => {
     setMobMenuOpen(false);
+    document.body.classList.remove('scroll');
   }, [router.asPath]);
   
   return (
@@ -171,14 +172,14 @@ export default function Header () {
         <div className={styles.mob__links}>
           <div className={styles.mob__link}>
             <div className={styles['mob__link-top']} role="button" onClick={() => void setActiveMobLink((prev) => prev === 'ip' ? '' : 'ip')}>
-              <a href="">ИП</a>
+              <span>ИП</span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M16.5303 8.96967C16.8232 9.26256 16.8232 9.73744 16.5303 10.0303L12.5303 14.0303C12.2374 14.3232 11.7626 14.3232 11.4697 14.0303L7.46967 10.0303C7.17678 9.73744 7.17678 9.26256 7.46967 8.96967C7.76256 8.67678 8.23744 8.67678 8.53033 8.96967L12 12.4393L15.4697 8.96967C15.7626 8.67678 16.2374 8.67678 16.5303 8.96967Z" fill="#131313"/>
               </svg>
             </div>
             <div className={classNames(styles['mob__link-bot'], activeMobLink === 'ip' ? styles.open : '')}>
-              <a href="">Регистрация ООО</a>
-              <a href="">Внесение изменений в ООО</a>
+              <Link href="/services/create-ip">Регистрация ИП</Link>
+              <Link href="/services/update-ip">Внесение изменений в ИП</Link>
             </div>
           </div>
           <div className={styles.mob__link}>
@@ -189,8 +190,8 @@ export default function Header () {
               </svg>
             </div>
             <div className={classNames(styles['mob__link-bot'], activeMobLink === 'ooo' ? styles.open : '')}>
-              <a href="">Регистрация ООО</a>
-              <a href="">Внесение изменений в ООО</a>
+              <Link href="/services/create-ooo">Регистрация ООО</Link>
+              <Link href="/services/update-ooo">Внесение изменений в ООО</Link>
             </div>
           </div>
           <div className={styles.mob__link}>
