@@ -12,35 +12,6 @@ type PageContent = {
   titleImg: string;
 }
 
-const pageContentMap: { [key: string]: PageContent } = {
-  'create-ooo': {
-    pageTitle: 'Регистрация ООО в Словакии онлайн до 28 дней',
-    subtitles: [
-      'мы обработаем ваш заказ за 1 день, остальные 27 – максимальные установленные законом сроки для регистрации ООО',
-      'стоимость открытия ООО всего 240€ с учетом оплаты госпошлины','заполнение заявки займет до 15 минут',
-      'только один визит к ближайшему нотариусу для заверения подписей','получайте уведомления о статусе регистрации вашего ООО',
-      'проконсультируем вас, если возникнут вопросы в процессе',
-      'достаточно сканов паспорта, ВНЖ, справки о несудимости и подтверждения о наличии будущего юридического адреса',
-    ],
-    titleImg: '/images/service/create-ooo.png',
-  },
-  'create-ip': {
-    pageTitle: 'Регистрация ИП',
-    subtitles: [],
-    titleImg: '/images/service/create-ooo.png',
-  },
-  'update-ooo': {
-    pageTitle: 'Внесение изменений в ООО',
-    subtitles: [],
-    titleImg: '/images/service/create-ooo.png',
-  },
-  'update-ip': {
-    pageTitle: 'Внесение изменений в ИП',
-    subtitles: [],
-    titleImg: '/images/service/create-ooo.png',
-  },
-};
-
 export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [
@@ -54,12 +25,40 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 export const getStaticProps: GetStaticProps<{ name: string } & PageContent> = ({ params }) => {
+  
+  const pageContentMap: { [key: string]: PageContent } = {
+    'create-ooo': {
+      pageTitle: 'Регистрация ООО в Словакии онлайн до 28 дней',
+      subtitles: [
+        'мы обработаем ваш заказ за 1 день, остальные 27 – максимальные установленные законом сроки для регистрации ООО',
+        'стоимость открытия ООО всего 240€ с учетом оплаты госпошлины','заполнение заявки займет до 15 минут',
+        'только один визит к ближайшему нотариусу для заверения подписей','получайте уведомления о статусе регистрации вашего ООО',
+        'проконсультируем вас, если возникнут вопросы в процессе',
+        'достаточно сканов паспорта, ВНЖ, справки о несудимости и подтверждения о наличии будущего юридического адреса',
+      ],
+      titleImg: '/images/service/create-ooo.png',
+    },
+    'create-ip': {
+      pageTitle: 'Регистрация ИП',
+      subtitles: [],
+      titleImg: '/images/service/create-ooo.png',
+    },
+    'update-ooo': {
+      pageTitle: 'Внесение изменений в ООО',
+      subtitles: [],
+      titleImg: '/images/service/create-ooo.png',
+    },
+    'update-ip': {
+      pageTitle: 'Внесение изменений в ИП',
+      subtitles: [],
+      titleImg: '/images/service/create-ooo.png',
+    },
+  };
   const name = params?.name as string;
   return {
     props: {
       name,
       ...pageContentMap[name],
-      pageTitle: pageContentMap[name].pageTitle,
     },
   };
 };
@@ -84,7 +83,7 @@ export default function Service({ pageTitle, name, subtitles, titleImg }: InferG
               </h1>
               <Image width={696} height={696} src={titleImg} alt="" />
               <ul>
-                {subtitles.map((subtitleItem, index) => (
+                {subtitles?.map((subtitleItem, index) => (
                   <li key={index} className="body fade-in">
                     {subtitleItem}
                   </li>
