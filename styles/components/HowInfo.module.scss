@@ -10,6 +10,10 @@
   @media (max-width: 759px) {
     padding: 40px 0;
   }
+  &__description {
+    margin-top: 20px;
+    max-width: 700px;
+  }
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -85,17 +89,26 @@
       .how-circle {
         background-color: #678EBE;
       }
+      .how-figure {
+        background-image: url('/images/how-info/2.png');
+      }
     }
     &:nth-child(3) {
       transition-delay: .2s;
       .how-circle {
         background-color: #FFE7FF;
       }
+      .how-figure {
+        background-image: url('/images/how-info/3.png');
+      }
     }
     &:nth-child(4) {
       transition-delay: .3s;
       .how-circle {
         background-color: #C4FCF0;
+      }
+      .how-figure {
+        background-image: url('/images/how-info/4.png');
       }
       &:after {
         @media (max-width: 1249px) {
@@ -143,5 +156,10 @@
       height: 24px;
       margin-top: 20px;
     }
+  }
+  &-figure {
+    width: 74px;
+    height: 84px;
+    background-image: url('/images/how-info/1.png');
   }
 }
