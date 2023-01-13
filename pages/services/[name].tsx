@@ -5,104 +5,45 @@ import Prices, { PricesDescription, PricesHeader } from 'common/components/Price
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 import styles from 'styles/Service.module.scss';
+import { iterateMap } from 'common/utils/common';
+import React from 'react';
 
 type PageContent = {
-  pageTitle: string;
-  subtitles: string[];
+  subtitles?: number;
+  howItems?: number;
   titleImg: string;
-  howInfo?: {
-    title: string;
-    description: string;
-    howItems: {
-      title: string;
-      time?: string;
-      description: string;
-    }[]
-  };
-  prices?: {
-    title: string;
-    description: string;
-  }
-  benefits?: {
-    title: string;
-    items: {
-      title: string;
-      description: string;
-    }[]
+  benefits?: number;
+  benefitsTable?: {
+    cols: number,
+    rows: number
   }
 }
 
 const PAGE_DATA_MAP: { [key: string]: PageContent } = {
   'create-ooo': {
-    pageTitle: 'Регистрация ООО в Словакии онлайн до 28 дней',
-    subtitles: [
-      'мы обработаем ваш заказ за 1 день, остальные 27 – максимальные установленные законом сроки для регистрации ООО',
-      'стоимость открытия ООО всего 240€ с учетом оплаты госпошлины','заполнение заявки займет до 15 минут',
-      'только один визит к ближайшему нотариусу для заверения подписей','получайте уведомления о статусе регистрации вашего ООО',
-      'проконсультируем вас, если возникнут вопросы в процессе',
-      'достаточно сканов паспорта, ВНЖ, справки о несудимости и подтверждения о наличии будущего юридического адреса',
-    ],
+    subtitles: 5,
     titleImg: '/images/service/create-ooo.png',
-    howInfo: {
-      title: 'Как открыть ООО в Словакии',
-      description: 'Úkon зарегистрирует ваше ООО онлайн. Не нужно собственноручно заполнять кучу бумаг. Достаточно внести минимум необходимых данных в нашу электронную форму, подписать готовые документы у любого нотариуса и прислать нам сканы. Максимум через 28 дней вы обладатель ООО в Словакии.',
-      howItems: [
-        { title: '1. Заполните анкету', description: 'Мы подготовили удобную форму с перечнем необходимых данных и комментариями, чтобы облегчить вам заполнение, сделать его быстрым и комфортным. Введите запрашиваемые данные, убедитесь в их правильности и нажмите кнопку «Отправить».' },
-        { title: '2. Подпишите сгенерированные для вас документы', description: 'Сразу же после оформления заявки на ваш электронный адрес придут документы, составленные на основании заполненной анкеты. Подпишите их и заверьте подписи у ближайшего нотариуса. Отправьте нам сканы всех необходимых документов.' },
-        { title: '3. Мы подаем документы на регистрацию', description: 'Просто занимайтесь своими делами. Мы сами формируем все необходимые заявления для регистрации, подаем документы, общаемся с представителями государственных ведомств.' },
-        { title: '4. Получите подтверждение о регистрации вашего ООО', description: 'Можете устроить праздничную вечеринку по этому поводу или купить красивую рамку для выписки из торгового реестра. Первый шаг сделан – ваша предпринимательская деятельность уже официально зарегистрирована. Ведите свой бизнес и получайте прибыль!' },
-      ],
-    },
-    prices: {
-      title: 'Стоимость открытия ООО в Словакии',
-      description: 'Мы предлагаем 3 тарифных пакета для регистрации ООО. Выбирайте оптимальный для вас вариант. Вы получите качественную услугу и желаемый результат независимо от выбранного пакета.',
-    },
-    benefits: {
-      title: 'Почему выгоднее оформить ООО с Úkon?',
-      items: [{ 'title':'Простота','description':'С вас заполнение данных и подписание документов, с нас всё остальное' },{ 'title':'Скорость','description':'Úkon в считанные минуты реагирует на ваши запросы. Испытайте его!' },{ 'title':'Экономия времени','description':'Вы экономите не менее 1 дня на личную подачу документов и простаивании в очередях ' },{ 'title':'Экономия средств','description':'Доверив нам регистрацию вашего ООО, вы сэкономите не только от 50€, но и свои бесценные нервы' },{ 'title':'Поддержка','description':'Не переживайте, если вам что-то непонятно. Мы ответим на ваши вопросы' },{ 'title':'Наш богатый опыт','description':'Нас знают и ценят как довольные клиенты, так и регистрационные органы' }],
+    howItems: 4,
+    benefits: 6,
+    benefitsTable: {
+      cols: 2,
+      rows: 5,
     },
   },
   'create-ip': {
-    pageTitle: 'Быстрая регистрация ИП онлайн до 4 рабочих дней',
-    subtitles: [
-      'мы обработаем ваш заказ за 1 день, остальные 3 – максимальные установленные законом сроки для регистрации ИП',
-      'экономия на админ сборе 5€ за каждый вид деятельности',
-      'заполнение заявки займет до 15 минут',
-      'не нужно заверять подписи у нотариуса',
-      'получайте уведомления о статусе регистрации вашего ИП',
-      'проконсультируем вас, если возникнут вопросы в процессе',
-      'достаточно сканов паспорта или ВНЖ (если есть), справки о несудимости и подтверждения о наличии регистрационного адреса',
-    ],
+    subtitles: 6,
+    howItems: 4,
     titleImg: '/images/service/create-ooo.png',
-    howInfo: {
-      title: 'Как оформить ИП в Словакии',
-      description: 'Úkon зарегистрирует ваше ИП онлайн. Не нужно собственноручно заполнять кучу бумаг. Достаточно внести минимум необходимых данных в нашу электронную форму, подписать готовые документы онлайн. Максимум 4 рабочих  дня – и вы индивидуальный предприниматель в Словакии.',
-      howItems: [
-        { title: '1. Заполните анкету', description: 'Мы подготовили удобную форму с перечнем необходимых данных и комментариями, чтобы облегчить вам заполнение, сделать его быстрым и комфортным. Введите запрашиваемые данные, убедитесь в их правильности и нажмите кнопку «Отправить».' },
-        { title: '2. Подпишите сгенерированные для вас документы', description: 'Сразу же после оформления заявки на ваш электронный адрес и в личный кабинет придут документы, составленные на основании заполненной анкеты. Подпишите их. Отправьте нам сканы всех необходимых документов.' },
-        { title: '3. Мы подаем документы на регистрацию', description: 'Просто занимайтесь своими делами. Мы сами формируем все необходимые заявления для регистрации вашего ИП, подаем документы, общаемся с представителями государственных ведомств.' },
-        { title: '4. Получите подтверждение о регистрации вашего ИП', description: 'Можете устроить праздничную вечеринку по этому поводу или купить красивую рамку для выписки из реестра предпринимателей. Первый шаг сделан – ваше ИП уже официально зарегистрировано. Ведите свой бизнес и получайте прибыль!' },
-      ],
-    },
-    prices: {
-      title: 'Стоимость оформления ИП в Словакии',
-      description: 'Мы предлагаем 3 тарифных пакета для регистрации ИП онлайн. Выбирайте оптимальный для вас вариант. Вы получите качественную услугу и желаемый результат независимо от выбранного пакета.',
-    },
-    benefits: {
-      title: 'Почему выгоднее оформить ИП с Úkon?',
-      items: [{ 'title':'Простота','description':'С вас заполнение данных и подписание документов, с нас всё остальное' },{ 'title':'Скорость','description':'Úkon в считанные минуты реагирует на ваши запросы. Испытайте его!' },{ 'title':'Экономия времени','description':'Вы экономите не менее 1 дня на личную подачу документов и простаивании в очередях ' },{ 'title':'Экономия средств','description':'Доверив нам регистрацию вашего ИП, вы сэкономите не только от 50€, но и свои бесценные нервы' },{ 'title':'Поддержка','description':'Не переживайте, если вам что-то непонятно. Мы ответим на ваши вопросы' },{ 'title':'Наш богатый опыт','description':'Нас знают и ценят как довольные клиенты, так и регистрационные органы' }],
-    },
+    benefits: 6,
   },
   'update-ooo': {
-    pageTitle: 'Внесение изменений в ООО',
-    subtitles: [],
     titleImg: '/images/service/create-ooo.png',
   },
   'update-ip': {
-    pageTitle: 'Внесение изменений в ИП',
-    subtitles: [],
     titleImg: '/images/service/create-ooo.png',
   },
 };
@@ -115,43 +56,47 @@ export const getStaticPaths: GetStaticPaths = () => {
       { params: { name: 'update-ooo' } },
       { params: { name: 'update-ip' } },
     ],
-    fallback: true,
+    fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<{ name: string } & PageContent> = ({ params }) => {
+export const getStaticProps: GetStaticProps<{ name: string } & PageContent> = async ({ params, locale = 'ru' }) => {
   const name = params?.name as string;
   return {
     props: {
       name,
       ...PAGE_DATA_MAP[name],
+      ...(await serverSideTranslations(locale, ['services'])),
     },
   };
 };
 
-export default function Service({ pageTitle, name, subtitles, titleImg, howInfo, prices, benefits }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Service({ name, subtitles, titleImg, howItems, benefits, benefitsTable }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const translation = useTranslation('services');
+  const t = (path: string) => translation.t(`services:${name}:${path}`);
+
   return (
     <>
       <Head>
         <title>Úkon.sk - Информация</title>
-        <meta name="description" content={`Úkon.sk - ${pageTitle}`} />
+        <meta name="description" content={`Úkon.sk - ${t('pageTitle')}`} />
       </Head>
       <main>
         <Position>
           <PositionItem href='/'>Главная</PositionItem>
-          <PositionItem href={`/services/${name}`}>{pageTitle}</PositionItem>
+          <PositionItem href={`/services/${name}`}>{t('pageTitle')}</PositionItem>
         </Position>
         <section className={styles.service}>
           <div className={classNames('container', styles.container)}>
             <div className={styles.service__text}>
               <h1 className={classNames('h2', styles['service-title'])}>
-                {pageTitle}
+                {t('pageTitle')}
               </h1>
-              <Image width={696} height={696} src={titleImg} alt="" />
+              <Image width={696} height={696} src={titleImg} alt="" priority />
               <ul>
-                {subtitles?.map((subtitleItem, index) => (
+                {iterateMap(subtitles || 0, (index) => (
                   <li key={index} className="body fade-in">
-                    {subtitleItem}
+                    {t(`subtitles.${index}`)}
                   </li>
                 ))}
               </ul>
@@ -169,22 +114,20 @@ export default function Service({ pageTitle, name, subtitles, titleImg, howInfo,
             </div>
           </div>
         </section>
-        {!!howInfo && (
-          <HowInfo>
-            <HowInfoHeader>
-              <HowInfoTitle>{howInfo.title}</HowInfoTitle>
-              {howInfo.description && <HowInfoDescription>{howInfo.description}</HowInfoDescription>}
-            </HowInfoHeader>
-            <HowInfoItems>
-              {howInfo.howItems.map((howItem) => (
-                <HowInfoItem key={howItem.title} title={howItem.title} minutes={howItem.time} description={howItem.description} />
-              ))}
-            </HowInfoItems>
-          </HowInfo>
-        )}
+        <HowInfo>
+          <HowInfoHeader>
+            <HowInfoTitle>{t('howInfo:title')}</HowInfoTitle>
+            <HowInfoDescription>{t('howInfo:description')}</HowInfoDescription>
+          </HowInfoHeader>
+          <HowInfoItems>
+            {iterateMap(howItems, (index) => (
+              <HowInfoItem key={index} title={t(`howInfo:howItems.${index}:title`)} description={t(`howInfo:howItems.${index}:description`)} />
+            ))}
+          </HowInfoItems>
+        </HowInfo>
         <Prices>
-          <PricesHeader>{prices?.title}</PricesHeader>
-          <PricesDescription>{prices?.description}</PricesDescription>
+          <PricesHeader>{t('prices:title')}</PricesHeader>
+          <PricesDescription>{t('prices:description')}</PricesDescription>
         </Prices>
         <section className={styles.why}>
           <div className="container">
@@ -194,28 +137,222 @@ export default function Service({ pageTitle, name, subtitles, titleImg, howInfo,
                   Преимущества
                 </div>
                 <h2 className="h2 title">
-                  {benefits?.title}
+                  {(t('benefits:title'))}
                 </h2>
               </div>
             </div>
           </div>
           <div className={styles.why__items}>
             <div className={classNames('container', styles.container)}>
-              {benefits?.items.map((benefitItem, index) => (
-                <div key={benefitItem.title} className={styles.why__item}>
+              {iterateMap(benefits, (index) => (
+                <div key={index} className={styles.why__item}>
                   <div className={styles['why__item-top']}>
                     <div className={classNames(styles['why__item-top-num'], 'h5')}>
                       0{index + 1}
                     </div>
                     <h3 className={classNames(styles['why__item-top-title'], 'h5')}>
-                      {benefitItem.title}
+                      {t(`benefits.items.${index}.title`)}
                     </h3>
                   </div>
                   <p className={classNames(styles['why__item-p'], 't2')}>
-                    {benefitItem.description}
+                    {t(`benefits.items.${index}.description`)}
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+        <section className={classNames(styles.table, 'mb')}>
+          <div className="container">
+            <div className={styles.table__table}>
+              <div className={styles.table__titles}>
+                <div className={classNames(styles['table-title'], 'h5')}>
+                  {t('benefitsTable.cols.0')}
+                </div>
+                <div className={classNames(styles['table-title'], 'h5')}>
+                  {t('benefitsTable.cols.1')}
+                </div>
+              </div>
+              {iterateMap(benefitsTable?.rows, (index) => (
+                <React.Fragment key={index}>
+                  <div className={classNames(styles.table__sub, 't1')}>
+                    {t(`benefitsTable.rows.${index}.sub`)}
+                  </div>
+                  <div className={styles.table__elements}>
+                    <div className={classNames(styles.table__el, 't1')}>
+                      {t(`benefitsTable.rows.${index}.cells.0`)}
+                    </div>
+                    <div className={classNames(styles.table__el, 't1')}>
+                      {t(`benefitsTable.rows.${index}.cells.1`)}
+                    </div>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className={classNames(styles.faq, 'mb')}>
+          <div className="container">
+            <div className="top top_center">
+              <div className="top__left">
+                <div className="sub t3">
+                  FAQ
+                </div>
+                <h2 className="h2 title">
+                  {t('faq.title')}
+                </h2>
+              </div>
+            </div>
+            <div className="faq__items">
+              <div className="faq__rows">
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                      Какие документы нужны для открытия ООО?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                            Нужно ли иметь удостоверение с чипом и электронной подписью
+для открытия ООО в Словакии онлайн?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                          Нужно ли приходить к нам в офис для оформления документов?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                        Сколько денег нужно, чтобы открыть ООО в Словакии?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                         Какая итоговая цена открытия ООО в Úkon?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+              </div>
+              <div className="faq__rows">
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                           Сколько времени занимает регистрация ООО с помощью Úkon?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                            Как проходит процедура открытия ООО онлайн?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                            Можно ли ускорить процедуру регистрации ООО?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+                <div className="faq__item fade-in">
+                  <div className="faq__item-top">
+                    <span className="t1">
+                            Как я узнаю, что мое ООО готово?
+                    </span>
+                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 4.5V14.5M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg className="faq__item-top-minus" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 9.5H14" stroke="#131313" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="faq__item-bot t2">
+                            Все принятые заказы до 14:00 будут сложены и отправлены в этот же день. *исключение составляют воскресение и предпраздничные дни. Сроки обработки заказов в этом случае публикуются на главной странице сайта
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

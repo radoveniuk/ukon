@@ -141,7 +141,7 @@ export default function Header () {
               <div className={styles['header__link-bot']}>
                 <div className={styles['header__link-bot-links']}>
                   <a href="" className={styles['header__link-bot-link']}>Ua</a>
-                  <a href="" className={styles['header__link-bot-link']}>Sk</a>
+                  <Link locale="sk" className={styles['header__link-bot-link']} href="">Sk</Link>
                   <a href="" className={styles['header__link-bot-link']}>En</a>
                 </div>
               </div>
