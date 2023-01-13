@@ -37,5 +37,5 @@ export default function handler(
 export async function getPosts() {
   const response = await fetch(`${server}/api/posts`);
   const jsonData = await response.json();
-  return jsonData.data;
+  return jsonData.data as Post[];
 }

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import styles from 'styles/components/home/Contacts.module.scss';
+import styles from 'styles/components/Contacts.module.scss';
 
 export default function Contacts() {
   return (
