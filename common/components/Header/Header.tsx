@@ -77,7 +77,7 @@ export default function Header () {
             </li>
             <li className={styles.header__link}>
               <div className={styles['header__link-top']}>
-                <a href="">Тарифы</a>
+                <Link href="/rates">Тарифы</Link>
               </div>
             </li>
             <li className={styles.header__link}>
@@ -201,7 +201,7 @@ export default function Header () {
           </div>
           <div className={styles.mob__link}>
             <div className={styles['mob__link-top']}>
-              <a href="">Тарифы</a>
+              <Link href="/rates">Тарифы</Link>
             </div>
           </div>
           <div className={styles.mob__link}>

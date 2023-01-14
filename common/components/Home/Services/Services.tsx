@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 
 import styles from 'styles/components/home/Services.module.scss';
+import Link from 'next/link';
 
 type ServiceItem = {
   text: {
@@ -12,6 +13,7 @@ type ServiceItem = {
     body: string,
   },
   img: string,
+  url: string,
 };
 
 const serviceItems: ServiceItem[] = [
@@ -22,6 +24,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Внесите изменения в ваше ИП за несколько кликов',
     },
     img: '/images/home/services/2.png',
+    url: '/services/create-ip',
   },
   {
     text: {
@@ -30,6 +33,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Внесите изменения в ваше ИП за число кликов',
     },
     img: '/images/home/services/3.png',
+    url: '/services/update-ip',
   },
   {
     text: {
@@ -38,6 +42,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Зарегистрируйте ООО',
     },
     img: '/images/home/services/4.png',
+    url: '/services/create-ooo',
   },
   {
     text: {
@@ -46,6 +51,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Внесение изменений в ООО',
     },
     img: '/images/home/services/5.png',
+    url: '/services/update-ooo',
   },
   {
     text: {
@@ -54,6 +60,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Воспользуйтесь виртуальным адресом',
     },
     img: '/images/home/services/6.png',
+    url: '/services/v-adress',
   },
 ];
 
@@ -75,7 +82,13 @@ export default function Services() {
         </div>
         <div className={styles.services__items}>
           {serviceItems.map((serviceItem, index) => (
-            <div key={index} className={classNames(styles.services__item, activeItem === index ? styles.hover : styles.nohover)} onMouseEnter={() => void setActiveItem(index)} onMouseLeave={() => void setActiveItem(null)}>
+            <Link
+              href={serviceItem.url}
+              key={index}
+              className={classNames(styles.services__item, activeItem === index ? styles.hover : styles.nohover)} 
+              onMouseEnter={() => void setActiveItem(index)} 
+              onMouseLeave={() => void setActiveItem(null)}
+            >
               <svg className={styles['services__item-arrow']} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.5 12H21.5M21.5 12L18 9M21.5 12L18 15" stroke="black" strokeWidth="1.5" strokeLinejoin="round"/>
                 <path d="M2.50173 15.4394L1.94117 15.9377L2.93772 17.0588L3.49827 16.5606L2.50173 15.4394ZM7.99827 12.5606C8.30786 12.2854 8.33575 11.8113 8.06056 11.5017C7.78537 11.1921 7.31131 11.1643 7.00173 11.4394L7.99827 12.5606ZM3.49827 16.5606L7.99827 12.5606L7.00173 11.4394L2.50173 15.4394L3.49827 16.5606Z" fill="black"/>
@@ -86,7 +99,7 @@ export default function Services() {
                 <p className={classNames(styles['services__item-p'], 'body')}>{serviceItem.text.body}</p>
               </div>
               <Image width={290} height={151} src={serviceItem.img} alt="" />
-            </div>
+            </Link>
           ))}
         </div>
       </div>

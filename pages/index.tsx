@@ -8,8 +8,9 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { Post } from 'common/types/blog';
 import { getPosts } from './api/posts';
 import Blog from 'common/components/Home/Blog';
-import Text from 'common/components/Home/Text';
 import HowInfo, { HowInfoHeader, HowInfoItem, HowInfoItems, HowInfoTitle } from 'common/components/PageSections/HowInfo';
+import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
+import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
 
 export const getServerSideProps: GetServerSideProps<{ posts: Post[] }> = async () => {
   const posts = await getPosts();
@@ -67,7 +68,35 @@ export default function Home({ posts }: InferGetServerSidePropsType<typeof getSe
         <Contacts />
         <About />
         <Blog posts={posts} />
-        <Text />
+        <SeoText>
+          <SeoTextTitle subtitle="КОМПАНИЯ">
+            Открыть ИП или ООО в Словакии? <br />
+            Знаем, умеем, практикуем.
+          </SeoTextTitle>
+          <SeoTextBody>
+            <p>
+              Úkon поможет зарегистрировать ваш бизнес и сэкономит при этом ваши время и нервы. Мы подготовим за вас необходимый пакет документов и подадим его в соответствующее ведомство. 
+              Также с удовольствием внесем за вас изменения в ИП или ООО.
+            </p>
+            <h4 className="h4">
+              Зарегистрировать ИП и ООО самостоятельно или онлайн? Плюсы и минусы.
+            </h4>
+            <BenefitsTable>
+              <BenefitsTableHeader>
+                <BenefitsTableHeaderColumn>Самостоятельно</BenefitsTableHeaderColumn>
+                <BenefitsTableHeaderColumn>При помощи Úkon</BenefitsTableHeaderColumn>
+              </BenefitsTableHeader>
+              <BenefitsTableRow title="Экономия">
+                <BenefitsTableCell>Экономия на услугах компании</BenefitsTableCell>
+                <BenefitsTableCell>Экономия на государственной пошлине за каждый вид деятельности</BenefitsTableCell>
+              </BenefitsTableRow>
+              <BenefitsTableRow title="Сотрудничество с госорганами">
+                <BenefitsTableCell>Общение с представителями государственных органов, если вы экстраверт</BenefitsTableCell>
+                <BenefitsTableCell>Отсутствие общения с не всегда приветливыми представителями государственных органов</BenefitsTableCell>
+              </BenefitsTableRow>
+            </BenefitsTable>
+          </SeoTextBody>
+        </SeoText>
       </main>
     </>
   );

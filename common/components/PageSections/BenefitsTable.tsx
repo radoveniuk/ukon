@@ -34,12 +34,12 @@ export const BenefitsTableCell = ({ children }: PropsWithChildren) => (
 
 export default function BenefitsTable({ children }: PropsWithChildren) {
   return (
-    <section className={classNames(styles.table, 'mb')}>
+    <div className={classNames(styles.table)}>
       <div className="container">
         <div className={styles.table__table}>
           {children}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -120,7 +120,7 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
       </Head>
       <main>
         <Position>
-          <PositionItem href='/'>Главная</PositionItem>
+          <PositionItem href="/">Главная</PositionItem>
           <PositionItem href={`/services/${name}`}>{t('pageTitle')}</PositionItem>
         </Position>
         <section className={styles.service}>
@@ -200,22 +200,24 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
           </div>
         </section>
         {!!benefitsTable && (
-          <BenefitsTable>
-            <BenefitsTableHeader>
-              <BenefitsTableHeaderColumn>{t('benefitsTable.cols.0')}</BenefitsTableHeaderColumn>
-              <BenefitsTableHeaderColumn>{t('benefitsTable.cols.2')}</BenefitsTableHeaderColumn>
-            </BenefitsTableHeader>
-            {iterateMap(benefitsTable?.rows, (index) => (
-              <BenefitsTableRow title={t(`benefitsTable.rows.${index}.sub`)} key={index}>
-                <BenefitsTableCell>
-                  {t(`benefitsTable.rows.${index}.cells.0`)}
-                </BenefitsTableCell>
-                <BenefitsTableCell>
-                  {t(`benefitsTable.rows.${index}.cells.1`)}
-                </BenefitsTableCell>
-              </BenefitsTableRow>
-            ))}
-          </BenefitsTable>
+          <section className="mb">
+            <BenefitsTable>
+              <BenefitsTableHeader>
+                <BenefitsTableHeaderColumn>{t('benefitsTable.cols.0')}</BenefitsTableHeaderColumn>
+                <BenefitsTableHeaderColumn>{t('benefitsTable.cols.2')}</BenefitsTableHeaderColumn>
+              </BenefitsTableHeader>
+              {iterateMap(benefitsTable?.rows, (index) => (
+                <BenefitsTableRow title={t(`benefitsTable.rows.${index}.sub`)} key={index}>
+                  <BenefitsTableCell>
+                    {t(`benefitsTable.rows.${index}.cells.0`)}
+                  </BenefitsTableCell>
+                  <BenefitsTableCell>
+                    {t(`benefitsTable.rows.${index}.cells.1`)}
+                  </BenefitsTableCell>
+                </BenefitsTableRow>
+              ))}
+            </BenefitsTable>
+          </section>
         )}
         <section className={classNames(styles.faq, 'mb')}>
           <div className="container">
