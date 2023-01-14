@@ -72,7 +72,7 @@ export default function Header () {
             </li>
             <li className={styles.header__link}>
               <div className={styles['header__link-top']}>
-                <a href="">Виртуальный адрес</a>
+                <Link href="/services/v-adress">Виртуальный адрес</Link>
               </div>
             </li>
             <li className={styles.header__link}>
@@ -153,7 +153,7 @@ export default function Header () {
             </svg>
           </a>
           <div className={classNames('btn', 'btn-text', styles.btn)}>
-          Оформить заявку
+            Оформить заявку
           </div>
           <div className={classNames(styles.header__burger, mobMenuOpen ? styles.active : '')} onClick={() => void toggleMobMenu()}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,7 +196,7 @@ export default function Header () {
           </div>
           <div className={styles.mob__link}>
             <div className={styles['mob__link-top']}>
-              <a href="">Виртуальный адрес</a>
+              <Link href="/services/v-adress">Виртуальный адрес</Link>
             </div>
           </div>
           <div className={styles.mob__link}>

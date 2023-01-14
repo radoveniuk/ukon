@@ -17,6 +17,7 @@ import { Post } from 'common/types/blog';
 import { getPosts } from 'pages/api/posts';
 
 import styles from 'styles/Service.module.scss';
+import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
 
 type PageContent = {
   subtitles?: number;
@@ -28,6 +29,7 @@ type PageContent = {
     rows: number
   }
   faqItems?: number;
+  seoText: boolean;
 }
 
 const PAGE_DATA_MAP: { [key: string]: PageContent } = {
@@ -41,6 +43,7 @@ const PAGE_DATA_MAP: { [key: string]: PageContent } = {
       rows: 5,
     },
     faqItems: 9,
+    seoText: true,
   },
   'create-ip': {
     subtitles: 6,
@@ -48,14 +51,31 @@ const PAGE_DATA_MAP: { [key: string]: PageContent } = {
     titleImg: '/images/service/create-ooo.png',
     benefits: 6,
     faqItems: 9,
+    seoText: true,
   },
   'update-ooo': {
     titleImg: '/images/service/create-ooo.png',
     subtitles: 5,
     howItems: 4,
+    benefits: 6,
+    faqItems: 10,
+    seoText: false,
   },
   'update-ip': {
     titleImg: '/images/service/create-ooo.png',
+    subtitles: 5,
+    howItems: 4,
+    benefits: 6,
+    faqItems: 6,
+    seoText: false,
+  },
+  'v-adress': {
+    titleImg: '/images/service/create-ooo.png',
+    subtitles: 2,
+    howItems: 4,
+    benefits: 6,
+    faqItems: 6,
+    seoText: false,
   },
 };
 
@@ -86,7 +106,7 @@ export const getStaticProps: GetStaticProps<{ name: string; posts: Post[] } & Pa
   };
 };
 
-export default function Service({ name, subtitles, titleImg, howItems, benefits, benefitsTable, faqItems, posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Service({ name, subtitles, titleImg, howItems, benefits, benefitsTable, faqItems, posts, seoText }: InferGetStaticPropsType<typeof getStaticProps>) {
   const translation = useTranslation('services');
   const t = (path: string) => translation.t(`services:${name}:${path}`);
 
@@ -233,6 +253,12 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
         </section>
         <Contacts />
         <Blog posts={posts} />
+        {seoText && (
+          <SeoText>
+            <SeoTextTitle>{t('seoText.title')}</SeoTextTitle>
+            <SeoTextBody dangerouslySetInnerHTML={{ __html: t('seoText.text') }} />
+          </SeoText>
+        )}
       </main>
     </>
   );
