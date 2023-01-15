@@ -12,8 +12,8 @@ export default function Contacts() {
       </Head>
       <main>
         <Position>
-          <PositionItem href='/'>Главная</PositionItem>
-          <PositionItem href='/contacts'>Контакты</PositionItem>
+          <PositionItem href="/">Главная</PositionItem>
+          <PositionItem href="/contacts">Контакты</PositionItem>
         </Position>
         <section className={styles.contacts}>
           <div className={classNames('container', styles.container)}>
