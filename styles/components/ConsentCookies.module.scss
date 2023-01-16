@@ -1,0 +1,40 @@
+.cookies {
+  position: fixed;
+  pointer-events: all;
+  width: 471px;
+  bottom: 16px !important;
+  right: 16px;
+  left: auto;
+  border-radius: 8;
+  padding: 20px 16px 16px 16px;
+  box-shadow: 0 10px 15px -3px rgb(26 27 35 / 10%), 0 4px 6px -2px rgb(26 27 35 / 8%);
+  background-color: #ffffff;
+  color: #4e503b,;
+  font-family: 'Montserrat';
+  z-index: 1;
+
+  &__content {
+    display: flex;
+    margin-bottom: 16px;
+
+    &-image {
+      margin-right: 12px;
+    }
+
+    &-text {
+      font-size: 14px;
+      line-height: 20px;
+      color: #2f313f;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cookies {
+    width: auto;
+    left: 16px;
+  }
+}

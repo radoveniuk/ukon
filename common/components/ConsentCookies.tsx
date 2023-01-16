@@ -1,24 +1,28 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import CookieConsent from 'react-cookie-consent';
+
+import styles from 'styles/components/ConsentCookies.module.scss';
 
 export default function ConsentCookies() {
   return (
     <CookieConsent
+      containerClasses={styles.cookies}
       location="bottom"
-      buttonText="Хорошо"
+      buttonText="Принять"
       cookieName="ConsentCookies"
-      style={{ 
-        background: '#ffffff', 
-        color: '#4e503b', 
-        boxShadow: '0px -2px 5px 0px rgba(166,166,166,0.75)', 
-        fontFamily: 'Montserrat',
-      }}
-      buttonStyle={{ fontSize: '13px', margin: 10 }}
+      contentClasses={styles.cookies__content}
+      buttonStyle={{ margin: 10 }}
       buttonClasses="btn"
       disableButtonStyles
+      disableStyles
       expires={Infinity}
     >
-      Для вашего удобства этот сайт использует <Link style={{ color: '#44998A' }} href="/terms">cookies</Link>
+      <Image className={styles['cookies__content-image']} height={24} width={24} src="/images/cookie.gif" alt="" />
+      <div className={styles['cookies__content-text']}>
+          Мы используем cookies для того, чтобы убедиться, что мы предлагаем вам наилучшее, когда вы открываете наш сайт. Просмотрите нашу&nbsp;
+        <Link style={{ color: '#44998A' }} href="/terms">Декларацию использования cookies</Link>, чтобы получить более подробную информацию
+      </div>
     </CookieConsent>
   );
 }
