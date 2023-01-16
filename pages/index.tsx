@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import Hero from 'common/components/Home/Hero';
 import Services from 'common/components/Home/Services';
 import We from 'common/components/Home/We';
@@ -21,6 +22,7 @@ export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
 };
 
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+  
 
   return (
     <>
