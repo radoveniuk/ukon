@@ -3,12 +3,15 @@ import type { AppProps } from 'next/app';
 import { appWithTranslation } from 'next-i18next';
 
 import Layout from '../common/components/Layout';
+import OrderModalProvider from 'common/providers/OrderModalProvider';
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <OrderModalProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </OrderModalProvider>
   );
 }
 

@@ -14,19 +14,19 @@ export default function Footer () {
           </Link>
           <ul className={styles.footer__menu}>
             <li className={styles.footer__link}>
-              <Link href="/services/create-ip" className="t1">Регистрация ИП</Link>
+              <Link href="/services/create-individual" className="t1">Регистрация ИП</Link>
             </li>
             <li className={styles.footer__link}>
-              <Link href="/services/create-ooo" className="t1">Регистрация ООО</Link>
+              <Link href="/services/create-company" className="t1">Регистрация ООО</Link>
             </li>
             <li className={styles.footer__link}>
               <Link href="/services/v-adress" className="t1">Виртуальный адрес</Link>
             </li>
             <li className={styles.footer__link}>
-              <Link href="/services/update-ip" className="t1">Внесение изменений в ИП</Link>
+              <Link href="/services/update-individual" className="t1">Внесение изменений в ИП</Link>
             </li>
             <li className={styles.footer__link}>
-              <Link href="/services/update-ooo" className="t1">Внесение изменений в ООО</Link>
+              <Link href="/services/update-company" className="t1">Внесение изменений в ООО</Link>
             </li>
             <li className={styles.footer__link}>
               <Link href="/terms" className="t1">Условия использования</Link>

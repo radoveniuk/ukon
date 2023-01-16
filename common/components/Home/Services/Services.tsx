@@ -24,7 +24,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Внесите изменения в ваше ИП за несколько кликов',
     },
     img: '/images/home/services/2.png',
-    url: '/services/create-ip',
+    url: '/services/create-individual',
   },
   {
     text: {
@@ -33,7 +33,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Внесите изменения в ваше ИП за число кликов',
     },
     img: '/images/home/services/3.png',
-    url: '/services/update-ip',
+    url: '/services/update-individual',
   },
   {
     text: {
@@ -42,7 +42,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Зарегистрируйте ООО',
     },
     img: '/images/home/services/4.png',
-    url: '/services/create-ooo',
+    url: '/services/create-company',
   },
   {
     text: {
@@ -51,7 +51,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Внесение изменений в ООО',
     },
     img: '/images/home/services/5.png',
-    url: '/services/update-ooo',
+    url: '/services/update-company',
   },
   {
     text: {

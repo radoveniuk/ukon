@@ -33,9 +33,9 @@ type PageContent = {
 }
 
 const PAGE_DATA_MAP: { [key: string]: PageContent } = {
-  'create-ooo': {
+  'create-company': {
     subtitles: 5,
-    titleImg: '/images/service/create-ooo.png',
+    titleImg: '/images/service/create-company.png',
     howItems: 4,
     benefits: 6,
     benefitsTable: {
@@ -45,24 +45,24 @@ const PAGE_DATA_MAP: { [key: string]: PageContent } = {
     faqItems: 9,
     seoText: true,
   },
-  'create-ip': {
+  'create-individual': {
     subtitles: 6,
     howItems: 4,
-    titleImg: '/images/service/create-ooo.png',
+    titleImg: '/images/service/create-company.png',
     benefits: 6,
     faqItems: 9,
     seoText: true,
   },
-  'update-ooo': {
-    titleImg: '/images/service/create-ooo.png',
+  'update-company': {
+    titleImg: '/images/service/create-company.png',
     subtitles: 5,
     howItems: 4,
     benefits: 6,
     faqItems: 10,
     seoText: false,
   },
-  'update-ip': {
-    titleImg: '/images/service/create-ooo.png',
+  'update-individual': {
+    titleImg: '/images/service/create-company.png',
     subtitles: 5,
     howItems: 4,
     benefits: 6,
@@ -70,7 +70,7 @@ const PAGE_DATA_MAP: { [key: string]: PageContent } = {
     seoText: false,
   },
   'v-adress': {
-    titleImg: '/images/service/create-ooo.png',
+    titleImg: '/images/service/create-company.png',
     subtitles: 2,
     howItems: 4,
     benefits: 6,
