@@ -29,13 +29,19 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  const { count = 4 } = req.query;
+  const posts = [];
+  for (let i = 0; i < count; i += 1) {
+    posts.push(fakePost());
+  }
+  
   res.status(200).json({ 
-    data: [fakePost(),fakePost(),fakePost(),fakePost()],
+    data: posts,
   });
 }
 
-export async function getPosts() {
-  const response = await fetch(`${server}/api/posts`);
+export async function getPosts(count: number = 4) {
+  const response = await fetch(`${server}/api/posts?count=${count}`);
   const jsonData = await response.json();
   return jsonData.data as Post[];
 }

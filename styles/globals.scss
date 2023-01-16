@@ -662,3 +662,45 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #131313;
   }
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  @media (max-width: 999px) {
+    margin-top: 30px;
+  }
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #D0D0D0;
+    border-radius: 50px;
+    width: 46px;
+    height: 46px;
+    transition-duration: .4s;
+    cursor: pointer;
+    &:hover {
+      border-color: #99C3BD;
+      path {
+        fill: #44998A;
+      }
+    }
+    path {
+      transition-duration: .4s;
+    }
+  }
+  &-numbers {
+    margin: 0 40px;
+    a {
+      transition-duration: .4s;
+      &:hover {
+        color: #44998A;
+      }
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+}

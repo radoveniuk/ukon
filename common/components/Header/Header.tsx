@@ -82,7 +82,7 @@ export default function Header () {
             </li>
             <li className={styles.header__link}>
               <div className={styles['header__link-top']}>
-                <a href="">Блог</a>
+                <Link href="/blog">Блог</Link>
               </div>
             </li>
             <li className={styles.header__link}>
@@ -206,7 +206,7 @@ export default function Header () {
           </div>
           <div className={styles.mob__link}>
             <div className={styles['mob__link-top']}>
-              <a href="">Блог</a>
+              <Link href="/blog">Блог</Link>
             </div>
           </div>
           <div className={styles.mob__link}>

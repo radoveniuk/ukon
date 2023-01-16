@@ -4,7 +4,7 @@ import Services from 'common/components/Home/Services';
 import We from 'common/components/Home/We';
 import Contacts from 'common/components/PageSections/Contacts';
 import About from 'common/components/Home/About';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Post } from 'common/types/blog';
 import { getPosts } from './api/posts';
 import Blog from 'common/components/Home/Blog';
@@ -12,17 +12,15 @@ import HowInfo, { HowInfoHeader, HowInfoItem, HowInfoItems, HowInfoTitle } from 
 import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
 import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
 
-export const getServerSideProps: GetServerSideProps<{ posts: Post[] }> = async () => {
+export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
   const posts = await getPosts();
 
   return {
-    props: {
-      posts,
-    },
+    props: { posts },
   };
 };
 
-export default function Home({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 
   return (
     <>

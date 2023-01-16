@@ -16,7 +16,6 @@ type Props = {
 export default function Blog ({ posts }: Props) {
   return (
     <>
-
       <section className={classNames(styles.blog, 'mb')}>
         <div className="container">
           <div className="top">
@@ -67,7 +66,6 @@ export default function Blog ({ posts }: Props) {
                 </SwiperSlide>
               ))}
             </Swiper>
-
           </div>
           <div className="swiper-pagination"></div>
           <div className="btn-transparent bot-btn btn-text fade-in">
