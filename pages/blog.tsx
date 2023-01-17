@@ -25,7 +25,7 @@ export default function Blog({ posts }: InferGetStaticPropsType<typeof getStatic
   return (
     <>
       <Head>
-        <title>Úkon.sk - блог</title>
+        <title>Úkon.sk | Блог</title>
         <meta name="description" content="Úkon.sk - blog" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

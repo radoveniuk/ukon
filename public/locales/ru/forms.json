@@ -1,0 +1,17 @@
+{
+  "create-company": {
+    "pageTitle": "Оформление ООО"
+  },
+  "create-individual": {
+    "pageTitle": "Оформление ИП"
+  },
+  "update-company": {
+    "pageTitle": "Обновление данных по ООО"
+  },
+  "update-individual": {
+    "pageTitle": "Обновление данных по ИП"
+  },
+  "v-adress": {
+    "pageTitle": "Оформление виртуального адреса"
+  }
+}

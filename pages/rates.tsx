@@ -2,13 +2,13 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { useTranslation } from 'next-i18next';
 
 import Position, { PositionItem } from 'common/components/Position';
+import Footer from 'common/components/Footer';
 
 import styles from 'styles/Rates.module.scss';
-import Footer from 'common/components/Footer';
 
 const PRICE_LIST = {
   individual: [
@@ -61,11 +61,10 @@ export default function Rates () {
   const [activeTab, setActiveTab] = useState('individual');
   return (
     <>
-      <Head>
-        <title>Úkon.sk - тарифы</title>
-        <meta name="description" content="Úkon.sk - home page" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <NextSeo
+        title={`Úkon.sk | ${t('pageTitle')}`}
+        description={t('pageTitle')}
+      />
       <main>
         <Position>
           <PositionItem href="/">Главная</PositionItem>

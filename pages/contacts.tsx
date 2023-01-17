@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { NextSeo } from 'next-seo';
 
 import TextArea from 'common/components/forms/TextArea';
 import TextField from 'common/components/forms/TextField';
@@ -33,10 +33,10 @@ export default function Contacts() {
 
   return (
     <>
-      <Head>
-        <title>Úkon.sk - contacts</title>
-        <meta name="description" content="Úkon.sk - contacts" />
-      </Head>
+      <NextSeo
+        title={'Úkon.sk | Контакты'}
+        description="Контакты"
+      />
       <main>
         <Position>
           <PositionItem href="/">Главная</PositionItem>

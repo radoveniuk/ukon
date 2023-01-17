@@ -1,11 +1,12 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import classNames from 'classnames';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
+import { NextSeo } from 'next-seo';
+import Image from 'next/image';
 
 import Position, { PositionItem } from 'common/components/Position';
-import Image from 'next/image';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -23,31 +24,35 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale = 'ru' }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = 'ru', params }) => {
   return {
     props: {
+      name: params?.name as string,
       ...(await serverSideTranslations(locale, ['common', 'forms'])),
     },
   };
 };
 
-export default function Service({ name }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Form({ name }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const translation = useTranslation('forms');
+  const t = (path: string) => translation.t(`forms:${name}:${path}`);
+  
   return (
     <>
-      <Head>
-        <title>Úkon.sk - Формирование стоимости</title>
-        <meta name="description" content={'Úkon.sk - Формирование стоимости'} />
-      </Head>
+      <NextSeo
+        title={`Úkon.sk | ${t('pageTitle')}`}
+        description={t('pageTitle')}
+      />
       <main>
         <Position>
           <PositionItem href="/">Главная</PositionItem>
-          <PositionItem href={`/services/${name}`}>Формирование стоимости</PositionItem>
+          <PositionItem href={`/forms/${name}`}>{t('pageTitle')}</PositionItem>
         </Position>
         <section className={styles.reg}>
           <div className={styles.reg__cont}>
             <div className={styles.reg__left}>
               <div className={classNames(styles['reg-title'], 'h2')}>
-                Оформление ИП
+                {t('pageTitle')}
               </div>
             </div>
             <div className={styles.reg__right}>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 
 import Position, { PositionItem } from 'common/components/Position';
 import Prices, { PricesDescription, PricesHeader } from 'common/components/PageSections/Prices';
@@ -15,10 +16,10 @@ import Contacts from 'common/components/PageSections/Contacts';
 import Blog from 'common/components/PageSections/Blog';
 import { Post } from 'common/types/blog';
 import { getPosts } from 'pages/api/posts';
+import Footer from 'common/components/Footer';
+import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
 
 import styles from 'styles/Service.module.scss';
-import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
-import Footer from 'common/components/Footer';
 
 type PageContent = {
   subtitles?: number;
@@ -116,10 +117,10 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
 
   return (
     <>
-      <Head>
-        <title>Úkon.sk - Информация</title>
-        <meta name="description" content={`Úkon.sk - ${t('pageTitle')}`} />
-      </Head>
+      <NextSeo
+        title={`Úkon.sk | ${t('pageTitle')}`}
+        description={t('pageTitle')}
+      />
       <main>
         <Position>
           <PositionItem href="/">Главная</PositionItem>
@@ -140,9 +141,7 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
                 ))}
               </ul>
               <div className={styles.service__btns}>
-                <div className={classNames(styles.btn, 'btn', 'btn-text')}>
-                  {commonTraslation.t('orderBtn')}
-                </div>
+                <Link href={`/forms/${name}`} className={classNames(styles.btn, 'btn', 'btn-text')} >{commonTraslation.t('orderBtn')}</Link>
                 <div className="btn-transparent btn-text">
                   Получить консультацию
                 </div>
