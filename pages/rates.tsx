@@ -40,7 +40,7 @@ const PRICE_LIST = {
 export const getStaticProps: GetStaticProps = async ({ locale = 'ru' }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['rates'])),
+      ...(await serverSideTranslations(locale, ['common', 'rates'])),
     },
   };
 };

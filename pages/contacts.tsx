@@ -1,9 +1,35 @@
 import classNames from 'classnames';
-import Position, { PositionItem } from 'common/components/Position';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useForm } from 'react-hook-form';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+import TextArea from 'common/components/forms/TextArea';
+import TextField from 'common/components/forms/TextField';
+import Position, { PositionItem } from 'common/components/Position';
 import styles from '../styles/Contacts.module.scss';
+import { SubmitHandler } from 'react-hook-form/dist/types';
+import Button from 'common/components/Button';
+
+type ContactForm = {
+  name: string;
+  email: string;
+  comment: string;
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale = 'ru' }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+};
 
 export default function Contacts() {
+  const { register, handleSubmit, formState: { errors } } = useForm<ContactForm>({ mode: 'onChange' });
+
+  const submitHandler: SubmitHandler<ContactForm> = (data) => console.log(data);
+
   return (
     <>
       <Head>
@@ -75,20 +101,23 @@ export default function Contacts() {
               <div className={classNames(styles['contacts__right-p'], 't2', 'fade-in')}>
                 Заполните форму и наша команда с вами свяжеться в течении 2 часа
               </div>
-              <form action="" className={styles['contacts__right-form']}>
-                <label className={classNames(styles['contacts__right-form-item'], 'label', 'fade-in')}>
-                  <span className="t5">Имя и Фамилия</span>
-                  <input type="text" className="input t5" placeholder="Введите имя и фамилию"/>
-                </label>
-                <label className={classNames(styles['contacts__right-form-item'], 'label', 'fade-in')}>
-                  <span className="t5">Email</span>
-                  <input type="text" className="input t5" placeholder="Введите значение"/>
-                </label>
-                <label className={classNames(styles['contacts__right-form-item'], 'label', 'fade-in')}>
-                  <span className="t5"> Комментарий</span>
-                  <textarea className="input t5" placeholder="Введите комментарий"></textarea>
-                </label>
-                <div className={classNames('btn', 'btn-text', styles['contacts__right-form-item'], styles.btn, 'fade-in')}>Отправить</div>
+              <form onSubmit={handleSubmit(submitHandler)} className={styles['contacts__right-form']}>
+                <TextField 
+                  labelClassName={styles['contacts__right-form-item']}
+                  label="Имя и Фамилия"
+                  placeholder="Анатолий Поляренко"
+                  error={errors.name?.message}
+                  {...register('name', { required: { value: true, message: 'Пожалуйста, заполните это поле' } })}
+                />
+                <TextField 
+                  labelClassName={styles['contacts__right-form-item']} 
+                  label="Email" 
+                  placeholder="anatoliy.poliarenko@example.com"
+                  error={errors.email?.message}
+                  {...register('email', { required: { value: true, message: 'Пожалуйста, заполните это поле' }, pattern: { value: /\S+@\S+\.\S+/, message: 'Пожалуйста, введите свой адрес электронной почты.' } })} 
+                />
+                <TextArea labelClassName={styles['contacts__right-form-item']} label="Комментарий" placeholder="Очень хочу оформить себе живность!"  {...register('comment')} />
+                <Button variant="text" className={classNames(styles['contacts__right-form-item'], styles.btn)} type="submit">Отправить</Button>
               </form>
             </div>
           </div>

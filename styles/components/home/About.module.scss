@@ -10,19 +10,19 @@
   }
   &__img {
     display: flex;
-    //height: 950px;
-    //@media (max-width: 1899px) {
-    //  height: 713px;
-    //}
-    //@media (max-width: 1399px) {
-    //  height: 650px;
-    //}
-    //@media (max-width: 1249px) {
-    //  height: 1000px;
-    //}
-    //@media (max-width: 999px) {
-    //  height: 758px;
-    //}
+    height: 950px;
+    @media (max-width: 1899px) {
+     height: 713px;
+    }
+    @media (max-width: 1399px) {
+     height: 650px;
+    }
+    @media (max-width: 1249px) {
+     height: 1000px;
+    }
+    @media (max-width: 999px) {
+     height: 758px;
+    }
     @media (max-width: 759px) {
       height: auto;
     }

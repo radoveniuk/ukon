@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { useOrderModalOpen } from 'common/providers/OrderModalProvider';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { PropsWithChildren, useEffect } from 'react';
 import styles from 'styles/components/OrderModal.module.scss';
 
@@ -10,39 +9,32 @@ const ORDER_ITEMS = [
   {
     name: 'Оформление ИП',
     img: '/images/home/services/2.png',
-    link: '/services/create-individual',
+    link: '/forms/create-individual',
   },
   {
     name: 'Оформление ООО',
     img: '/images/home/services/3.png',
-    link: '/services/create-company',
+    link: '/forms/create-company',
   },
   {
     name: 'Внесения изменений в ИП',
     img: '/images/home/services/4.png',
-    link: '/services/update-individual',
+    link: '/forms/update-individual',
   },
   {
     name: 'Внесения изменений в ООО',
     img: '/images/home/services/5.png',
-    link: '/services/update-company',
+    link: '/forms/update-company',
   },
   {
     name: 'Виртуальный адрес',
     img: '/images/home/services/6.png',
-    link: '/services/v-adress',
+    link: '/forms/v-adress',
   },
 ];
 
 export default function OrderModal () {
   const [open, setOpen] = useOrderModalOpen();
-    
-  const router = useRouter();
-  
-  useEffect(() => {
-    setOpen(false);
-  }, [router.asPath, setOpen]);
-
   const closeHandler = () => void setOpen(false);
   return (
     <div className={classNames(styles.pop, styles['pop-1'], open ? styles.active : '')}>
@@ -59,7 +51,7 @@ export default function OrderModal () {
                 <div className={classNames(styles['pop__item-title'], 'h5')}>
                   {orderItem.name}
                 </div>
-                <Link href={orderItem.link} className={classNames(styles.btn, 'btn', 'btn-text')}>
+                <Link href={orderItem.link} onClick={closeHandler} className={classNames(styles.btn, 'btn', 'btn-text')}>
                   Оформить
                 </Link>
               </div>
@@ -75,6 +67,6 @@ export default function OrderModal () {
 export const OrderModalOpener = ({ children }: PropsWithChildren) => {
   const [, setOpen] = useOrderModalOpen();
   return (
-    <div onClick={() => void setOpen(true)}>{children}</div>
+    <div className={styles.opener} onClick={() => void setOpen(true)}>{children}</div>
   );
 };

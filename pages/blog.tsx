@@ -10,12 +10,13 @@ import { getPosts } from './api/posts';
 
 import styles from 'styles/Blog.module.scss';
 import { DateTime } from 'luxon';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
+export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async ({ locale='ru' }) => {
   const posts = await getPosts(12);
 
   return {
-    props: { posts },
+    props: { posts, ...(await serverSideTranslations(locale, ['common'])) },
   };
 };
 

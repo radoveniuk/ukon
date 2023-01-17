@@ -1,19 +1,23 @@
 import classNames from 'classnames';
 import { PropsWithChildren, ReactNode } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import styles from 'styles/components/HowInfo.module.scss';
 
-export const HowInfoHeader = ({ children }: PropsWithChildren) => (
-  <div className="top">
-    <div className="top__left">
-      <div className="sub t3">Как это работает</div>
-      {children}
+export const HowInfoHeader = ({ children }: PropsWithChildren) => {
+  const { t } = useTranslation();
+  return (
+    <div className="top">
+      <div className="top__left">
+        <div className="sub t3">Как это работает</div>
+        {children}
+      </div>
+      <div className="btn btn-text open-pop-1 fade-in">
+        {t('orderBtn')}
+      </div>
     </div>
-    <div className="btn btn-text open-pop-1 fade-in">
-      Оформить заявку
-    </div>
-  </div>
-);
+  );
+};
 
 export const HowInfoTitle = ({ children }: PropsWithChildren) => (
   <h2 className="h2 title">
@@ -55,11 +59,12 @@ export const HowInfoItem = ({ title, minutes, description }: HowInfoItemProps) =
 );
 
 export default function HowInfo ({ children }: PropsWithChildren) {
+  const { t } = useTranslation();
   return (
     <section className={classNames(styles.how, 'mb')}>
       <div className="container">
         {children}
-        <div className="btn bot-btn btn-text open-pop-1 fade-in">Оформить заявку</div>
+        <div className="btn bot-btn btn-text open-pop-1 fade-in">{t('orderBtn')}</div>
       </div>
     </section>
   );

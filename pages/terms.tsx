@@ -2,6 +2,16 @@ import Head from 'next/head';
 
 import Position, { PositionItem } from 'common/components/Position';
 import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps: GetStaticProps = async ({ locale = 'ru' }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+};
 
 export default function Terms () {
   return (

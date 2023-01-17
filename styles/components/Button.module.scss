@@ -1,0 +1,43 @@
+.btn {
+  white-space: nowrap;
+  color: #fff;
+  cursor: pointer;
+  padding: 12px 34px;
+  background: #44998A;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  transition-duration: .4s;
+  &:hover {
+    background-color: #10826E;
+  }
+  &:active {
+    border-color: #10826E;
+    background: #44998A;
+  }
+}
+
+.btn-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: #fff;
+}
+
+.btn-transparent {
+  padding: 12px 34px;
+  border: 2px solid #44998A;
+  border-radius: 50px;
+  color: #44998A;
+  cursor: pointer;
+  transition-duration: .4s;
+  &:hover {
+    background-color: #44998A;
+    border-color: #44998A;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: #10826E;
+  }
+}

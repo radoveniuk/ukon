@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps<{ name: string; posts: Post[] } & Pa
     props: {
       name,
       ...PAGE_DATA_MAP[name],
-      ...(await serverSideTranslations(locale, ['services'])),
+      ...(await serverSideTranslations(locale, ['common', 'services'])),
       posts,
     },
   };
@@ -108,6 +108,7 @@ export const getStaticProps: GetStaticProps<{ name: string; posts: Post[] } & Pa
 
 export default function Service({ name, subtitles, titleImg, howItems, benefits, benefitsTable, faqItems, posts, seoText }: InferGetStaticPropsType<typeof getStaticProps>) {
   const translation = useTranslation('services');
+  const commonTraslation = useTranslation();
   const t = (path: string) => translation.t(`services:${name}:${path}`);
 
   const [activeFaqItem, setActiveFaqItem] = useState<null | number>(null);
@@ -139,7 +140,7 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
               </ul>
               <div className={styles.service__btns}>
                 <div className={classNames(styles.btn, 'btn', 'btn-text')}>
-                  Оформить заявку
+                  {commonTraslation.t('orderBtn')}
                 </div>
                 <div className="btn-transparent btn-text">
                   Получить консультацию
