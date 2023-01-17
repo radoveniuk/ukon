@@ -18,6 +18,7 @@ import { getPosts } from 'pages/api/posts';
 
 import styles from 'styles/Service.module.scss';
 import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
+import Footer from 'common/components/Footer';
 
 type PageContent = {
   subtitles?: number;
@@ -263,6 +264,7 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
           </SeoText>
         )}
       </main>
+      <Footer />
     </>
   );
 }

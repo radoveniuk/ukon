@@ -3,6 +3,7 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { useTranslation } from 'next-i18next';
 
 import styles from 'styles/components/HowInfo.module.scss';
+import { OrderModalOpener } from '../OrderModal';
 
 export const HowInfoHeader = ({ children }: PropsWithChildren) => {
   const { t } = useTranslation();
@@ -12,9 +13,11 @@ export const HowInfoHeader = ({ children }: PropsWithChildren) => {
         <div className="sub t3">Как это работает</div>
         {children}
       </div>
-      <div className="btn btn-text open-pop-1 fade-in">
-        {t('orderBtn')}
-      </div>
+      <OrderModalOpener>
+        <div className="btn btn-text open-pop-1 fade-in">
+          {t('orderBtn')}
+        </div>
+      </OrderModalOpener>
     </div>
   );
 };
@@ -64,7 +67,9 @@ export default function HowInfo ({ children }: PropsWithChildren) {
     <section className={classNames(styles.how, 'mb')}>
       <div className="container">
         {children}
-        <div className="btn bot-btn btn-text open-pop-1 fade-in">{t('orderBtn')}</div>
+        <OrderModalOpener>
+          <div className="btn bot-btn btn-text open-pop-1 fade-in">{t('orderBtn')}</div>
+        </OrderModalOpener>
       </div>
     </section>
   );

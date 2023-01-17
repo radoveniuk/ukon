@@ -13,6 +13,7 @@ import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSectio
 import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
 
 import { getPosts } from './api/posts';
+import Footer from 'common/components/Footer';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const posts = await getPosts();
@@ -97,6 +98,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           </SeoTextBody>
         </SeoText>
       </main>
+      <Footer />
     </>
   );
 };

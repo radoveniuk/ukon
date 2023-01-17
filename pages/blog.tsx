@@ -11,6 +11,7 @@ import { getPosts } from './api/posts';
 import styles from 'styles/Blog.module.scss';
 import { DateTime } from 'luxon';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Footer from 'common/components/Footer';
 
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async ({ locale='ru' }) => {
   const posts = await getPosts(12);
@@ -87,6 +88,7 @@ export default function Blog({ posts }: InferGetStaticPropsType<typeof getStatic
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

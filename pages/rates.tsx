@@ -8,6 +8,7 @@ import { useTranslation } from 'next-i18next';
 import Position, { PositionItem } from 'common/components/Position';
 
 import styles from 'styles/Rates.module.scss';
+import Footer from 'common/components/Footer';
 
 const PRICE_LIST = {
   individual: [
@@ -232,6 +233,7 @@ export default function Rates () {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

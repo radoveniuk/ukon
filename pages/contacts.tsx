@@ -10,6 +10,7 @@ import Position, { PositionItem } from 'common/components/Position';
 import styles from '../styles/Contacts.module.scss';
 import { SubmitHandler } from 'react-hook-form/dist/types';
 import Button from 'common/components/Button';
+import Footer from 'common/components/Footer';
 
 type ContactForm = {
   name: string;
@@ -245,6 +246,7 @@ export default function Contacts() {
           </svg>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

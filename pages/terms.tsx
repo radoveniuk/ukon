@@ -4,6 +4,7 @@ import Position, { PositionItem } from 'common/components/Position';
 import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Footer from 'common/components/Footer';
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'ru' }) => {
   return {
@@ -39,6 +40,7 @@ export default function Terms () {
           <SeoTextBody>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, laboriosam explicabo deleniti aliquam, nostrum accusantium nobis dolores iste fugiat ad esse, tenetur porro ratione. Unde, suscipit! Magni eos ab quam.</SeoTextBody>
         </SeoText>
       </main>
+      <Footer />
     </>
   );
 }
