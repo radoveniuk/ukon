@@ -1,0 +1,10 @@
+import { HTMLAttributes } from 'react';
+
+export default function PlusIcon(props: HTMLAttributes<HTMLOrSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M12 17V7" stroke="black" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M7 12L17 12" stroke="black" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}

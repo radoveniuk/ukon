@@ -101,6 +101,7 @@
     height: 5px;
     background: #E7E7E7;
     border-radius: 2.5px;
+    cursor: pointer;
     &:not(:last-child) {
       margin-right: 10px;
     }
@@ -312,6 +313,7 @@
         &-svg {
           margin-left: 5px;
           display: flex;
+          cursor: pointer;
         }
         &-added {
           display: flex;

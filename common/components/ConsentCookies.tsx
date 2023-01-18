@@ -16,7 +16,7 @@ export default function ConsentCookies() {
       buttonClasses="btn"
       disableButtonStyles
       disableStyles
-      expires={Infinity}
+      expires={10000}
     >
       <Image className={styles['cookies__content-image']} height={24} width={24} src="/images/cookie.gif" alt="" />
       <div className={styles['cookies__content-text']}>

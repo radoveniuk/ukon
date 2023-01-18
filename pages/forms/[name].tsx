@@ -7,6 +7,7 @@ import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 
 import Position, { PositionItem } from 'common/components/Position';
+import CreateIndividualForm from 'common/components/OrderForm/CreateIndividualForm';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -53,6 +54,9 @@ export default function Form({ name }: InferGetStaticPropsType<typeof getStaticP
             <div className={styles.reg__left}>
               <div className={classNames(styles['reg-title'], 'h2')}>
                 {t('pageTitle')}
+              </div>
+              <div className={styles['reg__left-cont']}>
+                {name === 'create-individual' && <CreateIndividualForm />}
               </div>
             </div>
             <div className={styles.reg__right}>
