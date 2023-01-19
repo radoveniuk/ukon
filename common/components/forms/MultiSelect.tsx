@@ -7,34 +7,6 @@ import classNames from 'classnames';
 import SearchIcon from '../icons/SearchIcon';
 import PlusIcon from '../icons/PlusIcon';
 
-const colors = [
-  'Black',
-  'Red',
-  'Green',
-  'Blue',
-  'Orange',
-  'Purple',
-  'Pink',
-  'Orchid',
-  'Aqua',
-  'Lime',
-  'Gray',
-  'Brown',
-  'Teal',
-  'Skyblue',
-];
-
-
-function getFilteredItems(selectedItems: string[], inputValue: string) {
-  const lowerCasedInputValue = inputValue.toLowerCase();
-
-  return colors.filter(
-    colour =>
-      !selectedItems.includes(colour) &&
-      colour.toLowerCase().startsWith(lowerCasedInputValue),
-  );
-}
-
 type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 
 type Props = {
@@ -50,10 +22,11 @@ type Props = {
   placeholder?: string;
   isLoading?: boolean;
   disabled?: boolean;
+  maxItems?: number;
 };
 
 function MultiSelect({
-  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className,
+  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems,
 }: Props) {
   const [inputValue, setInputValue] = React.useState('');
   const [selectedItems, setSelectedItems] = React.useState<unknown[]>([]);
@@ -98,10 +71,7 @@ function MultiSelect({
     selectedItem: null,
     onSelectedItemChange: handleSelectedItemChange,
     onInputValueChange: ({ inputValue = '', selectedItem }) => {
-      if (selectedItem) {
-        setItems(prev => getFilteredItems(prev, selectedItems));
-        return;
-      }
+      if (selectedItem) return;
       setItems(getFilteredItems(options.filter(item => (
         getLabel(item).toLowerCase().includes(inputValue.toLowerCase())
       )), selectedItems));
@@ -131,8 +101,14 @@ function MultiSelect({
       case useCombobox.stateChangeTypes.ItemClick:
         if (newSelectedItem) {
           setInputValue('');
-          setSelectedItems([...selectedItems, newSelectedItem]);
-          setItems(prev => getFilteredItems(prev, [...selectedItems, newSelectedItem]));
+          if (maxItems && maxItems < [...selectedItems, newSelectedItem].length) {
+            const [, ...availableItems] = selectedItems;
+            setSelectedItems([...availableItems, newSelectedItem]);
+            setItems(getFilteredItems(options, [...availableItems, newSelectedItem]));
+          } else {
+            setSelectedItems([...selectedItems, newSelectedItem]);
+            setItems(prev => getFilteredItems(prev, [...selectedItems, newSelectedItem]));
+          }
         }
         break;
       case useCombobox.stateChangeTypes.InputChange:

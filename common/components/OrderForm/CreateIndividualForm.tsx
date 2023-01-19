@@ -43,13 +43,49 @@ export default function CreateIndividualForm () {
         <div className={classNames(styles.reg__tab, styles.active)}>
           <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
           <div className={styles.reg__items}>
-            <div className={styles.reg__items}>
+            <div className={styles.reg__item}>
               <div className={styles['reg__item-top']}>
                 <div className={classNames(styles['reg__item-top-num'], 'body')}>
                   01
                 </div>
                 <div className={classNames(styles['reg__item-top-title'], 't2')}>
-                  {t('form.activities')}
+                  {t('form.mainActivity')}
+                </div>
+              </div>
+              <div className={styles['reg__item-bot']}>
+                <div className={styles['reg__item-project']}>
+                  <MultiSelect 
+                    className={styles['reg__item-project-select']}
+                    label={t('form.activitySearch')} 
+                    options={ACTIVITIES}
+                    pathToLabel="name"
+                    maxItems={1}
+                    handleSelectedItemChange={console.log} 
+                    placeholder={t('form.activitySelectPlaceholder')}
+                    customRenderMenuItem={(item: any) => (
+                      <>
+                        <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                          {item.name}
+                        </span>
+                        <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                          {item.price}€
+                        </span>
+                      </>
+                    )}
+                  />
+                  <div className={classNames(styles['reg__item-project-btn'], 'btn-text', 'btn-transparent')}>
+                    Список видов деятельности
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.reg__item}>
+              <div className={styles['reg__item-top']}>
+                <div className={classNames(styles['reg__item-top-num'], 'body')}>
+                  02
+                </div>
+                <div className={classNames(styles['reg__item-top-title'], 't2')}>
+                  {t('form.otherActivities')}
                 </div>
               </div>
               <div className={styles['reg__item-bot']}>
