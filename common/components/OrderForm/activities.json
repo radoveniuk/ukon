@@ -1,0 +1,2762 @@
+[
+  {
+    "Id": 1,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 82190.01,
+    "Value": "Administratívne služby",
+    "ru": "Административные услуги",
+    "uk": "Адміністративні послуги",
+    "en": "Administrative services"
+  },
+  {
+    "Id": 2,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 70220.01,
+    "Value": "Činnosť podnikateľských, organizačných a ekonomických poradcov",
+    "ru": "Консультирование в области бизнеса, организации и экономики",
+    "uk": "Консультування в галузі бізнесу, організації та економіки",
+    "en": "Business, organisational and economic consultants"
+  },
+  {
+    "Id": 3,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 84250.011,
+    "Value": "Činnosti na úseku požiarnej ochrany v rozsahu servis, oprava, kontrola, plnenie hasiacich prístrojov, požiarnych/požiarnotechnických zariadení",
+    "ru": "Деятельность по обеспечению пожарной безопасности (сервис, ремонт, проверка огнетушителей и противопожарного оборудования)",
+    "uk": "Діяльність із забезпечення пожежної безпеки (сервіс, ремонт, перевірка вогнегасників та протипожежного обладнання)",
+    "en": "Services in the area of fire protection – service, repair, control, filling of fire extinguishing equipment, fire/fire technical equipment"
+  },
+  {
+    "Id": 4,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 81210.01,
+    "Value": "Čistiace a upratovacie služby",
+    "ru": "Услуги клининга и уборки",
+    "uk": "Послуги з прибирання (клінінг)",
+    "en": "Cleaning services"
+  },
+  {
+    "Id": 5,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 37000.011,
+    "Value": "Diagnostika kanalizačných potrubí a čistenie kanalizačných systémov",
+    "ru": "Диагностика и очистка  водопроводно-канализационной сети",
+    "uk": "Діагностика та очищення водопровідно-каналізаційної мережі",
+    "en": "Diagnosis of sewer pipes and cleaning of sewer systems"
+  },
+  {
+    "Id": 6,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 74100.01,
+    "Value": "Dizajnérske činnosti",
+    "ru": "Дизайнерские услуги",
+    "uk": "Дизайнерські послуги",
+    "en": "Design activities"
+  },
+  {
+    "Id": 7,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 43390.01,
+    "Value": "Dokončovacie stavebné práce pri realizácii exteriérov a interiérov",
+    "ru": "Завершающие строительные работы при оформлению экстерьера и интерьера",
+    "uk": "Заключні будівельні роботи з оформлення екстер’єру та інтер’єру",
+    "en": "Finishing building works at exteriors and interiors"
+  },
+  {
+    "Id": 8,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 64990.03,
+    "Value": "Faktoring a forfaiting",
+    "ru": "Факторинговые и форфейтинговые услуги",
+    "uk": "Факторингові та форфейні послуги",
+    "en": "Factoring and forfeiting"
+  },
+  {
+    "Id": 9,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 64910.01,
+    "Value": "Finančný lízing",
+    "ru": "Финансовый лизинг",
+    "uk": "Фінансовий лізинг",
+    "en": "Financial leasing"
+  },
+  {
+    "Id": 10,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 74200.01,
+    "Value": "Fotografické služby",
+    "ru": "Деятельность в области фотографии",
+    "uk": "Діяльність в галузі фотографії",
+    "en": "Photographic services"
+  },
+  {
+    "Id": 11,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 25610.01,
+    "Value": "Galvanizácia kovov",
+    "ru": "Гальванизация металлов",
+    "uk": "Гальванізація металів",
+    "en": "Galvanising of metals"
+  },
+  {
+    "Id": 12,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": "01499.010",
+    "Value": "Chov vybraných druhov zvierat",
+    "ru": "Выращивание и разведение определенных животных",
+    "uk": "Вирощування і розведення тварин",
+    "en": "Breeding of selected animal breeding"
+  },
+  {
+    "Id": 13,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 79900.022,
+    "Value": "Informačná činnosť",
+    "ru": "Информационная деятельность",
+    "uk": "Інформаційна діяльність",
+    "en": "Information services"
+  },
+  {
+    "Id": 14,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 71200.12,
+    "Value": "Informatívne testovanie, meranie, analýzy a kontroly",
+    "ru": "Информативное тестирование, измерение, анализ и контроль",
+    "uk": "Інформативне тестування, вимірювання, аналіз та контроль",
+    "en": "Informative testing, measurement, analysis and control"
+  },
+  {
+    "Id": 15,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 71121.01,
+    "Value": "Inžinierska činnosť, stavebné cenárstvo, projektovanie a konštruovanie elektrických zariadení",
+    "ru": "Инженерные работы, строительное ценообразование, проектирование и конструирование электрического оборудования",
+    "uk": "Інженерія, будівельне ціноутворення, проектування та конструювання електричного обладнання",
+    "en": "Engineering activity, building pricing, design and construction of electric equipment"
+  },
+  {
+    "Id": 16,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 23411.01,
+    "Value": "Keramická výroba",
+    "ru": "Производство керамических изделий",
+    "uk": "Виробництво керамічної продукції",
+    "en": "Production of ceramics"
+  },
+  {
+    "Id": 17,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 47190.01,
+    "Value": "Kúpa tovaru na účely jeho predaja konečnému spotrebiteľovi (maloobchod) alebo iným prevádzkovateľom živnosti (veľkoobchod)",
+    "ru": "Покупка товаров с целью их продажи окончательному потребителю (розничная торговля) или другим предпринимателям (оптовая торговля)",
+    "uk": "Купівля товарів з метою їх продажу кінцевому споживачеві (роздрібна торгівля) або іншим підприємцям (оптова торгівля)",
+    "en": "Buying goods for the purpose of their sell to the final consumer (retail sale) or to other entrepreneurs (wholesale)"
+  },
+  {
+    "Id": 18,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 53200.02,
+    "Value": "Kuriérske služby",
+    "ru": "Курьерские услуги",
+    "uk": "Кур'єрські послуги",
+    "en": "Courier services"
+  },
+  {
+    "Id": 19,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 49410.01,
+    "Value": "Nákladná cestná doprava vykonávaná vozidlami s celkovou hmotnosťou do 3,5 t vrátane prípojného vozidla",
+    "ru": "Грузовые перевозки с использованием автомобильных транспортных средств, допустимая общая масса которых составляет до 3,5 тонн",
+    "uk": "Вантажні перевезення за допомогою автотранспортних засобів, припустима загальна маса яких становить до 3,5 тон",
+    "en": "Freight road transport of vehicles with weight under 3,5 t including towed vehicle"
+  },
+  {
+    "Id": 20,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 47190.02,
+    "Value": "Nákup, predaj alebo preprava zbraní a streliva",
+    "ru": "Покупка, продажа или транспортировка оружия и боеприпасов",
+    "uk": "Купівля, продаж або транспортування зброї та боєприпасів",
+    "en": "Buying, selling or transport of weapons and ammunition"
+  },
+  {
+    "Id": 21,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 85590.21,
+    "Value": "Odborná príprava v oblasti environmentálneho manažérstva a auditu",
+    "ru": "Специализированная подготовка в области энвироментального менеджмента и аудита",
+    "uk": "Спеціалізована підготовка в галузі енвіроментального менеджменту та аудиту",
+    "en": "Professional preparation in the area of environmental management and audit"
+  },
+  {
+    "Id": 22,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 14130.01,
+    "Value": "Odevná výroba",
+    "ru": "Производство одежды",
+    "uk": "Виробництво одягу",
+    "en": "Cloth production"
+  },
+  {
+    "Id": 23,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 16100.01,
+    "Value": "Opracovanie drevnej hmoty a výroba komponentov z dreva",
+    "ru": "Обработка древесины и производство изделий из дерева",
+    "uk": "Обробка деревини та виробництво виробів з дерева",
+    "en": "Wood material shaping and production of wood components"
+  },
+  {
+    "Id": 24,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 95290.011,
+    "Value": "Oprava osobných potrieb a potrieb pre domácnosť",
+    "ru": "Ремонт личных вещей и предметов домашнего обихода",
+    "uk": "Ремонт особистих речей та предметів побуту",
+    "en": "Repair of personal belongings and household goods"
+  },
+  {
+    "Id": 25,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 71200.11,
+    "Value": "Oprávnené overovanie správ o emisiách skleníkových plynov z prevádzky",
+    "ru": "Сертифицированная проверка сводок о выбросах парниковых газов предприятиями",
+    "uk": "Сертифікована перевірка зведень про викиди парникових газів підприємствами",
+    "en": "Certified verification of messages about emissions of greenhouse gasses from establishment"
+  },
+  {
+    "Id": 26,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 93290.03,
+    "Value": "Organizovanie športových, kultúrnych a iných spoločenských podujatí",
+    "ru": "Организация спортивных, культурных и других общественных мероприятий",
+    "uk": "Організація спортивних, культурних та інших публічних заходів",
+    "en": "Organisation of sport, cultural and other social events"
+  },
+  {
+    "Id": 27,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 62020.011,
+    "Value": "Počítačové služby a služby súvisiace s počítačovým spracovaním údajov",
+    "ru": "Компьютерные услуги и услуги, связанные с компьютерной обработкой данных",
+    "uk": "Комп'ютерні послуги та послуги, пов'язані з комп'ютерною обробкою даних",
+    "en": "Computer services and services related to computer based processing of data"
+  },
+  {
+    "Id": 28,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 38210.01,
+    "Value": "Podnikanie v oblasti nakladania s iným ako nebezpečným odpadom",
+    "ru": "Предоставление услуг в области транспортировки, обработки и утилизации безопасных отходов",
+    "uk": "Надання послуг у галузі транспортування, переробки та утилізації безпечних відходів",
+    "en": "Trading in the area of treatment with disposal of waste different from the dangerous waste"
+  },
+  {
+    "Id": 29,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 56290.01,
+    "Value": "Poskytovanie obslužných služieb pri kultúrnych a iných spoločenských podujatiach",
+    "ru": "Предоставление услуг в сфере обслуживания на культурных и других общественных мероприятиях",
+    "uk": "Надання послуг у галузі обслуговування на культурних та інших громадських заходах",
+    "en": "Waiter services at cultural and other social events"
+  },
+  {
+    "Id": 30,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 49390.01,
+    "Value": "Poskytovanie prepravných služieb nemotorovými vozidlami",
+    "ru": "Предоставление транспортных услуг немоторизированными транспортными средствами",
+    "uk": "Надання транспортних послуг немоторизованими транспортними засобами",
+    "en": "Provision of transportation services of non-motor vehicles"
+  },
+  {
+    "Id": 31,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 96090.01,
+    "Value": "Poskytovanie služieb osobného charakteru",
+    "ru": "Предоставление услуг личного характера",
+    "uk": "Надання послуг особистого характеру",
+    "en": "Provision of services of personal character"
+  },
+  {
+    "Id": 32,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 56109.01,
+    "Value": "Poskytovanie služieb rýchleho občerstvenia v spojení s predajom na priamu konzumáciu",
+    "ru": "Предоставление услуг быстрого питания и продажи продуктов питания готовых к употреблению",
+    "uk": "Надання послуг швидкого харчування та продаж харчових продуктів, готових до споживання",
+    "en": "Provision of fast food services and selling of food for direct consummation"
+  },
+  {
+    "Id": 33,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": "01620.030",
+    "Value": "Poskytovanie služieb súvisiacich so starostlivosťou o zvieratá",
+    "ru": "Предоставление услуг, связанных с уходом за животными",
+    "uk": "Надання послуг, пов'язаних з доглядом за тваринами",
+    "en": "Provision of services related to taking care of animals"
+  },
+  {
+    "Id": 34,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": "02200.010",
+    "Value": "Poskytovanie služieb v lesníctve a poľovníctve",
+    "ru": "Предоставление услуг в лесоводстве и охоте",
+    "uk": "Надання послуг у лісовому господарстві та полюванні",
+    "en": "Provision of services in forestry and hunting"
+  },
+  {
+    "Id": 35,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": "01610.030",
+    "Value": "Poskytovanie služieb v poľnohospodárstve a záhradníctve",
+    "ru": "Предоставление услуг в сельском хозяйстве и садоводстве",
+    "uk": "Надання послуг у сільському господарстві та садівництві",
+    "en": "Provision of services in agriculture and gardening"
+  },
+  {
+    "Id": 36,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": "03120.010",
+    "Value": "Poskytovanie služieb v rybárstve",
+    "ru": "Предоставление услуг в рыболовстве",
+    "uk": "Надання послуг у риболовлі",
+    "en": "Provision of services in fishing"
+  },
+  {
+    "Id": 37,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 87900.01,
+    "Value": "Poskytovanie sociálnych služieb",
+    "ru": "Предоставление социальных услуг",
+    "uk": "Надання соціальних послуг",
+    "en": "Provision of social services"
+  },
+  {
+    "Id": 38,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 64920.01,
+    "Value": "Poskytovanie úverov alebo pôžičiek z peňažných zdrojov získaných výlučne bez verejnej výzvy a bez verejnej ponuky majetkových hodnôt",
+    "ru": "Предоставление кредитов или займов из денежных источников, которые не были получены через тендер",
+    "uk": "Надання кредитів чи позик з грошових джерел, які не отримали через тендер",
+    "en": "Provision of loans or credits coming from financial sources acquired without public announcement and without public offer of property values"
+  },
+  {
+    "Id": 39,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 64990.04,
+    "Value": "Poskytovanie záruk na zabezpečenie colného dlhu",
+    "ru": "Предоставление бондов для оплаты таможенной пошлины",
+    "uk": "Надання бондів для сплати мита",
+    "en": "Provision of guaranties for guaranteeing of customs debt"
+  },
+  {
+    "Id": 40,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 74900.095,
+    "Value": "Pravidelná kontrola detského ihriska",
+    "ru": "Регулярные проверки детских игровых площадок",
+    "uk": "Регулярні перевірки дитячих майданчиків",
+    "en": "Regular inspection of children`s playground"
+  },
+  {
+    "Id": 41,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 77390.01,
+    "Value": "Prenájom hnuteľných vecí",
+    "ru": "Аренда движимого имущества",
+    "uk": "Оренда рухомого майна",
+    "en": "Rent of movable properties"
+  },
+  {
+    "Id": 42,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 68200.01,
+    "Value": "Prenájom nehnuteľností spojený s poskytovaním iných než základných služieb spojených s prenájmom",
+    "ru": "Аренда недвижимости, связанная с предоставлением не базовых услуг связанных с арендой",
+    "uk": "Оренда нерухомості, пов’язана з наданням не базових послуг, пов’язаних з орендою",
+    "en": "Rent of real estates and provision of other than basic rental services"
+  },
+  {
+    "Id": 43,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 50300.01,
+    "Value": "Prevádzka malých plavidiel",
+    "ru": "Эксплуатация малых плавсредств",
+    "uk": "Експлуатація малих плавзасобів",
+    "en": "Operation of small vessels"
+  },
+  {
+    "Id": 44,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 96010.01,
+    "Value": "Prevádzkovanie čistiarne a práčovne",
+    "ru": "Услуги химчистки или прачечной",
+    "uk": "Послуги хімчистки та пральні",
+    "en": "Operation of cleaning and laundry"
+  },
+  {
+    "Id": 45,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 85100.01,
+    "Value": "Prevádzkovanie jaslí",
+    "ru": "Детский сад, ясли (дневной уход за детьми)",
+    "uk": "Дитячий садок, ясла (денний догляд за дітьми)",
+    "en": "Nursery school"
+  },
+  {
+    "Id": 46,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 90040.01,
+    "Value": "Prevádzkovanie kultúrnych, spoločenských a zábavných zariadení",
+    "ru": "Осуществление деятельности культурных, социальных и развлекательных заведений",
+    "uk": "Здійснення діяльності культурних, соціальних та розважальних закладів",
+    "en": "Operation of cultural, social and entertainment facilities"
+  },
+  {
+    "Id": 47,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 93110.011,
+    "Value": "Prevádzkovanie športových zariadení a zariadení slúžiacich na regeneráciu a rekondíciu",
+    "ru": "Осуществление деятельности спортивных объектов и объектов для регенерации и восстановления кондиций",
+    "uk": "Здійснення діяльності спортивних об’єктів та об’єктів для регенерації та відновлення кондицій",
+    "en": "Operation of sport facilities and facilities for regeneration and recondition"
+  },
+  {
+    "Id": 48,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 52100.04,
+    "Value": "Prevádzkovanie úschovní",
+    "ru": "Услуги камер хранения",
+    "uk": "Послуги камер зберігання",
+    "en": "Operation of luggage storage"
+  },
+  {
+    "Id": 49,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 86909.02,
+    "Value": "Prevádzkovanie vodnej záchrannej služby",
+    "ru": "Услуги водной спасательной службы",
+    "uk": "Служби водної служби порятунку",
+    "en": "Water rescue"
+  },
+  {
+    "Id": 50,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 56210.01,
+    "Value": "Prevádzkovanie výdajne stravy",
+    "ru": "Услуги выдачи пищи",
+    "uk": "Послуги видачі їжі",
+    "en": "Operation of food distribution point"
+  },
+  {
+    "Id": 51,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 43120.01,
+    "Value": "Prípravné práce k realizácii stavby",
+    "ru": "Подготовительные строительные работы",
+    "uk": "Підготовчі будівельні роботи",
+    "en": "Preparation work for building construction"
+  },
+  {
+    "Id": 52,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 73200.011,
+    "Value": "Reklamné a marketingové služby, prieskum trhu a verejnej mienky",
+    "ru": "Рекламные и маркетинговые услуги, исследование рынка и общественного мнения",
+    "uk": "Рекламні та маркетингові послуги, дослідження ринку та громадської думки",
+    "en": "Commercial and marketing services, market and public opinion research"
+  },
+  {
+    "Id": 53,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 52100.011,
+    "Value": "Skladovanie a pomocné činnosti v doprave",
+    "ru": "Складская и вспомогательная деятельность при транспортировке",
+    "uk": "Складська та допоміжна діяльність під час транспортування",
+    "en": "Storage and ancillary works in transport"
+  },
+  {
+    "Id": 54,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 77290.01,
+    "Value": "Služby požičovní",
+    "ru": "Услуги аренды (проката)",
+    "uk": "Послуги оренди (прокат)",
+    "en": "Rental services"
+  },
+  {
+    "Id": 55,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 59120.011,
+    "Value": "Služby súvisiace s produkciou filmov, videozáznamov a zvukových nahrávok",
+    "ru": "Услуги производства фильмов, видео и аудиозаписей",
+    "uk": "Послуги з виробництва фільмів, відео та аудіозаписів",
+    "en": "Services related to film or video records production"
+  },
+  {
+    "Id": 56,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 96020.04,
+    "Value": "Služby súvisiace so skrášľovaním tela",
+    "ru": "Услуги, связанные с улучшением тела",
+    "uk": "Послуги, пов’язані з покращенням тіла",
+    "en": "Services related to body beauty"
+  },
+  {
+    "Id": 57,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 25610.03,
+    "Value": "Smaltovanie",
+    "ru": "Эмалирование",
+    "uk": "Емалювання",
+    "en": "Enamelling"
+  },
+  {
+    "Id": 58,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 15110.01,
+    "Value": "Spracovanie kože",
+    "ru": "Обработка кожи",
+    "uk": "Обробка шкіри",
+    "en": "Manufacture of leather"
+  },
+  {
+    "Id": 59,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 68320.01,
+    "Value": "Správa a údržba bytového a nebytového fondu v rozsahu voľných živností",
+    "ru": "Управление недвижимым имуществом (многоквартирным домом или офисным зданием) в объеме свободных видов деятельности",
+    "uk": "Управління нерухомим майном(багатоквартирним будинком або офісною будівлею) в обсязі вільних видів діяльності",
+    "en": "Management of apartments or offices premises"
+  },
+  {
+    "Id": 60,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 91010.02,
+    "Value": "Správa registratúrnych záznamov bez trvalej dokumentárnej hodnoty",
+    "ru": "Управление регистрационными записями без долгосрочной документальной ценности",
+    "uk": "Управління реєстраційними записами без довгострокової документальної цінності",
+    "en": "Management of registration records without permanent documentary value"
+  },
+  {
+    "Id": 61,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 68320.02,
+    "Value": "Správa trhoviska, tržnice, príležitostného trhu",
+    "ru": "Управление рынком",
+    "uk": "Управління ринком",
+    "en": "Management of market place, occasional market"
+  },
+  {
+    "Id": 62,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 64990.02,
+    "Value": "Sprostredkovanie poskytovania úverov alebo pôžičiek z peňažných zdrojov získaných výlučne bez verejnej výzvy a bez verejnej ponuky majetkových hodnôt",
+    "ru": "Посредничество при предоставлении кредитов или займов, из денежных источников, которые не были получены через тендер",
+    "uk": "Посередництво при наданні кредитів або позик, виключно з грошових джерел, які не були отримані через тендер",
+    "en": "Intermediation of provision of loans or credits coming from financial sources acquired without public announcement and without public offer of property values"
+  },
+  {
+    "Id": 63,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 46190.011,
+    "Value": "Sprostredkovateľská činnosť v oblasti obchodu, služieb, výroby",
+    "ru": "Посредническая деятельность в торговле, сфере услуг, производстве",
+    "uk": "Посередницька діяльність у торгівлі, секторі послуг, виробництві",
+    "en": "Mediation services in business, services and production"
+  },
+  {
+    "Id": 64,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 49420.01,
+    "Value": "Sťahovacie služby",
+    "ru": "Услуги по перевозкам, оказываемые при переезде физическим и юридическим лицам",
+    "uk": "Послуги з перевезень, що надаються при переїзді фізичним та юридичним особам",
+    "en": "Moving services"
+  },
+  {
+    "Id": 65,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 74900.121,
+    "Value": "Špecialista na prevenciu závažných priemyselných havárií",
+    "ru": "Специалист по предотвращению серьезных промышленных аварий",
+    "uk": "Спеціаліст у запобіганні серйозних промислових аварій",
+    "en": "Specialist in prevention of major industrial accidents"
+  },
+  {
+    "Id": 66,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 13920.01,
+    "Value": "Textilná výroba",
+    "ru": "Текстильное производство",
+    "uk": "Текстильне виробництво",
+    "en": "Textile production"
+  },
+  {
+    "Id": 67,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 55909.01,
+    "Value": "Ubytovacie služby bez poskytovania pohostinských činností",
+    "ru": "Предоставление жилья без обеспечения питания",
+    "uk": "Надання житла без забезпечення їжею",
+    "en": "Accommodation services without provision of catering services"
+  },
+  {
+    "Id": 68,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 55200.01,
+    "Value": "Ubytovacie služby s poskytovaním prípravy a predaja jedál, nápojov a polotovarov ubytovaným hosťom v ubytovacích zariadeniach s kapacitou do 10 lôžok",
+    "ru": "Предоставление жилья (до 10 мест) с обеспечением питания",
+    "uk": "Забезпечення житла (до 10 місць) із забезпеченням харчування",
+    "en": "Accommodation services with provision of production and sell of meals, drinks and semi-cooked meals to accommodate guests in accommodation facilities with capacity up to 10 beds"
+  },
+  {
+    "Id": 69,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 45200.03,
+    "Value": "Údržba motorových vozidiel bez zásahu do motorickej časti vozidla",
+    "ru": "Техническое обслуживание автомобиля без вмешательства в моторную часть",
+    "uk": "Технічне обслуговування автомобілів без втручання у частину двигуна",
+    "en": "Maintenance of motor vehicle without interference into a motor part"
+  },
+  {
+    "Id": 70,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": "08110.010",
+    "Value": "Úprava nerastov, dobývanie rašeliny a bahna a ich úprava",
+    "ru": "Обработка минералов (ископаемых), добыча торфа, извлечение грязи из водоемов",
+    "uk": "Обробка мінералів (копалин), видобуток торфу, вилучення бруду з водоймищ",
+    "en": "Modification of minerals, extraction of peat and mud and their modification"
+  },
+  {
+    "Id": 71,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 41201.01,
+    "Value": "Uskutočňovanie stavieb a ich zmien",
+    "ru": "Строительство зданий и их изменения",
+    "uk": "Будівництво будівель та їх зміни",
+    "en": "Realization of buildings and their changes"
+  },
+  {
+    "Id": 72,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 69200.01,
+    "Value": "Vedenie účtovníctva",
+    "ru": "Бухгалтерский учет",
+    "uk": "Бухгалтерський облік",
+    "en": "Accountancy"
+  },
+  {
+    "Id": 73,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 82990.01,
+    "Value": "Verejné obstarávanie",
+    "ru": "Государственные закупки",
+    "uk": "Державні закупівлі",
+    "en": "Public procurement"
+  },
+  {
+    "Id": 74,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 42210.01,
+    "Value": "Vŕtanie studní s dĺžkou do 30 m",
+    "ru": "Бурение скважин до 30 метров",
+    "uk": "Свердління свердловин до 30 метрів",
+    "en": "Drilling of water well – not deeper than 30 metres"
+  },
+  {
+    "Id": 75,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 58110.011,
+    "Value": "Vydavateľská činnosť, polygrafická výroba a knihárske práce",
+    "ru": "Издательская деятельность и полиграфия",
+    "uk": "Видавництво та друк",
+    "en": "Publishing, polygraph services and book works"
+  },
+  {
+    "Id": 76,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 74900.14,
+    "Value": "Vykonávanie hodnotenia rizík, vypracúvanie a aktualizovanie bezpečnostnej správy a havarijného plánu a konzultačná a poradenská činnosť v určených oblastiach na úseku prevencie závažných priemyselných havárií",
+    "ru": "Произведение оценки рисков; составление и редактирование отчетов о безопасности и аварийных планов; консалтинг в области предотвращения промышленных аварий",
+    "uk": "Робота з оцінкою ризику; складання та редагування звітів про безпеку та аварійних планів; Консалтинг у галузі запобігання промисловим аваріям",
+    "en": "Evaluation of risks, elaboration and update of security report and crash plan and consultancy service in given area in the prevention of great industrial crashes"
+  },
+  {
+    "Id": 77,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 85590.19,
+    "Value": "Vykonávanie mimoškolskej vzdelávacej činnosti",
+    "ru": "Внеучебная образовательная деятельность",
+    "uk": "Позакласна освітня діяльність",
+    "en": "Organisation of free-time activities"
+  },
+  {
+    "Id": 78,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 85590.16,
+    "Value": "Vykonávanie odbornej prípravy na úseku prevencie závažných priemyselných havárií",
+    "ru": "Профессиональная подготовка в области предотвращения серьёзных промышленных аварий",
+    "uk": "Професійна підготовка в галузі запобігання серйозних промислових аварій",
+    "en": "Professional preparation in the area of prevention of great industrial crashes"
+  },
+  {
+    "Id": 79,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 85590.2,
+    "Value": "Vykonávanie vzdelávacích programov v oblasti sociálnych služieb zameraných na vykonávanie vybraných pracovných činností a na ďalšie vzdelávanie",
+    "ru": "Образовательные программы в области социальных услуг с акцентами на определенные рабочие деятельности и на дальнейшее образование",
+    "uk": "Навчальні програми в галузі соціальних служб з акцентом на певну робочу діяльність та подальшу освіту",
+    "en": "Educational programmes in the area of social services with the focus on certain work activities and on further education"
+  },
+  {
+    "Id": 80,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 52100.03,
+    "Value": "Vypožičiavanie, prenájom a úschova zbraní a streliva",
+    "ru": "Аренда и хранение оружия и боеприпасов",
+    "uk": "Оренда та зберігання зброї та боєприпасів",
+    "en": "Rent, loan and storage of weapons and ammunition"
+  },
+  {
+    "Id": 81,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 24100.01,
+    "Value": "Výroba a hutnícke spracovanie kovov",
+    "ru": "Производство и металлургическая обработка металлов",
+    "uk": "Виробництво та металургійна обробка металів",
+    "en": "Production and metallurgical processing of metals"
+  },
+  {
+    "Id": 82,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 25610.022,
+    "Value": "Výroba a opracovanie jednoduchých výrobkov z kovu",
+    "ru": "Производство и обработка простых изделий из металла",
+    "uk": "Виробництво та обробка простих виробів з металу",
+    "en": "Production and processing of simple products from metal"
+  },
+  {
+    "Id": 83,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 32130.01,
+    "Value": "Výroba bižutérie a suvenírov",
+    "ru": "Производство бижутерии и сувениров",
+    "uk": "Виробництво біжутерії та сувенірів",
+    "en": "Production of bijouterie and souvenirs"
+  },
+  {
+    "Id": 84,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 23910.01,
+    "Value": "Výroba brúsnych výrobkov, asfaltu a výrobkov z asfaltu",
+    "ru": "Производство абразивных продуктов, асфальта и изделий из асфальта",
+    "uk": "Виробництво абразивних продуктів, асфальту та виробів з асфальту",
+    "en": "Production of abrasive products, asphalt and asphalts products"
+  },
+  {
+    "Id": 85,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 17120.011,
+    "Value": "Výroba celulózy, papiera, lepenky a výrobkov z týchto materiálov",
+    "ru": "Производство целлюлозы, бумаги, картона, а также изделий из этих материалов",
+    "uk": "Виробництво целюлози, паперу, картону, а також виробів з цих матеріалів",
+    "en": "Production of cellulose, paper, cardboard and products from these materials"
+  },
+  {
+    "Id": 86,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 27120.011,
+    "Value": "Výroba elektrických zariadení a elektrických súčiastok",
+    "ru": "Производство электрических устройств и электрических компонентов",
+    "uk": "Виробництво електричних пристроїв та електричних компонентів",
+    "en": "Production of electric devices and electric component"
+  },
+  {
+    "Id": 87,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 32400.01,
+    "Value": "Výroba hračiek a hier",
+    "ru": "Производство игр и игрушек",
+    "uk": "Виробництво ігор та іграшок",
+    "en": "Production of toys and games"
+  },
+  {
+    "Id": 88,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 32200.01,
+    "Value": "Výroba hudobných nástrojov",
+    "ru": "Производство музыкальных инструментов",
+    "uk": "Виробництво музичних інструментів",
+    "en": "Production of musical instruments"
+  },
+  {
+    "Id": 89,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 20130.011,
+    "Value": "Výroba chemikálií, chemických vlákien, plastov, kaučuku a prípravkov z týchto materiálov",
+    "ru": "Производство химических веществ/волокон, пластмассы, резины, а также изделий из этих материалов",
+    "uk": "Виробництво хімічних речовин/волокон, пластику, гуми, а також виробів з цих матеріалів",
+    "en": "Production of chemicals, chemical fibre, plastics, rubber and preparation from these materials"
+  },
+  {
+    "Id": 90,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 16290.011,
+    "Value": "Výroba jednoduchých výrobkov z dreva, korku, slamy, prútia a ich úprava, oprava a údržba",
+    "ru": "Производство простых изделий из дерева, коры дерева, соломы, прутов, а также их обработка и ремонт",
+    "uk": "Виробництво простих виробів з дерева, кори дерев, соломи, прутів; а також їх обробка і ремонт",
+    "en": "Production of simple products made of wood, cork, straw, wicker and their repair and maintenance"
+  },
+  {
+    "Id": 91,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 19200.01,
+    "Value": "Výroba koksu a rafinovaných produktov",
+    "ru": "Производство коксовых и рафинированных продуктов",
+    "uk": "Виробництво коксу та рафінованої продукції",
+    "en": "Production of coke and oil products"
+  },
+  {
+    "Id": 92,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 10910.01,
+    "Value": "Výroba kŕmnych zmesí",
+    "ru": "Производство кормов для животных",
+    "uk": "Виробництво кормів для тварин",
+    "en": "Production of feedstuff for animals"
+  },
+  {
+    "Id": 93,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 32910.01,
+    "Value": "Výroba metiel, kief a maliarskeho náradia",
+    "ru": "Изготовление метел, щеток и принадлежностей для рисования",
+    "uk": "Виготовлення щіток, пензлів та приладдя для малювання",
+    "en": "Production of brooms, brushes and painting equipment"
+  },
+  {
+    "Id": 94,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 29100.01,
+    "Value": "Výroba motorových vozidiel, motorov, dopravných prostriedkov, dielov a príslušenstva pre motorové vozidlá a iné dopravné prostriedky",
+    "ru": "Производство моторизированных транспортных средств, двигателей; запчастей и аксессуаров для моторизированных и других транспортных средств",
+    "uk": "Виробництво моторних транспортних засобів, двигунів; Запчастин та аксесуарів для моторизованих та інших транспортних засобів",
+    "en": "Production of motor vehicles, motors, transport vehicles, parts and accessories for motor vehicles and other means of transport"
+  },
+  {
+    "Id": 95,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 11070.01,
+    "Value": "Výroba nápojov",
+    "ru": "Производство напитков",
+    "uk": "Виробництво напоїв",
+    "en": "Production of drinks"
+  },
+  {
+    "Id": 96,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 23690.01,
+    "Value": "Výroba nekovových minerálnych výrobkov a výrobkov z betónu, sadry a cementu",
+    "ru": "Производство продукции из нерудных минералов; а также изделий из бетона, гипса и цемента",
+    "uk": "Виробництво продукції з нерудних мінералів; а також бетонні, гіпсові та цементні вироби",
+    "en": "Production of non-metal mineral products and products from beton, gypsum and cement"
+  },
+  {
+    "Id": 97,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 15200.01,
+    "Value": "Výroba obuvi a komponentov obuvi s výnimkou ortopedickej obuvi",
+    "ru": "Производство обуви и компонентов обуви (вид деятельности не включает в себя производство ортопедической обуви)",
+    "uk": "Виробництво взуття та компонентів взуття (вид діяльності не включає виробництво ортопедичного взуття)",
+    "en": "Production of shoes and components of shoes with the exception of orthopaedic shoes"
+  },
+  {
+    "Id": 98,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 26400.011,
+    "Value": "Výroba počítačových, elektronických a optických výrobkov",
+    "ru": "Производство компьютерных, электронных и оптических приборов",
+    "uk": "Виробництво комп'ютерних, електронних та оптичних пристроїв",
+    "en": "Production of computer, electronic and optic products"
+  },
+  {
+    "Id": 99,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 10890.011,
+    "Value": "Výroba potravinárskych výrobkov",
+    "ru": "Производство пищевых продуктов",
+    "uk": "Виробництво харчових продуктів",
+    "en": "Production of food products"
+  },
+  {
+    "Id": 100,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 20150.01,
+    "Value": "Výroba priemyselných hnojív a dusíkatých zlúčenín, pesticídov a agrochemických produktov",
+    "ru": "Производство промышленных удобрений, а также азотосодержащих веществ, пестицидов и агрохимических продуктов",
+    "uk": "Виробництво промислових добрив; а також азотовмісних речовин, пестицидів та агрохімічних продуктів",
+    "en": "Production of industry muck worms and nitrogen compound, pesticides and agrochemical products"
+  },
+  {
+    "Id": 101,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 23190.01,
+    "Value": "Výroba skla, výrobkov zo skla a ich úprava",
+    "ru": "Производство стекла и изделий из стекла, а также их модификация",
+    "uk": "Виробництво скла та виробів зі скла; а також їх модифікація",
+    "en": "Production of glass, glass products and their modification"
+  },
+  {
+    "Id": 102,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 28220.011,
+    "Value": "Výroba strojov a zariadení pre všeobecné účely",
+    "ru": "Производство станков и оборудования общественного назначения",
+    "uk": "Виробництво верстатів та обладнання громадського призначення",
+    "en": "Production of machines and devices for general purposes"
+  },
+  {
+    "Id": 103,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 32990.01,
+    "Value": "Výroba sviečok a tieniacej techniky",
+    "ru": "Производство свечей и изделий для затенения (шезлонги, жалюзи и пр.)",
+    "uk": "Виробництво свічок та продуктів для затінення (шезлонги, жалюзі тощо)",
+    "en": "Production of candles and shadowing equipment"
+  },
+  {
+    "Id": 104,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 22190.01,
+    "Value": "Výroba výrobkov z gumy a výrobkov z plastov",
+    "ru": "Производство резиновых и пластиковых изделий",
+    "uk": "Виробництво гумових та пластикових виробів",
+    "en": "Production of products from dry rubber and products from plastics"
+  },
+  {
+    "Id": 105,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 32500.04,
+    "Value": "Výroba zdravotníckych pomôcok",
+    "ru": "Производство медицинских аксессуаров",
+    "uk": "Виробництво медичних аксесуарів",
+    "en": "Production of health accessories"
+  },
+  {
+    "Id": 106,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 72190.011,
+    "Value": "Výskum a vývoj v oblasti prírodných, technických, spoločenských a humanitných vied",
+    "ru": "Исследования в области природных, технических, социальных и гуманитарных наук",
+    "uk": "Дослідження в галузі природних, технічних, соціальних та гуманітарних наук",
+    "en": "Research in the field of natural, technical, social science and humanities"
+  },
+  {
+    "Id": 107,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 27900.02,
+    "Value": "Vývoj, výroba zabezpečovacích systémov alebo poplachových systémov a zariadení umožňujúcich sledovanie pohybu a konania osoby v chránenom objekte, na chránenom mieste alebo v ich okolí",
+    "ru": "Разработка и производство систем безопасности, сигнализаций и датчиков движения",
+    "uk": "Розробка та виробництво систем безпеки, сигналізації та датчиків руху",
+    "en": "Development, production of security systems or alarm systems and systems and devices enabling to tracking motion and activity of person in protected area, in protected place or in its surroundings"
+  },
+  {
+    "Id": 108,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 72190.02,
+    "Value": "Zadávanie klinického skúšania liečiv",
+    "ru": "Проведение клинических исследований лекарств",
+    "uk": "Проведення клінічних досліджень лікарських засобів",
+    "en": "Ordering of clinical trial of drugs"
+  },
+  {
+    "Id": 109,
+    "List": "Unregulated trade / Unregulated trade / Свободные виды деятельности",
+    "Type": "Volná",
+    "Code": 64920.02,
+    "Value": "Záložne",
+    "ru": "Ломбард",
+    "uk": "Ломбард",
+    "en": "Pawnshop"
+  },
+  {
+    "Id": 110,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Aplikácia prípravkov na ochranu rastlín alebo iných prípravkov",
+    "ru": "Применение препаратов для защиты растений, а также других препаратов",
+    "uk": "Застосування препаратів для захисту рослин; а також інших препаратів",
+    "en": "Application of plant protection preparations or other preparations"
+  },
+  {
+    "Id": 111,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Autorizovaný bezpečnostný technik",
+    "ru": "Услуги авторизованного техника по безопасности",
+    "uk": "Послуги уповноваженого техніка з безпеки",
+    "en": "Authorised safety technician"
+  },
+  {
+    "Id": 112,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Bezpečnostnotechnické služby",
+    "ru": "Безопасно-технические услуги",
+    "uk": "Безпечно-технічні послуги",
+    "en": "Safety-technical services"
+  },
+  {
+    "Id": 113,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Bezpečnostný technik",
+    "ru": "Услуги специалиста техника по безопасности",
+    "uk": "Послуги спеціаліста техніка з безпеки",
+    "en": "Safety technician"
+  },
+  {
+    "Id": 114,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Činnosť autorizovanej osoby",
+    "ru": "Деятельность авторизованного лица",
+    "uk": "Діяльність уповноваженої людини",
+    "en": "Activity of an authorised person"
+  },
+  {
+    "Id": 115,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Činnosť bezpečnostného poradcu",
+    "ru": "Консультации по безопасности",
+    "uk": "Консультації з безпеки",
+    "en": "Activity of safety consultant"
+  },
+  {
+    "Id": 116,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Činnosť odborného lesného hospodára",
+    "ru": "Услуги лесохозяйственника",
+    "uk": "Послуги лісогосподарника",
+    "en": "Activity of a professional forest manager"
+  },
+  {
+    "Id": 117,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Činnosť odborníka v oblasti prepravy nebezpečného tovaru",
+    "ru": "Услуги специалиста по перевозке опасных товаров",
+    "uk": "Послуги фахівця з транспортування небезпечних товарів",
+    "en": "Activity of professional in the area of transport of dangerous waste"
+  },
+  {
+    "Id": 118,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Činnosť vodohospodára",
+    "ru": "Услуги водохозяйственника",
+    "uk": "Водогосподарські послуги",
+    "en": "Water management activity"
+  },
+  {
+    "Id": 119,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Činnosť vykonávaná banským spôsobom",
+    "ru": "Горнопромышленная деятельность",
+    "uk": "Гірничопромислова діяльність",
+    "en": "Activity carried out in a mining way"
+  },
+  {
+    "Id": 120,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Dohľad nad pracovnými podmienkami",
+    "ru": "Надзор за условиями труда",
+    "uk": "Нагляд за умовами праці",
+    "en": "Supervision over working conditions"
+  },
+  {
+    "Id": 121,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Energetická certifikácia",
+    "ru": "Энергическая сертификация",
+    "uk": "Енергетична сертифікація",
+    "en": "Energetic certification"
+  },
+  {
+    "Id": 122,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Geodetické a kartografické činnosti",
+    "ru": "Геодезическая и картографическая деятельность",
+    "uk": "Геодезична та картографічна діяльність",
+    "en": "Geodetic and cartographic activities"
+  },
+  {
+    "Id": 123,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Hodnotenie vplyvov na verejné zdravie",
+    "ru": "Оценка воздействия на общественное здоровье",
+    "uk": "Оцінка впливу на громадське здоров'я",
+    "en": "Evaluation of effects on public health"
+  },
+  {
+    "Id": 124,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Hodnotenie zdravotných rizík zo životného prostredia",
+    "ru": "Оценка рисков для здоровья в окружающей среде",
+    "uk": "Оцінка ризиків для здоров'я у навколишньому середовищі",
+    "en": "Evaluation of health risks from the environment"
+  },
+  {
+    "Id": 125,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Horská sprievodcovská činnosť",
+    "ru": "Деятельность вожатого в горах",
+    "uk": "Діяльність вожатого в горах",
+    "en": "Mountain leader activity"
+  },
+  {
+    "Id": 126,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Horská vodcovská činnosť, vrátane vedenia a sprevádzania osôb po turistických chodníkoch a trasách",
+    "ru": "Деятельность вожатого в горах, включая руководство и сопровождение людей по туристическим маршрутам",
+    "uk": "Діяльність вожатого в горах, включаючи керівництво та супровід людей за туристичними маршрутами",
+    "en": "Mountain guiding activity including guiding and accompanying persons on tourist paths and routes"
+  },
+  {
+    "Id": 127,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Inseminácia",
+    "ru": "Осеменение",
+    "uk": "Запліднення",
+    "en": "Insemination"
+  },
+  {
+    "Id": 128,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Inštalácia, servis, údržba, oprava alebo vyraďovanie zariadení s obsahom fluórovaných skleníkových plynov",
+    "ru": "Монтаж, техническое обслуживание, ремонт или вывод из эксплуатации оборудования, содержащего фторированные парниковый газы",
+    "uk": "Монтаж, технічне обслуговування, ремонт або виведення з експлуатації обладнання, що містить фторовані парникові гази",
+    "en": "Installation, servicing, maintenance, repair or decommissioning of equipment containing fluorinated greenhouse gases; Control of fluorinated greenhouse gas leaks from installations; Recovery of fluorinated greenhouse gases; Fluorinated greenhouse gas disposal, including business of fluorinated greenhouse gas waste; Placing fluorinated greenhouse gases on the market"
+  },
+  {
+    "Id": 129,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Kontrola úniku fluórovaných skleníkových plynov zo zariadení",
+    "ru": "Контроль утечек фторированных парниковых газов и  установок",
+    "uk": "Контроль витоків фторованих парникових газів та установок",
+    "en": ""
+  },
+  {
+    "Id": 130,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zhodnotenie fluórovaných skleníkových plynov",
+    "ru": "Оценка фторированных парниковых газов",
+    "uk": "Оцінка фторованих парникових газів фтору",
+    "en": ""
+  },
+  {
+    "Id": 131,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zneškodňovanie fluórovaných skleníkových plynov vrátane podnikania v oblasti nakladania s odpadmi s obsahom fluórovaných skleníkových plynov",
+    "ru": "Утилизация фторированных парниковых газов, включая предпринимательскую деятельность, связанную с взаимодействием с отходами, содержащими фторированные парниковые газы",
+    "uk": "Утилізація фторованих парникових газів, включаючи підприємницьку діяльність, пов’язану із взаємодією з відходами, що містять фторовані парникові гази",
+    "en": ""
+  },
+  {
+    "Id": 132,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Uvádzanie fluórovaných skleníkových plynov na trh",
+    "ru": "Вывод фторированных парниковых газов на рынок",
+    "uk": "Виведення фтор-парникових газів на ринок",
+    "en": ""
+  },
+  {
+    "Id": 133,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Inštruktor autoškoly",
+    "ru": "Инструктор автошколы",
+    "uk": "Інструктор автошколи",
+    "en": "Driving school instructor"
+  },
+  {
+    "Id": 134,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Klasifikácia jatočne opracovaných tiel",
+    "ru": "Классификация обрабатываемых тушек",
+    "uk": "Класифікація оброблюваних тушок",
+    "en": "Classification of bodies processed in butcher way"
+  },
+  {
+    "Id": 135,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Kvalitatívne a kvantitatívne zisťovanie faktorov životného prostredia a pracovného prostredia na účely posudzovania ich možného vplyvu na zdravie",
+    "ru": "Качественное и количественное обнаружение факторов окружающей и рабочей среды с целью оценки их возможного влияния на здоровье",
+    "uk": "Якісне та кількісне виявлення факторів навколишнього та робочого середовища з метою оцінки їх можливого впливу на здоров'я",
+    "en": "Qualitative and quantitative detection of factors of living and working environment for the purpose of evaluation of their possible impact on health"
+  },
+  {
+    "Id": 136,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Masérske služby",
+    "ru": "Услуги массажиста",
+    "uk": "Послуги масажиста",
+    "en": "Massage services"
+  },
+  {
+    "Id": 137,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Ničenie a zneškodňovanie výbušnín, výbušných predmetov a munície pri výskume, vývoji, výrobe a spracovaní",
+    "ru": "Ликвидация и утилизация боеприпасов во время исследований, разработок, производства и обработки",
+    "uk": "Ліквідація та утилізація боєприпасів під час досліджень, розробок, виробництва та обробки",
+    "en": "Destruction and disposal of ammunition during research, development, production and processing"
+  },
+  {
+    "Id": 138,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Obstarávanie územnoplánovacích podkladov a územnoplánovacej dokumentácie",
+    "ru": "Предоставление документации и материалов по наземно-территориальному планированию",
+    "uk": "Надання документації та матеріалів щодо наземно-територіального планування",
+    "en": "Provision of ground planning basic documents and ground planning documentation"
+  },
+  {
+    "Id": 139,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Očná optika",
+    "ru": "Оптика",
+    "uk": "Оптика",
+    "en": "Opthal optics"
+  },
+  {
+    "Id": 140,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odber vzoriek zo životného prostredia a z pracovného prostredia na účely kvalitatívneho a kvantitatívneho zisťovania faktorov životného prostredia a pracovného prostredia",
+    "ru": "Взятие образцов из окружающей и рабочей среды с целью качественного и количественного обнаружения факторов окружающей и рабочей среды",
+    "uk": "Взяття зразків з навколишнього та робочого середовища з метою якісного та кількісного виявлення факторів навколишнього та робочого середовища",
+    "en": "Taking samples from living and working environment for the purpose of qualitative and quantitative detection of factors of living and working environment"
+  },
+  {
+    "Id": 141,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti odpaľovača ohňostrojov",
+    "ru": "Профессиональная подготовка на получение компетенции для запуска фейерверков",
+    "uk": "Професійна підготовка на здобуття компетенції для запуску феєрверків",
+    "en": "Professional preparation for professional qualification of launcher of fireworks"
+  },
+  {
+    "Id": 142,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti pri výrobe a spracovaní, používaní a ničení výbušnín a výbušných predmetov",
+    "ru": "Профессиональная подготовка на получение компетенции для производства и обработки, использованию и ликвидации взрывных боеприпасов",
+    "uk": "Професійна підготовка до компетентності для виробництва та обробки, використання та усунення вибухонебезпечних боєприпасів",
+    "en": "Professional preparation for professional qualification for production and processing, using and destructing of ammunition"
+  },
+  {
+    "Id": 143,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti pri výrobe a spracovaní, používaní a ničení výbušnín, výbušných predmetov a munície",
+    "ru": "Профессиональная подготовка на получение компетенции для производства и обработки, использования и ликвидации пулевых боеприпасов",
+    "uk": "Професійна підготовка на отримання компетентності для виробництва та обробки, використання та ліквідації кульових боєприпасів",
+    "en": "Professional preparation for professional qualification for production and processing, using and destruction of ammunition"
+  },
+  {
+    "Id": 144,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti pyrotechnika B",
+    "ru": "Профессиональная подготовка пиротехников кат. B",
+    "uk": "Професійна підготовка піротехніки Кіт. Б.",
+    "en": "Professional preparation for professional qualification of pyrotechnist B"
+  },
+  {
+    "Id": 145,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti pyrotechnika C",
+    "ru": "Профессиональная подготовка пиротехников кат. C",
+    "uk": "Професійна підготовка піротехніки Кіт. С.",
+    "en": "Professional preparation for professional qualification of pyrotechnist C"
+  },
+  {
+    "Id": 146,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti pyrotechnika D",
+    "ru": "Профессиональная подготовка пиротехников кат. D",
+    "uk": "Професійна підготовка піротехніки Кіт. D.",
+    "en": "Professional preparation for professional qualification of pyrotechnist D"
+  },
+  {
+    "Id": 147,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti pyrotechnika E",
+    "ru": "Профессиональная подготовка пиротехников кат. E",
+    "uk": "Професійна підготовка піротехніки Кіт. Е.",
+    "en": "Professional preparation for professional qualification of pyrotechnist E"
+  },
+  {
+    "Id": 148,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti strelmajstra",
+    "ru": "Профессиональная подготовка подрывников",
+    "uk": "Професійна підготовка знесення",
+    "en": "Professional preparation for professional qualification of tamper"
+  },
+  {
+    "Id": 149,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborná príprava na získanie odbornej spôsobilosti technického vedúceho odstrelov",
+    "ru": "Профессиональная подготовка руководителей технических взрывных работ",
+    "uk": "Професійна підготовка керівників технічних вибухових робіт",
+    "en": "Professional preparation for professional qualification of technical manager of explosion"
+  },
+  {
+    "Id": 150,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborné poradenské služby pre uchádzačov a záujemcov o zamestnanie okrem činnosti športového agenta",
+    "ru": "Профессиональные консалтинговые услуги для соискателей и кандидатов на работу (вид деятельности не включает в себя предоставление услуг спортивного агента)",
+    "uk": "Професійні консалтингові послуги для претендентів та кандидатів на роботу (вид діяльності не включає надання послуг спортивних агентів)",
+    "en": "Professional consultancy services for job applicants and interested persons except the activity of sport agent"
+  },
+  {
+    "Id": 151,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odborné poradenstvo v oblasti integrovanej prevencie a kontroly znečisťovania životného prostredia",
+    "ru": "Профессиональный консалтинг в области интегрированной профилактики и контроля загрязнения окружающей среды",
+    "uk": "Професійний консалтинг у галузі інтегрованої профілактики та контролю забруднення навколишнього середовища",
+    "en": "Professional counselling in area of integrated prevention and control of environmental pollution"
+  },
+  {
+    "Id": 152,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Odstraňovanie azbestu alebo materiálov obsahujúcich azbest zo stavieb pri búracích prácach, údržbárskych prácach, opravách a iných činnostiach",
+    "ru": "Удаление асбеста или материала, содержащего асбест из сооружений при буровых работах, техническому обслуживанию, ремонте и другой деятельности",
+    "uk": "Видалення азбесту або матеріалу, що містить азбест із конструкцій під час буріння, технічного обслуговування, ремонту та інших заходів",
+    "en": "Removal of asbestos or material containing asbestos from constructions, demolation works, maintenance works, reparations and other activities"
+  },
+  {
+    "Id": 153,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené inšpekcie zhody automatizovaných meracích systémov emisií",
+    "ru": "Авторизованные инспекции автоматизированных систем измерения выбросов",
+    "uk": "Авторизовані інспекції автоматизованих систем вимірювання викидів",
+    "en": ""
+  },
+  {
+    "Id": 154,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené inšpekcie zhody automatizovaných meracích systémov kvality ovzdušia",
+    "ru": "Авторизованные инспекции автоматизированных систем измерения качества воздуха",
+    "uk": "Авторизовані інспекції автоматизованих систем вимірювання повітря",
+    "en": ""
+  },
+  {
+    "Id": 155,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené kalibrácie automatizovaných meracích systémov emisií",
+    "ru": "Авторизованная калибровка автоматизированных систем измерения выбросов",
+    "uk": "Уповноважена калібрування автоматизованих систем вимірювання викидів",
+    "en": ""
+  },
+  {
+    "Id": 156,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené kalibrácie automatizovaných meracích systémov kvality ovzdušia",
+    "ru": "Авторизованная калибровка автоматизированных систем измерения качества воздуха",
+    "uk": "Авторизована калібрування автоматизованих систем вимірювання повітря",
+    "en": ""
+  },
+  {
+    "Id": 157,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené merania emisií na stacionárnych zdrojoch znečisťovania ovzdušia",
+    "ru": "Авторизованные измерения стационарных источников загрязнения атмосферного воздуха",
+    "uk": "Уповноважені вимірювання стаціонарних джерел забруднення атмосферного повітря",
+    "en": ""
+  },
+  {
+    "Id": 158,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené merania parametrov kvality ovzdušia",
+    "ru": "Авторизованные измерения параметров качества воздуха",
+    "uk": "Авторизовані вимірювання параметрів якості повітря",
+    "en": ""
+  },
+  {
+    "Id": 159,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené merania, všeobecných podmienok prevádzkovania a technických požiadaviek na stacionárnych zdrojoch znečisťovania ovzdušia",
+    "ru": "Авторизованные измерения, общие условия эксплуатации и технические требования к стационарным источникам загрязнения атмосферного воздуха",
+    "uk": "Уповноважені вимірювання, загальні умови експлуатації та технічні вимоги до стаціонарних джерел забруднення атмосферного повітря",
+    "en": ""
+  },
+  {
+    "Id": 160,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené skúšky automatizovaných meracích systémov emisií",
+    "ru": "Авторизованные тесты автоматизированных систем измерения выбросов",
+    "uk": "Авторизовані тести автоматизованих систем вимірювання викидів",
+    "en": ""
+  },
+  {
+    "Id": 161,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Oprávnené skúšky automatizovaných meracích systémov kvality ovzdušia",
+    "ru": "Авторизованные тесты автоматизированных систем измерения качества воздуха",
+    "uk": "Авторизовані випробування автоматизованих систем вимірювання якості повітря",
+    "en": ""
+  },
+  {
+    "Id": 162,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Opravy a montáž určených meradiel",
+    "ru": "Ремонт и сборка специальных измерительных инструментов",
+    "uk": "Ремонт та складання спеціальних вимірювальних інструментів",
+    "en": "Repairs and assembly of selected measuring instruments"
+  },
+  {
+    "Id": 163,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Opravy, odborné prehliadky a odborné skúšky vyhradených technických zariadení",
+    "ru": "Ремонт, специализированные проверки и тесты специального технического оборудования",
+    "uk": "Ремонт, спеціалізовані перевірки та випробування спеціального технічного обладнання",
+    "en": "Repairs, professional inspections and specialised tests of selected technical devices"
+  },
+  {
+    "Id": 164,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Opravy, odborné prehliadky a odborné skúšky vyhradených technických zariadení (len v oblasti pôsobnosti dozoru štátnej banskej správy)",
+    "ru": "Ремонт, специализированные проверки и тесты специального технического оборудования (только в сфере деятельности надзора государственной горнодобывающей промышленности)",
+    "uk": "Ремонт, спеціалізовані перевірки та випробування спеціального технічного обладнання (лише в галузі діяльності державної гірничої галузі)",
+    "en": "Repairs, professional inspections and specialised tests of selected technical devices (only if falling under authority of national mines administration)"
+  },
+  {
+    "Id": 165,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Opravy, úpravy, ničenie, znehodnocovanie alebo výroba rezu zbraní a streliva",
+    "ru": "Ремонт, доработка, утилизация, ликвидация или пропил оружия и боеприпасов",
+    "uk": "Ремонт, опрацювання, утилізація, ліквідація або пропил зброї та боєприпаси",
+    "en": "Repair, modification, destruction, deterioration or manufacture of cuts of weapons and ammunition"
+  },
+  {
+    "Id": 166,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Organizovanie dobrovoľných dražieb",
+    "ru": "Организация благотворительных аукционов",
+    "uk": "Організація благодійних аукціонів",
+    "en": "Organizing of voluntary auction sales"
+  },
+  {
+    "Id": 167,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Podnikanie na ostatných vodných plochách v osobitnom režime",
+    "ru": "Предпринимательская деятельность на других водных объектах",
+    "uk": "Підприємницька діяльність в інших водних об'єктах",
+    "en": "Entrepreneurship on other water areas in a special mode"
+  },
+  {
+    "Id": 168,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Podnikanie v oblasti nakladania s nebezpečným odpadom",
+    "ru": "Предпринимательство в области опасных отходов",
+    "uk": "Підприємництво в галузі небезпечних відходів",
+    "en": "Entrepreneuring in the area of dangerous waste treatment"
+  },
+  {
+    "Id": 169,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Poradenstvo, výchova a vzdelávanie v oblasti ochrany práce (len v oblasti pôsobnosti dozoru štátnej banskej správy)",
+    "ru": "Консалтинг, обучение и образование в области охраны труда (только в сфере деятельности надзора государственной горнодобывающей промышленности)",
+    "uk": "Консалтинг, навчання та освіта в галузі охорони праці (лише в галузі діяльності нагляду державної гірничодобувної промисловості)",
+    "en": "Consultancy, training and education in labour safety (only withtin the competence of supervision of state mining authority)"
+  },
+  {
+    "Id": 170,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Poskytovanie energetickej služby s garantovanou úsporou energie",
+    "ru": "Предоставление энергетических услуг с гарантией экономии энергии",
+    "uk": "Надання енергетичних послуг з гарантією енергозбереження",
+    "en": "Provision of energy service with guaranteed energy savings"
+  },
+  {
+    "Id": 171,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Poskytovanie služieb peňaženky virtuálnej meny",
+    "ru": "Предоставление услуг виртуального кошелька криптовалют",
+    "uk": "Надання послуг віртуального гаманця криптовалют",
+    "en": "Providing virtual currency wallet services"
+  },
+  {
+    "Id": 172,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Poskytovanie služieb zmenárne virtuálnej meny",
+    "ru": "Предоставление услуг обмена криптовалют",
+    "uk": "Надання послуг обміну криптовалютами",
+    "en": "Provision of virtual currency exchange services"
+  },
+  {
+    "Id": 173,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Posudzovanie vplyvov na životné prostredie",
+    "ru": "Оценка воздействия на окружающую среду",
+    "uk": "Оцінка впливу на навколишнє середовище",
+    "en": "Assessment of impacts on the environment"
+  },
+  {
+    "Id": 174,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Práca s dezinfekčnými prípravkami na profesionálne použitie a na prácu s prípravkami na reguláciu živočíšnych škodcov na profesionálne použitie",
+    "ru": "Работа с профессиональными средствами дезинфекции; работа с профессиональными средствами для уничтожения вредителей",
+    "uk": "Працювати з професійними засобами дезінфекції; робота з професійними засобами для знищення шкідників",
+    "en": "Work with disinfection preparations on professional basis and work with preparations for regulation of pests on professional basis"
+  },
+  {
+    "Id": 175,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Pracovná zdravotná služba",
+    "ru": "Служба охраны здоровья",
+    "uk": "Служба охорони здоров'я",
+    "en": "Work health service"
+  },
+  {
+    "Id": 176,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Pravidelná kontrola vykurovacích systémov, pravidelná kontrola klimatizačných systémov",
+    "ru": "Регулярный контроль систем отопления; регулярный контроль систем кондиционирования",
+    "uk": "Регулярний контроль систем опалення; регулярний контроль систем кондиціонування",
+    "en": "Regular inspection of heating systems, regular inspection of air-conditioning systems"
+  },
+  {
+    "Id": 177,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Predaj prípravkov na ochranu rastlín alebo iných prípravkov",
+    "ru": "Продажа средств для охраны растений или других препаратов",
+    "uk": "Продаж засобів захисту рослин або інших препаратів",
+    "en": "Sale of plant protection preparations or other preparations"
+  },
+  {
+    "Id": 178,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prekladateľské a tlmočnícke služby",
+    "ru": "Услуги перевода текста и речи",
+    "uk": "Служби перекладу тексту та мови",
+    "en": "Translating and interpreting services"
+  },
+  {
+    "Id": 179,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Preskúšavanie komínov",
+    "ru": "Проверка дымоходов",
+    "uk": "Перевірка димоходів",
+    "en": "Testing of chimneys"
+  },
+  {
+    "Id": 180,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie autoškoly",
+    "ru": "Услуги автошколы",
+    "uk": "Послуги автошколи",
+    "en": "Operation of driving school"
+  },
+  {
+    "Id": 181,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie balzamovania a konzervácie",
+    "ru": "Услуги бальзамирования и обеззараживания трупов",
+    "uk": "Послуги бальзамування та знезараження трупів",
+    "en": "Operation of embalmment and conservation"
+  },
+  {
+    "Id": 182,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie cestovnej agentúry",
+    "ru": "Услуги туристического агентства",
+    "uk": "Послуги туристичного агентства",
+    "en": "Travel agency operation"
+  },
+  {
+    "Id": 183,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie cestovnej kancelárie",
+    "ru": "Услуги туристической компании",
+    "uk": "Послуги туристичної компанії",
+    "en": "Travel office operation"
+  },
+  {
+    "Id": 184,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie krematória",
+    "ru": "Услуги крематория",
+    "uk": "Послуги крематорію",
+    "en": "Operation of crematorium"
+  },
+  {
+    "Id": 185,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie pohrebiska",
+    "ru": "Кладбище",
+    "uk": "Кладовище",
+    "en": "Operation of graveyards"
+  },
+  {
+    "Id": 186,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie pohrebnej služby",
+    "ru": "Похоронная служба",
+    "uk": "Похоронна служба",
+    "en": "Operation of funeral service"
+  },
+  {
+    "Id": 187,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie verejných vodovodov I. až III. kategórie a prevádzkovanie verejných kanalizácií I. až III. kategórie",
+    "ru": "Эксплуатация общественных трубопроводов, эксплуатация канализаций от 1. до 3. категории",
+    "uk": "Експлуатація громадських трубопроводів, експлуатація каналізації від 1. до 3. категорія",
+    "en": "Operation of public water networks of I. to III. category and operation of public sewage networks of I. to III. category"
+  },
+  {
+    "Id": 188,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie závodného hasičského útvaru",
+    "ru": "Эксплуатация промышленной пожарной модели",
+    "uk": "Експлуатація промислової пожежної моделі",
+    "en": "Operation of industrial firebrigade"
+  },
+  {
+    "Id": 189,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Projektovanie a navrhovanie objektov, zariadení a prác, ktoré sú súčasťou banskej činnosti a činnosti vykonávanej banským spôsobom",
+    "ru": "Проектирование объектов, оборудования для работ в горнодобывающей промышленности",
+    "uk": "Розробка об'єктів, обладнання для роботи в гірничодобувної промисловості",
+    "en": "Projecting and designing of objects, facilities and works which fall under mining activity and activity conducted by mining manner"
+  },
+  {
+    "Id": 190,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Projektovanie pozemkových úprav",
+    "ru": "Проектирование ландшафтных работ",
+    "uk": "Ландшафтне проектування",
+    "en": "Projecting of land adjustments"
+  },
+  {
+    "Id": 191,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Projektovanie trhacích prác veľkého rozsahu",
+    "ru": "Проектирование крупномасштабных взрывных работ",
+    "uk": "Дизайн великомасштабних вибухових робіт",
+    "en": "Projecting of large scale blasting activities"
+  },
+  {
+    "Id": 192,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Reštaurovanie s výnimkou národných kultúrnych pamiatok a zbierkových predmetov, ktoré sú dielami výtvarného umenia (§ 3 ods.1 písm. d/ bod 10/)",
+    "ru": "Реставрация (вид деятельности не включает в себя предоставление услуг реставрации культурных памятников и произведений искусства, согласно § 3 абз. 1 букв. d/ пункта 10/)",
+    "uk": "Реставрація (вид діяльності не включає надання послуг відновлення культурних пам’яток та творів мистецтва, згідно з пунктом 3 листи D/ пункт 10/)",
+    "en": "Restoration, except of cultural monuments and works of fine art which are part of registered collections (§ 3 paragraph 1 letter d) point 10)"
+  },
+  {
+    "Id": 193,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Servis a údržba chladiacich a klimatizačných zariadení a tepelných čerpadiel s obsahom kontrolovanej látky",
+    "ru": "Сервис и обслуживание систем охлаждения/кондиционирования и термонасосов содержащих контролируемое вещество",
+    "uk": "Обслуговування та обслуговування систем охолодження/кондиціонування та теплових насосів, що містять контрольовану речовину",
+    "en": "Service and maintenance of cooling and air-conditioning equipments and heating pumps with controlled substance; Service, maintenance and revision of fire-fighting systems and fire-extinguishing equipments with contolled substance; Control of leak of controlled substance from equipment; Assessment of controlled substances and collection of controlled substances including filling of pressure vessels with the content of controlled substance; Disposal of controlled substances including entrepreneuring in the area of handling of waste containing controlled substance; Introduction of controlled substances on the market"
+  },
+  {
+    "Id": 194,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Servis, údržba a revízie protipožiarnych systémov a hasiacich prístrojov s obsahom kontrolovanej látky",
+    "ru": "Сервис, обслуживание и контроль систем противопожарной безопасности и оборудования для пожаротушения содержащего контролируемое вещество",
+    "uk": "Обслуговування, технічне обслуговування та контроль систем пожежної безпеки та обладнання для пожежогасіння, що містить контрольовану речовину",
+    "en": ""
+  },
+  {
+    "Id": 195,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Kontrola úniku kontrolovaných látok zo zariadení",
+    "ru": "Контроль утечки контролируемого вещества из оборудования",
+    "uk": "Контроль витоку контрольованої речовини з обладнання",
+    "en": ""
+  },
+  {
+    "Id": 196,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Prevádzkovanie zariadenia na recykláciu kontrolovaných látok alebo na regeneráciu kontrolovaných látok",
+    "ru": "Эксплуатация оборудования для переработки/восстановления контролируемых веществ",
+    "uk": "Експлуатація обладнання для обробки/відновлення контрольованих речовин",
+    "en": ""
+  },
+  {
+    "Id": 197,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zhodnotenie kontrolovaných látok a odber kontrolovaných látok vrátane plnenia tlakových nádob na plyny s obsahom kontrolovanej látky",
+    "ru": "Оценка контролируемых веществ и взятие контролируемых веществ, включая заполнение газовых сосудов, содержащих контролируемое вещество",
+    "uk": "Оцінка контрольованих речовин та взяття контрольованих речовин, включаючи заповнення газових судин, що містять контрольовану речовину",
+    "en": ""
+  },
+  {
+    "Id": 198,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zneškodňovanie kontrolovaných látok vrátane podnikania v oblasti nakladania s odpadmi s obsahom kontrolovanej látky",
+    "ru": "Утилизация контролируемых веществ, включая предпринимательство в области обработки отходов, содержащих контролируемое вещество",
+    "uk": "Утилізація контрольованих речовин, включаючи підприємництво в галузі переробки відходів, що містить контрольовану речовину",
+    "en": ""
+  },
+  {
+    "Id": 199,
+    "List": "",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Uvádzanie kontrolovaných látok na trh",
+    "ru": "Вывод контролируемых веществ на рынок",
+    "uk": "Висновок контрольованих речовин на ринок",
+    "en": ""
+  },
+  {
+    "Id": 200,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Skladovanie výbušnín a výbušných predmetov",
+    "ru": "Хранение взрывчатых веществ и пиротехнической продукции",
+    "uk": "Зберігання вибухівки та піротехнічних продуктів",
+    "en": "Storing of explosives and pyrotechnic products"
+  },
+  {
+    "Id": 201,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Skladovanie výbušnín, výbušných predmetov a munície",
+    "ru": "Хранение взрывчатых веществ, пиротехнической продукции и боеприпасов",
+    "uk": "Зберігання вибухових речовин, піротехнічних продуктів та боєприпасів",
+    "en": "Storing of explosives, pyrotechnic products and ammunition"
+  },
+  {
+    "Id": 202,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Skúšanie a likvidácia výbušnín a výbušných predmetov",
+    "ru": "Тестирование и утилизация взрывчатых веществ и пиротехнической продукции",
+    "uk": "Тестування та утилізація вибухових речовин та піротехнічної продукції",
+    "en": "Testing and disposal of explosives and pyrotechnic products"
+  },
+  {
+    "Id": 203,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Skúšanie, revízia, oprava, delaborácia, likvidácia výbušnín, výbušných predmetov a munície",
+    "ru": "Тестирование, контроль, ремонт, обезвреживание и утилизация взрывчатых веществ, пиротехнической продукции и боеприпасов",
+    "uk": "Випробування, контроль, ремонт, знешкодження та утилізація вибухових речовин, піротехнічної продукції та боєприпасів",
+    "en": "Testing, control, repair, delaboration, disposal of explosives, pyrotechnic products and ammunition"
+  },
+  {
+    "Id": 204,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Správa registratúry",
+    "ru": "Ведение архива",
+    "uk": "Ведення архіву",
+    "en": "Administration of register"
+  },
+  {
+    "Id": 205,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Sprievodca cestovného ruchu",
+    "ru": "Туристический гид",
+    "uk": "Туристичний гід",
+    "en": "Tourist guide"
+  },
+  {
+    "Id": 206,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Sprostredkovanie predaja, prenájmu a kúpy nehnuteľností (realitná činnosť)",
+    "ru": "Посредничество при продаже, аренде и покупке недвижимости (деятельность агентства недвижимости)",
+    "uk": "Посередництво у продажу, оренді та придбанні нерухомості (діяльність агентства з нерухомості)",
+    "en": "Exchange of sales, leasing and purchase of real properties (realty business)"
+  },
+  {
+    "Id": 207,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Sprostredkovanie zamestnania za úhradu okrem činnosti športového agenta",
+    "ru": "Посредничество при трудоустройстве за оплату (вид деятельности не включает в себя предоставление услуг спортивного агента)",
+    "uk": "Посередництво при працевлаштуванні за оплати (тип діяльності не включає надання послуг спортивного агенту)",
+    "en": "Mediation of employment for reimbursement except the activity of sport agent"
+  },
+  {
+    "Id": 208,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Špecialista požiarnej ochrany",
+    "ru": "Специалист по противопожарной охране",
+    "uk": "Спеціаліст із протипожежної охорони",
+    "en": "Fire protection specialist"
+  },
+  {
+    "Id": 209,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Technické osvedčovanie stavebných výrobkov",
+    "ru": "Техническая сертификация продуктов строительной промышленности",
+    "uk": "Технічна сертифікація продуктів будівельної промисловості",
+    "en": "Technical certification of building industry products"
+  },
+  {
+    "Id": 210,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Technik požiarnej ochrany",
+    "ru": "Техник противопожарной охраны",
+    "uk": "Технік протипожежної охорони",
+    "en": "Fire protection technician"
+  },
+  {
+    "Id": 211,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Ubytovacie služby v ubytovacích zariadeniach s prevádzkovaním pohostinských činností v týchto zariadeniach",
+    "ru": "Предоставление жилья с обеспечением питания",
+    "uk": "Надання житла із забезпеченням харчування",
+    "en": "Accommodation services in accommodation facilities with catering activities in these facilities"
+  },
+  {
+    "Id": 212,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Uskutočňovanie krajinno-architektonických sadovníckych diel",
+    "ru": "Проведение ландшафтно-архитектурных работ",
+    "uk": "Проведення ландшафтно-архітектурних робіт",
+    "en": "Performance of landscape architectural garden works"
+  },
+  {
+    "Id": 213,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vyhľadávanie nevybuchnutej munície",
+    "ru": "Поиск невзорвавшихся боеприпасов",
+    "uk": "Пошук боєприпасів, що не вибухнули",
+    "en": "Searching for unexploded ammunition"
+  },
+  {
+    "Id": 214,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vyhotovovanie dokumentácie ochrany prírody a krajiny",
+    "ru": "Создание документации по защите природы",
+    "uk": "Створення документації із захисту природи",
+    "en": "Preparation of documentation for nature and countryside protection"
+  },
+  {
+    "Id": 215,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vyhotovovanie programov starostlivosti o lesy",
+    "ru": "Создание программ по присмотру за лесом",
+    "uk": "Створення програм з нагляду за лісом",
+    "en": "Preparation of economic plans for forestry"
+  },
+  {
+    "Id": 216,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výchova a vzdelávanie v oblasti ochrany práce mimo banskej činnosti",
+    "ru": "Обучение и образование в области охраны труда (вид деятельность не включает в себя обучение и образование в области охраны труда в горнодобывающей промышленности)",
+    "uk": "Навчання та освіта в галузі охорони праці (вид діяльності не включає навчання та освіту в галузі охорони праці в гірничодобувної промисловості)",
+    "en": "Training and education in labour safety except the work in mining activity"
+  },
+  {
+    "Id": 217,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výkon činnosti energetického audítora",
+    "ru": "Услуги энергетического аудитора",
+    "uk": "Послуги енергетичного аудитора",
+    "en": "Performance of activities of energy auditor"
+  },
+  {
+    "Id": 218,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výkon činnosti stavbyvedúceho",
+    "ru": "Услуги прораба",
+    "uk": "Послуги прораба",
+    "en": "Performance of activities of construction supervision"
+  },
+  {
+    "Id": 219,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výkon činnosti stavebného dozoru",
+    "ru": "Услуги строительного инспектора",
+    "uk": "Послуги будівельного інспектора",
+    "en": "Performance of activities of a building inspector"
+  },
+  {
+    "Id": 220,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výkon činnosti vedenia uskutočňovania stavieb na individuálnu rekreáciu, prízemných stavieb a stavieb zariadenia staveniska, ak ich zastavaná plocha nepresahuje 300 m2 a výšku 15m, drobných stavieb a ich zmien",
+    "ru": "Строительство и изменение малых объектов для индивидуального отдыха, одноэтажных сооружений и предоставление услуг по подготовке строительных площадок (с застроенной площадью до 300 м2 и высотой до 15 м)",
+    "uk": "Будівництво та зміна малих об'єктів для індивідуального відпочинку, одноповерхових споруд та надання послуг з підготовки будівельних майданчиків (з побудованою площею до 300 м2 і висотою до 15 м)",
+    "en": "Performance of supervision of implementation of construction of leisure facilities for individuals, ground structures and construction of site installations, with built -in area not exceeding 300 sq.m. and height of 15 m, small constructions and their modifications"
+  },
+  {
+    "Id": 221,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie činnosti koordinátora bezpečnosti",
+    "ru": "Предоставление услуг координатора безопасности",
+    "uk": "Надання послуг координатора безпеки",
+    "en": "Performance of the activity of safety coordinator"
+  },
+  {
+    "Id": 222,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie kvalifikačného kurzu žiadateľov o preukaz odbornej spôsobilosti vodcu malého plavidla",
+    "ru": "Danyil Kravets",
+    "uk": "Проведення професійної підготовки для кандидатів на отримання професійної кваліфікації капітана малого судна",
+    "en": "Conducting professional preparation for applicants for proof of professional qualification of captain of a small vessel"
+  },
+  {
+    "Id": 223,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie odbornej prípravy na úseku ochrany pred požiarmi",
+    "ru": "Проведение профессиональной подготовки в сфере противопожарной защиты",
+    "uk": "Проведення професійної підготовки в галузі протипожежної охорони",
+    "en": "Conducting professional preparation in the branch of fire protection"
+  },
+  {
+    "Id": 224,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie ohňostrojných prác",
+    "ru": "Запуск фейерверков",
+    "uk": "Запуск феєрверків",
+    "en": "Conducting fireworks/pyrotechnic displays"
+  },
+  {
+    "Id": 225,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie skúšky na overenie odbornej spôsobilosti",
+    "ru": "Проведение экзамена на проверку профессиональной квалификации",
+    "uk": "Проведення іспиту на перевірку професійної кваліфікації",
+    "en": "Conducting of examination for verification of professional qualification"
+  },
+  {
+    "Id": 226,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie školení žiadateľov o vydanie osvedčenia o odbornej spôsobilosti bezpečnostného poradcu",
+    "ru": "Обучение кандидатов на получение сертификата профессиональной квалификации консультанта по безопасности",
+    "uk": "Навчання кандидатів на здобуття сертифіката професійної кваліфікації консультанта з безпеки",
+    "en": "Conducting trainings and examinations of applicants for the issuance of a certificate of professional qualification of a safety consultant"
+  },
+  {
+    "Id": 227,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie školení žiadateľov o vydanie osvedčenia o osobitných znalostiach",
+    "ru": "Обучение и выдача сертификатов о специальных знаниях",
+    "uk": "Навчання та видача сертифікатів про спеціальні знання",
+    "en": "Conducting trainings and examinations of applicants for the issuance of a certificate of professional qualification of a safety consultant"
+  },
+  {
+    "Id": 228,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vykonávanie trhacích prác",
+    "ru": "Проведение взрывных работ",
+    "uk": "Проведення вибухових робіт",
+    "en": "Performance of blasting services"
+  },
+  {
+    "Id": 229,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vypracovanie a aktualizácia plánu ochrany obyvateľstva",
+    "ru": "Разработка и обновление планов по защите населения",
+    "uk": "Розробка та оновлення планів щодо захисту населення",
+    "en": "Preparation and update of plan of protection of inhabitants"
+  },
+  {
+    "Id": 230,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vypracovanie a aktualizácia plánu ochrany zamestnancov a osôb prevzatých do starostlivosti",
+    "ru": "Разработка и обновление планов по защите работников и лиц, взятых под опеку",
+    "uk": "Розробка та оновлення планів щодо захисту працівників та осіб, прийнятих під опікунство",
+    "en": "Preparation and update of plan of protection of employees and persons under care"
+  },
+  {
+    "Id": 231,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vypracovanie dokumentácie a projektu jednoduchých stavieb, drobných stavieb a zmien týchto stavieb",
+    "ru": "Разработка проектной документации для строительства и модификации простых построек",
+    "uk": "Розробка проектної документації для будівництва та модифікації простих будівель",
+    "en": "Preparation of project documentation for simple structures, small structures and modification of such structures"
+  },
+  {
+    "Id": 232,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výroba a spracovanie výbušnín vrátane výbušných predmetov, munície alebo vykonávanie výskumu, vývoja alebo pokusnej výroby výbušnín, výbušných predmetov a munície",
+    "ru": "Изготовление, обработка, исследование, разработка, тестирование взрывчатки, взрывных устройств и боеприпасов",
+    "uk": "Виробництво, обробка, дослідження, розробка, тестування вибухівки, вибухонебезпечних пристроїв та боєприпасів",
+    "en": "Fabrication and processing of ammunition including pyrotechnic products or performance of research, development or testing fabrication of ammunition"
+  },
+  {
+    "Id": 233,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Výroba tabakových výrobkov",
+    "ru": "Производство табачных изделий",
+    "uk": "Виробництво тютюнових виробів",
+    "en": "Manufacture of tobacco products"
+  },
+  {
+    "Id": 234,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vyučovanie v odbore cudzích jazykov",
+    "ru": "Преподавание иностранных языков",
+    "uk": "Викладання іноземних мов",
+    "en": "Teaching of foreign languages"
+  },
+  {
+    "Id": 235,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vyučovanie v odbore umenia",
+    "ru": "Преподавание в области искусства",
+    "uk": "Викладання в галузі мистецтва",
+    "en": "Teaching art subject"
+  },
+  {
+    "Id": 236,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vývoj a výroba zbraní alebo streliva",
+    "ru": "Разработка и изготовление оружия и боеприпасов",
+    "uk": "Розробка та виготовлення зброї та боєприпасів",
+    "en": "Development and manufacture of weapons or ammunition"
+  },
+  {
+    "Id": 237,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Vzdelávacia činnosť na úseku civilnej ochrany obyvateľstva",
+    "ru": "Обучение в области гражданской защиты населения",
+    "uk": "Навчання в галузі цивільного захисту населення",
+    "en": "Educating in the sector of civil protection of inhabitants"
+  },
+  {
+    "Id": 238,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Wellness masérske služby",
+    "ru": "Оздоровительные массажное услуги",
+    "uk": "Послуги з цілющого масажу",
+    "en": "Wellness massage services"
+  },
+  {
+    "Id": 239,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zasielateľstvo",
+    "ru": "Экспедирование",
+    "uk": "Експедирування",
+    "en": "Forwarding agents"
+  },
+  {
+    "Id": 240,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zber, spracúvanie, skladovanie, pestovanie a uvádzanie do obehu reprodukčného materiálu lesných drevín",
+    "ru": "Сбор, обработка, хранение, выращивание и выпуск в обращение репродуктивного материала лесных деревьев",
+    "uk": "Збір, обробка, зберігання, вирощування та випуск в обіг репродуктивного матеріалу лісових дерев",
+    "en": "Collection, processing, storing, growing and placement into circulation of forest reproductive material"
+  },
+  {
+    "Id": 241,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zlievanie drahých kovov",
+    "ru": "Отлив драгоценных металлов",
+    "uk": "Відлив дорогоцінних металів",
+    "en": "Casting of precious metals"
+  },
+  {
+    "Id": 242,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zmenárne",
+    "ru": "Обмен валют",
+    "uk": "Обмін валют",
+    "en": "Exchange offices"
+  },
+  {
+    "Id": 243,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Viazaná",
+    "Code": "-",
+    "Value": "Zubná technika",
+    "ru": "Стоматологическая техника",
+    "uk": "Стоматологічна техніка",
+    "en": "Dental technics"
+  },
+  {
+    "Id": 244,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Čistenie a kontrola komínov",
+    "ru": "Чистка и проверка дымоходов",
+    "uk": "Чищення та перевірка димоходів",
+    "en": "Cleaning and inspection of chimneys"
+  },
+  {
+    "Id": 245,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Diagnostika a opravy cestných motorových vozidiel",
+    "ru": "Диагностика и ремонт дорожных автомобилей",
+    "uk": "Діагностика та ремонт дорожніх автомобілів",
+    "en": "Diagnostics and road motor vehicles repair"
+  },
+  {
+    "Id": 246,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Hodinárstvo",
+    "ru": "Производство часов",
+    "uk": "Виробництво годинників",
+    "en": "Watchmaking"
+  },
+  {
+    "Id": 247,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Inštalácia a opravy chladiarenských zariadení",
+    "ru": "Установка и ремонт охлаждающего оборудования",
+    "uk": "Встановлення та ремонт обладнання для охолодження",
+    "en": "Installation and repair of refrigerating equipment"
+  },
+  {
+    "Id": 248,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Izolatérstvo",
+    "ru": "Изолирование",
+    "uk": "Ізолювання",
+    "en": "Thermal and sound insulation"
+  },
+  {
+    "Id": 249,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Kachliarstvo",
+    "ru": "Печное дело",
+    "uk": "Пічна справа",
+    "en": "Stove building"
+  },
+  {
+    "Id": 250,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Kamenárstvo",
+    "ru": "Обработка камня",
+    "uk": "Обробка каменю",
+    "en": "Stonemasonry"
+  },
+  {
+    "Id": 251,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Klampiarstvo",
+    "ru": "Ремесло жестянщик",
+    "uk": "Ремесло бляхаря",
+    "en": "Tinplating"
+  },
+  {
+    "Id": 252,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Kovoobrábanie",
+    "ru": "Обработка метала",
+    "uk": "Обробка металів",
+    "en": "Metalwork"
+  },
+  {
+    "Id": 253,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Kozmetické služby",
+    "ru": "Косметические услуги",
+    "uk": "Косметичні послуги",
+    "en": "Cosmetic services"
+  },
+  {
+    "Id": 254,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Manikúra",
+    "ru": "Маникюр",
+    "uk": "Манікюр",
+    "en": "Manicure"
+  },
+  {
+    "Id": 255,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Mäsiarstvo",
+    "ru": "Обработка мяса",
+    "uk": "Обробка м'яса",
+    "en": "Butchery and smoked meats"
+  },
+  {
+    "Id": 256,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Montáž, rekonštrukcia a údržba vyhradených technických zariadení",
+    "ru": "Сборка, реконструкция и обслуживание отдельных типов технологического оборудования",
+    "uk": "Збірка, реконструкція та обслуговування певних видів технологічного обладнання",
+    "en": "Assembly, reconstruction and maintenance of selected types of technological equipment"
+  },
+  {
+    "Id": 257,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Murárstvo",
+    "ru": "Каменная кладка",
+    "uk": "Кам'яна кладка",
+    "en": "Masonry"
+  },
+  {
+    "Id": 258,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Nástrojárstvo",
+    "ru": "Изготовление инструментов",
+    "uk": "Виготовлення інструментів",
+    "en": "Toolmaking"
+  },
+  {
+    "Id": 259,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Opravy karosérií",
+    "ru": "Кузовной ремонт автомобиля",
+    "uk": "Кузовний ремонт автомобіля",
+    "en": "Car body repair"
+  },
+  {
+    "Id": 260,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Opravy pracovných strojov",
+    "ru": "Ремонт производственных станков",
+    "uk": "Ремонт виробничих верстатів",
+    "en": "Repair of machines"
+  },
+  {
+    "Id": 261,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Pohostinská činnosť a výroba hotových jedál určených na priamu spotrebu mimo prevádzkových priestorov",
+    "ru": "Производство готовых блюд для прямого потребления за пределами производственных помещений",
+    "uk": "Виробництво готових страв для прямого споживання за межами виробничих приміщень",
+    "en": "Catering and preparation of ready meals for direct consumption outside the premises"
+  },
+  {
+    "Id": 262,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Pánske, dámske a detské kaderníctvo",
+    "ru": "Мужские, женские и детские парикмахерские",
+    "uk": "Чоловічі, жіночі та дитячі перукарні",
+    "en": "Men, ladies and children hairdressing"
+  },
+  {
+    "Id": 263,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Pedikúra",
+    "ru": "Педикюр",
+    "uk": "Педикюр",
+    "en": "Pedicure"
+  },
+  {
+    "Id": 264,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Podlahárstvo",
+    "ru": "Укладка полов",
+    "uk": "Укладання підлог",
+    "en": "Floor covering"
+  },
+  {
+    "Id": 265,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Pokrývačstvo",
+    "ru": "Производство материалов для кровли крыши",
+    "uk": "Виробництво матеріалів для покрівлі дахів",
+    "en": "Roofing"
+  },
+  {
+    "Id": 266,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Stolárstvo",
+    "ru": "Столярные работы",
+    "uk": "Столярні роботи",
+    "en": "Joinery"
+  },
+  {
+    "Id": 267,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Strechár",
+    "ru": "Кровля крыши",
+    "uk": "Покрівля даху",
+    "en": "Roofer"
+  },
+  {
+    "Id": 268,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Tesárstvo",
+    "ru": "Плотничное дело",
+    "uk": "Теслярська справа",
+    "en": "Carpentry"
+  },
+  {
+    "Id": 269,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Vodoinštalatérstvo a kúrenárstvo",
+    "ru": "Сантехника и отопление",
+    "uk": "Сантехніка та опалення",
+    "en": "Plumbing and heating"
+  },
+  {
+    "Id": 270,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Výroba a opravy ortopedickej obuvi",
+    "ru": "Производство и ремонт ортопедической обуви",
+    "uk": "Виробництво та ремонт ортопедичного взуття",
+    "en": "Manufacture and repair of orthopaedic footwear"
+  },
+  {
+    "Id": 271,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Výroba a opravy protetických výrobkov",
+    "ru": "Производство и ремонт протезов",
+    "uk": "Виробництво та ремонт протезів",
+    "en": "Manufacture and repair of prosthetic products"
+  },
+  {
+    "Id": 272,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Výroba mliečnych výrobkov",
+    "ru": "Производство молочных продуктов",
+    "uk": "Виробництво молочної продукції",
+    "en": "Production of dairy products"
+  },
+  {
+    "Id": 273,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Výroba pekárskych a cukrárskych výrobkov",
+    "ru": "Производство хлебобулочных и кондитерских изделий",
+    "uk": "Виробництво хлібобулочних та кондитерських виробів",
+    "en": "Manufacture of bakery and confectionery products"
+  },
+  {
+    "Id": 274,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Výroba piva a sladu",
+    "ru": "Производство пива и солода",
+    "uk": "Виробництво пива та солоду",
+    "en": "Brewing and malting"
+  },
+  {
+    "Id": 275,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Zámočníctvo",
+    "ru": "Слесарство",
+    "uk": "Слюсарство",
+    "en": "Locksmithing"
+  },
+  {
+    "Id": 276,
+    "List": "Remeselné a viazané živnosti / Crafts and regulated trades / Ремесленные и регулируемые виды деятельности",
+    "Type": "Remeselná",
+    "Code": "-",
+    "Value": "Zlatníctvo a klenotníctvo",
+    "ru": "Производство и продажа ювелирных изделий",
+    "uk": "Виробництво та продаж ювелірних виробів",
+    "en": "Goldsmithing and jewellery"
+  }
+]

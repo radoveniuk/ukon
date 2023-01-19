@@ -12,7 +12,8 @@ type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 type Props = {
   options: unknown[];
   selectedOptions?: unknown[];
-  handleSelectedItemChange: (changes: UseComboboxStateChange<unknown>) => void;
+  handleSelectedItemChange?: (changes: UseComboboxStateChange<unknown>) => void;
+  handleChange?: (items: unknown[]) => void;
   pathToLabel?: string;
   itemToStrimg?: (item: unknown) => string;
   customRenderMenuItem?: CustomRenderMenuItem;
@@ -26,7 +27,7 @@ type Props = {
 };
 
 function MultiSelect({
-  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems,
+  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems, handleChange,
 }: Props) {
   const [inputValue, setInputValue] = React.useState('');
   const [selectedItems, setSelectedItems] = React.useState<unknown[]>([]);
@@ -50,6 +51,7 @@ function MultiSelect({
       case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
       case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
         setSelectedItems(newSelectedItems);
+        handleChange?.(newSelectedItems);
         setItems(getFilteredItems(options, newSelectedItems));
         break;
       default:
@@ -103,11 +105,15 @@ function MultiSelect({
           setInputValue('');
           if (maxItems && maxItems < [...selectedItems, newSelectedItem].length) {
             const [, ...availableItems] = selectedItems;
-            setSelectedItems([...availableItems, newSelectedItem]);
-            setItems(getFilteredItems(options, [...availableItems, newSelectedItem]));
+            const newSelectedItems = [...availableItems, newSelectedItem];
+            setSelectedItems(newSelectedItems);
+            setItems(getFilteredItems(options, newSelectedItems));
+            handleChange?.(newSelectedItems);
           } else {
-            setSelectedItems([...selectedItems, newSelectedItem]);
-            setItems(prev => getFilteredItems(prev, [...selectedItems, newSelectedItem]));
+            const newSelectedItems = [...selectedItems, newSelectedItem];
+            setSelectedItems(newSelectedItems);
+            setItems(prev => getFilteredItems(prev, newSelectedItems));
+            handleChange?.(newSelectedItems);
           }
         }
         break;

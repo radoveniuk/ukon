@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import classNames from 'classnames';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -10,6 +10,7 @@ import Position, { PositionItem } from 'common/components/Position';
 import CreateIndividualForm from 'common/components/OrderForm/CreateIndividualForm';
 
 import styles from 'styles/OrderForm.module.scss';
+import { FormProvider, useForm } from 'react-hook-form';
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
@@ -37,6 +38,44 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'ru', params }) 
 export default function Form({ name }: InferGetStaticPropsType<typeof getStaticProps>) {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:${name}:${path}`);
+
+  const [priceList, setPriceList] = useState({
+    base: 19,
+    mainActivity: 0,
+    otherActivities: 0,
+  });
+  const updatePriceList = useCallback(
+    (update: Partial<typeof priceList>) => {
+      setPriceList((prev) => ({
+        ...prev,
+        ...update,
+      }));
+    },
+    [],
+  );
+
+  const methods = useForm();
+
+  const mainActivity = methods.watch('mainActivity');
+  const otherActivities = methods.watch('otherActivities');
+  useEffect(() => {
+    if (mainActivity) {
+      if (mainActivity.Type === 'Volná') {
+        updatePriceList({ mainActivity: 0 });
+      } else {
+        updatePriceList({ mainActivity: 7.5 });
+      }
+    }
+    if (otherActivities) {
+      let otherActivitiesPrice = 0;
+      otherActivities.forEach((activity: any) => {
+        if (activity.Type !== 'Volná') {
+          otherActivitiesPrice += 7.5;
+        }
+      });
+      updatePriceList({ otherActivities: otherActivitiesPrice });
+    }
+  }, [mainActivity, otherActivities, updatePriceList]);
   
   return (
     <>
@@ -55,9 +94,11 @@ export default function Form({ name }: InferGetStaticPropsType<typeof getStaticP
               <div className={classNames(styles['reg-title'], 'h2')}>
                 {t('pageTitle')}
               </div>
-              <div className={styles['reg__left-cont']}>
-                {name === 'create-individual' && <CreateIndividualForm />}
-              </div>
+              <FormProvider {...methods}>
+                <div className={styles['reg__left-cont']}>
+                  {name === 'create-individual' && <CreateIndividualForm />}
+                </div>
+              </FormProvider>
             </div>
             <div className={styles.reg__right}>
               <div className={styles['reg__right-cont']}>
@@ -91,7 +132,7 @@ export default function Form({ name }: InferGetStaticPropsType<typeof getStaticP
                     Итого:
                   </div>
                   <div className={classNames(styles['reg__right-sum-right'], 'h5')}>
-                    19,00 €
+                    {Object.values(priceList).reduce((partialSum, a) => partialSum + a, 0)} €
                   </div>
                 </div>
               </div>

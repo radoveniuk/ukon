@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'next-i18next';
+import { useFormContext, Controller } from 'react-hook-form';
 
 import MultiSelect from '../forms/MultiSelect';
 
 import styles from 'styles/OrderForm.module.scss';
 
-const ACTIVITIES = [
-  { name: 'Фотография', id: 1, price: 10 },
-  { name: 'Применение подготовки к защите растений или другие препараты', id: 2, price: 7.5 },
-  { name: 'Рекламные и маркетинговые услуги, реклама', id: 3, price: 10 },
-];
+import activities from './activities.json';
 
 const STEPS = ['Формирование стоимости', 'Регистрация/авторизация', 'Персональные данные предпринимателя', 'Завершающий', 'Загрузка файлов'];
 
@@ -18,6 +15,9 @@ export default function CreateIndividualForm () {
   const [step, setStep] = useState(0);
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
+
+  const { control } = useFormContext();
+
   return (
     <>
       <div className={styles['reg__left-top']}>
@@ -54,27 +54,31 @@ export default function CreateIndividualForm () {
               </div>
               <div className={styles['reg__item-bot']}>
                 <div className={styles['reg__item-project']}>
-                  <MultiSelect 
-                    className={styles['reg__item-project-select']}
-                    label={t('form.activitySearch')} 
-                    options={ACTIVITIES}
-                    pathToLabel="name"
-                    maxItems={1}
-                    handleSelectedItemChange={console.log} 
-                    placeholder={t('form.activitySelectPlaceholder')}
-                    customRenderMenuItem={(item: any) => (
-                      <>
-                        <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
-                          {item.name}
-                        </span>
-                        <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
-                          {item.price}€
-                        </span>
-                      </>
+                  <Controller
+                    name="mainActivity"
+                    render={({ field }) => (
+                      <MultiSelect 
+                        className={styles['reg__item-project-select']}
+                        label={t('form.activitySearch')} 
+                        options={activities}
+                        maxItems={1}
+                        handleSelectedItemChange={(changes) => void field.onChange(changes.selectedItem)}
+                        placeholder={t('form.activitySelectPlaceholder')}
+                        customRenderMenuItem={(item: any) => (
+                          <>
+                            <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                              {item.ru}
+                            </span>
+                            <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                              {item.Type !== 'Volná' ? 7.5 : 0}€
+                            </span>
+                          </>
+                        )}
+                      />
                     )}
                   />
                   <div className={classNames(styles['reg__item-project-btn'], 'btn-text', 'btn-transparent')}>
-                    Список видов деятельности
+                    {t('form.activitiesList')}
                   </div>
                 </div>
               </div>
@@ -90,26 +94,30 @@ export default function CreateIndividualForm () {
               </div>
               <div className={styles['reg__item-bot']}>
                 <div className={styles['reg__item-project']}>
-                  <MultiSelect 
-                    className={styles['reg__item-project-select']}
-                    label={t('form.activitySearch')} 
-                    options={ACTIVITIES}
-                    pathToLabel="name" 
-                    handleSelectedItemChange={console.log} 
-                    placeholder={t('form.activitySelectPlaceholder')}
-                    customRenderMenuItem={(item: any) => (
-                      <>
-                        <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
-                          {item.name}
-                        </span>
-                        <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
-                          {item.price}€
-                        </span>
-                      </>
+                  <Controller
+                    name="otherActivities"
+                    render={({ field }) => (
+                      <MultiSelect 
+                        className={styles['reg__item-project-select']}
+                        label={t('form.activitySearch')} 
+                        options={activities}
+                        handleChange={field.onChange} 
+                        placeholder={t('form.activitySelectPlaceholder')}
+                        customRenderMenuItem={(item: any) => (
+                          <>
+                            <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                              {item.ru}
+                            </span>
+                            <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                              {item.Type !== 'Volná' ? 7.5 : 0}€
+                            </span>
+                          </>
+                        )}
+                      />
                     )}
                   />
                   <div className={classNames(styles['reg__item-project-btn'], 'btn-text', 'btn-transparent')}>
-                    Список видов деятельности
+                    {t('form.activitiesList')}
                   </div>
                 </div>
               </div>
