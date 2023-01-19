@@ -62,6 +62,7 @@ export default function CreateIndividualForm () {
                         label={t('form.activitySearch')} 
                         options={activities}
                         maxItems={1}
+                        pathToLabel="ru"
                         handleSelectedItemChange={(changes) => void field.onChange(changes.selectedItem)}
                         placeholder={t('form.activitySelectPlaceholder')}
                         customRenderMenuItem={(item: any) => (
@@ -100,6 +101,7 @@ export default function CreateIndividualForm () {
                       <MultiSelect 
                         className={styles['reg__item-project-select']}
                         label={t('form.activitySearch')} 
+                        pathToLabel="ru"
                         options={activities}
                         handleChange={field.onChange} 
                         placeholder={t('form.activitySelectPlaceholder')}
