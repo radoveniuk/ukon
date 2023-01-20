@@ -134,6 +134,7 @@
   &__item {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
     &.border {
       &:last-child {
         //background-color: red;
@@ -194,10 +195,12 @@
       flex-direction: column;
       margin-left: 23px;
       padding-left: 37px;
+      border-left: 1px solid #E7E7E7;
       @media (max-width: 1249px) {
         padding-top: 15px;
         margin-left: 0;
         padding-left: 0;
+        border-left: none;
       }
     }
     &-project {
@@ -210,7 +213,7 @@
         width: 420px;
         margin-right: 59px;
         @media (max-width: 1899px) {
-          margin-right: 0;
+          margin-right: 30px;
           width: 390px;
         }
         @media (max-width: 1399px) {

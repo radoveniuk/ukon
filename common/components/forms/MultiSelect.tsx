@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { useCombobox, UseComboboxStateChange, useMultipleSelection } from 'downshift';
 import _ from 'lodash-es';
 
-import styles from 'styles/components/MultiSelect.module.scss';
+import styles from 'styles/components/forms/MultiSelect.module.scss';
 
+import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import SearchIcon from '../icons/SearchIcon';
 
@@ -169,9 +170,7 @@ function MultiSelect({
                   removeSelectedItem(selectedItemForRender);
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 12L17 12" stroke="black" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
+                <MinusIcon />
               </div>
             </span>
           );
