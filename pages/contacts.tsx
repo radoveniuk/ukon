@@ -1,16 +1,17 @@
-import classNames from 'classnames';
-import { GetStaticProps } from 'next';
 import { useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form/dist/types';
+import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
+import classNames from 'classnames';
 
+import Button from 'common/components/Button';
+import Footer from 'common/components/Footer';
 import TextArea from 'common/components/forms/TextArea';
 import TextField from 'common/components/forms/TextField';
 import Position, { PositionItem } from 'common/components/Position';
+
 import styles from '../styles/Contacts.module.scss';
-import { SubmitHandler } from 'react-hook-form/dist/types';
-import Button from 'common/components/Button';
-import Footer from 'common/components/Footer';
 
 type ContactForm = {
   name: string;

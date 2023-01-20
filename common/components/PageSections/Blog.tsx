@@ -1,13 +1,14 @@
-import classNames from 'classnames';
-import { Post } from 'common/types/blog';
 import Image from 'next/image';
+import classNames from 'classnames';
+import { DateTime } from 'luxon';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { DateTime } from 'luxon';
 
-import 'swiper/css';
+import { Post } from 'common/types/blog';
 
 import styles from 'styles/components/home/Blog.module.scss';
+
+import 'swiper/css';
 
 type Props = {
   posts: Post[];

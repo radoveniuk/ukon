@@ -1,17 +1,17 @@
-import classNames from 'classnames';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import classNames from 'classnames';
+import { DateTime } from 'luxon';
 
+import Footer from 'common/components/Footer';
 import Position, { PositionItem } from 'common/components/Position';
 import { Post } from 'common/types/blog';
 
-import { getPosts } from './api/posts';
-
 import styles from 'styles/Blog.module.scss';
-import { DateTime } from 'luxon';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Footer from 'common/components/Footer';
+
+import { getPosts } from './api/posts';
 
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async ({ locale='ru' }) => {
   const posts = await getPosts(12);

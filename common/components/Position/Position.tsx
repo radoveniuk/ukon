@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import Link from 'next/link';
 import { ReactNode } from 'react';
+import Link from 'next/link';
+import classNames from 'classnames';
 
 import styles from 'styles/components/Position.module.scss';
 

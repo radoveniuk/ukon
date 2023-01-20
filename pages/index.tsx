@@ -1,19 +1,19 @@
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
+import Footer from 'common/components/Footer';
+import About from 'common/components/Home/About';
+import Blog from 'common/components/Home/Blog';
 import Hero from 'common/components/Home/Hero';
 import Services from 'common/components/Home/Services';
 import We from 'common/components/Home/We';
+import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
 import Contacts from 'common/components/PageSections/Contacts';
-import About from 'common/components/Home/About';
-import Blog from 'common/components/Home/Blog';
 import HowInfo, { HowInfoHeader, HowInfoItem, HowInfoItems, HowInfoTitle } from 'common/components/PageSections/HowInfo';
 import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
-import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
 
 import { getPosts } from './api/posts';
-import Footer from 'common/components/Footer';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const posts = await getPosts();

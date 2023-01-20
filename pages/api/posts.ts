@@ -1,6 +1,7 @@
-import { Post } from 'common/types/blog';
-import { DateTime } from 'luxon';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { DateTime } from 'luxon';
+
+import { Post } from 'common/types/blog';
 
 const dev = process.env.NODE_ENV !== 'production';
 const server = dev ? 'http://localhost:3000' : 'https://ukon.vercel.app';

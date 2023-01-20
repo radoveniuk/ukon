@@ -1,10 +1,10 @@
-import Head from 'next/head';
-
-import Position, { PositionItem } from 'common/components/Position';
-import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import Footer from 'common/components/Footer';
+import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
+import Position, { PositionItem } from 'common/components/Position';
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'ru' }) => {
   return {

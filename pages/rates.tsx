@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import classNames from 'classnames';
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
-import { useTranslation } from 'next-i18next';
+import classNames from 'classnames';
 
-import Position, { PositionItem } from 'common/components/Position';
 import Footer from 'common/components/Footer';
+import Position, { PositionItem } from 'common/components/Position';
 
 import styles from 'styles/Rates.module.scss';
 

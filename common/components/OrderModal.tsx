@@ -1,8 +1,10 @@
-import classNames from 'classnames';
-import { useOrderModalOpen } from 'common/providers/OrderModalProvider';
+import { PropsWithChildren, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PropsWithChildren, useEffect } from 'react';
+import classNames from 'classnames';
+
+import { useOrderModalOpen } from 'common/providers/OrderModalProvider';
+
 import styles from 'styles/components/OrderModal.module.scss';
 
 const ORDER_ITEMS = [

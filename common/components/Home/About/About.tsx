@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
 
-import animation from './lottie.json';
-
 import styles from 'styles/components/home/About.module.scss';
+
+import animation from './lottie.json';
 
 export default function About() {
   return (

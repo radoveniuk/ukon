@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import classNames from 'classnames';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import { NextSeo } from 'next-seo';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { NextSeo } from 'next-seo';
+import classNames from 'classnames';
 
-import Position, { PositionItem } from 'common/components/Position';
 import CreateIndividualForm from 'common/components/OrderForm/CreateIndividualForm';
+import Position, { PositionItem } from 'common/components/Position';
 
 import styles from 'styles/OrderForm.module.scss';
-import { FormProvider, useForm } from 'react-hook-form';
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {

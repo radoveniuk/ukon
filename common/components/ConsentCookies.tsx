@@ -1,6 +1,6 @@
+import CookieConsent from 'react-cookie-consent';
 import Image from 'next/image';
 import Link from 'next/link';
-import CookieConsent from 'react-cookie-consent';
 
 import styles from 'styles/components/ConsentCookies.module.scss';
 

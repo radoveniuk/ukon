@@ -1,9 +1,9 @@
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-
-import CALCULATOR_DATA from './calculator-data.json';
+import classNames from 'classnames';
 
 import styles from 'styles/components/home/We.module.scss';
+
+import CALCULATOR_DATA from './calculator-data.json';
 
 const { serviceTypes } = CALCULATOR_DATA;
 

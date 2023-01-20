@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import classNames from 'classnames';
+
+import DropdownIcon from '../icons/DropdownIcon';
+import Logo from '../Logo';
+import { OrderModalOpener } from '../OrderModal';
 
 import styles from '../../../styles/components/Header.module.scss';
-import { useRouter } from 'next/router';
-import { OrderModalOpener } from '../OrderModal';
-import Logo from '../Logo';
-import DropdownIcon from '../icons/DropdownIcon';
 
 export default function Header () {
   const router = useRouter();

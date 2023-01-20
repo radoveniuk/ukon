@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { HTMLAttributes, PropsWithChildren, useState } from 'react';
+import classNames from 'classnames';
 
 import styles from 'styles/components/SeoText.module.scss';
 

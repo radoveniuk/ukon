@@ -1,11 +1,12 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import { useCombobox, UseComboboxStateChange, useMultipleSelection } from 'downshift';
 import _ from 'lodash-es';
 
 import styles from 'styles/components/MultiSelect.module.scss';
-import classNames from 'classnames';
-import SearchIcon from '../icons/SearchIcon';
+
 import PlusIcon from '../icons/PlusIcon';
+import SearchIcon from '../icons/SearchIcon';
 
 type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 

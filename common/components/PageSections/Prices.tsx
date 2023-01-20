@@ -1,5 +1,6 @@
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
+import classNames from 'classnames';
+
 import styles from 'styles/components/Prices.module.scss';
 
 export const PricesHeader = ({ children }: PropsWithChildren) => (

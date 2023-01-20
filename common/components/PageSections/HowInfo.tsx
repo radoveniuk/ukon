@@ -1,8 +1,9 @@
-import classNames from 'classnames';
 import { PropsWithChildren, ReactNode } from 'react';
 import { useTranslation } from 'next-i18next';
+import classNames from 'classnames';
 
 import styles from 'styles/components/HowInfo.module.scss';
+
 import { OrderModalOpener } from '../OrderModal';
 
 export const HowInfoHeader = ({ children }: PropsWithChildren) => {

@@ -1,7 +1,8 @@
-import classNames from 'classnames';
 import Link from 'next/link';
+import classNames from 'classnames';
 
-import styles from '../../../styles/components/Footer.module.scss';
+import styles from 'styles/components/Footer.module.scss';
+
 import Logo from '../Logo';
 
 export default function Footer () {

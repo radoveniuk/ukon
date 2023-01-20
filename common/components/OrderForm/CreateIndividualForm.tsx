@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import classNames from 'classnames';
+import { Controller,useFormContext } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
-import { useFormContext, Controller } from 'react-hook-form';
-
-import MultiSelect from '../forms/MultiSelect';
+import classNames from 'classnames';
 
 import styles from 'styles/OrderForm.module.scss';
+
+import MultiSelect from '../forms/MultiSelect';
 
 import activities from './activities.json';
 
@@ -55,6 +55,7 @@ export default function CreateIndividualForm () {
               <div className={styles['reg__item-bot']}>
                 <div className={styles['reg__item-project']}>
                   <Controller
+                    control={control}
                     name="mainActivity"
                     render={({ field }) => (
                       <MultiSelect 
@@ -96,6 +97,7 @@ export default function CreateIndividualForm () {
               <div className={styles['reg__item-bot']}>
                 <div className={styles['reg__item-project']}>
                   <Controller
+                    control={control}
                     name="otherActivities"
                     render={({ field }) => (
                       <MultiSelect 

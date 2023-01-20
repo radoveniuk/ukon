@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
-
-import Position, { PositionItem } from 'common/components/Position';
-import Prices, { PricesDescription, PricesHeader } from 'common/components/PageSections/Prices';
-import HowInfo, { HowInfoDescription, HowInfoHeader, HowInfoItem, HowInfoItems, HowInfoTitle } from 'common/components/PageSections/HowInfo';
-import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
-import { iterateMap } from 'common/utils/common';
-import Contacts from 'common/components/PageSections/Contacts';
-import Blog from 'common/components/PageSections/Blog';
-import { Post } from 'common/types/blog';
+import classNames from 'classnames';
 import { getPosts } from 'pages/api/posts';
+
 import Footer from 'common/components/Footer';
+import BenefitsTable, { BenefitsTableCell, BenefitsTableHeader, BenefitsTableHeaderColumn, BenefitsTableRow } from 'common/components/PageSections/BenefitsTable';
+import Blog from 'common/components/PageSections/Blog';
+import Contacts from 'common/components/PageSections/Contacts';
+import HowInfo, { HowInfoDescription, HowInfoHeader, HowInfoItem, HowInfoItems, HowInfoTitle } from 'common/components/PageSections/HowInfo';
+import Prices, { PricesDescription, PricesHeader } from 'common/components/PageSections/Prices';
 import SeoText, { SeoTextBody, SeoTextTitle } from 'common/components/PageSections/SeoText';
+import Position, { PositionItem } from 'common/components/Position';
+import { Post } from 'common/types/blog';
+import { iterateMap } from 'common/utils/common';
 
 import styles from 'styles/Service.module.scss';
 

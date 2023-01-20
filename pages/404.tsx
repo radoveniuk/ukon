@@ -1,12 +1,13 @@
 import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { NextSeo } from 'next-seo';
-import { useTranslation } from 'next-i18next';
-import Footer from 'common/components/Footer';
-import Position, { PositionItem } from 'common/components/Position';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { NextSeo } from 'next-seo';
 import classNames from 'classnames';
+
+import Footer from 'common/components/Footer';
+import Position, { PositionItem } from 'common/components/Position';
 
 import styles from 'styles/404.module.scss';
 

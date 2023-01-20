@@ -1,13 +1,13 @@
+import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import Lottie from 'lottie-react';
 import TypewriterComponent from 'typewriter-effect';
-import { useTranslation } from 'next-i18next';
 
 import { OrderModalOpener } from 'common/components/OrderModal';
 
-import animation from './lottie.json';
-
 import styles from 'styles/components/home/Hero.module.scss';
+
+import animation from './lottie.json';
 
 export default function Hero() {
   const { t } = useTranslation();
