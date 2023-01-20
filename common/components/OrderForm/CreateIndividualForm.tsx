@@ -193,7 +193,7 @@ export default function CreateIndividualForm () {
                       </div>
                     </div>
                     <div className={styles['reg__item-bot']}>
-                      <div className={styles['reg__item-project']} style={{ maxWidth: 400 }}>
+                      <div className={styles['reg__item-project']} style={{ gap: 20 }}>
                         <Controller
                           control={control}
                           name="citizenship"
@@ -201,7 +201,6 @@ export default function CreateIndividualForm () {
                             <Select
                               label={t('form.citizenship')}
                               placeholder={t('form.countryPlaceholder')}
-                              style={{ marginRight: 'auto' }}
                               options={countries}
                               pathToLabel="ru"
                               handleChange={field.onChange}

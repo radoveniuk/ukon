@@ -66,7 +66,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
             className: classNames('t5'),
           })}
         />
-        {!selectedItem && (<div role="button" {...getToggleButtonProps({ className: classNames(styles.toggleBtn, isOpen ? styles.active : '' ) })}><DropdownIcon /></div>)}
+        {!selectedItem && (<div role="button" {...getToggleButtonProps({ onBlur: (e: any) => (e.preventDownshiftDefault = true), className: classNames(styles.toggleBtn, isOpen ? styles.active : '' ) })}><DropdownIcon /></div>)}
         {!!selectedItem && (<div role="button" onClick={reset}><MinusIcon /></div>)}
       </div>
       <div className={styles.dropdownMenuWrapper}>
