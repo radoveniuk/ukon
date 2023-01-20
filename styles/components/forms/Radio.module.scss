@@ -1,0 +1,62 @@
+.radio {
+  display: flex;
+  align-items: center;
+  &-have-true-label, &-have-false-label, &-old-true-label, &-old-false-label, &-have-true-label-2, &-have-false-label-2, &-old-true-label-2, &-old-false-label-2 {
+    display: none;
+    margin-top: 10px;
+    max-width: 823px;
+    color: #A1A1A1;
+    &.active {
+      display: block;
+    }
+  }
+  &-with-i {
+    & > svg {
+      margin-left: 10px;
+    }
+  }
+  &-input {
+    display: flex;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    input {
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      &:checked~svg {
+        display: none;
+      }
+      &:checked~.radio-input-svg-selected {
+        display: block;
+      }
+    }
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+    &-svg-selected {
+      display: none;
+    }
+  }
+  &-title {
+    span {
+      margin-top: 5px;
+      color: #A1A1A1;
+      display: block;
+    }
+    br {
+      @media (max-width: 759px) {
+        display: none;
+      }
+    }
+  }
+  &-with-sub {
+    align-items: unset;
+  }
+}

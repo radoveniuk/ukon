@@ -90,10 +90,13 @@ body {
 
 body {
   margin: 0px;
-  height: 100vh;
   &.scroll {
     overflow: hidden;
   }
+}
+
+main {
+  margin-top: 50px;
 }
 
 a {

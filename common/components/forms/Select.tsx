@@ -29,6 +29,7 @@ type Props = {
 
 export default function Select ({ options, className, pathToLabel, customRenderMenuItem, handleChange, defaultValue, label, placeholder, style }: Props) {
   const [items, setItems] = React.useState(options);
+  const [selectedItem, setSelectedItem] = React.useState<unknown | null>(defaultValue);
 
   const getLabel = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) : item) as string;
   
@@ -39,7 +40,6 @@ export default function Select ({ options, className, pathToLabel, customRenderM
     getMenuProps,
     getInputProps,
     getItemProps,
-    selectedItem,
     reset,
     highlightedIndex,
   } = useCombobox({
@@ -48,10 +48,13 @@ export default function Select ({ options, className, pathToLabel, customRenderM
         getLabel(item).toLowerCase().includes(inputValue.toLowerCase())
       )));
     },
-    selectedItem: defaultValue,
+    defaultSelectedItem: defaultValue,
     items,
     itemToString: getLabel,
-    onSelectedItemChange: (updates) => void handleChange?.(updates.selectedItem),
+    onSelectedItemChange: (updates) => {
+      handleChange?.(updates.selectedItem);
+      setSelectedItem(updates.selectedItem);
+    },
   });
 
   return (
@@ -67,7 +70,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
           })}
         />
         {!selectedItem && (<div role="button" {...getToggleButtonProps({ onBlur: (e: any) => (e.preventDownshiftDefault = true), className: classNames(styles.toggleBtn, isOpen ? styles.active : '' ) })}><DropdownIcon /></div>)}
-        {!!selectedItem && (<div role="button" onClick={reset}><MinusIcon /></div>)}
+        {!!selectedItem && (<div role="button" onClick={() => { reset(); setSelectedItem(null); }}><MinusIcon /></div>)}
       </div>
       <div className={styles.dropdownMenuWrapper}>
         <ul {...getMenuProps({ className: styles.dropdownMenu })}>

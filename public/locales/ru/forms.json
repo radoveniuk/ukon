@@ -24,7 +24,14 @@
       "citizenship": "Гражданство",
       "residence": "Постоянное место жительства",
       "countrySearch": "Поиск страны",
-      "countryPlaceholder": "Страна"
+      "countryPlaceholder": "Страна",
+      "businessAdress": "Адрес регистрации предприятия",
+      "ourBusinessAdress": "Виртуальный адрес от <br / >Úkon.sk",
+      "ownBusinessAdress": "Адрес постоянного места <br />жительства (прописки)",
+      "otherBusinessAdress": "Другой адрес",
+      "ourBusinessAdressSelect": "Ваш виртуальный адресс от Úkon.sk",
+      "adress": "Адресс",
+      "vAdressTariff": "Пакет виртуального адресса"
     }
   },
   "update-company": {

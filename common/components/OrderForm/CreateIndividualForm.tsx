@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import styles from 'styles/OrderForm.module.scss';
 
 import MultiSelect from '../forms/MultiSelect';
+import Radio, { RadioButton } from '../forms/Radio';
 import Select from '../forms/Select';
 
 import activities from './activities.json';
@@ -35,6 +36,8 @@ export default function CreateIndividualForm () {
     mainActivity: 0,
     otherActivities: 0,
     citizenship: 0,
+    residence: 0,
+    vAdressTariff: 0,
   });
   const updatePriceList = useCallback(
     (update: Partial<typeof priceList>) => {
@@ -49,6 +52,7 @@ export default function CreateIndividualForm () {
   const mainActivity = watch('mainActivity');
   const otherActivities = watch('otherActivities');
   const citizenship = watch('citizenship');
+  const residence = watch('residence');
   useEffect(() => {
     if (mainActivity) {
       if (mainActivity.Type === 'Volná') {
@@ -77,7 +81,14 @@ export default function CreateIndividualForm () {
     } else {
       updatePriceList({ citizenship: 0 });
     }
-  }, [citizenship?.en, mainActivity, otherActivities, updatePriceList]);
+    if (residence?.en === 'Russia') {
+      updatePriceList({ residence: 120 });
+    } else if (residence?.en === 'Belarus') {
+      updatePriceList({ residence: 100 });
+    } else {
+      updatePriceList({ residence: 0 });
+    }
+  }, [citizenship?.en, mainActivity, otherActivities, residence?.en, updatePriceList]);
 
   return (
     <>
@@ -109,9 +120,7 @@ export default function CreateIndividualForm () {
                   <div className={styles.reg__item}>
                     <div className={styles['reg__item-top']}>
                       <div className={classNames(styles['reg__item-top-num'], 'body')}>01</div>
-                      <div className={classNames(styles['reg__item-top-title'], 't2')}>
-                        {t('form.mainActivity')}
-                      </div>
+                      <div className={classNames(styles['reg__item-top-title'], 't2')}>{t('form.mainActivity')}</div>
                     </div>
                     <div className={styles['reg__item-bot']}>
                       <div className={styles['reg__item-project']}>
@@ -224,6 +233,69 @@ export default function CreateIndividualForm () {
                       </div>
                     </div>
                   </div>
+                  <div className={styles.reg__item}>
+                    <div className={styles['reg__item-top']}>
+                      <div className={classNames(styles['reg__item-top-num'], 'body')}>
+                        04
+                      </div>
+                      <div className={classNames(styles['reg__item-top-title'], 't2')}>
+                        {t('form.businessAdress')}
+                      </div>
+                    </div>
+                    <div className={styles['reg__item-bot']}>
+                      <Radio className={styles['reg__item-radios']} name="virtual">
+                        <RadioButton defaultChecked dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdress') }} />
+                        {residence?.en === 'Slovakia' && <RadioButton dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdress') }}  />}
+                        <RadioButton dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
+                      </Radio>
+                    </div>
+                  </div>
+                  <div className={styles.reg__item}>
+                    <div className={styles['reg__item-top']}>
+                      <div className={classNames(styles['reg__item-top-num'], 'body')}>05</div>
+                      <div className={classNames(styles['reg__item-top-title'], 't2')}>{t('form.ourBusinessAdressSelect')}</div>
+                    </div>
+                    <div className={styles['reg__item-bot']}>
+                      <div className={styles['reg__item-project']}>
+                        <Controller
+                          control={control}
+                          name="ourBusinessAdress"
+                          render={({ field }) => (
+                            <Select 
+                              className={styles['reg__item-project-select']}
+                              label={t('form.adress')} 
+                              options={['Dunajská 9, 94901 Nitra', 'Dlha 59, 94901 Nitra']}
+                              handleChange={field.onChange}
+                              defaultValue="Dunajská 9, 94901 Nitra"
+                            />
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.reg__item}>
+                    <div className={styles['reg__item-top']}>
+                      <div className={classNames(styles['reg__item-top-num'], 'body')}>
+                        06
+                      </div>
+                      <div className={classNames(styles['reg__item-top-title'], 't2')}>
+                        {t('form.vAdressTariff')}
+                      </div>
+                    </div>
+                    <div className={styles['reg__item-bot']}>
+                      <Radio className={styles['reg__item-radios']} name="vAdressTariff">
+                        <RadioButton onChange={(e) => { e.target.checked && updatePriceList({ vAdressTariff: 19 }); }}>
+                          «Стив Джобс» (19€)*<span className="t5">*открытие ИП</span>
+                        </RadioButton>
+                        <RadioButton onChange={(e) => { e.target.checked && updatePriceList({ vAdressTariff: 69 }); }}>
+                          «Билл Гейтс» (69€)*<span className="t5">*открытие ИП + Виртуальный адрес - Базовый пакет (до 5 писем в год)</span>
+                        </RadioButton>
+                        <RadioButton onChange={(e) => { e.target.checked && updatePriceList({ vAdressTariff: 114 }); }}>
+                          «Илон Маск» (114€)*<span className="t5">*открытие ИП + Виртуальный адрес - Cтандарт (до 100 писем в год)</span>
+                        </RadioButton>
+                      </Radio>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -268,7 +340,7 @@ export default function CreateIndividualForm () {
         data-check="Проверка данных"
         data-end="Завершить оформление"
       >
-    Следующий шаг
+        Следующий шаг
       </div>
     </>
   );
