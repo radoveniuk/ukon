@@ -41,6 +41,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
     getItemProps,
     selectedItem,
     reset,
+    highlightedIndex,
   } = useCombobox({
     onInputValueChange({ inputValue = '' }) {
       setItems(options.filter(item => (
@@ -76,7 +77,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
               {...getItemProps({
                 item,
                 index,
-                className: classNames(styles.menuItem, 't5'),
+                className: classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : ''),
               })}
             >
               {customRenderMenuItem?.(item) || getLabel(item)}
