@@ -1,5 +1,5 @@
-import { HTMLAttributes, useCallback, useEffect, useState } from 'react';
-import { Controller,FormProvider,useForm } from 'react-hook-form';
+import { HTMLAttributes, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import styles from 'styles/OrderForm.module.scss';
 
 import PriceProvider, { usePriceContext } from './contexts/PriceContext';
+import IndividualInfoForm from './steps/IndividualInfoForm';
 import PriceForm from './steps/PriceForm';
 
 const STEPS = ['Формирование стоимости', 'Персональные данные предпринимателя', 'Завершающий', 'Загрузка файлов'];
@@ -43,7 +44,7 @@ function CreateIndividualFormRender () {
               </div>
               <div className={classNames(styles['reg__left-top-num'], 'body')}>
                 <span className={styles['reg__left-top-num-current']}>{step + 1}</span>/
-                <span className={styles['reg__left-top-num-all']}>5</span>
+                <span className={styles['reg__left-top-num-all']}>{STEPS.length}</span>
               </div>
             </div>
             <div className={styles.reg__steps}>
@@ -55,6 +56,9 @@ function CreateIndividualFormRender () {
               <FormProvider {...formMethods}>
                 <div className={classNames(styles.reg__tab, step === 0 ? styles.active : '')}>
                   <PriceForm />
+                </div>
+                <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
+                  <IndividualInfoForm />
                 </div>
               </FormProvider>
             </div>

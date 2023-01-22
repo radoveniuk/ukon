@@ -1,0 +1,107 @@
+[
+  {
+    "Type": "Prefix",
+    "Code": "01",
+    "Value": "Ing."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 16,
+    "Value": "Mgr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 15,
+    "Value": "Bc."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "03",
+    "Value": "JUDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "02",
+    "Value": "Ing. arch."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 71,
+    "Value": "doc."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "06",
+    "Value": "RNDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "04",
+    "Value": "MUDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "08",
+    "Value": "PhDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "05",
+    "Value": "MVDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": "07",
+    "Value": "RSDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 17,
+    "Value": "PaedDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 18,
+    "Value": "PharmDr."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 41,
+    "Value": "Mgr. art."
+  },
+  {
+    "Type": "Prefix",
+    "Code": 39,
+    "Value": "abs. v. š."
+  },
+  {
+    "Type": "Postfix",
+    "Code": 53,
+    "Value": "PhD."
+  },
+  {
+    "Type": "Postfix",
+    "Code": 51,
+    "Value": "CSc."
+  },
+  {
+    "Type": "Postfix",
+    "Code": 52,
+    "Value": "DrSc."
+  },
+  {
+    "Type": "Postfix",
+    "Code": 54,
+    "Value": "ArtD."
+  },
+  {
+    "Type": "Postfix",
+    "Code": 81,
+    "Value": "DiS"
+  },
+  {
+    "Type": "Postfix",
+    "Code": 82,
+    "Value": "DiS.art"
+  }
+]

@@ -8,23 +8,26 @@
 }
 
 .select {
-    border-radius: 6px 6px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px 10px 20px;
-    background: #FFFFFF;
-    transition-duration: .4s;
-    border: 1px solid #E7E7E7;
-    cursor: pointer;
-    border-radius: 6px;
-    outline: none;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 20px;
+  background: #FFFFFF;
+  transition-duration: .4s;
+  border: 1px solid #E7E7E7;
+  cursor: pointer;
+  border-radius: 6px;
+  outline: none;
 
-    input {
-      border: none;
-      outline: none;
-      width: 100%;
+  input {
+    border: none;
+    outline: none;
+    width: 100%;
+    &::placeholder {
+      color: #D0D0D0;
     }
+  }
 }
 
 
