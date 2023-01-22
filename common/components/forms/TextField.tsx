@@ -1,9 +1,9 @@
-import { ForwardedRef, forwardRef, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
 import styles from 'styles/components/forms/TextField.module.scss';
 
-type Props = HTMLAttributes<HTMLInputElement> & {
+type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   labelClassName?: string;
   label?: string;
   error?: string;

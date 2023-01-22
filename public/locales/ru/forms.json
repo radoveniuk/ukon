@@ -31,8 +31,17 @@
       "otherBusinessAdress": "Другой адрес",
       "ourBusinessAdressSelect": "Ваш виртуальный адресс от Úkon.sk",
       "adress": "Адресс",
-      "vAdressTariff": "Пакет виртуального адресса"
-    }
+      "vAdressTariff": "Пакет виртуального адресса",
+      "promo": "Скидочный купон",
+      "inputPromo": "Введите промокод",
+      "isRegistered": "Вы зарегестрированны на нашем сайте?",
+      "email": "Email",
+      "pass": "Пароль",
+      "passRepeat": "Повторите пароль",
+      "phone": "Телефон"
+    },
+    "yes": "Да",
+    "no": "Нет"
   },
   "update-company": {
     "pageTitle": "Обновление данных по ООО"
