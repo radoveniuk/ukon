@@ -1,6 +1,5 @@
-import { forwardRef } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { NumberFormatBaseProps, PatternFormat, PatternFormatProps } from 'react-number-format';
+import { PatternFormat } from 'react-number-format';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
@@ -9,6 +8,7 @@ import DatePicker from 'common/components/forms/DatePicker';
 import Select from 'common/components/forms/Select';
 import TextField from 'common/components/forms/TextField';
 import FormItem from 'common/components/OrderForm/components/FormItem';
+import { isValidDate } from 'common/utils/date';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -36,7 +36,7 @@ export default function IndividualInfoForm () {
           <div className={styles['reg__item-inputs']}>
             <PatternFormat
               format="######/####" 
-              customInput={(props) => <TextField label={t('form.physicalNumber')} placeholder={t('form.inputNumber')} {...props} />} 
+              customInput={(props) => <TextField label={t('form.physicalNumber')} placeholder="XXXXXX/QQQQ" {...props} />} 
               {...register('physicalNumber', { 
                 required: true, 
                 onChange(event) {
@@ -65,7 +65,9 @@ export default function IndividualInfoForm () {
                     let dd = dateBody.slice(4, 6);
 
                     const birthdateFormNumber = DateTime.fromFormat(`${dd}.${mm}.${yyyy}`, 'dd.MM.yyyy').toJSDate();
-                    resetField('birthdate', { defaultValue: birthdateFormNumber });
+                    if (isValidDate(birthdateFormNumber)) {
+                      resetField('birthdate', { defaultValue: birthdateFormNumber });
+                    }
                   }
                 },
               })} 
