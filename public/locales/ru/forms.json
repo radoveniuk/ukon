@@ -47,7 +47,13 @@
       "surname": "Фамилия",
       "inputSurname": "Введите фамилию",
       "namePostfix": "Титул после имени",
-      "inputNamePostfix": "Введите титул после именем"
+      "inputNamePostfix": "Введите титул после именем",
+      "numberAndBirthDate": "Личный номер и дата рождения",
+      "physicalNumber": "Личный номер",
+      "inputNumber": "Введите номер",
+      "birthdate": "Дата рождения",
+      "docNumber": "Номер удостоверения личности",
+      "inputDocNumber": "Число, до 10 символов"
     },
     "yes": "Да",
     "no": "Нет"

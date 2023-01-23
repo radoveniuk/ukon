@@ -12,7 +12,7 @@ export default function FormItem ({ number, title, children } : PropsWithChildre
   return (
     <div className={styles.reg__item}>
       <div className={styles['reg__item-top']}>
-        <div className={classNames(styles['reg__item-top-num'], 'body')}>{number}</div>
+        <div className={classNames(styles['reg__item-top-num'], 'body')}>{number < 10 ? `0${number}` : number}</div>
         <div className={classNames(styles['reg__item-top-title'], 't2')}>{title}</div>
       </div>
       <div className={styles['reg__item-bot']}>
