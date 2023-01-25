@@ -1,24 +1,36 @@
+import { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { PatternFormat } from 'react-number-format';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
+import _ from 'lodash-es';
 import { DateTime } from 'luxon';
 
+import Checkbox from 'common/components/forms/Checkbox';
 import DatePicker from 'common/components/forms/DatePicker';
+import Radio, { RadioButton } from 'common/components/forms/Radio';
 import Select from 'common/components/forms/Select';
+import TextArea from 'common/components/forms/TextArea';
 import TextField from 'common/components/forms/TextField';
 import FormItem from 'common/components/OrderForm/components/FormItem';
 import { isValidDate } from 'common/utils/date';
 
 import styles from 'styles/OrderForm.module.scss';
 
+import countries from '../../../data/countries.json';
+import insurances from '../../../data/iтsurance.json';
 import prefixes from '../../../data/prefixes.json';
 
 export default function IndividualInfoForm () {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, register, resetField } = useFormContext();
+  const { control, register, resetField, watch } = useFormContext();
+  
+  const { name, surname, namePrefix, namePostfix } = watch();
+  const companyNamePrefix = useMemo(() => {
+    return `${namePrefix?.Value ?? ''} ${name ?? ''} ${surname ?? ''} ${namePostfix?.Value ?? ''}`.trim().replaceAll(/  +/g, ' ');
+  }, [name, namePostfix, namePrefix, surname]);
 
   return (
     <>
@@ -26,10 +38,34 @@ export default function IndividualInfoForm () {
       <div className={styles.reg__items}>
         <FormItem number={1} title={t('form.physicalInfo')}>
           <div className={styles['reg__item-inputs']}>
-            <Select placeholder={t('form.namePrefix')} label={t('form.inputNamePrefix')} options={prefixes.filter((item) => item.Type === 'Prefix')} pathToLabel="Value" />
-            <TextField label={t('form.name')} placeholder={t('form.inputName')} />
-            <TextField label={t('form.surname')} placeholder={t('form.inputSurname')} />
-            <Select placeholder={t('form.namePostfix')} label={t('form.inputNamePostfix')} options={prefixes.filter((item) => item.Type === 'Postfix')} pathToLabel="Value" />
+            <Controller
+              control={control}
+              name="namePrefix"
+              render={({ field }) => (
+                <Select
+                  label={t('form.namePrefix')}
+                  placeholder={t('form.inputNamePrefix')}
+                  options={prefixes.filter((item) => item.Type === 'Prefix')}
+                  pathToLabel="Value"
+                  handleChange={field.onChange}
+                />
+              )}
+            />
+            <TextField label={t('form.name')} placeholder={t('form.inputName')} {...register('name')} />
+            <TextField label={t('form.surname')} placeholder={t('form.inputSurname')} {...register('surname')} />
+            <Controller
+              control={control}
+              name="namePostfix"
+              render={({ field }) => (
+                <Select
+                  label={t('form.namePostfix')}
+                  placeholder={t('form.inputNamePostfix')}
+                  options={prefixes.filter((item) => item.Type === 'Postfix')}
+                  pathToLabel="Value"
+                  handleChange={field.onChange}
+                />
+              )}
+            />
           </div>
         </FormItem>
         <FormItem number={2} title={t('form.numberAndBirthDate')}>
@@ -87,6 +123,126 @@ export default function IndividualInfoForm () {
             customInput={(props) => <TextField label={t('form.docNumber')} placeholder={t('form.inputDocNumber')} {...props} />}
             className={styles['reg__item-input']} 
             {...register('docNumber', { required: true })} 
+          />
+        </FormItem>
+        <FormItem title={t('form.adress')} number={4}>
+          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressResidence')}</span>
+          <div className={styles['reg__item-adress-inputs']}>
+            <TextField label={t('form.street')} placeholder={t('form.inputStreet')} {...register('street')} />
+            <PatternFormat 
+              format="###" 
+              customInput={(props) => <TextField label={t('form.houseRegNumber')} {...props} />}
+              {...register('houseRegNumber', { required: true })} 
+            />
+            <PatternFormat 
+              format="###" 
+              customInput={(props) => <TextField label={t('form.houseNumber')} {...props} />}
+              {...register('houseNumber', { required: true })} 
+            />
+            <TextField label={t('form.city')} placeholder={t('form.city')} {...register('city')} />
+            <PatternFormat 
+              format="#####" 
+              customInput={(props) => <TextField label={t('form.zip')} {...props} />}
+              {...register('zip', { required: true })} 
+            />
+            <Controller
+              control={control}
+              name="country"
+              render={({ field }) => (
+                <Select
+                  label={t('form.countryPlaceholder')}
+                  placeholder={t('form.countryPlaceholder')}
+                  options={countries}
+                  pathToLabel="ru"
+                  handleChange={field.onChange}
+                />
+              )}
+            />
+          </div>
+          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressSlovakResidence')}</span>
+          <div className={styles['reg__item-adress-inputs']}>
+            <TextField disabled label={t('form.street')} placeholder={t('form.inputStreet')} {...register('streetSlovak')} />
+            <PatternFormat 
+              format="###"
+              disabled
+              customInput={(props) => <TextField label={t('form.houseRegNumber')} {...props} />}
+              {...register('houseRegNumberSlovak')} 
+            />
+            <PatternFormat 
+              format="###"
+              disabled
+              customInput={(props) => <TextField label={t('form.houseNumber')} {...props} />}
+              {...register('houseNumberSlovak')} 
+            />
+            <TextField disabled label={t('form.city')} placeholder={t('form.city')} {...register('citySlovak')} />
+            <PatternFormat 
+              format="#####" 
+              disabled
+              customInput={(props) => <TextField label={t('form.zip')} {...props} />}
+              {...register('zipSlovak')} 
+            />
+            <TextField label={t('form.countryPlaceholder')} value="Slovensko" disabled />
+          </div>
+        </FormItem>
+        <FormItem title={t('form.insurance')} number={5}>
+          <Controller
+            control={control}
+            name="insurance"
+            render={({ field }) => (
+              <Radio name="insurance" className={styles['reg__item-radios']}>
+                {insurances.map((item) => (
+                  <RadioButton key={item.Code} onChange={(e) => e.target.checked && field.onChange(item)} defaultChecked={_.isEqual(field.value, item)}>{item.ru}</RadioButton>
+                ))}
+              </Radio>
+            )}
+          />
+        </FormItem>
+        <FormItem title={t('form.companyName')} number={6}>
+          <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
+            <strong>{companyNamePrefix}</strong>
+            <TextField label={t('form.companyName')} {...register('companyName')} />
+          </div>
+        </FormItem>
+        <FormItem title={t('form.companyNumber')} number={7}>
+          <PatternFormat
+            format="########"
+            className={styles['reg__item-input']}
+            customInput={(props) => <TextField label={t('form.companyNumber')} {...props} />}
+            {...register('companyNumber')} 
+          />
+        </FormItem>
+        <FormItem title={t('form.registerDate')} number={8}>
+          <Controller
+            control={control}
+            name="registerDate"
+            defaultValue="asap"
+            render={({ field }) => (
+              <>
+                <Radio className={styles['reg__item-radios']} name="registerDate">
+                  <RadioButton checked={field.value === 'asap'} onSelect={() => field.onChange('asap')}>{t('form.asap')}</RadioButton>
+                  <RadioButton checked={field.value !== 'asap'} onSelect={() => field.onChange('')}>{t('form.certainDate')}</RadioButton>
+                </Radio>
+                {field.value !== 'asap' && (
+                  <DatePicker 
+                    min={DateTime.now().plus({ month: 1 }).toJSDate()} 
+                    value={field.value || null} 
+                    onChange={field.onChange} 
+                    label={t('form.registerDate')}
+                    className={styles['reg__item-input']}
+                  />
+                )}
+              </>
+            )}
+          />
+        </FormItem>
+        <FormItem title={t('form.saveToProfile')} number={9}>
+          <Checkbox label={t('form.save')} {...register('saveToProfile', { value: true })} />
+        </FormItem>
+        <FormItem title={t('form.orderComment')} number={10}>
+          <TextArea
+            label={t('form.comment')}
+            placeholder={t('form.inputComment')}
+            {...register('comment')}
           />
         </FormItem>
       </div>

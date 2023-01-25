@@ -12,10 +12,12 @@ type Props = {
   placeholder?: string;
   value: Date | null;
   onChange(v: Date | null): void;
+  min?: Date;
+  className?: string;
 };
 
-export default function DatePicker ({ label, placeholder = 'DD.MM.YYYY', value, onChange }: Props) {
+export default function DatePicker ({ label, min, placeholder = 'DD.MM.YYYY', value, onChange, className }: Props) {
   return (
-    <ReactDatePicker placeholderText={placeholder} selected={value} onChange={onChange} dateFormat="dd.MM.yyyy" customInput={<TextField label={label} />} />
+    <ReactDatePicker minDate={min} placeholderText={placeholder} selected={value} onChange={onChange} dateFormat="dd.MM.yyyy" customInput={<TextField label={label} className={className} />} />
   );
 };

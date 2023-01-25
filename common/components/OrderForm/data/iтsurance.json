@@ -1,0 +1,34 @@
+[
+  {
+    "Code": 24,
+    "Value": "Dôvera zdravotná poisťovňa",
+    "sk": "a. s.",
+    "ru": "Dôvera",
+    "uk": "Dôvera",
+    "en": "Dôvera"
+  },
+  {
+    "Code": 25,
+    "Value": "Všeobecná zdravotná poisťovňa",
+    "sk": "a.s.",
+    "ru": "VŠZP",
+    "uk": "VŠZP",
+    "en": "VŠZP"
+  },
+  {
+    "Code": 27,
+    "Value": "UNION zdravotná poisťovňa",
+    "sk": "Union",
+    "ru": "Union",
+    "uk": "Union",
+    "en": "Union"
+  },
+  {
+    "Code": 0,
+    "Value": "Iná (zahraničná) zdravotná poisťovňa",
+    "sk": "Žiadna z uvedených",
+    "ru": "Никакая из перечисленных",
+    "uk": "Жодна з зазначених",
+    "en": "None of the above"
+  }
+]

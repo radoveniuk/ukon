@@ -648,6 +648,33 @@
 
       }
     }
+    &-subtitle {
+      margin-bottom: 10px;
+    }
+    &-adress-inputs {
+      display: grid;
+      grid-gap: 20px 30px;
+      grid-template-columns: 300px 150px 150px;
+      @media (max-width: 1899px) {
+        grid-template-columns: 280px 120px 120px;
+      }
+      @media (max-width: 1549px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px 30px;
+      }
+      @media (max-width: 759px) {
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+      }
+    }
+    &-company-name {
+      display: flex;
+      flex-direction: row;
+      strong {
+        margin-top: 32px;
+        margin-right: 10px;
+      }
+    }
     &-inputs {
       display: grid;
       grid-gap: 20px 60px;

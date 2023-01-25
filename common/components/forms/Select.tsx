@@ -27,7 +27,7 @@ type Props = {
   defaultValue?: unknown; 
 };
 
-export default function Select ({ options, className, pathToLabel, customRenderMenuItem, handleChange, defaultValue, label, placeholder, style }: Props) {
+export default function Select ({ options, className, pathToLabel, customRenderMenuItem, handleChange, defaultValue, label, placeholder, style, disabled }: Props) {
   const [items, setItems] = React.useState(options);
   const [selectedItem, setSelectedItem] = React.useState<unknown | null>(defaultValue);
 
@@ -66,6 +66,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
         <input
           {...getInputProps({ 
             placeholder,
+            disabled,
             className: classNames('t5'),
           })}
         />
