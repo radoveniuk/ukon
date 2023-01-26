@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { PatternFormat } from 'react-number-format';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import _ from 'lodash-es';
@@ -11,7 +10,7 @@ import DatePicker from 'common/components/forms/DatePicker';
 import Radio, { RadioButton } from 'common/components/forms/Radio';
 import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
-import TextField from 'common/components/forms/TextField';
+import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
 import FormItem from 'common/components/OrderForm/components/FormItem';
 import { isValidDate } from 'common/utils/date';
 
@@ -70,12 +69,14 @@ export default function IndividualInfoForm () {
         </FormItem>
         <FormItem number={2} title={t('form.numberAndBirthDate')}>
           <div className={styles['reg__item-inputs']}>
-            <PatternFormat
+            <TextFieldFormated 
+              label={t('form.physicalNumber')}
               format="######/####" 
-              customInput={(props) => <TextField label={t('form.physicalNumber')} placeholder="XXXXXX/QQQQ" {...props} />} 
+              placeholder="XXXXXX/QQQQ"
+              className={classNames('input', 't5')}
               {...register('physicalNumber', { 
                 required: true, 
-                onChange(event) {
+                onChange (event) {
                   const val = event.target.value.replaceAll(' ', '') as string;
                   if (val.length === 11) {
                     const [dateBody] = val.split('/');
@@ -106,43 +107,38 @@ export default function IndividualInfoForm () {
                     }
                   }
                 },
-              })} 
+              })}  
             />
             <Controller
               control={control}
               name="birthdate"
               render={({ field }) => (
+                // <TextFieldFormated format="##.##.####" label={t('form.birthdate')} placeholder="01.07.2000" value={field.value || null} onChange={field.onChange} />
                 <DatePicker placeholder="01.07.2000" value={field.value || null} onChange={field.onChange} label={t('form.birthdate')} />
               )}
             />
           </div>
         </FormItem>
         <FormItem title={t('form.docNumber')} number={3}>
-          <PatternFormat 
-            format="##########" 
-            customInput={(props) => <TextField label={t('form.docNumber')} placeholder={t('form.inputDocNumber')} {...props} />}
-            className={styles['reg__item-input']} 
-            {...register('docNumber', { required: true })} 
-          />
+          <TextField label={t('form.docNumber')} placeholder={t('form.inputDocNumber')} className={styles['reg__item-input']} {...register('docNumber', { required: true })} />
         </FormItem>
         <FormItem title={t('form.adress')} number={4}>
           <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressResidence')}</span>
           <div className={styles['reg__item-adress-inputs']}>
             <TextField label={t('form.street')} placeholder={t('form.inputStreet')} {...register('street')} />
-            <PatternFormat 
-              format="###" 
-              customInput={(props) => <TextField label={t('form.houseRegNumber')} {...props} />}
+            <TextFieldFormated 
+              format="########" 
+              label={t('form.houseRegNumber')}
               {...register('houseRegNumber', { required: true })} 
             />
-            <PatternFormat 
-              format="###" 
-              customInput={(props) => <TextField label={t('form.houseNumber')} {...props} />}
+            <TextField
+              label={t('form.houseNumber')}
               {...register('houseNumber', { required: true })} 
             />
             <TextField label={t('form.city')} placeholder={t('form.city')} {...register('city')} />
-            <PatternFormat 
-              format="#####" 
-              customInput={(props) => <TextField label={t('form.zip')} {...props} />}
+            <TextFieldFormated 
+              format="#####"
+              label={t('form.zip')}
               {...register('zip', { required: true })} 
             />
             <Controller
@@ -162,23 +158,23 @@ export default function IndividualInfoForm () {
           <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressSlovakResidence')}</span>
           <div className={styles['reg__item-adress-inputs']}>
             <TextField disabled label={t('form.street')} placeholder={t('form.inputStreet')} {...register('streetSlovak')} />
-            <PatternFormat 
+            <TextFieldFormated 
               format="###"
               disabled
-              customInput={(props) => <TextField label={t('form.houseRegNumber')} {...props} />}
+              label={t('form.houseRegNumber')}
               {...register('houseRegNumberSlovak')} 
             />
-            <PatternFormat 
+            <TextFieldFormated 
               format="###"
               disabled
-              customInput={(props) => <TextField label={t('form.houseNumber')} {...props} />}
+              label={t('form.houseNumber')}
               {...register('houseNumberSlovak')} 
             />
             <TextField disabled label={t('form.city')} placeholder={t('form.city')} {...register('citySlovak')} />
-            <PatternFormat 
+            <TextFieldFormated 
               format="#####" 
               disabled
-              customInput={(props) => <TextField label={t('form.zip')} {...props} />}
+              label={t('form.zip')}
               {...register('zipSlovak')} 
             />
             <TextField label={t('form.countryPlaceholder')} value="Slovensko" disabled />
@@ -204,10 +200,10 @@ export default function IndividualInfoForm () {
           </div>
         </FormItem>
         <FormItem title={t('form.companyNumber')} number={7}>
-          <PatternFormat
+          <TextFieldFormated
             format="########"
             className={styles['reg__item-input']}
-            customInput={(props) => <TextField label={t('form.companyNumber')} {...props} />}
+            label={t('form.companyNumber')}
             {...register('companyNumber')} 
           />
         </FormItem>
@@ -215,14 +211,14 @@ export default function IndividualInfoForm () {
           <Controller
             control={control}
             name="registerDate"
-            defaultValue="asap"
+            defaultValue={null}
             render={({ field }) => (
               <>
                 <Radio className={styles['reg__item-radios']} name="registerDate">
                   <RadioButton checked={field.value === 'asap'} onSelect={() => field.onChange('asap')}>{t('form.asap')}</RadioButton>
-                  <RadioButton checked={field.value !== 'asap'} onSelect={() => field.onChange('')}>{t('form.certainDate')}</RadioButton>
+                  <RadioButton checked={field.value !== 'asap' && field.value !== null} onSelect={() => field.onChange('')}>{t('form.certainDate')}</RadioButton>
                 </Radio>
-                {field.value !== 'asap' && (
+                {field.value !== 'asap' && field.value !== null && (
                   <DatePicker 
                     min={DateTime.now().plus({ month: 1 }).toJSDate()} 
                     value={field.value || null} 
@@ -242,6 +238,7 @@ export default function IndividualInfoForm () {
           <TextArea
             label={t('form.comment')}
             placeholder={t('form.inputComment')}
+            style={{ height: 120 }}
             {...register('comment')}
           />
         </FormItem>

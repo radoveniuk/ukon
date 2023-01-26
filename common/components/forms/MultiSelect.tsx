@@ -5,9 +5,11 @@ import _ from 'lodash-es';
 
 import styles from 'styles/components/forms/MultiSelect.module.scss';
 
+import InfoIcon from '../icons/InfoIcon';
 import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import SearchIcon from '../icons/SearchIcon';
+import Tooltip from '../Tooltip';
 
 type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 
@@ -23,17 +25,20 @@ type Props = {
   style?: React.CSSProperties;
   label?: string;
   placeholder?: string;
+  tooltip?: string;
   isLoading?: boolean;
   disabled?: boolean;
   maxItems?: number;
 };
 
 function MultiSelect({
-  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems, handleChange,
+  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems, handleChange, tooltip,
 }: Props) {
   const [inputValue, setInputValue] = React.useState('');
   const [selectedItems, setSelectedItems] = React.useState<unknown[]>([]);
   const [items, setItems] = React.useState(options);
+
+  const tooltipId = React.useId();
 
   const getLabel = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) : item) as string;
 
@@ -137,15 +142,23 @@ function MultiSelect({
         {label}
       </label>
       <div className={styles.selectWrapper}>
-        <div className={styles.select}>
-          <input
-            {...getInputProps(getDropdownProps({ 
-              preventKeyAction: isOpen, 
-              placeholder,
-              className: classNames('t5'),
-            }))}
-          />
-          <div role="button" {...getToggleButtonProps()}><SearchIcon /></div>
+        <div className={styles.selectContent}>
+          <div className={styles.select}>
+            <input
+              {...getInputProps(getDropdownProps({ 
+                preventKeyAction: isOpen, 
+                placeholder,
+                className: classNames('t5'),
+              }))}
+            />
+            <div role="button" {...getToggleButtonProps()}><SearchIcon /></div>
+          </div>
+          {!!tooltip &&(
+            <>
+              <InfoIcon id={tooltipId} />
+              <Tooltip variant="light" className={styles.tooltip} anchorId={tooltipId} html={tooltip} />
+            </>
+          )}
         </div>
         {selectedItems.map(function renderSelectedItem(
           selectedItemForRender,

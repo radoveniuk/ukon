@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDatePicker from 'react-datepicker';
 
 import TextField from './TextField';
 
 import 'react-datepicker/dist/react-datepicker.css';
-// CSS Modules, react-datepicker-cssmodules.css
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 type Props = {
   label: string;

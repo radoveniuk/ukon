@@ -71,6 +71,12 @@
         @media (max-width: 1249px) {
           margin-right: 15px;
         }
+
+        &:disabled {
+          color: #000;
+          border: 2px solid #acacac;
+          cursor: default;
+        }
       }
       &-title {
         margin-right: 20px;
@@ -865,6 +871,7 @@
         line-height: 130%;
         text-decoration-line: underline;
         color: #131313;
+        cursor: pointer;
       }
     }
     &-rows {
@@ -872,9 +879,12 @@
       flex-direction: column;
       background-color: #FAFAFA;
     }
+    &-edit {
+      cursor: pointer;
+    }
     &-row {
       display: grid;
-      grid-template-columns: 356fr 634fr;
+      grid-template-columns: 356fr 634fr 1fr;
       &:not(:last-child) {
         border-bottom: 1px solid #E7E7E7;
       }
@@ -1072,6 +1082,19 @@
     color: #000000;
     @media (max-width: 1249px) {
       width: 100%;
+    }
+    
+    &.active {
+      color: #ffffff;
+      background-color: #44998A;
+
+      &:hover {
+        background-color: #10826E;
+      }
+      &:active {
+        border-color: #10826E;
+        background: #44998A;
+      }
     }
   }
 }

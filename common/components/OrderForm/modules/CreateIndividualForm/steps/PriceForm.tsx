@@ -103,7 +103,8 @@ export default function PriceForm() {
               control={control}
               name="otherActivities"
               render={({ field }) => (
-                <MultiSelect 
+                <MultiSelect
+                  tooltip="<div>В случае добавления ремесленного или регулируемого вида деятельности необходимо установить ответственного представителя имеющего соответствующую квалификацию.<br>Также, будет необходимо приложить к заявке документы подтверждающие квалификацию ответственного лица и его согласие<br>За каждый регулируемый и ремесленный вид деятельности к стоимости добавляется 7,5 евро</div>"
                   className={styles['reg__item-project-select']}
                   label={t('form.activitySearch')} 
                   pathToLabel="ru"

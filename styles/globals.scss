@@ -599,6 +599,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 }
 
+.input {
+  background: #FFFFFF;
+  /* Grayscale/4 */
+  outline: none;
+  //user-select: none;
+  border: 1px solid #E7E7E7;
+  border-radius: 6px;
+  padding: 13px 19px;
+  resize: none;
+  &::placeholder {
+    color: #D0D0D0;
+  }
+}
+
 .radio {
   display: flex;
   align-items: center;
