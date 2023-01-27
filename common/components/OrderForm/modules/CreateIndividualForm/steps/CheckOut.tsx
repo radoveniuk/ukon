@@ -1,43 +1,183 @@
-import { useFormContext } from 'react-hook-form';
-import { AiFillEdit } from 'react-icons/ai';
+import { ReactNode } from 'react';
+import { useFormContext, UseFormWatch } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
+import { DateTime } from 'luxon';
+
+import CheckoutTable, { CheckoutTableRow } from 'common/components/OrderForm/components/CheckoutTable';
 
 import styles from 'styles/OrderForm.module.scss';
 
 import { useSteps } from '../contexts/StepsContext';
 
+type CheckoutRow = {
+  name: string;
+  step: 0 | 1 | 2;
+  anchorField: string;
+  getValue(watch: UseFormWatch<Record<string, any>>, t: (path: string) => string): string | ReactNode;
+  customField?: boolean;
+};
+
+const PersonalDataRows: CheckoutRow[] = [
+  {
+    name: 'personalName',
+    step: 1,
+    anchorField: 'name',
+    getValue: (watch) => `${watch('namePrefix.Value')} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value')}`,
+  },
+  {
+    name: 'form.physicalNumber',
+    step: 1,
+    anchorField: 'physicalNumber',
+    getValue: (watch) => watch('physicalNumber'),
+  },
+  {
+    name: 'form.birthdate',
+    step: 1,
+    anchorField: 'birthdate',
+    getValue: (watch) => DateTime.fromJSDate(watch('birthdate')).toFormat('dd.MM.yyyy'),
+  },
+  {
+    name: 'form.docNumber',
+    step: 1,
+    anchorField: 'docNumber',
+    getValue: (watch) => watch('docNumber'),
+  },
+  {
+    name: 'form.adressResidence',
+    step: 1,
+    anchorField: 'street',
+    getValue: (watch) => `${watch('street')}, ${watch('houseRegNumber')}, ${watch('houseNumber')}, ${watch('city')}, ${watch('zip')}, ${watch('country.ru')}`,
+  },
+  {
+    name: 'form.adressSlovakResidence',
+    step: 1,
+    anchorField: 'streetSlovak',
+    getValue: (watch) => `${watch('streetSlovak')}, ${watch('houseRegNumberSlovak')}, ${watch('houseNumberSlovak')}, ${watch('citySlovak')}, ${watch('zipSlovak')}, Slovensko`,
+  },
+  {
+    name: 'form.insurance',
+    step: 1,
+    anchorField: 'insurance',
+    getValue: (watch) => watch('insurance.ru'),
+    customField: true,
+  },
+];
+
+const CompanyDataRows: CheckoutRow[] = [
+  {
+    name: 'form.companyName',
+    step: 1,
+    anchorField: 'companyName',
+    getValue: (watch) => `${watch('namePrefix.Value')} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value')} ${watch('companyName') ? `— ${watch('companyName')}` : ''}`,
+  },
+  {
+    name: 'activities',
+    step: 0,
+    anchorField: 'mainActivity',
+    getValue: (watch) => (
+      <>
+        <strong>{watch('mainActivity.ru')}</strong>
+        <ul>
+          {watch('otherActivities')?.map((activityItem: any) => (
+            <li key={activityItem?.ru}>{activityItem?.ru}</li>
+          ))}
+        </ul>
+      </>
+    ),
+  },
+  {
+    name: 'form.companyNumber',
+    step: 1,
+    anchorField: 'companyNumber',
+    getValue: (watch) => watch('companyNumber'),
+  },
+  {
+    name: 'form.businessAdress',
+    step: 0,
+    anchorField: '',
+    getValue: () => 'от Úkon.sk, Nitra — Dunajská 9/1, Пакет S +X €/год',
+  },
+  {
+    name: 'form.registerDate',
+    step: 1,
+    anchorField: 'registerDate',
+    getValue: (watch, t) => {
+      const value = watch('registerDate');
+      if (value  === 'asap') {
+        return t('form.asap');
+      }
+      if (DateTime.fromJSDate(value).isValid) {
+        return DateTime.fromJSDate(value).toFormat('dd.MM.yyyy');
+      }
+      return '';
+    },
+    customField: true,
+  },
+  {
+    name: 'form.orderComment',
+    step: 1,
+    anchorField: 'comment',
+    getValue: (watch) => watch('comment'),
+  },
+];
+
 export default function CheckOut () {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
-  const { setStep, prevStep } = useSteps();
+  const { setStep } = useSteps();
 
-  const { watch } = useFormContext();
+  const { watch, setFocus } = useFormContext();
+
+  const goToField = (id: string, scroll = false) => {
+    setFocus(id, { shouldSelect: true });
+    if (scroll) {
+      const element = document.getElementById(id);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 100,
+        });
+      }
+    }
+  };
 
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('checkoutText') }} />
       <div className={styles.reg__tables}>
-        <div className={styles.reg__table}>
-          <div className={styles['reg__table-top']}>
-            <div className={classNames(styles['reg__table-top-title'], 't1')}>
-              {t('personalData')}
-            </div>
-            <div onClick={prevStep} className={styles['reg__table-top-edit']}>{t('edit')}</div>
-          </div>
-          <div className={styles['reg__table-rows']}>
-            <div className={styles['reg__table-row']}>
-              <div className={classNames(styles['reg__table-row-item'], 't4')}>{t('personalName')}</div>
-              <div className={classNames(styles['reg__table-row-item'], 't4')}>{watch('namePrefix')?.Value} {watch('name')} {watch('surname')} {watch('namePostfix')?.Value}</div>
-              <div onClick={prevStep} className={classNames(styles['reg__table-row-item'], styles['reg__table-edit'])}><AiFillEdit /></div>
-            </div>
-            <div className={styles['reg__table-row']}>
-              <div className={classNames(styles['reg__table-row-item'], 't4')}>{t('form.physicalNumber')}</div>
-              <div className={classNames(styles['reg__table-row-item'], 't4')}>{watch('physicalNumber')}</div>
-              <div onClick={prevStep} className={classNames(styles['reg__table-row-item'], styles['reg__table-edit'])}><AiFillEdit /></div>
-            </div>
-          </div>
-        </div>
+        <CheckoutTable title={t('personalData')}>
+          {PersonalDataRows.map((row) => (
+            <CheckoutTableRow
+              key={row.name}
+              title={t(row.name)}
+              value={row.getValue(watch, t)}
+              onEditClick={() => {
+                setStep(row.step);
+                setTimeout(() => {
+                  goToField(row.anchorField, row.customField);
+                }, 100);
+              }}
+            />
+          ))}
+        </CheckoutTable>
+        <CheckoutTable title={t('companyData')}>
+          {CompanyDataRows.map((row) => (
+            <CheckoutTableRow
+              key={row.name}
+              title={t(row.name)}
+              value={row.getValue(watch, t)}
+              onEditClick={() => {
+                setStep(row.step);
+                setTimeout(() => {
+                  goToField(row.anchorField, row.customField);
+                }, 100);
+              }}
+            />
+          ))}
+        </CheckoutTable>
+        <CheckoutTable title={t('docsUpload')}>
+
+        </CheckoutTable>
       </div>
     </>
   );

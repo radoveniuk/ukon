@@ -73,7 +73,9 @@ function MultiSelect({
     getLabelProps,
     getMenuProps,
     getInputProps,
+    openMenu,
     getItemProps,
+    toggleMenu,
   } = useCombobox({
     items,
     inputValue,
@@ -141,7 +143,7 @@ function MultiSelect({
       >
         {label}
       </label>
-      <div className={styles.selectWrapper}>
+      <div className={styles.selectWrapper} onClick={openMenu}>
         <div className={styles.selectContent}>
           <div className={styles.select}>
             <input

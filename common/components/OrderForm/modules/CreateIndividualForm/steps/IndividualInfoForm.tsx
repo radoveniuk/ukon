@@ -25,7 +25,7 @@ export default function IndividualInfoForm () {
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
   const { control, register, resetField, watch } = useFormContext();
-  
+
   const { name, surname, namePrefix, namePostfix } = watch();
   const companyNamePrefix = useMemo(() => {
     return `${namePrefix?.Value ?? ''} ${name ?? ''} ${surname ?? ''} ${namePostfix?.Value ?? ''}`.trim().replaceAll(/  +/g, ' ');
@@ -69,28 +69,28 @@ export default function IndividualInfoForm () {
         </FormItem>
         <FormItem number={2} title={t('form.numberAndBirthDate')}>
           <div className={styles['reg__item-inputs']}>
-            <TextFieldFormated 
+            <TextFieldFormated
               label={t('form.physicalNumber')}
-              format="######/####" 
+              format="######/####"
               placeholder="XXXXXX/QQQQ"
               className={classNames('input', 't5')}
-              {...register('physicalNumber', { 
-                required: true, 
+              {...register('physicalNumber', {
+                required: true,
                 onChange (event) {
                   const val = event.target.value.replaceAll(' ', '') as string;
                   if (val.length === 11) {
                     const [dateBody] = val.split('/');
                     const yy = Number(dateBody.slice(0, 2));
-                    
+
                     let yyyy = '';
                     const currentYear = DateTime.now().year;
-                    
+
                     if (yy > currentYear - 2000) {
                       yyyy = `${1900 + yy}`;
                     } else {
                       yyyy = `${2000 + yy}`;
                     }
-                    
+
                     const im = dateBody.slice(2, 4);
                     let mm = '';
                     if (im.startsWith('1') || im.startsWith('0')) {
@@ -98,7 +98,7 @@ export default function IndividualInfoForm () {
                     } else {
                       mm = `0${im.slice(1, 2)}`;
                     }
-                    
+
                     let dd = dateBody.slice(4, 6);
 
                     const birthdateFormNumber = DateTime.fromFormat(`${dd}.${mm}.${yyyy}`, 'dd.MM.yyyy').toJSDate();
@@ -107,7 +107,7 @@ export default function IndividualInfoForm () {
                     }
                   }
                 },
-              })}  
+              })}
             />
             <Controller
               control={control}
@@ -126,20 +126,20 @@ export default function IndividualInfoForm () {
           <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressResidence')}</span>
           <div className={styles['reg__item-adress-inputs']}>
             <TextField label={t('form.street')} placeholder={t('form.inputStreet')} {...register('street')} />
-            <TextFieldFormated 
-              format="########" 
+            <TextFieldFormated
+              format="########"
               label={t('form.houseRegNumber')}
-              {...register('houseRegNumber', { required: true })} 
+              {...register('houseRegNumber', { required: true })}
             />
             <TextField
               label={t('form.houseNumber')}
-              {...register('houseNumber', { required: true })} 
+              {...register('houseNumber', { required: true })}
             />
             <TextField label={t('form.city')} placeholder={t('form.city')} {...register('city')} />
-            <TextFieldFormated 
+            <TextFieldFormated
               format="#####"
               label={t('form.zip')}
-              {...register('zip', { required: true })} 
+              {...register('zip', { required: true })}
             />
             <Controller
               control={control}
@@ -158,29 +158,29 @@ export default function IndividualInfoForm () {
           <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressSlovakResidence')}</span>
           <div className={styles['reg__item-adress-inputs']}>
             <TextField disabled label={t('form.street')} placeholder={t('form.inputStreet')} {...register('streetSlovak')} />
-            <TextFieldFormated 
+            <TextFieldFormated
               format="###"
               disabled
               label={t('form.houseRegNumber')}
-              {...register('houseRegNumberSlovak')} 
+              {...register('houseRegNumberSlovak')}
             />
-            <TextFieldFormated 
+            <TextFieldFormated
               format="###"
               disabled
               label={t('form.houseNumber')}
-              {...register('houseNumberSlovak')} 
+              {...register('houseNumberSlovak')}
             />
             <TextField disabled label={t('form.city')} placeholder={t('form.city')} {...register('citySlovak')} />
-            <TextFieldFormated 
-              format="#####" 
+            <TextFieldFormated
+              format="#####"
               disabled
               label={t('form.zip')}
-              {...register('zipSlovak')} 
+              {...register('zipSlovak')}
             />
             <TextField label={t('form.countryPlaceholder')} value="Slovensko" disabled />
           </div>
         </FormItem>
-        <FormItem title={t('form.insurance')} number={5}>
+        <FormItem id="insurance" title={t('form.insurance')} number={5}>
           <Controller
             control={control}
             name="insurance"
@@ -204,10 +204,10 @@ export default function IndividualInfoForm () {
             format="########"
             className={styles['reg__item-input']}
             label={t('form.companyNumber')}
-            {...register('companyNumber')} 
+            {...register('companyNumber')}
           />
         </FormItem>
-        <FormItem title={t('form.registerDate')} number={8}>
+        <FormItem id="registerDate" title={t('form.registerDate')} number={8}>
           <Controller
             control={control}
             name="registerDate"
@@ -219,10 +219,10 @@ export default function IndividualInfoForm () {
                   <RadioButton checked={field.value !== 'asap' && field.value !== null} onSelect={() => field.onChange('')}>{t('form.certainDate')}</RadioButton>
                 </Radio>
                 {field.value !== 'asap' && field.value !== null && (
-                  <DatePicker 
-                    min={DateTime.now().plus({ month: 1 }).toJSDate()} 
-                    value={field.value || null} 
-                    onChange={field.onChange} 
+                  <DatePicker
+                    min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                    value={field.value || null}
+                    onChange={field.onChange}
                     label={t('form.registerDate')}
                     className={styles['reg__item-input']}
                   />

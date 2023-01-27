@@ -42,6 +42,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
     getItemProps,
     reset,
     highlightedIndex,
+    openMenu,
   } = useCombobox({
     onInputValueChange({ inputValue = '' }) {
       setItems(options.filter(item => (
@@ -62,7 +63,7 @@ export default function Select ({ options, className, pathToLabel, customRenderM
       <label className={classNames('t5', styles['select-label'])} {...getLabelProps()}>
         {label}
       </label>
-      <div className={styles.select}>
+      <div className={styles.select} onClick={openMenu}>
         <input
           {...getInputProps({ 
             placeholder,

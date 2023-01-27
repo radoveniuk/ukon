@@ -7,7 +7,8 @@
     "comma-dangle": ["error", "always-multiline"],
     "quotes": [2, "single", { "avoidEscape": true }],
     "object-curly-spacing": [2, "always"],
-    "jsx-quotes": ["error", "prefer-double"]
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-trailing-spaces": ["error", { "ignoreComments": true }]
   },
   "overrides": [
     {
