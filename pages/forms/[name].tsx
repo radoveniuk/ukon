@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'ru', params }) 
 export default function Form({ name }: InferGetStaticPropsType<typeof getStaticProps>) {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:${name}:${path}`);
-  
+
   return (
     <>
       <NextSeo
