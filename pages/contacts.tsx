@@ -104,19 +104,19 @@ export default function Contacts() {
                 Заполните форму и наша команда с вами свяжеться в течении 2 часа
               </div>
               <form onSubmit={handleSubmit(submitHandler)} className={styles['contacts__right-form']}>
-                <TextField 
+                <TextField
                   labelClassName={styles['contacts__right-form-item']}
                   label="Имя и Фамилия"
                   placeholder="Анатолий Поляренко"
                   error={errors.name?.message}
                   {...register('name', { required: { value: true, message: 'Пожалуйста, заполните это поле' } })}
                 />
-                <TextField 
-                  labelClassName={styles['contacts__right-form-item']} 
-                  label="Email" 
+                <TextField
+                  labelClassName={styles['contacts__right-form-item']}
+                  label="Email"
                   placeholder="anatoliy.poliarenko@example.com"
                   error={errors.email?.message}
-                  {...register('email', { required: { value: true, message: 'Пожалуйста, заполните это поле' }, pattern: { value: /\S+@\S+\.\S+/, message: 'Пожалуйста, введите свой адрес электронной почты.' } })} 
+                  {...register('email', { required: { value: true, message: 'Пожалуйста, заполните это поле' }, pattern: { value: /\S+@\S+\.\S+/, message: 'Пожалуйста, введите свой адрес электронной почты.' } })}
                 />
                 <TextArea labelClassName={styles['contacts__right-form-item']} label="Комментарий" placeholder="Очень хочу оформить себе живность!"  {...register('comment')} />
                 <Button variant="text" className={classNames(styles['contacts__right-form-item'], styles.btn)} type="submit">Отправить</Button>

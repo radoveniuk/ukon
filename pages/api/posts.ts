@@ -35,8 +35,8 @@ export default function handler(
   for (let i = 0; i < count; i += 1) {
     posts.push(fakePost());
   }
-  
-  res.status(200).json({ 
+
+  res.status(200).json({
     data: posts,
   });
 }
