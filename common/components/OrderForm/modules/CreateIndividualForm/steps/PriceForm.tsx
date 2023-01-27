@@ -75,9 +75,9 @@ export default function PriceForm() {
               control={control}
               name="mainActivity"
               render={({ field }) => (
-                <Select 
+                <Select
                   className={styles['reg__item-project-select']}
-                  label={t('form.activitySearch')} 
+                  label={t('form.activitySearch')}
                   options={activities}
                   pathToLabel="ru"
                   handleChange={field.onChange}
@@ -106,10 +106,10 @@ export default function PriceForm() {
                 <MultiSelect
                   tooltip="<div>В случае добавления ремесленного или регулируемого вида деятельности необходимо установить ответственного представителя имеющего соответствующую квалификацию.<br>Также, будет необходимо приложить к заявке документы подтверждающие квалификацию ответственного лица и его согласие<br>За каждый регулируемый и ремесленный вид деятельности к стоимости добавляется 7,5 евро</div>"
                   className={styles['reg__item-project-select']}
-                  label={t('form.activitySearch')} 
+                  label={t('form.activitySearch')}
                   pathToLabel="ru"
                   options={activities}
-                  handleChange={field.onChange} 
+                  handleChange={field.onChange}
                   placeholder={t('form.activitySelectPlaceholder')}
                   customRenderMenuItem={(item: any) => (
                     <>
@@ -173,9 +173,9 @@ export default function PriceForm() {
               control={control}
               name="ourBusinessAdress"
               render={({ field }) => (
-                <Select 
+                <Select
                   className={styles['reg__item-project-select']}
-                  label={t('form.adress')} 
+                  label={t('form.adress')}
                   options={['Dunajská 9, 94901 Nitra', 'Dlha 59, 94901 Nitra']}
                   handleChange={field.onChange}
                   defaultValue="Dunajská 9, 94901 Nitra"
@@ -198,9 +198,9 @@ export default function PriceForm() {
           </Radio>
         </FormItem>
         <FormItem number={7} title={t('form.promo')}>
-          <TextField 
+          <TextField
             label={t('form.inputPromo')}
-            className={styles['reg__item-input']} 
+            className={styles['reg__item-input']}
             onKeyDown={(event) => {
               const allowed = /^[a-zA-Z]+$/;
               if (!Number.isNaN(Number(event.key)) || allowed.test(event.key)) {
@@ -208,7 +208,7 @@ export default function PriceForm() {
               }
               event.preventDefault();
             }}
-            {...register('promo')} 
+            {...register('promo')}
           />
         </FormItem>
         <FormItem number={8} title={t('form.isRegistered')}>
@@ -224,15 +224,15 @@ export default function PriceForm() {
         {isRegistered && (
           <>
             <FormItem number={9} title={t('form.email')}>
-              <TextField 
+              <TextField
                 label={t('form.email')}
-                className={styles['reg__item-input']} 
+                className={styles['reg__item-input']}
               />
             </FormItem>
             <FormItem number={10} title={t('form.pass')}>
-              <TextField 
+              <TextField
                 label={t('form.pass')}
-                className={styles['reg__item-input']} 
+                className={styles['reg__item-input']}
                 type="password"
               />
             </FormItem>
@@ -241,34 +241,34 @@ export default function PriceForm() {
         {!isRegistered && (
           <>
             <FormItem number={9} title={t('form.email')}>
-              <TextField 
+              <TextField
                 label={t('form.email')}
-                className={styles['reg__item-input']} 
+                className={styles['reg__item-input']}
               />
             </FormItem>
             <FormItem number={10} title={t('form.pass')}>
               <div className={styles['reg__item-project']} style={{ gap: 20 }}>
-                <TextField 
+                <TextField
                   label={t('form.pass')}
-                  className={styles['reg__item-input']} 
+                  className={styles['reg__item-input']}
                   type="password"
                 />
-                <TextField 
+                <TextField
                   label={t('form.passRepeat')}
-                  className={styles['reg__item-input']} 
+                  className={styles['reg__item-input']}
                   type="password"
                 />
               </div>
             </FormItem>
             <FormItem number={11} title={t('form.phone')}>
-              <TextField 
+              <TextField
                 label={t('form.phone')}
-                className={styles['reg__item-input']} 
+                className={styles['reg__item-input']}
               />
             </FormItem>
           </>
         )}
       </div>
     </>
-  ); 
+  );
 }

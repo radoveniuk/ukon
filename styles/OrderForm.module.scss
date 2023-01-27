@@ -1098,3 +1098,11 @@
     }
   }
 }
+
+.filesLink {
+  color: #10826E;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

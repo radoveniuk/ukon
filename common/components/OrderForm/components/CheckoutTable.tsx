@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import classNames from 'classnames';
 
@@ -30,17 +30,18 @@ type CheckoutTableRowProps = {
   onEditClick(): void;
 };
 
-export const CheckoutTableRow = ({ title, value, onEditClick }: CheckoutTableRowProps) => {
+export const CheckoutTableRow = ({ children }: PropsWithChildren) => {
   return (
     <div className={styles['reg__table-row']}>
-      <div className={classNames(styles['reg__table-row-item'], 't4')}>{title}</div>
-      <div className={classNames(styles['reg__table-row-item'], 't4')}>{value}</div>
-      <div
-        onClick={onEditClick}
-        className={classNames(styles['reg__table-row-item'], styles['reg__table-edit'])}
-      >
-        <AiFillEdit />
-      </div>
+      {children}
+    </div>
+  );
+};
+
+export const CheckoutTableCell = ({ className, children, ...rest }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) => {
+  return (
+    <div className={classNames(styles['reg__table-row-item'], className)} {...rest}>
+      {children}
     </div>
   );
 };
