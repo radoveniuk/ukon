@@ -81,6 +81,7 @@
     "companyData": "Данные о предприятии",
     "activities": "Виды деятельности – КВЭДы",
     "docsUpload": "Загрузка документов",
+    "docsList": "Список документов",
     "proxyDoc": "Скан-копия/фото подписанной доверенности",
     "realtyDoc": "Документ доказывающий право использовать недвижимость",
     "nonConvictDoc": "Справка о несудимости",
@@ -90,7 +91,20 @@
     "permitResidenceDoc": "Документ ПМЖ в стране:",
     "downloadTemplate": "Скачать шаблон",
     "sendTemplate": "Отправить шаблон на e-mail",
-    "signOnline": "Подписать онлайн"
+    "signOnline": "Подписать онлайн",
+    "correctData": "Данные введены правильно",
+    "payment": "Оплата",
+    "paymentType": "Тип оплаты",
+    "paymentLink": "Оплатить",
+    "paymentByCard": "Online",
+    "paymentByInvoice": "Переводом на счёт",
+    "invoiceType": "Выставить инвойс на",
+    "invoiceToCurrentIdividual": "Регистрируемого предпринимателя",
+    "invoiceToIdividual": "Физическое лицо",
+    "invoiceToCompany": "Юридическое лицо",
+    "agreeWithRules": "Я согласен с общими условиями предоставления услуги",
+    "nextStep": "Следующий шаг",
+    "finish": "Завершить оформление"
   },
   "update-company": {
     "pageTitle": "Обновление данных по ООО"

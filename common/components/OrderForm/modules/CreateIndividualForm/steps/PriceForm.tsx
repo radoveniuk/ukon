@@ -18,7 +18,7 @@ export default function PriceForm() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, watch, register } = useFormContext();
+  const { control, watch, register, setValue, formState: { errors } } = useFormContext();
   const [, updatePriceList] = usePriceContext();
 
   const residence = watch('residence');
@@ -65,6 +65,9 @@ export default function PriceForm() {
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
 
+  // console.log(watch(), errors);
+
+
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
@@ -73,15 +76,19 @@ export default function PriceForm() {
           <div className={styles['reg__item-project']}>
             <Controller
               control={control}
+              rules={{ required: { value: true, message: 'Required!!!' } }}
               name="mainActivity"
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <Select
                   className={styles['reg__item-project-select']}
                   label={t('form.activitySearch')}
                   options={activities}
                   pathToLabel="ru"
                   handleChange={field.onChange}
+                  onBlur={field.onBlur}
                   placeholder={t('form.activitySelectPlaceholder')}
+                  value={field.value}
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   customRenderMenuItem={(item: any) => (
                     <>
                       <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
@@ -134,19 +141,25 @@ export default function PriceForm() {
             <Controller
               control={control}
               name="citizenship"
+              rules={{ required: true }}
               render={({ field }) => (
                 <Select
                   label={t('form.citizenship')}
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
                   pathToLabel="ru"
-                  handleChange={field.onChange}
+                  value={field.value}
+                  handleChange={(value) => {
+                    field.onChange(value);
+                    setValue('residence', value);
+                  }}
                 />
               )}
             />
             <Controller
               control={control}
               name="residence"
+              rules={{ required: true }}
               render={({ field }) => (
                 <Select
                   label={t('form.residence')}
@@ -154,6 +167,7 @@ export default function PriceForm() {
                   className={styles['reg__item-project-country-select']}
                   options={countries}
                   pathToLabel="ru"
+                  value={field.value}
                   handleChange={field.onChange}
                 />
               )}
@@ -161,23 +175,33 @@ export default function PriceForm() {
           </div>
         </FormItem>
         <FormItem number={4} title={t('form.businessAdress')}>
-          <Radio className={styles['reg__item-radios']} name="virtual">
-            <RadioButton defaultChecked dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdress') }} />
-            {residence?.en === 'Slovakia' && <RadioButton dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdress') }}  />}
-            <RadioButton dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
-          </Radio>
+          <Controller
+            control={control}
+            name="businessAdress"
+            rules={{ required: true }}
+            defaultValue="ukon"
+            render={({ field }) => (
+              <Radio className={styles['reg__item-radios']} name="virtual">
+                <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdress') }} />
+                {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdress') }}  />}
+                <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
+              </Radio>
+            )}
+          />
         </FormItem>
         <FormItem number={5} title={t('form.ourBusinessAdressSelect')}>
           <div className={styles['reg__item-project']}>
             <Controller
               control={control}
               name="ourBusinessAdress"
+              defaultValue="Dunajská 9, 94901 Nitra"
               render={({ field }) => (
                 <Select
                   className={styles['reg__item-project-select']}
                   label={t('form.adress')}
                   options={['Dunajská 9, 94901 Nitra', 'Dlha 59, 94901 Nitra']}
                   handleChange={field.onChange}
+                  value={field.value}
                   defaultValue="Dunajská 9, 94901 Nitra"
                 />
               )}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { useCombobox, UseComboboxStateChange } from 'downshift';
+import { useCombobox } from 'downshift';
 import _ from 'lodash-es';
 
 import styles from 'styles/components/forms/Select.module.scss';
@@ -24,18 +24,20 @@ type Props = {
   isLoading?: boolean;
   disabled?: boolean;
   maxItems?: number;
-  defaultValue?: unknown; 
+  value: unknown;
+  defaultValue?: unknown;
+  state?: 'draft' | 'error' | 'success';
+  onBlur?(e: any): void;
 };
 
-export default function Select ({ options, className, pathToLabel, customRenderMenuItem, handleChange, defaultValue, label, placeholder, style, disabled }: Props) {
+export default function Select ({ options, className, pathToLabel, defaultValue, customRenderMenuItem, handleChange, state = 'draft', label, placeholder, style, disabled, value, onBlur }: Props) {
   const [items, setItems] = React.useState(options);
-  const [selectedItem, setSelectedItem] = React.useState<unknown | null>(defaultValue);
 
   const getLabel = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) : item) as string;
-  
+
   const {
     isOpen,
-    getToggleButtonProps,
+    toggleMenu,
     getLabelProps,
     getMenuProps,
     getInputProps,
@@ -43,36 +45,37 @@ export default function Select ({ options, className, pathToLabel, customRenderM
     reset,
     highlightedIndex,
     openMenu,
+    inputValue,
   } = useCombobox({
     onInputValueChange({ inputValue = '' }) {
       setItems(options.filter(item => (
-        getLabel(item).toLowerCase().includes(inputValue.toLowerCase())
+        getLabel(item).toLowerCase().includes(inputValue?.toLowerCase() || '')
       )));
     },
-    defaultSelectedItem: defaultValue,
     items,
+    defaultSelectedItem: defaultValue,
     itemToString: getLabel,
     onSelectedItemChange: (updates) => {
       handleChange?.(updates.selectedItem);
-      setSelectedItem(updates.selectedItem);
     },
   });
 
   return (
-    <div className={classNames(styles.wrapper, className)} style={style}>
+    <div className={classNames(styles.wrapper, className)} style={style} onBlur={onBlur}>
       <label className={classNames('t5', styles['select-label'])} {...getLabelProps()}>
         {label}
       </label>
-      <div className={styles.select} onClick={openMenu}>
+      <div className={classNames(styles.select, styles[state])} onClick={openMenu}>
         <input
-          {...getInputProps({ 
+          {...getInputProps({
             placeholder,
             disabled,
+            value: inputValue || '',
             className: classNames('t5'),
           })}
         />
-        {!selectedItem && (<div role="button" {...getToggleButtonProps({ onBlur: (e: any) => (e.preventDownshiftDefault = true), className: classNames(styles.toggleBtn, isOpen ? styles.active : '' ) })}><DropdownIcon /></div>)}
-        {!!selectedItem && (<div role="button" onClick={() => { reset(); setSelectedItem(null); }}><MinusIcon /></div>)}
+        {!value && (<div role="button" className={classNames(styles.toggleBtn, isOpen ? styles.active : '')} onClick={toggleMenu}><DropdownIcon /></div>)}
+        {!!value && (<div role="button" onClick={() => { reset(); handleChange?.(null); }}><MinusIcon /></div>)}
       </div>
       <div className={styles.dropdownMenuWrapper}>
         <ul {...getMenuProps({ className: styles.dropdownMenu })}>

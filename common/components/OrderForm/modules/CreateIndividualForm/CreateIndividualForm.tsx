@@ -27,7 +27,7 @@ function CreateIndividualFormRender () {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const formMethods = useForm();
+  const formMethods = useForm({ reValidateMode: 'onChange' });
 
   const [priceList] = usePriceContext();
 
@@ -103,7 +103,8 @@ function CreateIndividualFormRender () {
         </div>
       </div>
       <div onClick={nextStep} className={classNames(styles['reg-next'], styles.active, 'btn-text')}>
-        Следующий шаг
+        {step === STEPS - 1 && t('finish')}
+        {step !== STEPS - 1 && t('nextStep')}
       </div>
     </>
   );

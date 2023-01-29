@@ -1,6 +1,7 @@
-import { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
-import { AiFillEdit } from 'react-icons/ai';
+import { HTMLAttributes, PropsWithChildren, ReactNode, useState } from 'react';
 import classNames from 'classnames';
+
+import DropdownIcon from 'common/components/icons/DropdownIcon';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -9,25 +10,20 @@ type Props = {
 };
 
 export default function CheckoutTable ({ title, children } : PropsWithChildren<Props>) {
+  const [open, setOpen] = useState(true);
   return (
     <div className={styles.reg__table}>
       <div className={styles['reg__table-top']}>
         <div className={classNames(styles['reg__table-top-title'], 't1')}>
           {title}
         </div>
-        {/* <div onClick={prevStep} className={styles['reg__table-top-edit']}>{t('edit')}</div> */}
+        <div className={classNames(styles['reg__table-top-toggle'], open ? styles.open : '')}><DropdownIcon onClick={() => void setOpen(prev => !prev)}/></div>
       </div>
-      <div className={styles['reg__table-rows']}>
+      <div className={classNames(styles['reg__table-rows'], open ? styles.open : '')}>
         {children}
       </div>
     </div>
   );
-};
-
-type CheckoutTableRowProps = {
-  title: string;
-  value: string | ReactNode;
-  onEditClick(): void;
 };
 
 export const CheckoutTableRow = ({ children }: PropsWithChildren) => {

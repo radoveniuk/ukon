@@ -863,21 +863,25 @@
       &-title {
         color: #131313;
       }
-      &-edit {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 130%;
-        text-decoration-line: underline;
-        color: #131313;
+      &-toggle {
         cursor: pointer;
+        svg {
+          transition: .3s;
+        }
+        &.open {
+          svg {
+            transform: rotateX(180deg);
+          }
+        }
       }
     }
     &-rows {
       display: flex;
       flex-direction: column;
       background-color: #FAFAFA;
+      &:not(.open) {
+        display: none;
+      }
     }
     &-edit {
       cursor: pointer;

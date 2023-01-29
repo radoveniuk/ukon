@@ -46,7 +46,7 @@ export default function IndividualInfoForm () {
                   placeholder={t('form.inputNamePrefix')}
                   options={prefixes.filter((item) => item.Type === 'Prefix')}
                   pathToLabel="Value"
-                  handleChange={field.onChange}
+                  onChange={field.onChange}
                 />
               )}
             />
@@ -61,7 +61,7 @@ export default function IndividualInfoForm () {
                   placeholder={t('form.inputNamePostfix')}
                   options={prefixes.filter((item) => item.Type === 'Postfix')}
                   pathToLabel="Value"
-                  handleChange={field.onChange}
+                  onChange={field.onChange}
                 />
               )}
             />
@@ -150,7 +150,7 @@ export default function IndividualInfoForm () {
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
                   pathToLabel="ru"
-                  handleChange={field.onChange}
+                  onChange={field.onChange}
                 />
               )}
             />

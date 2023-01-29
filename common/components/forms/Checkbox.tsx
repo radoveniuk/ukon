@@ -7,9 +7,9 @@ type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputE
   label: string;
 }
 
-function Checkbox ({ label, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
+function Checkbox ({ label, className, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
   return (
-    <label className={styles.wrapper}>
+    <label className={classNames(styles.wrapper, className)}>
       <span className={styles.checkbox}>
         <input type="checkbox" {...rest} ref={ref} />
         <svg className={styles.checkboxIcon} width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">

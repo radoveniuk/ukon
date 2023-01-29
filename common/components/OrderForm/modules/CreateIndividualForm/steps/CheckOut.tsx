@@ -1,12 +1,17 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { useFormContext, UseFormWatch } from 'react-hook-form';
-import { AiFillEdit } from 'react-icons/ai';
-import { BsFileEarmarkArrowUpFill } from 'react-icons/bs';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
 
+import Button from 'common/components/Button';
+import Checkbox from 'common/components/forms/Checkbox';
+import FileInput from 'common/components/forms/FileInput';
+import Radio, { RadioButton } from 'common/components/forms/Radio';
+import EditIcon from 'common/components/icons/EditIcon';
+import UploadIcon from 'common/components/icons/UploadIcon';
 import CheckoutTable, { CheckoutTableCell, CheckoutTableRow } from 'common/components/OrderForm/components/CheckoutTable';
+import FormItem from 'common/components/OrderForm/components/FormItem';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -131,6 +136,8 @@ export default function CheckOut () {
 
   const { watch, setFocus } = useFormContext();
 
+  const [paymentType, setPaymentType] = useState<'online' | 'invoice'>('online');
+
   const goToField = (id: string, scroll = false) => {
     setFocus(id, { shouldSelect: true });
     if (scroll) {
@@ -146,93 +153,127 @@ export default function CheckOut () {
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('checkoutText') }} />
-      <div className={styles.reg__tables}>
-        <CheckoutTable title={t('personalData')}>
-          {PersonalDataRows.map((row) => (
-            <CheckoutTableRow key={row.name}>
-              <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
-              <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
-              <CheckoutTableCell
-                className={styles['reg__table-edit']}
-                onClick={() => {
-                  setStep(row.step);
-                  setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
-                }}
-              >
-                <AiFillEdit />
+      <FormItem number={1} title="Контроль заполненных данных">
+        <div className={styles.reg__tables}>
+          <CheckoutTable title={t('personalData')}>
+            {PersonalDataRows.map((row) => (
+              <CheckoutTableRow key={row.name}>
+                <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
+                <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
+                <CheckoutTableCell
+                  className={styles['reg__table-edit']}
+                  onClick={() => {
+                    setStep(row.step);
+                    setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
+                  }}
+                >
+                  <EditIcon />
+                </CheckoutTableCell>
+              </CheckoutTableRow>
+            ))}
+          </CheckoutTable>
+          <CheckoutTable title={t('companyData')}>
+            {CompanyDataRows.map((row) => (
+              <CheckoutTableRow key={row.name}>
+                <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
+                <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
+                <CheckoutTableCell
+                  className={styles['reg__table-edit']}
+                  onClick={() => {
+                    setStep(row.step);
+                    setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
+                  }}
+                >
+                  <EditIcon />
+                </CheckoutTableCell>
+              </CheckoutTableRow>
+            ))}
+          </CheckoutTable>
+          <Checkbox label={t('correctData')} className="mb-15" />
+        </div>
+      </FormItem>
+      <FormItem number={2} title={t('docsUpload')}>
+        <div className={styles.reg__tables}>
+          <CheckoutTable title={t('docsList')}>
+            <CheckoutTableRow>
+              <CheckoutTableCell className="t4">{t('proxyDoc')}</CheckoutTableCell>
+              <CheckoutTableCell className="t4">
+                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+                <div className={styles.filesLink}>{t('sendTemplate')}</div>
+                <div className={styles.filesLink}>{t('signOnline')}</div>
+              </CheckoutTableCell>
+              <CheckoutTableCell>
+                <FileInput className={styles['reg__table-edit']}>
+                  <UploadIcon />
+                </FileInput>
               </CheckoutTableCell>
             </CheckoutTableRow>
-          ))}
-        </CheckoutTable>
-        <CheckoutTable title={t('companyData')}>
-          {CompanyDataRows.map((row) => (
-            <CheckoutTableRow key={row.name}>
-              <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
-              <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
-              <CheckoutTableCell
-                className={styles['reg__table-edit']}
-                onClick={() => {
-                  setStep(row.step);
-                  setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
-                }}
-              >
-                <AiFillEdit />
+            <CheckoutTableRow>
+              <CheckoutTableCell className="t4">{t('realtyDoc')}</CheckoutTableCell>
+              <CheckoutTableCell className="t4">
+                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+                <div className={styles.filesLink}>{t('sendTemplate')}</div>
+              </CheckoutTableCell>
+              <CheckoutTableCell>
+                <FileInput className={styles['reg__table-edit']}>
+                  <UploadIcon />
+                </FileInput>
               </CheckoutTableCell>
             </CheckoutTableRow>
-          ))}
-        </CheckoutTable>
-        <CheckoutTable title={t('docsUpload')}>
-          <CheckoutTableRow>
-            <CheckoutTableCell className="t4">{t('proxyDoc')}</CheckoutTableCell>
-            <CheckoutTableCell className="t4">
-              <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-              <div className={styles.filesLink}>{t('sendTemplate')}</div>
-              <div className={styles.filesLink}>{t('signOnline')}</div>
-            </CheckoutTableCell>
-            <CheckoutTableCell className={styles['reg__table-edit']} >
-              <BsFileEarmarkArrowUpFill />
-            </CheckoutTableCell>
-          </CheckoutTableRow>
-          <CheckoutTableRow>
-            <CheckoutTableCell className="t4">{t('realtyDoc')}</CheckoutTableCell>
-            <CheckoutTableCell className="t4">
-              <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-              <div className={styles.filesLink}>{t('sendTemplate')}</div>
-            </CheckoutTableCell>
-            <CheckoutTableCell className={styles['reg__table-edit']} >
-              <BsFileEarmarkArrowUpFill />
-            </CheckoutTableCell>
-          </CheckoutTableRow>
-          <CheckoutTableRow>
-            <CheckoutTableCell className="t4">{t('nonConvictDoc')}</CheckoutTableCell>
-            <CheckoutTableCell className="t4"></CheckoutTableCell>
-            <CheckoutTableCell className={styles['reg__table-edit']} >
-              <BsFileEarmarkArrowUpFill />
-            </CheckoutTableCell>
-          </CheckoutTableRow>
-          <CheckoutTableRow>
-            <CheckoutTableCell className="t4">{t('identDoc')}</CheckoutTableCell>
-            <CheckoutTableCell className="t4">{t('identDocPlaceholder')}</CheckoutTableCell>
-            <CheckoutTableCell className={styles['reg__table-edit']} >
-              <BsFileEarmarkArrowUpFill />
-            </CheckoutTableCell>
-          </CheckoutTableRow>
-          <CheckoutTableRow>
-            <CheckoutTableCell className="t4">{t('residenceSkDoc')}</CheckoutTableCell>
-            <CheckoutTableCell className="t4" />
-            <CheckoutTableCell className={styles['reg__table-edit']} >
-              <BsFileEarmarkArrowUpFill />
-            </CheckoutTableCell>
-          </CheckoutTableRow>
-          <CheckoutTableRow>
-            <CheckoutTableCell className="t4">{t('permitResidenceDoc')}<br />{watch('residence.ru')}</CheckoutTableCell>
-            <CheckoutTableCell className="t4" />
-            <CheckoutTableCell className={styles['reg__table-edit']} >
-              <BsFileEarmarkArrowUpFill />
-            </CheckoutTableCell>
-          </CheckoutTableRow>
-        </CheckoutTable>
-      </div>
+            <CheckoutTableRow>
+              <CheckoutTableCell className="t4">{t('nonConvictDoc')}</CheckoutTableCell>
+              <CheckoutTableCell className="t4"></CheckoutTableCell>
+              <CheckoutTableCell>
+                <FileInput className={styles['reg__table-edit']}>
+                  <UploadIcon />
+                </FileInput>
+              </CheckoutTableCell>
+            </CheckoutTableRow>
+            <CheckoutTableRow>
+              <CheckoutTableCell className="t4">{t('identDoc')}</CheckoutTableCell>
+              <CheckoutTableCell className="t4">{t('identDocPlaceholder')}</CheckoutTableCell>
+              <CheckoutTableCell>
+                <FileInput className={styles['reg__table-edit']}>
+                  <UploadIcon />
+                </FileInput>
+              </CheckoutTableCell>
+            </CheckoutTableRow>
+            <CheckoutTableRow>
+              <CheckoutTableCell className="t4">{t('residenceSkDoc')}</CheckoutTableCell>
+              <CheckoutTableCell className="t4"/>
+              <CheckoutTableCell>
+                <FileInput className={styles['reg__table-edit']}>
+                  <UploadIcon />
+                </FileInput>
+              </CheckoutTableCell>
+            </CheckoutTableRow>
+            <CheckoutTableRow>
+              <CheckoutTableCell className="t4">{t('permitResidenceDoc')}<br />{watch('residence.ru')}</CheckoutTableCell>
+              <CheckoutTableCell className="t4"/>
+              <CheckoutTableCell>
+                <FileInput className={styles['reg__table-edit']}>
+                  <UploadIcon />
+                </FileInput>
+              </CheckoutTableCell>
+            </CheckoutTableRow>
+          </CheckoutTable>
+        </div>
+      </FormItem>
+      <FormItem number={3} title={t('paymentType')}>
+        <Radio className={classNames(styles['reg__item-radios'], 'mb-15')} name="paymentType">
+          <RadioButton checked={paymentType === 'online'} onSelect={() => void setPaymentType('online')}>{t('paymentByCard')}</RadioButton>
+          <RadioButton checked={paymentType === 'invoice'} onSelect={() => void setPaymentType('invoice')}>{t('paymentByInvoice')}</RadioButton>
+        </Radio>
+        {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+      </FormItem>
+      <FormItem number={4} title={t('invoiceType')}>
+        <Radio className={classNames(styles['reg__item-radios'], 'mb-15')} name="invoiceType">
+          <RadioButton defaultChecked>{t('invoiceToCurrentIdividual')}</RadioButton>
+          <RadioButton>{t('invoiceToIdividual')}</RadioButton>
+          <RadioButton>{t('invoiceToCompany')}</RadioButton>
+        </Radio>
+      </FormItem>
+      <Checkbox label={t('agreeWithRules')} />
     </>
   );
 }

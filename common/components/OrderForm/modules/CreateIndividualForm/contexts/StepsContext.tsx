@@ -23,7 +23,7 @@ export const useSteps = () => {
     throw new Error('Context not connect');
   }
   const [step, setStep] = context;
-  
+
   return {
     step,
     setStep,
