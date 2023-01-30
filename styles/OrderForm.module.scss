@@ -453,6 +453,21 @@
         }
       }
     }
+    &-payments {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      &-title {
+        font-family: 'Montserrat';
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      &-radios {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
     &-radios {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -679,6 +694,7 @@
       strong {
         margin-top: 32px;
         margin-right: 10px;
+        font-family: 'Montserrat';
       }
     }
     &-inputs {
@@ -856,10 +872,40 @@
     &:not(:last-child) {
       margin-bottom: 30px;
     }
+    &.open {
+      .reg__table-top {
+        border-radius: 0;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+      }
+      .reg__table-top-toggle {
+        svg {
+          transform: rotateX(180deg);
+        }
+      }
+      .reg__table-rows {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    &.colorfull.opened:not(.open) {
+      .reg__table-top {
+        background-color: rgba(68, 151, 136, 0.2);
+      }
+    }
+    &.colorfull:not(.opened):not(.open) {
+      .reg__table-top {
+        background-color: hsla(0, 82%, 69%, 0.2);
+      }
+    }
     &-top {
       display: flex;
+      cursor: pointer;
       justify-content: space-between;
-      margin-bottom: 20px;
+      border-radius: 25px;
+      padding: 15px;
+      align-items: center;
+      background-color: #fafafa;
       &-title {
         color: #131313;
       }
@@ -868,20 +914,11 @@
         svg {
           transition: .3s;
         }
-        &.open {
-          svg {
-            transform: rotateX(180deg);
-          }
-        }
       }
     }
     &-rows {
-      display: flex;
-      flex-direction: column;
       background-color: #FAFAFA;
-      &:not(.open) {
-        display: none;
-      }
+      display: none;
     }
     &-edit {
       cursor: pointer;
@@ -1074,6 +1111,7 @@
     }
   }
   &-next {
+    border: none;
     position: fixed;
     bottom: 0;
     z-index: 100;

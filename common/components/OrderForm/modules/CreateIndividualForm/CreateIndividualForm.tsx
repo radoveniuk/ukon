@@ -10,6 +10,7 @@ import styles from 'styles/OrderForm.module.scss';
 
 import PriceProvider, { usePriceContext } from './contexts/PriceContext';
 import StepsProvider, { STEPS, useSteps } from './contexts/StepsContext';
+import ValidationProvider, { useValidation } from './contexts/ValidationContext';
 import CheckOut from './steps/CheckOut';
 import IndividualInfoForm from './steps/IndividualInfoForm';
 import PriceForm from './steps/PriceForm';
@@ -27,9 +28,9 @@ function CreateIndividualFormRender () {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const formMethods = useForm({ reValidateMode: 'onChange' });
-
   const [priceList] = usePriceContext();
+
+  const isValidStep = useValidation();
 
   return (
     <>
@@ -55,17 +56,15 @@ function CreateIndividualFormRender () {
               ))}
             </div>
             <div className={styles.reg__tabs}>
-              <FormProvider {...formMethods}>
-                <div className={classNames(styles.reg__tab, step === 0 ? styles.active : '')}>
-                  <PriceForm />
-                </div>
-                <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
-                  <IndividualInfoForm />
-                </div>
-                <div className={classNames(styles.reg__tab, step === 2 ? styles.active : '')}>
-                  <CheckOut />
-                </div>
-              </FormProvider>
+              <div className={classNames(styles.reg__tab, step === 0 ? styles.active : '')}>
+                <PriceForm />
+              </div>
+              <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
+                <IndividualInfoForm />
+              </div>
+              <div className={classNames(styles.reg__tab, step === 2 ? styles.active : '')}>
+                <CheckOut />
+              </div>
             </div>
           </div>
         </div>
@@ -102,20 +101,25 @@ function CreateIndividualFormRender () {
           </div>
         </div>
       </div>
-      <div onClick={nextStep} className={classNames(styles['reg-next'], styles.active, 'btn-text')}>
+      <button onClick={nextStep} disabled={!isValidStep} className={classNames(styles['reg-next'], isValidStep ? styles.active : '', 'btn-text')}>
         {step === STEPS - 1 && t('finish')}
         {step !== STEPS - 1 && t('nextStep')}
-      </div>
+      </button>
     </>
   );
 }
 
 export default function CreateIndividualForm () {
+  const formMethods = useForm({ mode: 'all' });
   return (
-    <PriceProvider>
+    <FormProvider {...formMethods}>
       <StepsProvider>
-        <CreateIndividualFormRender />
+        <ValidationProvider>
+          <PriceProvider>
+            <CreateIndividualFormRender />
+          </PriceProvider>
+        </ValidationProvider>
       </StepsProvider>
-    </PriceProvider>
+    </FormProvider>
   );
 }

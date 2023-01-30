@@ -17,23 +17,24 @@ export function TextFieldLabel ({ className, label, error, children }: PropsWith
       {children}
       {!!error && <span className={styles.error}>{error}</span>}
     </label>
-  );  
+  );
 }
 
 type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   labelClassName?: string;
   label?: string;
-  error?: string;
+  error?: string | boolean;
+  success?: boolean;
 };
 
-function TextField ({ labelClassName, className, label, error, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
+function TextField ({ labelClassName, className, label, error, success, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
   return (
     <label className={classNames(labelClassName, styles.label)} >
       <span className="t5">{label}</span>
-      <input ref={ref} type="text" className={classNames(className, styles.input, 't5')} {...rest} />
-      {!!error && <span className={styles.error}>{error}</span>}
+      <input ref={ref} type="text" className={classNames(className, styles.input, 't5', error ? styles['input-error'] : '', success ? styles['input-success'] : '')} {...rest} />
+      {!!error && typeof error === 'string' && <span className={styles.error}>{error}</span>}
     </label>
-  );  
+  );
 }
 
 export default forwardRef(TextField);
@@ -41,21 +42,22 @@ export default forwardRef(TextField);
 type FormatedProps = PatternFormatProps & {
   labelClassName?: string;
   label?: string;
-  error?: string;
+  error?: string | boolean;
+  success?: boolean;
 };
 
-export const TextFieldFormated = forwardRef(({ labelClassName, className, label, error, ...rest }: FormatedProps, ref) => {
+export const TextFieldFormated = forwardRef(({ labelClassName, className, label, error, success, ...rest }: FormatedProps, ref) => {
   return (
     <label className={classNames(labelClassName, styles.label)} >
       <span className="t5">{label}</span>
       <PatternFormat
-        className={classNames(className, styles.input, 't5')}
+        className={classNames(className, styles.input, 't5', error ? styles['input-error'] : '', success ? styles['input-success'] : '')}
         getInputRef={ref}
         {...rest}
       />
-      {!!error && <span className={styles.error}>{error}</span>}
+      {!!error && typeof error === 'string' && <span className={styles.error}>{error}</span>}
     </label>
-  );  
+  );
 });
 
 TextFieldFormated.displayName = 'TextFieldFormated';

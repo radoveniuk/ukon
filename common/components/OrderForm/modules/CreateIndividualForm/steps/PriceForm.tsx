@@ -65,9 +65,6 @@ export default function PriceForm() {
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
 
-  // console.log(watch(), errors);
-
-
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
@@ -76,7 +73,7 @@ export default function PriceForm() {
           <div className={styles['reg__item-project']}>
             <Controller
               control={control}
-              rules={{ required: { value: true, message: 'Required!!!' } }}
+              rules={{ required: t('form.requiredFieldText') }}
               name="mainActivity"
               render={({ field, fieldState }) => (
                 <Select
@@ -142,13 +139,15 @@ export default function PriceForm() {
               control={control}
               name="citizenship"
               rules={{ required: true }}
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <Select
                   label={t('form.citizenship')}
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
                   pathToLabel="ru"
                   value={field.value}
+                  onBlur={field.onBlur}
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   handleChange={(value) => {
                     field.onChange(value);
                     setValue('residence', value);
@@ -160,7 +159,7 @@ export default function PriceForm() {
               control={control}
               name="residence"
               rules={{ required: true }}
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <Select
                   label={t('form.residence')}
                   placeholder={t('form.countryPlaceholder')}
@@ -168,6 +167,8 @@ export default function PriceForm() {
                   options={countries}
                   pathToLabel="ru"
                   value={field.value}
+                  onBlur={field.onBlur}
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   handleChange={field.onChange}
                 />
               )}
@@ -181,47 +182,49 @@ export default function PriceForm() {
             rules={{ required: true }}
             defaultValue="ukon"
             render={({ field }) => (
-              <Radio className={styles['reg__item-radios']} name="virtual">
-                <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdress') }} />
-                {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdress') }}  />}
-                <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
-              </Radio>
+              <>
+                <Radio className={classNames('mb-15', styles['reg__item-radios'])} name="virtual">
+                  <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdress') }} />
+                  {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdress') }}  />}
+                  <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
+                </Radio>
+                {field.value === 'ukon' && (
+                  <Controller
+                    control={control}
+                    name="ourBusinessAdress"
+                    defaultValue="Dunajská 9, 94901 Nitra"
+                    render={({ field: adressField, fieldState: adressFieldState }) => (
+                      <Select
+                        className={styles['reg__item-project-select']}
+                        label={t('form.adress')}
+                        options={['Dunajská 9, 94901 Nitra', 'Dlha 59, 94901 Nitra']}
+                        handleChange={adressField.onChange}
+                        onBlur={adressField.onBlur}
+                        value={adressField.value}
+                        state={!adressField.value && adressFieldState.isTouched ? 'error' : (adressFieldState.isDirty ? 'success' : 'draft')}
+                        defaultValue="Dunajská 9, 94901 Nitra"
+                      />
+                    )}
+                  />
+                )}
+              </>
             )}
           />
         </FormItem>
-        <FormItem number={5} title={t('form.ourBusinessAdressSelect')}>
-          <div className={styles['reg__item-project']}>
-            <Controller
-              control={control}
-              name="ourBusinessAdress"
-              defaultValue="Dunajská 9, 94901 Nitra"
-              render={({ field }) => (
-                <Select
-                  className={styles['reg__item-project-select']}
-                  label={t('form.adress')}
-                  options={['Dunajská 9, 94901 Nitra', 'Dlha 59, 94901 Nitra']}
-                  handleChange={field.onChange}
-                  value={field.value}
-                  defaultValue="Dunajská 9, 94901 Nitra"
-                />
-              )}
-            />
-          </div>
-        </FormItem>
-        <FormItem number={6} title={t('form.vAdressTariff')}>
+        <FormItem number={5} title={t('form.vAdressTariff')}>
           <Radio className={styles['reg__item-radios']} name="vAdressTariff">
-            <RadioButton onChange={(e) => { e.target.checked && updatePriceList({ vAdressTariff: 19 }); }}>
+            <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 19 }); }}>
               «Стив Джобс» (19€)*<span className="t5">*открытие ИП</span>
             </RadioButton>
-            <RadioButton onChange={(e) => { e.target.checked && updatePriceList({ vAdressTariff: 69 }); }}>
+            <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 69 }); }}>
               «Билл Гейтс» (69€)*<span className="t5">*открытие ИП + Виртуальный адрес - Базовый пакет (до 5 писем в год)</span>
             </RadioButton>
-            <RadioButton onChange={(e) => { e.target.checked && updatePriceList({ vAdressTariff: 114 }); }}>
+            <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 114 }); }}>
               «Илон Маск» (114€)*<span className="t5">*открытие ИП + Виртуальный адрес - Cтандарт (до 100 писем в год)</span>
             </RadioButton>
           </Radio>
         </FormItem>
-        <FormItem number={7} title={t('form.promo')}>
+        <FormItem number={6} title={t('form.promo')}>
           <TextField
             label={t('form.inputPromo')}
             className={styles['reg__item-input']}
@@ -235,12 +238,12 @@ export default function PriceForm() {
             {...register('promo')}
           />
         </FormItem>
-        <FormItem number={8} title={t('form.isRegistered')}>
+        <FormItem number={7} title={t('form.isRegistered')}>
           <Radio className={styles['reg__item-radios']} name="isRegistered">
-            <RadioButton checked={isRegistered} onChange={(e) => void setIsRegistered(e.target.checked)}>
+            <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
               {t('yes')}
             </RadioButton>
-            <RadioButton checked={!isRegistered} onChange={(e) => void setIsRegistered(!e.target.checked)}>
+            <RadioButton checked={!isRegistered} onSelect={() => void setIsRegistered(false)}>
               {t('no')}
             </RadioButton>
           </Radio>
@@ -264,13 +267,13 @@ export default function PriceForm() {
         )}
         {!isRegistered && (
           <>
-            <FormItem number={9} title={t('form.email')}>
+            <FormItem number={8} title={t('form.email')}>
               <TextField
                 label={t('form.email')}
                 className={styles['reg__item-input']}
               />
             </FormItem>
-            <FormItem number={10} title={t('form.pass')}>
+            <FormItem number={9} title={t('form.pass')}>
               <div className={styles['reg__item-project']} style={{ gap: 20 }}>
                 <TextField
                   label={t('form.pass')}
@@ -284,7 +287,7 @@ export default function PriceForm() {
                 />
               </div>
             </FormItem>
-            <FormItem number={11} title={t('form.phone')}>
+            <FormItem number={10} title={t('form.phone')}>
               <TextField
                 label={t('form.phone')}
                 className={styles['reg__item-input']}

@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  max-width: min-content;
+  white-space: nowrap;
   .checkbox {
     display: flex;
     position: relative;

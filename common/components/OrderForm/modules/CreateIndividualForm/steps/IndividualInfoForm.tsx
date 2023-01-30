@@ -24,7 +24,7 @@ export default function IndividualInfoForm () {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, register, resetField, watch } = useFormContext();
+  const { control, register, setValue, watch, formState: { errors, touchedFields } } = useFormContext();
 
   const { name, surname, namePrefix, namePostfix } = watch();
   const companyNamePrefix = useMemo(() => {
@@ -51,8 +51,20 @@ export default function IndividualInfoForm () {
                 />
               )}
             />
-            <TextField label={t('form.name')} placeholder={t('form.inputName')} {...register('name')} />
-            <TextField label={t('form.surname')} placeholder={t('form.inputSurname')} {...register('surname')} />
+            <TextField
+              label={t('form.name')}
+              placeholder={t('form.inputName')}
+              error={errors.name?.message?.toString()}
+              success={!!touchedFields.name && !errors.name}
+              {...register('name', { required: t('form.requiredFieldText') })}
+            />
+            <TextField
+              label={t('form.surname')}
+              placeholder={t('form.inputSurname')}
+              error={errors.surname?.message?.toString()}
+              success={!!touchedFields.surname && !errors.surname}
+              {...register('surname', { required: t('form.requiredFieldText') })}
+            />
             <Controller
               control={control}
               name="namePostfix"
@@ -76,8 +88,13 @@ export default function IndividualInfoForm () {
               format="######/####"
               placeholder="XXXXXX/QQQQ"
               className={classNames('input', 't5')}
+              error={errors.physicalNumber?.message?.toString() || !!errors.physicalNumber}
+              success={!!touchedFields.physicalNumber && !errors.physicalNumber}
               {...register('physicalNumber', {
-                required: true,
+                required: t('form.requiredFieldText'),
+                validate: {
+                  minLength: (v) =>  v.replaceAll(' ', '').length === 11,
+                },
                 onChange (event) {
                   const val = event.target.value.replaceAll(' ', '') as string;
                   if (val.length === 11) {
@@ -103,9 +120,9 @@ export default function IndividualInfoForm () {
 
                     let dd = dateBody.slice(4, 6);
 
-                    const birthdateFormNumber = DateTime.fromFormat(`${dd}.${mm}.${yyyy}`, 'dd.MM.yyyy').toJSDate();
-                    if (isValidDate(birthdateFormNumber)) {
-                      resetField('birthdate', { defaultValue: birthdateFormNumber });
+                    const birthdateFormNumber = DateTime.fromFormat(`${dd}.${mm}.${yyyy}`, 'dd.MM.yyyy');
+                    if (birthdateFormNumber.isValid) {
+                      setValue('birthdate', `${dd}.${mm}.${yyyy}`);
                     }
                   }
                 },
@@ -114,45 +131,85 @@ export default function IndividualInfoForm () {
             <Controller
               control={control}
               name="birthdate"
-              render={({ field }) => (
-                // <TextFieldFormated format="##.##.####" label={t('form.birthdate')} placeholder="01.07.2000" value={field.value || null} onChange={field.onChange} />
-                <DatePicker placeholder="01.07.2000" value={field.value || null} onChange={field.onChange} label={t('form.birthdate')} />
+              rules={{
+                required: t('form.requiredFieldText'),
+                validate: {
+                  minLength: (v) => v.replaceAll('.', '').replaceAll('_', '').length === 8,
+                },
+              }}
+              render={({ field, fieldState }) => (
+                <TextFieldFormated
+                  format="##.##.####"
+                  label={t('form.birthdate')}
+                  placeholder="01.07.2000"
+                  mask="_"
+                  error={fieldState.error?.message || !!fieldState.error}
+                  success={!!fieldState.isTouched && !fieldState.error}
+                  {...field}
+                />
               )}
             />
           </div>
         </FormItem>
         <FormItem title={t('form.docNumber')} number={3}>
-          <TextField label={t('form.docNumber')} placeholder={t('form.inputDocNumber')} className={styles['reg__item-input']} {...register('docNumber', { required: true })} />
+          <TextField
+            label={t('form.docNumber')}
+            placeholder={t('form.inputDocNumber')}
+            className={styles['reg__item-input']}
+            error={errors.docNumber?.message?.toString()}
+            success={!!touchedFields.docNumber && !errors.docNumber}
+            {...register('docNumber', { required: t('form.requiredFieldText') })}
+          />
         </FormItem>
         <FormItem title={t('form.adress')} number={4}>
           <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressResidence')}</span>
           <div className={styles['reg__item-adress-inputs']}>
-            <TextField label={t('form.street')} placeholder={t('form.inputStreet')} {...register('street')} />
+            <TextField
+              label={t('form.street')}
+              placeholder={t('form.inputStreet')}
+              error={errors.street?.message?.toString()}
+              success={!!touchedFields.street && !errors.street}
+              {...register('street', { required: t('form.requiredFieldText') })}
+            />
             <TextFieldFormated
               format="########"
               label={t('form.houseRegNumber')}
-              {...register('houseRegNumber', { required: true })}
+              error={errors.houseRegNumber?.message?.toString()}
+              success={!!touchedFields.houseRegNumber && !errors.houseRegNumber}
+              {...register('houseRegNumber', { required: t('form.requiredFieldText') })}
             />
             <TextField
               label={t('form.houseNumber')}
-              {...register('houseNumber', { required: true })}
+              error={errors.houseNumber?.message?.toString()}
+              success={!!touchedFields.houseNumber && !errors.houseNumber}
+              {...register('houseNumber', { required: t('form.requiredFieldText') })}
             />
-            <TextField label={t('form.city')} placeholder={t('form.city')} {...register('city')} />
+            <TextField
+              label={t('form.city')}
+              placeholder={t('form.city')}
+              error={errors.city?.message?.toString()}
+              success={!!touchedFields.city && !errors.city}
+              {...register('city', { required: t('form.requiredFieldText') })}
+            />
             <TextFieldFormated
               format="#####"
               label={t('form.zip')}
-              {...register('zip', { required: true })}
+              error={errors.zip?.message?.toString()}
+              success={!!touchedFields.zip && !errors.zip}
+              {...register('zip', { required: t('form.requiredFieldText') })}
             />
             <Controller
               control={control}
-              name="country"
-              render={({ field }) => (
+              name="residence"
+              render={({ field, fieldState }) => (
                 <Select
                   label={t('form.countryPlaceholder')}
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
                   pathToLabel="ru"
                   value={field.value}
+                  onBlur={field.onBlur}
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   handleChange={field.onChange}
                 />
               )}

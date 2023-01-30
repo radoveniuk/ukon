@@ -53,6 +53,7 @@ export default function Select ({ options, className, pathToLabel, defaultValue,
       )));
     },
     items,
+    selectedItem: value,
     defaultSelectedItem: defaultValue,
     itemToString: getLabel,
     onSelectedItemChange: (updates) => {

@@ -30,7 +30,7 @@ const PersonalDataRows: CheckoutRow[] = [
     name: 'personalName',
     step: 1,
     anchorField: 'name',
-    getValue: (watch) => `${watch('namePrefix.Value')} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value')}`,
+    getValue: (watch) => `${watch('namePrefix.Value') || ''} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value') || ''}`,
   },
   {
     name: 'form.physicalNumber',
@@ -42,7 +42,7 @@ const PersonalDataRows: CheckoutRow[] = [
     name: 'form.birthdate',
     step: 1,
     anchorField: 'birthdate',
-    getValue: (watch) => DateTime.fromJSDate(watch('birthdate')).toFormat('dd.MM.yyyy'),
+    getValue: (watch) => watch('birthdate'),
   },
   {
     name: 'form.docNumber',
@@ -150,12 +150,14 @@ export default function CheckOut () {
     }
   };
 
+  const [isCheckedForm, setIsCheckedForm] = useState(false);
+
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('checkoutText') }} />
       <FormItem number={1} title="Контроль заполненных данных">
         <div className={styles.reg__tables}>
-          <CheckoutTable title={t('personalData')}>
+          <CheckoutTable title={t('personalData')} colorfull={!isCheckedForm}>
             {PersonalDataRows.map((row) => (
               <CheckoutTableRow key={row.name}>
                 <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
@@ -172,7 +174,7 @@ export default function CheckOut () {
               </CheckoutTableRow>
             ))}
           </CheckoutTable>
-          <CheckoutTable title={t('companyData')}>
+          <CheckoutTable title={t('companyData')} colorfull={!isCheckedForm}>
             {CompanyDataRows.map((row) => (
               <CheckoutTableRow key={row.name}>
                 <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
@@ -189,12 +191,12 @@ export default function CheckOut () {
               </CheckoutTableRow>
             ))}
           </CheckoutTable>
-          <Checkbox label={t('correctData')} className="mb-15" />
+          <Checkbox label={t('correctData')} className="mb-15" checked={isCheckedForm} onChange={(e) => void setIsCheckedForm(e.target.checked)} />
         </div>
       </FormItem>
       <FormItem number={2} title={t('docsUpload')}>
         <div className={styles.reg__tables}>
-          <CheckoutTable title={t('docsList')}>
+          <CheckoutTable title={t('docsList')} defaultOpen colorfull={false}>
             <CheckoutTableRow>
               <CheckoutTableCell className="t4">{t('proxyDoc')}</CheckoutTableCell>
               <CheckoutTableCell className="t4">
@@ -260,20 +262,27 @@ export default function CheckOut () {
         </div>
       </FormItem>
       <FormItem number={3} title={t('paymentType')}>
-        <Radio className={classNames(styles['reg__item-radios'], 'mb-15')} name="paymentType">
-          <RadioButton checked={paymentType === 'online'} onSelect={() => void setPaymentType('online')}>{t('paymentByCard')}</RadioButton>
-          <RadioButton checked={paymentType === 'invoice'} onSelect={() => void setPaymentType('invoice')}>{t('paymentByInvoice')}</RadioButton>
-        </Radio>
-        {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+        <div className={styles['reg__item-payments']}>
+          <div>
+            <div className={styles['reg__item-payments-title']}>{t('paymentLink')}:</div>
+            <Radio className={classNames(styles['reg__item-payments-radios'], 'mb-15')} name="paymentType">
+              <RadioButton checked={paymentType === 'online'} onSelect={() => void setPaymentType('online')}>{t('paymentByCard')}</RadioButton>
+              <RadioButton checked={paymentType === 'invoice'} onSelect={() => void setPaymentType('invoice')}>{t('paymentByInvoice')}</RadioButton>
+            </Radio>
+            {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+          </div>
+          <div>
+            <div className={styles['reg__item-payments-title']}>{t('invoiceType')}:</div>
+            <Radio className={classNames(styles['reg__item-payments-radios'])} name="invoiceType">
+              <RadioButton defaultChecked>{t('invoiceToCurrentIdividual')}</RadioButton>
+              <RadioButton>{t('invoiceToOther')}</RadioButton>
+            </Radio>
+          </div>
+        </div>
       </FormItem>
-      <FormItem number={4} title={t('invoiceType')}>
-        <Radio className={classNames(styles['reg__item-radios'], 'mb-15')} name="invoiceType">
-          <RadioButton defaultChecked>{t('invoiceToCurrentIdividual')}</RadioButton>
-          <RadioButton>{t('invoiceToIdividual')}</RadioButton>
-          <RadioButton>{t('invoiceToCompany')}</RadioButton>
-        </Radio>
+      <FormItem number={4} title={t('agree')}>
+        <Checkbox label={t('agreeWithRules')} />
       </FormItem>
-      <Checkbox label={t('agreeWithRules')} />
     </>
   );
 }

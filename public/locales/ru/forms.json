@@ -28,9 +28,9 @@
       "ourBusinessAdress": "Виртуальный адрес от <br / >Úkon.sk",
       "ownBusinessAdress": "Адрес постоянного места <br />жительства (прописки)",
       "otherBusinessAdress": "Другой адрес",
-      "ourBusinessAdressSelect": "Ваш виртуальный адресс от Úkon.sk",
-      "adress": "Адресс",
-      "vAdressTariff": "Пакет виртуального адресса",
+      "ourBusinessAdressSelect": "Ваш виртуальный адрес от Úkon.sk",
+      "adress": "Адрес",
+      "vAdressTariff": "Пакет виртуального адреса",
       "promo": "Скидочный купон",
       "inputPromo": "Введите промокод",
       "isRegistered": "Вы зарегистрированны на нашем сайте?",
@@ -71,7 +71,8 @@
       "save": "Сохранить",
       "orderComment": "Примечание к заказу",
       "comment": "Комментарий",
-      "inputComment": "Введите коментарий"
+      "inputComment": "Введите коментарий",
+      "requiredFieldText": "Обязательное поле"
     },
     "yes": "Да",
     "no": "Нет",
@@ -101,7 +102,9 @@
     "invoiceType": "Выставить инвойс на",
     "invoiceToCurrentIdividual": "Регистрируемого предпринимателя",
     "invoiceToIdividual": "Физическое лицо",
+    "invoiceToOther": "Другое физ./юр. лицо",
     "invoiceToCompany": "Юридическое лицо",
+    "agree": "Согласие с условиями предоставления услуги",
     "agreeWithRules": "Я согласен с общими условиями предоставления услуги",
     "nextStep": "Следующий шаг",
     "finish": "Завершить оформление"
