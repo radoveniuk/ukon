@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ITooltip as Props, Tooltip as ReactTooltip } from 'react-tooltip';
 import classNames from 'classnames';
 
@@ -7,7 +8,10 @@ import 'react-tooltip/dist/react-tooltip.css';
 ;
 
 export default function Tooltip(props: Props) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => { setIsMounted(true); }, []);
   return (
-    <ReactTooltip variant="light" className={classNames(props.className, styles.tooltip)} {...props} />
+    <>{isMounted &&  <ReactTooltip variant="light" className={classNames(props.className, styles.tooltip)} {...props} />}</>
   );
 }
