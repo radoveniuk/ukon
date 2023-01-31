@@ -147,8 +147,8 @@ function MultiSelect({
         <div className={styles.selectContent}>
           <div className={styles.select}>
             <input
-              {...getInputProps(getDropdownProps({ 
-                preventKeyAction: isOpen, 
+              {...getInputProps(getDropdownProps({
+                preventKeyAction: isOpen,
                 placeholder,
                 className: classNames('t5'),
               }))}

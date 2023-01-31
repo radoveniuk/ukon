@@ -15,6 +15,8 @@ const ValidationProvider = ({ children }: PropsWithChildren) => {
     mainActivity, citizenship, residence,
     // 1 step requires
     name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip,
+    // 2 step requires
+    correctData, agreeWithRules,
   } = watch();
 
   const isValid = useMemo(() => {
@@ -24,8 +26,11 @@ const ValidationProvider = ({ children }: PropsWithChildren) => {
     if (step === 1) {
       return [name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip, residence].every(item => !!item);
     }
+    if (step === 2) {
+      return [correctData, agreeWithRules].every(item => !!item);
+    }
     return false;
-  }, [step, mainActivity, citizenship, residence, name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip]);
+  }, [step, mainActivity, citizenship, residence, name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip, correctData, agreeWithRules]);
 
   return (
     <ValidationContext.Provider value={isValid}>

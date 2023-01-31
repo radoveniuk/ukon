@@ -181,8 +181,8 @@ export default function PriceForm() {
             render={({ field }) => (
               <>
                 <Radio className={classNames('mb-15', styles['reg__item-radios'])} name="virtual">
-                  <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdress') }} />
-                  {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdress') }}  />}
+                  <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdressHtml') }} />
+                  {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdressHtml') }}  />}
                   <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
                 </Radio>
                 {field.value === 'ukon' && (
@@ -207,17 +207,23 @@ export default function PriceForm() {
           />
         </FormItem>
         <FormItem number={5} title={t('form.vAdressTariff')}>
-          <Radio className={styles['reg__item-radios']} name="vAdressTariff">
-            <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 19 }); }}>
+          <Controller
+            control={control}
+            name="vAdressTariff"
+            render={({ field }) => (
+              <Radio className={styles['reg__item-radios']} name="vAdressTariff">
+                <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 19 }); field.onChange(19); }}>
               «Стив Джобс» (19€)*<span className="t5">*открытие ИП</span>
-            </RadioButton>
-            <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 69 }); }}>
+                </RadioButton>
+                <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 69 }); field.onChange(69); }}>
               «Билл Гейтс» (69€)*<span className="t5">*открытие ИП + Виртуальный адрес - Базовый пакет (до 5 писем в год)</span>
-            </RadioButton>
-            <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 114 }); }}>
+                </RadioButton>
+                <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 114 }); field.onChange(114); }}>
               «Илон Маск» (114€)*<span className="t5">*открытие ИП + Виртуальный адрес - Cтандарт (до 100 писем в год)</span>
-            </RadioButton>
-          </Radio>
+                </RadioButton>
+              </Radio>
+            )}
+          />
         </FormItem>
         <FormItem number={6} title={t('form.promo')}>
           <TextField

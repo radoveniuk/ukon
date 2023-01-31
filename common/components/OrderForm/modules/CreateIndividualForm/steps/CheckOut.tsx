@@ -9,9 +9,11 @@ import Checkbox from 'common/components/forms/Checkbox';
 import FileInput from 'common/components/forms/FileInput';
 import Radio, { RadioButton } from 'common/components/forms/Radio';
 import EditIcon from 'common/components/icons/EditIcon';
+import InfoIcon from 'common/components/icons/InfoIcon';
 import UploadIcon from 'common/components/icons/UploadIcon';
 import CheckoutTable, { CheckoutTableCell, CheckoutTableRow } from 'common/components/OrderForm/components/CheckoutTable';
 import FormItem from 'common/components/OrderForm/components/FormItem';
+import Tooltip from 'common/components/Tooltip';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -103,7 +105,22 @@ const CompanyDataRows: CheckoutRow[] = [
     name: 'form.businessAdress',
     step: 0,
     anchorField: '',
-    getValue: () => 'от Úkon.sk, Nitra — Dunajská 9/1, Пакет S +X €/год',
+    getValue: (watch, t) => {
+      let output = '';
+      const businessAdress = watch('businessAdress');
+      if (businessAdress === 'ukon') {
+        const ourBusinessAdress = watch('ourBusinessAdress.value');
+        const vAdressTariff = watch('vAdressTariff');
+        output += `${t('form.ourBusinessAdress')}, ${ourBusinessAdress}, пакет ${vAdressTariff}€/год`;
+      }
+      if (businessAdress === 'own') {
+        output += t('form.ownBusinessAdress');
+      }
+      if (businessAdress === 'other') {
+        output += t('form.otherBusinessAdress');
+      }
+      return output;
+    },
   },
   {
     name: 'form.registerDate',
@@ -134,7 +151,7 @@ export default function CheckOut () {
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
   const { setStep } = useSteps();
 
-  const { watch, setFocus } = useFormContext();
+  const { watch, setFocus, register } = useFormContext();
 
   const [paymentType, setPaymentType] = useState<'online' | 'invoice'>('online');
 
@@ -150,7 +167,7 @@ export default function CheckOut () {
     }
   };
 
-  const [isCheckedForm, setIsCheckedForm] = useState(false);
+  const isCheckedForm = watch('correctData');
 
   return (
     <>
@@ -191,74 +208,86 @@ export default function CheckOut () {
               </CheckoutTableRow>
             ))}
           </CheckoutTable>
-          <Checkbox label={t('correctData')} className="mb-15" checked={isCheckedForm} onChange={(e) => void setIsCheckedForm(e.target.checked)} />
+          <Checkbox label={t('correctData')} className="mb-15" {...register('correctData')} />
         </div>
       </FormItem>
       <FormItem number={2} title={t('docsUpload')}>
-        <div className={styles.reg__tables}>
-          <CheckoutTable title={t('docsList')} defaultOpen colorfull={false}>
-            <CheckoutTableRow>
-              <CheckoutTableCell className="t4">{t('proxyDoc')}</CheckoutTableCell>
-              <CheckoutTableCell className="t4">
-                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-                <div className={styles.filesLink}>{t('sendTemplate')}</div>
-                <div className={styles.filesLink}>{t('signOnline')}</div>
-              </CheckoutTableCell>
-              <CheckoutTableCell>
-                <FileInput className={styles['reg__table-edit']}>
-                  <UploadIcon />
-                </FileInput>
-              </CheckoutTableCell>
-            </CheckoutTableRow>
-            <CheckoutTableRow>
-              <CheckoutTableCell className="t4">{t('realtyDoc')}</CheckoutTableCell>
-              <CheckoutTableCell className="t4">
-                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-                <div className={styles.filesLink}>{t('sendTemplate')}</div>
-              </CheckoutTableCell>
-              <CheckoutTableCell>
-                <FileInput className={styles['reg__table-edit']}>
-                  <UploadIcon />
-                </FileInput>
-              </CheckoutTableCell>
-            </CheckoutTableRow>
-            <CheckoutTableRow>
-              <CheckoutTableCell className="t4">{t('nonConvictDoc')}</CheckoutTableCell>
-              <CheckoutTableCell className="t4"></CheckoutTableCell>
-              <CheckoutTableCell>
-                <FileInput className={styles['reg__table-edit']}>
-                  <UploadIcon />
-                </FileInput>
-              </CheckoutTableCell>
-            </CheckoutTableRow>
-            <CheckoutTableRow>
-              <CheckoutTableCell className="t4">{t('identDoc')}</CheckoutTableCell>
-              <CheckoutTableCell className="t4">{t('identDocPlaceholder')}</CheckoutTableCell>
-              <CheckoutTableCell>
-                <FileInput className={styles['reg__table-edit']}>
-                  <UploadIcon />
-                </FileInput>
-              </CheckoutTableCell>
-            </CheckoutTableRow>
-            <CheckoutTableRow>
-              <CheckoutTableCell className="t4">{t('residenceSkDoc')}</CheckoutTableCell>
-              <CheckoutTableCell className="t4"/>
-              <CheckoutTableCell>
-                <FileInput className={styles['reg__table-edit']}>
-                  <UploadIcon />
-                </FileInput>
-              </CheckoutTableCell>
-            </CheckoutTableRow>
-            <CheckoutTableRow>
-              <CheckoutTableCell className="t4">{t('permitResidenceDoc')}<br />{watch('residence.ru')}</CheckoutTableCell>
-              <CheckoutTableCell className="t4"/>
-              <CheckoutTableCell>
-                <FileInput className={styles['reg__table-edit']}>
-                  <UploadIcon />
-                </FileInput>
-              </CheckoutTableCell>
-            </CheckoutTableRow>
-          </CheckoutTable>
+        <div className={styles['reg__docs']}>
+          <div className={styles['reg__doc']}>
+            <div className={styles['reg__doc-title']}>
+              <div className={styles['reg__doc-title-text']}>{t('proxyDoc')}</div>
+              <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
+              <Tooltip anchorId="ProxyInfo" html={t('proxyDoc')} />
+            </div>
+            <div className={classNames(styles['reg__doc-body'], 't4')}>
+              <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+              <div className={styles.filesLink}>{t('sendTemplate')}</div>
+              <div className={styles.filesLink}>{t('signOnline')}</div>
+            </div>
+            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+              <UploadIcon />
+              {t('upload')}
+            </FileInput>
+          </div>
+          <div className={styles['reg__doc']}>
+            <div className={styles['reg__doc-title']}>
+              <div className={styles['reg__doc-title-text']}>{t('realtyDoc')}</div>
+              <InfoIcon className={styles['reg__doc-info']} id="RealtyInfo" />
+              <Tooltip anchorId="RealtyInfo" html={t('realtyDoc')} />
+            </div>
+            <div className={classNames(styles['reg__doc-body'], 't4')}>
+              <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+              <div className={styles.filesLink}>{t('sendTemplate')}</div>
+            </div>
+            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+              <UploadIcon />
+              {t('upload')}
+            </FileInput>
+          </div>
+          <div className={styles['reg__doc']}>
+            <div className={styles['reg__doc-title']}>
+              <div className={styles['reg__doc-title-text']}>{t('nonConvictDoc')}</div>
+              <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
+              <Tooltip anchorId="NotConvictInfo" html={t('nonConvictDoc')} />
+            </div>
+            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+              <UploadIcon />
+              {t('upload')}
+            </FileInput>
+          </div>
+          <div className={styles['reg__doc']}>
+            <div className={styles['reg__doc-title']}>
+              <div className={styles['reg__doc-title-text']}>{t('identDoc')}</div>
+              <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
+              <Tooltip anchorId="IdentDocInfo" html={t('identDocPlaceholder')} />
+            </div>
+            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+              <UploadIcon />
+              {t('upload')}
+            </FileInput>
+          </div>
+          <div className={styles['reg__doc']}>
+            <div className={styles['reg__doc-title']}>
+              <div className={styles['reg__doc-title-text']}>{t('residenceSkDoc')}</div>
+              <InfoIcon className={styles['reg__doc-info']} id="ResidenceSkDocInfo" />
+              <Tooltip anchorId="ResidenceSkDocInfo" html={t('residenceSkDoc')} />
+            </div>
+            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+              <UploadIcon />
+              {t('upload')}
+            </FileInput>
+          </div>
+          <div className={styles['reg__doc']}>
+            <div className={styles['reg__doc-title']}>
+              <div className={styles['reg__doc-title-text']}>{t('permitResidenceDoc')} {watch('residence.ru')}</div>
+              <InfoIcon className={styles['reg__doc-info']} id="PermitResidenceDocInfo" />
+              <Tooltip anchorId="PermitResidenceDocInfo" html={t('permitResidenceDoc')} />
+            </div>
+            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+              <UploadIcon />
+              {t('upload')}
+            </FileInput>
+          </div>
         </div>
       </FormItem>
       <FormItem number={3} title={t('paymentType')}>
@@ -281,7 +310,7 @@ export default function CheckOut () {
         </div>
       </FormItem>
       <FormItem number={4} title={t('agree')}>
-        <Checkbox label={t('agreeWithRules')} />
+        <Checkbox label={t('agreeWithRules')} {...register('agreeWithRules')} />
       </FormItem>
     </>
   );

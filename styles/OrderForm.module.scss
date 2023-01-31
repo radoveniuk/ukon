@@ -862,6 +862,45 @@
       }
     }
   }
+  &__docs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Montserrat';
+    margin-bottom: 15px;
+  }
+  &__doc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &-text {
+        font-weight: 600;
+      }
+    }
+    &-info {
+      cursor: pointer;
+    }
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    &-fileinput {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+      white-space: nowrap;
+      max-width: min-content;
+    }
+  }
   &__tables {
     display: flex;
     flex-direction: column;

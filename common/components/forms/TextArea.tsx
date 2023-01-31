@@ -16,7 +16,7 @@ function TextArea ({ labelClassName, className, label, error, ...rest }: Props, 
       <textarea ref={ref} className={classNames(className, styles.input, 't5')} {...rest} />
       {!!error && <span className={styles.error}>{error}</span>}
     </label>
-  );  
+  );
 }
 
 export default forwardRef(TextArea);
