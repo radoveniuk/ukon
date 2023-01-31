@@ -12,12 +12,11 @@ import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
 import FormItem from 'common/components/OrderForm/components/FormItem';
-import { isValidDate } from 'common/utils/date';
 
 import styles from 'styles/OrderForm.module.scss';
 
 import countries from '../../../data/countries.json';
-import insurances from '../../../data/iтsurance.json';
+import insurances from '../../../data/insurance.json';
 import prefixes from '../../../data/prefixes.json';
 
 export default function IndividualInfoForm () {
@@ -46,8 +45,7 @@ export default function IndividualInfoForm () {
                   placeholder={t('form.inputNamePrefix')}
                   options={prefixes.filter((item) => item.Type === 'Prefix')}
                   pathToLabel="Value"
-                  value={field.value}
-                  handleChange={field.onChange}
+                  {...field}
                 />
               )}
             />
@@ -74,8 +72,7 @@ export default function IndividualInfoForm () {
                   placeholder={t('form.inputNamePostfix')}
                   options={prefixes.filter((item) => item.Type === 'Postfix')}
                   pathToLabel="Value"
-                  value={field.value}
-                  handleChange={field.onChange}
+                  {...field}
                 />
               )}
             />
@@ -207,10 +204,8 @@ export default function IndividualInfoForm () {
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
                   pathToLabel="ru"
-                  value={field.value}
-                  onBlur={field.onBlur}
                   state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                  handleChange={field.onChange}
+                  {...field}
                 />
               )}
             />

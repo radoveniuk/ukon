@@ -11,6 +11,7 @@ import Select from '../../../../forms/Select';
 import TextField from '../../../../forms/TextField';
 import FormItem from '../../../components/FormItem';
 import activities from '../../../data/activities.json';
+import adresses from '../../../data/adress.json';
 import countries from '../../../data/countries.json';
 import { usePriceContext } from '../contexts/PriceContext';
 
@@ -73,19 +74,16 @@ export default function PriceForm() {
           <div className={styles['reg__item-project']}>
             <Controller
               control={control}
-              rules={{ required: t('form.requiredFieldText') }}
               name="mainActivity"
+              rules={{ required: t('form.requiredFieldText') }}
+              defaultValue={null}
               render={({ field, fieldState }) => (
                 <Select
-                  className={styles['reg__item-project-select']}
-                  label={t('form.activitySearch')}
                   options={activities}
                   pathToLabel="ru"
-                  handleChange={field.onChange}
-                  onBlur={field.onBlur}
+                  label={t('form.activitySearch')}
+                  className={styles['reg__item-project-select']}
                   placeholder={t('form.activitySelectPlaceholder')}
-                  value={field.value}
-                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   customRenderMenuItem={(item: any) => (
                     <>
                       <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
@@ -96,6 +94,8 @@ export default function PriceForm() {
                       </span>
                     </>
                   )}
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
+                  {...field}
                 />
               )}
             />
@@ -141,16 +141,15 @@ export default function PriceForm() {
               rules={{ required: true }}
               render={({ field, fieldState }) => (
                 <Select
+                  {...field}
                   label={t('form.citizenship')}
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
                   pathToLabel="ru"
-                  value={field.value}
-                  onBlur={field.onBlur}
                   state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                  handleChange={(value) => {
+                  onChange={(value) => {
                     field.onChange(value);
-                    setValue('residence', value);
+                    setValue('residence', value, { shouldTouch: true, shouldDirty: true, shouldValidate: true });
                   }}
                 />
               )}
@@ -166,10 +165,8 @@ export default function PriceForm() {
                   className={styles['reg__item-project-country-select']}
                   options={countries}
                   pathToLabel="ru"
-                  value={field.value}
-                  onBlur={field.onBlur}
                   state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                  handleChange={field.onChange}
+                  {...field}
                 />
               )}
             />
@@ -192,17 +189,15 @@ export default function PriceForm() {
                   <Controller
                     control={control}
                     name="ourBusinessAdress"
-                    defaultValue="Dunajská 9, 94901 Nitra"
+                    defaultValue={adresses[0]}
                     render={({ field: adressField, fieldState: adressFieldState }) => (
                       <Select
+                        {...adressField}
                         className={styles['reg__item-project-select']}
                         label={t('form.adress')}
-                        options={['Dunajská 9, 94901 Nitra', 'Dlha 59, 94901 Nitra']}
-                        handleChange={adressField.onChange}
-                        onBlur={adressField.onBlur}
-                        value={adressField.value}
+                        pathToLabel="value"
+                        options={adresses}
                         state={!adressField.value && adressFieldState.isTouched ? 'error' : (adressFieldState.isDirty ? 'success' : 'draft')}
-                        defaultValue="Dunajská 9, 94901 Nitra"
                       />
                     )}
                   />

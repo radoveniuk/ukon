@@ -10,90 +10,100 @@ import MinusIcon from '../icons/MinusIcon';
 
 type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 
-type Props = {
+type ComboBoxProps = {
   options: unknown[];
-  selectedOptions?: unknown[];
-  handleChange?: (item: unknown) => void;
   pathToLabel?: string;
-  itemToStrimg?: (item: unknown) => string;
-  customRenderMenuItem?: CustomRenderMenuItem;
-  className?: string;
-  style?: React.CSSProperties;
+  value: unknown | null;
+  onChange(value: unknown): void;
   label?: string;
   placeholder?: string;
-  isLoading?: boolean;
-  disabled?: boolean;
-  maxItems?: number;
-  value: unknown;
-  defaultValue?: unknown;
-  state?: 'draft' | 'error' | 'success';
+  className?: string;
   onBlur?(e: any): void;
+  customRenderMenuItem?: CustomRenderMenuItem;
+  state?: 'draft' | 'error' | 'success';
 };
 
-export default function Select ({ options, className, pathToLabel, defaultValue, customRenderMenuItem, handleChange, state = 'draft', label, placeholder, style, disabled, value, onBlur }: Props) {
+function ComboBox({
+  options,
+  pathToLabel,
+  value = null,
+  onChange,
+  label,
+  className,
+  onBlur,
+  placeholder,
+  customRenderMenuItem,
+  state = 'draft',
+}: ComboBoxProps, ref: React.ForwardedRef<HTMLInputElement>
+) {
   const [items, setItems] = React.useState(options);
 
-  const getLabel = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) : item) as string;
+  const itemToString = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) || '' : item) as string;
+
+  function getOptionsFilter (inputValue = '') {
+    return function filter (option: unknown) {
+      return (
+        !inputValue || itemToString(option).toLowerCase().includes(inputValue.toLowerCase())
+      );
+    };
+  }
+
 
   const {
     isOpen,
-    toggleMenu,
+    getToggleButtonProps,
     getLabelProps,
     getMenuProps,
     getInputProps,
-    getItemProps,
-    reset,
     highlightedIndex,
-    openMenu,
-    inputValue,
+    getItemProps,
   } = useCombobox({
-    onInputValueChange({ inputValue = '' }) {
-      setItems(options.filter(item => (
-        getLabel(item).toLowerCase().includes(inputValue?.toLowerCase() || '')
-      )));
+    onInputValueChange({ inputValue }) {
+      setItems(options.filter(getOptionsFilter(inputValue)));
     },
     items,
+    itemToString,
     selectedItem: value,
-    defaultSelectedItem: defaultValue,
-    itemToString: getLabel,
-    onSelectedItemChange: (updates) => {
-      handleChange?.(updates.selectedItem);
+    onSelectedItemChange: ({ selectedItem: newSelectedItem }) => {
+      onChange(newSelectedItem);
     },
   });
-
   return (
-    <div className={classNames(styles.wrapper, className)} style={style} onBlur={onBlur}>
+    <div className={classNames(styles.wrapper, className)} onBlur={onBlur}>
       <label className={classNames('t5', styles['select-label'])} {...getLabelProps()}>
         {label}
       </label>
-      <div className={classNames(styles.select, styles[state])} onClick={openMenu}>
+      <div className={classNames(styles.select, styles[state])}>
         <input
-          {...getInputProps({
-            placeholder,
-            disabled,
-            value: inputValue || '',
-            className: classNames('t5'),
-          })}
+          placeholder={placeholder}
+          className="t5"
+          ref={ref}
+          {...getInputProps()}
         />
-        {!value && (<div role="button" className={classNames(styles.toggleBtn, isOpen ? styles.active : '')} onClick={toggleMenu}><DropdownIcon /></div>)}
-        {!!value && (<div role="button" onClick={() => { reset(); handleChange?.(null); }}><MinusIcon /></div>)}
+        {!value && (<div role="button" className={classNames(styles.toggleBtn, isOpen ? styles.active : '')} {...getToggleButtonProps()}><DropdownIcon /></div>)}
+        {!!value && (<div role="button" onClick={() => { onChange(null); }}><MinusIcon /></div>)}
       </div>
       <div className={styles.dropdownMenuWrapper}>
-        <ul {...getMenuProps({ className: styles.dropdownMenu })}>
-          {isOpen && items.map((item, index) => (
-            <li
-              key={index}
-              {...getItemProps({
-                item,
-                index,
-                className: classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : ''),
-              })}
-            >
-              {customRenderMenuItem?.(item) || getLabel(item)}
-            </li>
-          ))}
+        <ul
+          {...getMenuProps()}
+          className={styles.dropdownMenu}
+        >
+          {isOpen &&
+            items.map((item, index) => (
+              <li
+                className={classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : '')}
+                key={`${index}`}
+                {...getItemProps({ item, index })}
+              >
+                {customRenderMenuItem?.(item) || itemToString(item)}
+              </li>
+            ))}
         </ul>
       </div>
     </div>
   );
 }
+
+const Select = React.forwardRef(ComboBox);
+
+export default Select;
