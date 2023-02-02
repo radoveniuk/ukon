@@ -251,13 +251,13 @@ export default function PriceForm() {
         </FormItem>
         {isRegistered && (
           <>
-            <FormItem number={9} title={t('form.email')}>
+            <FormItem number={8} title={t('form.email')}>
               <TextField
                 label={t('form.email')}
                 className={styles['reg__item-input']}
               />
             </FormItem>
-            <FormItem number={10} title={t('form.pass')}>
+            <FormItem number={9} title={t('form.pass')}>
               <TextField
                 label={t('form.pass')}
                 className={styles['reg__item-input']}

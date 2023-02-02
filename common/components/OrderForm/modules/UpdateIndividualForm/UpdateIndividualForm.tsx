@@ -12,22 +12,14 @@ import PrevButton from '../../components/PrevButton';
 
 import PriceProvider, { usePriceContext } from './contexts/PriceContext';
 import StepsProvider, { STEPS, useSteps } from './contexts/StepsContext';
-import ValidationProvider, { useValidation } from './contexts/ValidationContext';
-import CheckOut from './steps/CheckOut';
-import IndividualInfoForm from './steps/IndividualInfoForm';
 import PriceForm from './steps/PriceForm';
 
-
-
-function CreateIndividualFormRender () {
-  const { step, prevStep, nextStep, setStep }= useSteps();
+function UpdateIndividualFormRender () {
   const translation = useTranslation('forms');
-  const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
+  const { step, prevStep, nextStep, setStep }= useSteps();
+  const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
   const [priceList] = usePriceContext();
-
-  const isValidStep = useValidation();
-
   return (
     <>
       <div className={styles.reg__cont}>
@@ -56,10 +48,10 @@ function CreateIndividualFormRender () {
                 <PriceForm />
               </div>
               <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
-                <IndividualInfoForm />
+                {/* <IndividualInfoForm /> */}
               </div>
               <div className={classNames(styles.reg__tab, step === 2 ? styles.active : '')}>
-                <CheckOut />
+                {/* <CheckOut /> */}
               </div>
             </div>
           </div>
@@ -94,24 +86,24 @@ function CreateIndividualFormRender () {
           </div>
         </div>
       </div>
-      <button onClick={nextStep} disabled={!isValidStep} className={classNames(styles['reg-next'], isValidStep ? styles.active : '', 'btn-text')}>
+      <button onClick={nextStep} className={classNames(styles['reg-next'], styles.active, 'btn-text')}>
         {step === STEPS - 1 && t('finish')}
         {step !== STEPS - 1 && t('nextStep')}
       </button>
     </>
   );
-}
+};
 
-export default function CreateIndividualForm () {
+export default function UpdateIndividualForm () {
   const formMethods = useForm({ mode: 'all' });
   return (
     <FormProvider {...formMethods}>
       <StepsProvider>
-        <ValidationProvider>
-          <PriceProvider>
-            <CreateIndividualFormRender />
-          </PriceProvider>
-        </ValidationProvider>
+        {/* <ValidationProvider> */}
+        <PriceProvider>
+          <UpdateIndividualFormRender />
+        </PriceProvider>
+        {/* </ValidationProvider> */}
       </StepsProvider>
     </FormProvider>
   );

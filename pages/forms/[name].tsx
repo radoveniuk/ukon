@@ -5,6 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 
 import CreateIndividualForm from 'common/components/OrderForm/modules/CreateIndividualForm/CreateIndividualForm';
+import UpdateIndividualForm from 'common/components/OrderForm/modules/UpdateIndividualForm';
 import Position, { PositionItem } from 'common/components/Position';
 
 import styles from 'styles/OrderForm.module.scss';
@@ -49,6 +50,7 @@ export default function Form({ name }: InferGetStaticPropsType<typeof getStaticP
         </Position>
         <section className={styles.reg}>
           {name === 'create-individual' && <CreateIndividualForm />}
+          {name === 'update-individual' && <UpdateIndividualForm />}
         </section>
       </main>
     </>
