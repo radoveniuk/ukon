@@ -12,7 +12,7 @@ import styles from 'styles/OrderForm.module.scss';
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: ['create-company', 'create-individual', 'update-company', 'update-individual', 'v-adress'].flatMap((pageName) => {
+    paths: ['create-company', 'create-individual', 'update-company', 'update-individual', 'v-address'].flatMap((pageName) => {
       return [
         { params: { name: pageName }, locale: 'ru' },
         { params: { name: pageName }, locale: 'uk' },

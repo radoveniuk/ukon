@@ -27,7 +27,7 @@ const PRICE_LIST = {
     { name: 'Другие изменения в ООО; напр.: смена юридического адреса', price: 98 },
     { name: 'Доп. услуга - ООО (оформление/расширение)', price: 7.5 },
   ],
-  vAdress: [
+  vAddress: [
     { name: 'Виртуальный адрес - Базовый пакет (до 5 писем в год)', description: 'Документ для записи адреса в торговый реестр и реестр предпринимателей, Маркировка почтового ящика, Фотографирование полученных писем, Учет полученной почты, E-mail уведомления о полученных письмах, Сканирование содержимого писем по запросу за доп. оплату, Ликвидация писем по запросу', price: 50 },
     { name: 'Виртуальный адрес - Cтандарт (до 100 писем в год)', description: 'Документ для записи адреса в торговый реестр и реестр предпринимателей, Маркировка почтового ящика, Фотографирование полученных писем, Учет полученной почты, E-mail уведомления о полученных письмах, Сканирование содержимого писем по запросу за доп. оплату, Ликвидация писем по запросу', price: 95 },
     { name: 'Виртуальный адрес - Максимум (до 300 писем в год)', description: 'Документ для записи адреса в торговый реестр и реестр предпринимателей, Маркировка почтового ящика, Фотографирование полученных писем, Учет полученной почты, E-mail уведомления о полученных письмах, Сканирование содержимого писем по запросу за доп. оплату, Ликвидация писем по запросу', price: 235 },
@@ -90,7 +90,7 @@ export default function Rates () {
                   Оформление  ООО<br />
                   и внесения изменений в ООО
                 </div>
-                <div onClick={() => void setActiveTab('vAdress')} className={classNames(styles['all-btn'], 'h5', activeTab === 'vAdress' ? styles.active : '')}>
+                <div onClick={() => void setActiveTab('vAddress')} className={classNames(styles['all-btn'], 'h5', activeTab === 'vAddress' ? styles.active : '')}>
                   Виртуальный адрес<br />
                   и дополнительные услуги
                 </div>
@@ -183,7 +183,7 @@ export default function Rates () {
                     ))}
                   </div>
                 </div>
-                <div className={classNames(styles.all__tab, activeTab === 'vAdress' ? styles.active : '')}>
+                <div className={classNames(styles.all__tab, activeTab === 'vAddress' ? styles.active : '')}>
                   <div className={classNames(styles.all__table, styles['all__table-left'])}>
                     <div className={styles['all__table-row']}>
                       <div className={classNames(styles['all__table-item'], 't5')}>
@@ -197,7 +197,7 @@ export default function Rates () {
                       </div>
                       <div className={classNames(styles['all__table-item'], 't5')} />
                     </div>
-                    {PRICE_LIST.vAdress.map((item) => (
+                    {PRICE_LIST.vAddress.map((item) => (
                       <div className={styles['all__table-row']} key={item.name}>
                         <div className={classNames(styles['all__table-item'], 't4')}>
                           <span className="t5">

@@ -53,13 +53,13 @@ const PersonalDataRows: CheckoutRow[] = [
     getValue: (watch) => watch('docNumber'),
   },
   {
-    name: 'form.adressResidence',
+    name: 'form.addressResidence',
     step: 1,
     anchorField: 'street',
     getValue: (watch) => `${watch('street')}, ${watch('houseRegNumber')}, ${watch('houseNumber')}, ${watch('city')}, ${watch('zip')}, ${watch('country.ru')}`,
   },
   {
-    name: 'form.adressSlovakResidence',
+    name: 'form.addressSlovakResidence',
     step: 1,
     anchorField: 'streetSlovak',
     getValue: (watch) => `${watch('streetSlovak')}, ${watch('houseRegNumberSlovak')}, ${watch('houseNumberSlovak')}, ${watch('citySlovak')}, ${watch('zipSlovak')}, Slovensko`,
@@ -102,22 +102,22 @@ const CompanyDataRows: CheckoutRow[] = [
     getValue: (watch) => watch('companyNumber'),
   },
   {
-    name: 'form.businessAdress',
+    name: 'form.businessAddress',
     step: 0,
     anchorField: '',
     getValue: (watch, t) => {
       let output = '';
-      const businessAdress = watch('businessAdress');
-      if (businessAdress === 'ukon') {
-        const ourBusinessAdress = watch('ourBusinessAdress.value');
-        const vAdressTariff = watch('vAdressTariff');
-        output += `${t('form.ourBusinessAdress')}, ${ourBusinessAdress}, пакет ${vAdressTariff}€/год`;
+      const businessAddress = watch('businessAddress');
+      if (businessAddress === 'ukon') {
+        const ourBusinessAddress = watch('ourBusinessAddress.value');
+        const vAddressTariff = watch('vAddressTariff');
+        output += `${t('form.ourBusinessAddress')}, ${ourBusinessAddress}, пакет ${vAddressTariff}€/год`;
       }
-      if (businessAdress === 'own') {
-        output += t('form.ownBusinessAdress');
+      if (businessAddress === 'own') {
+        output += t('form.ownBusinessAddress');
       }
-      if (businessAdress === 'other') {
-        output += t('form.otherBusinessAdress');
+      if (businessAddress === 'other') {
+        output += t('form.otherBusinessAddress');
       }
       return output;
     },

@@ -21,7 +21,7 @@ export default function Footer () {
               <Link href="/services/create-company" className="t1">Регистрация ООО</Link>
             </li>
             <li className={styles.footer__link}>
-              <Link href="/services/v-adress" className="t1">Виртуальный адрес</Link>
+              <Link href="/services/v-address" className="t1">Виртуальный адрес</Link>
             </li>
             <li className={styles.footer__link}>
               <Link href="/services/update-individual" className="t1">Внесение изменений в ИП</Link>

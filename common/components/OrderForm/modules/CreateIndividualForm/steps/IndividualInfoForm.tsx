@@ -158,9 +158,9 @@ export default function IndividualInfoForm () {
             {...register('docNumber', { required: t('form.requiredFieldText') })}
           />
         </FormItem>
-        <FormItem title={t('form.adress')} number={4}>
-          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressResidence')}</span>
-          <div className={styles['reg__item-adress-inputs']}>
+        <FormItem title={t('form.address')} number={4}>
+          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.addressResidence')}</span>
+          <div className={styles['reg__item-address-inputs']}>
             <TextField
               label={t('form.street')}
               placeholder={t('form.inputStreet')}
@@ -210,8 +210,8 @@ export default function IndividualInfoForm () {
               )}
             />
           </div>
-          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.adressSlovakResidence')}</span>
-          <div className={styles['reg__item-adress-inputs']}>
+          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.addressSlovakResidence')}</span>
+          <div className={styles['reg__item-address-inputs']}>
             <TextField disabled label={t('form.street')} placeholder={t('form.inputStreet')} {...register('streetSlovak')} />
             <TextFieldFormated
               format="###"

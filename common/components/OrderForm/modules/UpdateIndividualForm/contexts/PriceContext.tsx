@@ -6,7 +6,7 @@ type ContextType = {
   otherActivities: number,
   citizenship: number,
   residence: number,
-  vAdressTariff: number,
+  vAddressTariff: number,
 }
 
 const PriceContext = createContext<[ContextType, Dispatch<SetStateAction<ContextType>>] | undefined>(undefined);
@@ -18,7 +18,7 @@ const PriceProvider = ({ children }: PropsWithChildren) => {
     otherActivities: 0,
     citizenship: 0,
     residence: 0,
-    vAdressTariff: 0,
+    vAddressTariff: 0,
   });
 
   return (

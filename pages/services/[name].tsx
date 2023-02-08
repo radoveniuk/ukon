@@ -71,7 +71,7 @@ const PAGE_DATA_MAP: { [key: string]: PageContent } = {
     faqItems: 6,
     seoText: false,
   },
-  'v-adress': {
+  'v-address': {
     titleImg: '/images/service/create-company.png',
     subtitles: 2,
     howItems: 4,

@@ -59,7 +59,7 @@ const serviceItems: ServiceItem[] = [
       body: 'Воспользуйтесь виртуальным адресом',
     },
     img: '/images/home/services/6.png',
-    url: '/services/v-adress',
+    url: '/services/v-address',
   },
 ];
 

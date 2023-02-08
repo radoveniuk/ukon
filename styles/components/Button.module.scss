@@ -3,17 +3,39 @@
   color: #fff;
   cursor: pointer;
   padding: 12px 34px;
-  background: #44998A;
   border-radius: 50px;
   border: 2px solid transparent;
   transition-duration: .4s;
   max-width: min-content;
+  background: #44998A;
   &:hover {
     background-color: #10826E;
   }
   &:active {
     border-color: #10826E;
     background: #44998A;
+  }
+  
+  &.warning {
+    background: #998944;
+    &:hover {
+      background-color: #827110;
+    }
+    &:active {
+      border-color: #827110;
+      background: #998944;
+    }
+  }
+  
+  &.error {
+    background: #994444;
+    &:hover {
+      background-color: #821010;
+    }
+    &:active {
+      border-color: #821010;
+      background: #994444;
+    }
   }
 }
 

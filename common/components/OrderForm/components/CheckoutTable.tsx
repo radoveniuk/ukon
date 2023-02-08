@@ -33,7 +33,7 @@ export default function CheckoutTable ({ title, children, defaultOpen, colorfull
         </div>
         <div className={styles['reg__table-top-toggle']}><DropdownIcon /></div>
       </div>
-      <div className={styles['reg__table-rows']}>
+      <div className={styles['reg__table-rows']} style={{ gridTemplateColumns: '356fr 634fr 1fr' }}>
         {children}
       </div>
     </div>

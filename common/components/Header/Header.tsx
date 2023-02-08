@@ -62,7 +62,7 @@ export default function Header () {
             </li>
             <li className={styles.header__link}>
               <div className={styles['header__link-top']}>
-                <Link href="/services/v-adress">Виртуальный адрес</Link>
+                <Link href="/services/v-address">Виртуальный адрес</Link>
               </div>
             </li>
             <li className={styles.header__link}>
@@ -147,7 +147,7 @@ export default function Header () {
           </div>
           <div className={styles.mob__link}>
             <div className={styles['mob__link-top']}>
-              <Link href="/services/v-adress">Виртуальный адрес</Link>
+              <Link href="/services/v-address">Виртуальный адрес</Link>
             </div>
           </div>
           <div className={styles.mob__link}>

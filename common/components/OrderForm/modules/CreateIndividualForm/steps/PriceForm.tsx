@@ -11,7 +11,7 @@ import Select from '../../../../forms/Select';
 import TextField from '../../../../forms/TextField';
 import FormItem from '../../../components/FormItem';
 import activities from '../../../data/activities.json';
-import adresses from '../../../data/adress.json';
+import addresses from '../../../data/address.json';
 import countries from '../../../data/countries.json';
 import { usePriceContext } from '../contexts/PriceContext';
 
@@ -172,32 +172,32 @@ export default function PriceForm() {
             />
           </div>
         </FormItem>
-        <FormItem number={4} title={t('form.businessAdress')}>
+        <FormItem number={4} title={t('form.businessAddress')}>
           <Controller
             control={control}
-            name="businessAdress"
+            name="businessAddress"
             rules={{ required: true }}
             defaultValue="ukon"
             render={({ field }) => (
               <>
                 <Radio className={classNames('mb-15', styles['reg__item-radios'])} name="virtual">
-                  <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAdressHtml') }} />
-                  {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAdressHtml') }}  />}
-                  <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAdress') }}  />
+                  <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAddressHtml') }} />
+                  {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAddressHtml') }}  />}
+                  <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAddress') }}  />
                 </Radio>
                 {field.value === 'ukon' && (
                   <Controller
                     control={control}
-                    name="ourBusinessAdress"
-                    defaultValue={adresses[0]}
-                    render={({ field: adressField, fieldState: adressFieldState }) => (
+                    name="ourBusinessAddress"
+                    defaultValue={addresses[0]}
+                    render={({ field: addressField, fieldState: addressFieldState }) => (
                       <Select
-                        {...adressField}
+                        {...addressField}
                         className={styles['reg__item-project-select']}
-                        label={t('form.adress')}
+                        label={t('form.address')}
                         pathToLabel="value"
-                        options={adresses}
-                        state={!adressField.value && adressFieldState.isTouched ? 'error' : (adressFieldState.isDirty ? 'success' : 'draft')}
+                        options={addresses}
+                        state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
                       />
                     )}
                   />
@@ -206,19 +206,19 @@ export default function PriceForm() {
             )}
           />
         </FormItem>
-        <FormItem number={5} title={t('form.vAdressTariff')}>
+        <FormItem number={5} title={t('form.vAddressTariff')}>
           <Controller
             control={control}
-            name="vAdressTariff"
+            name="vAddressTariff"
             render={({ field }) => (
-              <Radio className={styles['reg__item-radios']} name="vAdressTariff">
-                <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 19 }); field.onChange(19); }}>
+              <Radio className={styles['reg__item-radios']} name="vAddressTariff">
+                <RadioButton onSelect={() => { updatePriceList({ vAddressTariff: 19 }); field.onChange(19); }}>
               «Стив Джобс» (19€)*<span className="t5">*открытие ИП</span>
                 </RadioButton>
-                <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 69 }); field.onChange(69); }}>
+                <RadioButton onSelect={() => { updatePriceList({ vAddressTariff: 69 }); field.onChange(69); }}>
               «Билл Гейтс» (69€)*<span className="t5">*открытие ИП + Виртуальный адрес - Базовый пакет (до 5 писем в год)</span>
                 </RadioButton>
-                <RadioButton onSelect={() => { updatePriceList({ vAdressTariff: 114 }); field.onChange(114); }}>
+                <RadioButton onSelect={() => { updatePriceList({ vAddressTariff: 114 }); field.onChange(114); }}>
               «Илон Маск» (114€)*<span className="t5">*открытие ИП + Виртуальный адрес - Cтандарт (до 100 писем в год)</span>
                 </RadioButton>
               </Radio>

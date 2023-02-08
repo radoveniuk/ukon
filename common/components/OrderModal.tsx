@@ -31,7 +31,7 @@ const ORDER_ITEMS = [
   {
     name: 'Виртуальный адрес',
     img: '/images/home/services/6.png',
-    link: '/forms/v-adress',
+    link: '/forms/v-address',
   },
 ];
 
