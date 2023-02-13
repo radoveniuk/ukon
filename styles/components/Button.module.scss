@@ -2,12 +2,17 @@
   white-space: nowrap;
   color: #fff;
   cursor: pointer;
-  padding: 12px 34px;
+  padding: 12px 24px;
   border-radius: 50px;
   border: 2px solid transparent;
   transition-duration: .4s;
   max-width: min-content;
   background: #44998A;
+  max-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   &:hover {
     background-color: #10826E;
   }
@@ -28,13 +33,13 @@
   }
   
   &.error {
-    background: #994444;
+    background: #710000;
     &:hover {
       background-color: #821010;
     }
     &:active {
       border-color: #821010;
-      background: #994444;
+      background: #710000;
     }
   }
 }

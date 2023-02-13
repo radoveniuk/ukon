@@ -10,9 +10,10 @@ type Props = {
   gridTemplateColumns: string;
   defaultOpen?: boolean;
   className?: string;
+  expanding?: boolean;
 };
 
-export default function AccordionTable ({ title, children, defaultOpen, gridTemplateColumns, className } : PropsWithChildren<Props>) {
+export default function AccordionTable ({ title, children, defaultOpen, gridTemplateColumns, className, expanding = true } : PropsWithChildren<Props>) {
   const [open, setOpen] = useState(defaultOpen);
   const [opened, setOpened] = useState(open);
 
@@ -28,11 +29,18 @@ export default function AccordionTable ({ title, children, defaultOpen, gridTemp
 
   return (
     <div className={classNames(styles.reg__table, open ? styles.open : '', opened ? styles.opened : '', className)}>
-      <div className={styles['reg__table-top']} onClick={() => void setOpen(prev => !prev)}>
+      <div
+        className={classNames(styles['reg__table-top'], expanding ? styles.expanding : '') }
+        onClick={() => {
+          if (expanding) {
+            setOpen(prev => !prev);
+          }
+        }}
+      >
         <div className={classNames(styles['reg__table-top-title'], 't1')}>
           {title}
         </div>
-        <div className={styles['reg__table-top-toggle']}><DropdownIcon /></div>
+        {expanding && <div className={styles['reg__table-top-toggle']}><DropdownIcon /></div>}
       </div>
       <div className={styles['reg__table-rows']} style={{ gridTemplateColumns }}>
         {children}

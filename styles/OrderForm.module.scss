@@ -142,9 +142,6 @@
     flex-direction: column;
     margin-bottom: 10px;
     &.border {
-      &:last-child {
-        //background-color: red;
-      }
       .reg__item-bot {
         border-left: 1px solid #F3F3F3;
         padding-bottom: 30px;
@@ -939,7 +936,6 @@
     }
     &-top {
       display: flex;
-      cursor: pointer;
       justify-content: space-between;
       border-radius: 25px;
       padding: 15px;
@@ -954,6 +950,9 @@
           transition: .3s;
         }
       }
+      &.expanding {
+        cursor: pointer;
+      }
     }
     &-rows {
       background-color: #FAFAFA;
@@ -962,10 +961,16 @@
     &-edit {
       cursor: pointer;
     }
+    &-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
     &-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 5px;
+      justify-content: end;
     }
     &-row {
       display: contents;
@@ -975,6 +980,7 @@
       &-item {
         padding: 10px 20px;
         color: #131313;
+        border-top: 1px solid #E7E7E7;
         &-gray {
           color: #717171;
         }

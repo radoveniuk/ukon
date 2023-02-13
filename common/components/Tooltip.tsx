@@ -1,13 +1,19 @@
-import { ITooltip as Props, Tooltip as ReactTooltip } from 'react-tooltip';
-import classNames from 'classnames';
+import React, { PropsWithChildren } from 'react';
+import { Tooltip as ReactTooltip } from '@nextui-org/react';
 
-import styles from 'styles/components/Tooltip.module.scss';
+import ReactHtmlParser from 'common/utils/ReactHtmlParser';
 
 import 'react-tooltip/dist/react-tooltip.css';
-;
 
-export default function Tooltip(props: Props) {
+type Props = {
+  content: string | React.ReactNode;
+}
+
+export default function Tooltip({ content, children }: PropsWithChildren<Props>) {
   return (
-    <ReactTooltip variant="light" className={classNames(props.className, styles.tooltip)} {...props} />
+    <ReactTooltip content={<ReactHtmlParser content={content} />}>
+      {children}
+    </ReactTooltip>
   );
 }
+

@@ -216,8 +216,9 @@ export default function CheckOut () {
           <div className={styles['reg__doc']}>
             <div className={styles['reg__doc-title']}>
               <div className={styles['reg__doc-title-text']}>{t('proxyDoc')}</div>
-              <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
-              <Tooltip anchorId="ProxyInfo" html={t('proxyDoc')} />
+              <Tooltip content={t('proxyDoc')}>
+                <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
+              </Tooltip>
             </div>
             <div className={classNames(styles['reg__doc-body'], 't4')}>
               <div className={styles.filesLink}>{t('downloadTemplate')}</div>
@@ -232,8 +233,9 @@ export default function CheckOut () {
           <div className={styles['reg__doc']}>
             <div className={styles['reg__doc-title']}>
               <div className={styles['reg__doc-title-text']}>{t('realtyDoc')}</div>
-              <InfoIcon className={styles['reg__doc-info']} id="RealtyInfo" />
-              <Tooltip anchorId="RealtyInfo" html={t('realtyDoc')} />
+              <Tooltip content={t('realtyDoc')}>
+                <InfoIcon className={styles['reg__doc-info']} id="RealtyInfo" />
+              </Tooltip>
             </div>
             <div className={classNames(styles['reg__doc-body'], 't4')}>
               <div className={styles.filesLink}>{t('downloadTemplate')}</div>
@@ -247,8 +249,9 @@ export default function CheckOut () {
           <div className={styles['reg__doc']}>
             <div className={styles['reg__doc-title']}>
               <div className={styles['reg__doc-title-text']}>{t('nonConvictDoc')}</div>
-              <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
-              <Tooltip anchorId="NotConvictInfo" html={t('nonConvictDoc')} />
+              <Tooltip content={t('nonConvictDoc')}>
+                <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
+              </Tooltip>
             </div>
             <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
               <UploadIcon />
@@ -258,8 +261,9 @@ export default function CheckOut () {
           <div className={styles['reg__doc']}>
             <div className={styles['reg__doc-title']}>
               <div className={styles['reg__doc-title-text']}>{t('identDoc')}</div>
-              <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
-              <Tooltip anchorId="IdentDocInfo" html={t('identDocPlaceholder')} />
+              <Tooltip content={t('identDocPlaceholder')}>
+                <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
+              </Tooltip>
             </div>
             <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
               <UploadIcon />
@@ -269,8 +273,9 @@ export default function CheckOut () {
           <div className={styles['reg__doc']}>
             <div className={styles['reg__doc-title']}>
               <div className={styles['reg__doc-title-text']}>{t('residenceSkDoc')}</div>
-              <InfoIcon className={styles['reg__doc-info']} id="ResidenceSkDocInfo" />
-              <Tooltip anchorId="ResidenceSkDocInfo" html={t('residenceSkDoc')} />
+              <Tooltip content={t('residenceSkDoc')}>
+                <InfoIcon className={styles['reg__doc-info']} id="ResidenceSkDocInfo" />
+              </Tooltip>
             </div>
             <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
               <UploadIcon />
@@ -280,8 +285,9 @@ export default function CheckOut () {
           <div className={styles['reg__doc']}>
             <div className={styles['reg__doc-title']}>
               <div className={styles['reg__doc-title-text']}>{t('permitResidenceDoc')} {watch('residence.ru')}</div>
-              <InfoIcon className={styles['reg__doc-info']} id="PermitResidenceDocInfo" />
-              <Tooltip anchorId="PermitResidenceDocInfo" html={t('permitResidenceDoc')} />
+              <Tooltip content={t('permitResidenceDoc')}>
+                <InfoIcon className={styles['reg__doc-info']} id="PermitResidenceDocInfo" />
+              </Tooltip>
             </div>
             <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
               <UploadIcon />

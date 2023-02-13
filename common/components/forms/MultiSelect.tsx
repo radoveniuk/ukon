@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import { useCombobox, UseComboboxStateChange, useMultipleSelection } from 'downshift';
 import _ from 'lodash-es';
 
+import ReactHtmlParser from 'common/utils/ReactHtmlParser';
+
 import styles from 'styles/components/forms/MultiSelect.module.scss';
 
 import InfoIcon from '../icons/InfoIcon';
@@ -10,6 +12,7 @@ import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import SearchIcon from '../icons/SearchIcon';
 import Tooltip from '../Tooltip';
+// import Tooltip from '../Tooltip';
 
 type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 
@@ -157,8 +160,9 @@ function MultiSelect({
           </div>
           {!!tooltip &&(
             <>
-              <InfoIcon id={tooltipId} />
-              <Tooltip variant="light" className={styles.tooltip} anchorId={tooltipId} html={tooltip} />
+              <Tooltip content={tooltip}>
+                <InfoIcon id={tooltipId} />
+              </Tooltip>
             </>
           )}
         </div>
