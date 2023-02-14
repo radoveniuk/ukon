@@ -66,7 +66,7 @@ function UpdateIndividualFormRender () {
               <div className={styles['reg__right-row']}>
                 <div className={styles['reg__right-row-item']}>
                   <div className={styles['reg__right-row-item-left']}>
-                    <div className={classNames(styles['reg__right-row-item-title'], 'body')}>Оформление ИП</div>
+                    <div className={classNames(styles['reg__right-row-item-title'], 'body')}>Обновление данных ИП</div>
                   </div>
                   <div className={styles['reg__right-row-item-right']}>
                     <div className={classNames('reg__right-row-item-price', 'body')}>19,00 €</div>

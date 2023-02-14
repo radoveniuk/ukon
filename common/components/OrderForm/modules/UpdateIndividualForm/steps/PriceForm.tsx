@@ -26,7 +26,8 @@ import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
 import countries from '../../../data/countries.json';
 import prefixes from '../../../data/prefixes.json';
-import { usePriceContext } from '../contexts/PriceContext';
+import SearchField from '../components/SearchField';
+// import { usePriceContext } from '../contexts/PriceContext';
 
 const ACTIVITIES = [
   {
@@ -50,8 +51,8 @@ export default function PriceForm() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, watch, register, setValue, formState: { errors, touchedFields } } = useFormContext();
-  const [, updatePriceList] = usePriceContext();
+  const { control, watch, register, formState: { errors, touchedFields } } = useFormContext();
+  // const [, updatePriceList] = usePriceContext();
 
   const { name, surname, namePrefix, namePostfix } = watch();
   const companyNamePrefix = useMemo(() => {
@@ -61,17 +62,19 @@ export default function PriceForm() {
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
 
+  const [individualData, setIndividualData] = useState<null | any>(null);
+
   const PUBLIC_DATA = [
     {
       key: 'id',
       label: 'form.companyId',
-      value: () => '54 943 990',
+      value: () => individualData?.cin,
       editable: false,
     },
     {
       key: 'personalName',
       label: 'form.personalName',
-      value: () => 'Mária Michalíková',
+      value: () => individualData?.name,
       editComponent: (
         <>
           <Controller
@@ -120,7 +123,7 @@ export default function PriceForm() {
     {
       key: 'companyName',
       label: 'form.companyName',
-      value: () => 'Mária Michalíková',
+      value: () => individualData?.name,
       editComponent: (
         <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
           {!!companyNamePrefix && <strong>{companyNamePrefix}</strong>}
@@ -131,7 +134,7 @@ export default function PriceForm() {
     {
       key: 'businessAddress',
       label: 'form.businessAddress',
-      value: () => '01863 Ladce, Cementárska ulica 164/22',
+      value: () => individualData?.formatted_address,
       editComponent: (
         <Controller
           control={control}
@@ -173,7 +176,7 @@ export default function PriceForm() {
     {
       key: 'addressResidence',
       label: 'form.addressResidence',
-      value: () => '01863 Ladce, Cementárska ulica 164/22, Slovenská republika',
+      value: () => individualData?.formatted_address,
       editComponent: (
         <>
           <TextField
@@ -230,7 +233,7 @@ export default function PriceForm() {
     {
       key: 'citizenship',
       label: 'form.citizenship',
-      value: () => 'Slovenská republika',
+      value: () => individualData?.statutory[0].country,
       editComponent: (
         <div className={styles['reg__item-project']}>
           <Controller
@@ -263,198 +266,198 @@ export default function PriceForm() {
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
       <div className={styles.reg__items}>
         <FormItem number={1} title={t('form.nameOrId')}>
-          <TextField
-            label={t('form.nameOrId')}
-            placeholder={t('form.nameOrIdInput')}
-            className={classNames(styles['reg__item-input'], 'mb-15')}
-          />
+          <SearchField onSearchResult={setIndividualData} />
         </FormItem>
-        <FormItem number={2} title={t('form.actualData')}>
-          <AccordionTable title={t('publicData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
-            {PUBLIC_DATA.map((dataItem) => (
-              <AccordionTableRow key={dataItem.key}>
-                <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
-                <AccordionTableCell>
-                  {editFields.includes(dataItem.key) ? <s>{dataItem.value()}</s> : <div>{dataItem.value()}</div>}
-                  {editFields.includes(dataItem.key) && (
-                    <div className={styles['reg__table-inputs']}>
-                      {dataItem.editComponent}
-                    </div>
-                  )}
-                </AccordionTableCell>
-                <AccordionTableCell>
-                  {dataItem.editable !== false && !editFields.includes(dataItem.key) && (
-                    <EditIcon className={styles['reg__table-edit']} onClick={() => !editFields?.includes(dataItem.key) ? addEditField(dataItem.key) : removeEditField(dataItem.key)} />
-                  )}
-                  {editFields.includes(dataItem.key) && (
-                    <IoSaveOutline size={20} className={styles['reg__table-edit']} />
-                  )}
-                </AccordionTableCell>
-              </AccordionTableRow>
-            ))}
-          </AccordionTable>
-          <AccordionTable title={t('activities')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
-            {activitiesList.map((activityItem, index) => (
-              <AccordionTableRow key={`${activityItem.name}${index}`}>
-                <AccordionTableCell>{index+1}. {activityItem.name}</AccordionTableCell>
-                <AccordionTableCell>от {activityItem.startDate}</AccordionTableCell>
-                <AccordionTableCell className={styles['reg__table-actions']}>
-                  {activityItem.status === 'open' && (
-                    <>
-                      <IconButton color="info" title={t('stop')}><ImPause2 size={10} /></IconButton>
-                      <IconButton color="error" title={t('close')}><ImStop2 size={10} /></IconButton>
-                    </>
-                  )}
-                  {activityItem.status === 'stopped' && (
-                    <>
-                      <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
-                      <IconButton color="error" title={t('close')}><ImStop2 size={10} /></IconButton>
-                    </>
-                  )}
-                  {activityItem.status === 'closed' && (
-                    <>
-                      <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
-                    </>
-                  )}
-                </AccordionTableCell>
-              </AccordionTableRow>
-            ))}
-          </AccordionTable>
-          <div className="mb-15">
-            {!isAddingActivities && <Button onClick={() => void setIsAddingActivities(true)}><BsPlusLg />{t('add')}</Button>}
-            {isAddingActivities && (
-              <Controller
-                control={control}
-                name="otherActivities"
-                render={({ field }) => (
-                  <MultiSelect
-                    tooltip="<div>В случае добавления ремесленного или регулируемого вида деятельности необходимо установить ответственного представителя имеющего соответствующую квалификацию.<br>Также, будет необходимо приложить к заявке документы подтверждающие квалификацию ответственного лица и его согласие<br>За каждый регулируемый и ремесленный вид деятельности к стоимости добавляется 7,5 евро</div>"
-                    className={styles['reg__item-project-select']}
-                    label={t('form.activitySearch')}
-                    pathToLabel="ru"
-                    options={activities}
-                    handleChange={field.onChange}
-                    placeholder={t('form.activitySelectPlaceholder')}
-                    customRenderMenuItem={(item: any) => (
-                      <>
-                        <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
-                          {item.ru}
-                        </span>
-                        <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
-                          {item.Type !== 'Volná' ? 7.5 : 0}€
-                        </span>
-                      </>
+        {!!individualData && (
+          <>
+            <FormItem number={2} title={t('form.actualData')}>
+              <AccordionTable title={t('publicData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
+                {PUBLIC_DATA.map((dataItem) => (
+                  <AccordionTableRow key={dataItem.key}>
+                    <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
+                    <AccordionTableCell>
+                      {editFields.includes(dataItem.key) ? <s>{dataItem.value()}</s> : <div>{dataItem.value()}</div>}
+                      {editFields.includes(dataItem.key) && (
+                        <div className={styles['reg__table-inputs']}>
+                          {dataItem.editComponent}
+                        </div>
+                      )}
+                    </AccordionTableCell>
+                    <AccordionTableCell>
+                      {dataItem.editable !== false && !editFields.includes(dataItem.key) && (
+                        <EditIcon className={styles['reg__table-edit']} onClick={() => !editFields?.includes(dataItem.key) ? addEditField(dataItem.key) : removeEditField(dataItem.key)} />
+                      )}
+                      {editFields.includes(dataItem.key) && (
+                        <IoSaveOutline size={20} className={styles['reg__table-edit']} />
+                      )}
+                    </AccordionTableCell>
+                  </AccordionTableRow>
+                ))}
+              </AccordionTable>
+              <AccordionTable title={t('activities')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
+                {activitiesList.map((activityItem, index) => (
+                  <AccordionTableRow key={`${activityItem.name}${index}`}>
+                    <AccordionTableCell>{index+1}. {activityItem.name}</AccordionTableCell>
+                    <AccordionTableCell>от {activityItem.startDate}</AccordionTableCell>
+                    <AccordionTableCell className={styles['reg__table-actions']}>
+                      {activityItem.status === 'open' && (
+                        <>
+                          <IconButton color="info" title={t('stop')}><ImPause2 size={10} /></IconButton>
+                          <IconButton color="error" title={t('close')}><ImStop2 size={10} /></IconButton>
+                        </>
+                      )}
+                      {activityItem.status === 'stopped' && (
+                        <>
+                          <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
+                          <IconButton color="error" title={t('close')}><ImStop2 size={10} /></IconButton>
+                        </>
+                      )}
+                      {activityItem.status === 'closed' && (
+                        <>
+                          <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
+                        </>
+                      )}
+                    </AccordionTableCell>
+                  </AccordionTableRow>
+                ))}
+              </AccordionTable>
+              <div className="mb-15">
+                {!isAddingActivities && <Button onClick={() => void setIsAddingActivities(true)}><BsPlusLg />{t('add')}</Button>}
+                {isAddingActivities && (
+                  <Controller
+                    control={control}
+                    name="otherActivities"
+                    render={({ field }) => (
+                      <MultiSelect
+                        tooltip="<div>В случае добавления ремесленного или регулируемого вида деятельности необходимо установить ответственного представителя имеющего соответствующую квалификацию.<br>Также, будет необходимо приложить к заявке документы подтверждающие квалификацию ответственного лица и его согласие<br>За каждый регулируемый и ремесленный вид деятельности к стоимости добавляется 7,5 евро</div>"
+                        className={styles['reg__item-project-select']}
+                        label={t('form.activitySearch')}
+                        pathToLabel="ru"
+                        options={activities}
+                        handleChange={field.onChange}
+                        placeholder={t('form.activitySelectPlaceholder')}
+                        customRenderMenuItem={(item: any) => (
+                          <>
+                            <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                              {item.ru}
+                            </span>
+                            <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                              {item.Type !== 'Volná' ? 7.5 : 0}€
+                            </span>
+                          </>
+                        )}
+                      />
                     )}
                   />
                 )}
-              />
-            )}
-          </div>
-          <AccordionTable title={t('additionalData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
-            {ADDITIONAL_DATA.map((dataItem) => (
-              <AccordionTableRow key={dataItem.key}>
-                <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
-                <AccordionTableCell>
-                  {editFields.includes(dataItem.key) ? <s>{dataItem.value()}</s> : <div>{dataItem.value()}</div>}
-                  {editFields.includes(dataItem.key) && (
-                    <div className={styles['reg__table-inputs']}>
-                      {dataItem.editComponent}
-                    </div>
-                  )}
-                </AccordionTableCell>
-                <AccordionTableCell>
-                  {!editFields.includes(dataItem.key) && (
-                    <EditIcon className={styles['reg__table-edit']} onClick={() => !editFields?.includes(dataItem.key) ? addEditField(dataItem.key) : removeEditField(dataItem.key)} />
-                  )}
-                  {editFields.includes(dataItem.key) && (
-                    <IoSaveOutline size={20} className={styles['reg__table-edit']} />
-                  )}
-                </AccordionTableCell>
-              </AccordionTableRow>
-            ))}
-          </AccordionTable>
-        </FormItem>
-        <FormItem number={3} title={t('dataForEditings')}></FormItem>
-        <FormItem title={t('form.orderComment')} number={4}>
-          <TextArea
-            label={t('form.comment')}
-            placeholder={t('form.inputComment')}
-            style={{ height: 120 }}
-            {...register('comment')}
-          />
-        </FormItem>
-        <FormItem number={5} title={t('form.promo')}>
-          <TextField
-            label={t('form.inputPromo')}
-            className={styles['reg__item-input']}
-            onKeyDown={(event) => {
-              const allowed = /^[a-zA-Z]+$/;
-              if (!Number.isNaN(Number(event.key)) || allowed.test(event.key)) {
-                return true;
-              }
-              event.preventDefault();
-            }}
-            {...register('promo')}
-          />
-        </FormItem>
-        <FormItem title={t('form.saveToProfile')} number={6}>
-          <Checkbox label={t('form.save')} {...register('saveToProfile', { value: true })} />
-        </FormItem>
-        <FormItem number={7} title={t('form.isRegistered')}>
-          <Radio className={styles['reg__item-radios']} name="isRegistered">
-            <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
-              {t('yes')}
-            </RadioButton>
-            <RadioButton checked={!isRegistered} onSelect={() => void setIsRegistered(false)}>
-              {t('no')}
-            </RadioButton>
-          </Radio>
-        </FormItem>
-        {isRegistered && (
-          <>
-            <FormItem number={8} title={t('form.email')}>
-              <TextField
-                label={t('form.email')}
-                className={styles['reg__item-input']}
-              />
-            </FormItem>
-            <FormItem number={9} title={t('form.pass')}>
-              <TextField
-                label={t('form.pass')}
-                className={styles['reg__item-input']}
-                type="password"
-              />
-            </FormItem>
-          </>
-        )}
-        {!isRegistered && (
-          <>
-            <FormItem number={8} title={t('form.email')}>
-              <TextField
-                label={t('form.email')}
-                className={styles['reg__item-input']}
-              />
-            </FormItem>
-            <FormItem number={9} title={t('form.pass')}>
-              <div className={styles['reg__item-project']} style={{ gap: 20 }}>
-                <TextField
-                  label={t('form.pass')}
-                  className={styles['reg__item-input']}
-                  type="password"
-                />
-                <TextField
-                  label={t('form.passRepeat')}
-                  className={styles['reg__item-input']}
-                  type="password"
-                />
               </div>
+              <AccordionTable title={t('additionalData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
+                {ADDITIONAL_DATA.map((dataItem) => (
+                  <AccordionTableRow key={dataItem.key}>
+                    <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
+                    <AccordionTableCell>
+                      {editFields.includes(dataItem.key) ? <s>{dataItem.value()}</s> : <div>{dataItem.value()}</div>}
+                      {editFields.includes(dataItem.key) && (
+                        <div className={styles['reg__table-inputs']}>
+                          {dataItem.editComponent}
+                        </div>
+                      )}
+                    </AccordionTableCell>
+                    <AccordionTableCell>
+                      {!editFields.includes(dataItem.key) && (
+                        <EditIcon className={styles['reg__table-edit']} onClick={() => !editFields?.includes(dataItem.key) ? addEditField(dataItem.key) : removeEditField(dataItem.key)} />
+                      )}
+                      {editFields.includes(dataItem.key) && (
+                        <IoSaveOutline size={20} className={styles['reg__table-edit']} />
+                      )}
+                    </AccordionTableCell>
+                  </AccordionTableRow>
+                ))}
+              </AccordionTable>
             </FormItem>
-            <FormItem number={10} title={t('form.phone')}>
-              <TextField
-                label={t('form.phone')}
-                className={styles['reg__item-input']}
+            <FormItem number={3} title={t('dataForEditings')}></FormItem>
+            <FormItem title={t('form.orderComment')} number={4}>
+              <TextArea
+                label={t('form.comment')}
+                placeholder={t('form.inputComment')}
+                style={{ height: 120 }}
+                {...register('comment')}
               />
             </FormItem>
+            <FormItem number={5} title={t('form.promo')}>
+              <TextField
+                label={t('form.inputPromo')}
+                className={styles['reg__item-input']}
+                onKeyDown={(event) => {
+                  const allowed = /^[a-zA-Z]+$/;
+                  if (!Number.isNaN(Number(event.key)) || allowed.test(event.key)) {
+                    return true;
+                  }
+                  event.preventDefault();
+                }}
+                {...register('promo')}
+              />
+            </FormItem>
+            <FormItem title={t('form.saveToProfile')} number={6}>
+              <Checkbox label={t('form.save')} {...register('saveToProfile', { value: true })} />
+            </FormItem>
+            <FormItem number={7} title={t('form.isRegistered')}>
+              <Radio className={styles['reg__item-radios']} name="isRegistered">
+                <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
+                  {t('yes')}
+                </RadioButton>
+                <RadioButton checked={!isRegistered} onSelect={() => void setIsRegistered(false)}>
+                  {t('no')}
+                </RadioButton>
+              </Radio>
+            </FormItem>
+            {isRegistered && (
+              <>
+                <FormItem number={8} title={t('form.email')}>
+                  <TextField
+                    label={t('form.email')}
+                    className={styles['reg__item-input']}
+                  />
+                </FormItem>
+                <FormItem number={9} title={t('form.pass')}>
+                  <TextField
+                    label={t('form.pass')}
+                    className={styles['reg__item-input']}
+                    type="password"
+                  />
+                </FormItem>
+              </>
+            )}
+            {!isRegistered && (
+              <>
+                <FormItem number={8} title={t('form.email')}>
+                  <TextField
+                    label={t('form.email')}
+                    className={styles['reg__item-input']}
+                  />
+                </FormItem>
+                <FormItem number={9} title={t('form.pass')}>
+                  <div className={styles['reg__item-project']} style={{ gap: 20 }}>
+                    <TextField
+                      label={t('form.pass')}
+                      className={styles['reg__item-input']}
+                      type="password"
+                    />
+                    <TextField
+                      label={t('form.passRepeat')}
+                      className={styles['reg__item-input']}
+                      type="password"
+                    />
+                  </div>
+                </FormItem>
+                <FormItem number={10} title={t('form.phone')}>
+                  <TextField
+                    label={t('form.phone')}
+                    className={styles['reg__item-input']}
+                  />
+                </FormItem>
+              </>
+            )}
           </>
         )}
       </div>
