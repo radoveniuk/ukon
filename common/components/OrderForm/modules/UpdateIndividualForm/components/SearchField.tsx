@@ -16,11 +16,10 @@ const SearchField = ({ onSearchResult }: Props) => {
   const [value, setValue] = useState('');
 
   const fetchSearchResult = (s: string) => {
-    const url = `https://autoform.ekosystem.slovensko.digital/api/corporate_bodies/search?q=${Number.isNaN(Number(s)) ? `name:${s}` : `cin:${s}`}&private_access_token=755e6dd8af690571fc0ed957dde2adc56ce823e6549c2286914295ffad427bd387b651eb3dc593e1`;
-    fetch(url)
+    fetch(`/api/corporate-bodies?search=${s}`)
       .then((res) => res.json())
-      .then(([res]) => {
-        onSearchResult(res);
+      .then((res) => {
+        onSearchResult(res.data);
       });
   };
 

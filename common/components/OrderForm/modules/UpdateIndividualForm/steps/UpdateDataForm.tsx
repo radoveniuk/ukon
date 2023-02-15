@@ -288,8 +288,6 @@ export default function UpdateDataForm() {
             onClick={() => {
               removeEditField(dataItem.key);
               addSavedField(dataItem.key);
-              // if (dataItem.formValue?.trim()) {
-              // }
             }}
           />
         )}
