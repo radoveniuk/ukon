@@ -12,7 +12,7 @@ import PrevButton from '../../components/PrevButton';
 
 import PriceProvider, { usePriceContext } from './contexts/PriceContext';
 import StepsProvider, { STEPS, useSteps } from './contexts/StepsContext';
-import PriceForm from './steps/PriceForm';
+import UpdateDataForm from './steps/UpdateDataForm';
 
 function UpdateIndividualFormRender () {
   const translation = useTranslation('forms');
@@ -45,7 +45,7 @@ function UpdateIndividualFormRender () {
             </div>
             <div className={styles.reg__tabs}>
               <div className={classNames(styles.reg__tab, step === 0 ? styles.active : '')}>
-                <PriceForm />
+                <UpdateDataForm />
               </div>
               <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
                 {/* <IndividualInfoForm /> */}

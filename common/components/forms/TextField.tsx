@@ -25,13 +25,20 @@ type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputE
   label?: string;
   error?: string | boolean;
   success?: boolean;
+  prefix?: string;
 };
 
-function TextField ({ labelClassName, className, label, error, success, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
+function TextField ({ labelClassName, className, label, error, success, prefix, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
   return (
     <label className={classNames(labelClassName, styles.label)} >
       <span className="t5">{label}</span>
-      <input ref={ref} type="text" className={classNames(className, styles.input, 't5', error ? styles['input-error'] : '', success ? styles['input-success'] : '')} {...rest} />
+      <div className={classNames(className, styles.input, 't5', error ? styles['input-error'] : '', success ? styles['input-success'] : '')}>
+        {!!prefix && <>{prefix}&nbsp;</>}
+        <input
+          ref={ref}
+          {...rest}
+        />
+      </div>
       {!!error && typeof error === 'string' && <span className={styles.error}>{error}</span>}
     </label>
   );

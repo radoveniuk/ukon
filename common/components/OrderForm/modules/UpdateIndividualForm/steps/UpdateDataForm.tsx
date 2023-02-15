@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { BsPlusLg } from 'react-icons/bs';
 import { FaPlay } from 'react-icons/fa';
@@ -47,24 +47,37 @@ const ACTIVITIES = [
   },
 ];
 
-export default function PriceForm() {
+type DataItem = {
+  key: string;
+  label: string;
+  value?(): string;
+  editComponent?: ReactNode;
+  formValue?: string;
+  editable?: boolean;
+};
+
+export default function UpdateDataForm() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
   const { control, watch, register, formState: { errors, touchedFields } } = useFormContext();
   // const [, updatePriceList] = usePriceContext();
 
+  const [individualData, setIndividualData] = useState<null | any>(null);
+
   const { name, surname, namePrefix, namePostfix } = watch();
   const companyNamePrefix = useMemo(() => {
+    if (!namePrefix && !name && !surname && !namePostfix) {
+      return individualData?.name;
+    }
     return `${namePrefix?.Value ?? ''} ${name ?? ''} ${surname ?? ''} ${namePostfix?.Value ?? ''}`.trim().replaceAll(/  +/g, ' ');
-  }, [name, namePostfix, namePrefix, surname]);
+  }, [individualData?.name, name, namePostfix, namePrefix, surname]);
 
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
 
-  const [individualData, setIndividualData] = useState<null | any>(null);
 
-  const PUBLIC_DATA = [
+  const PUBLIC_DATA: DataItem[] = [
     {
       key: 'id',
       label: 'form.companyId',
@@ -119,6 +132,7 @@ export default function PriceForm() {
           />
         </>
       ),
+      formValue: `${watch('namePrefix.Value') || ''} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value') || ''}`,
     },
     {
       key: 'companyName',
@@ -126,10 +140,10 @@ export default function PriceForm() {
       value: () => individualData?.name,
       editComponent: (
         <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
-          {!!companyNamePrefix && <strong>{companyNamePrefix}</strong>}
-          <TextField label={t('form.companyName')} {...register('companyName')} />
+          <TextField prefix={`${companyNamePrefix} -`} label={t('form.companyName')} {...register('companyName')} />
         </div>
       ),
+      formValue: `${companyNamePrefix} - ${watch('companyName')}`,
     },
     {
       key: 'businessAddress',
@@ -172,7 +186,7 @@ export default function PriceForm() {
     },
   ];
 
-  const ADDITIONAL_DATA = [
+  const ADDITIONAL_DATA: DataItem[] = [
     {
       key: 'addressResidence',
       label: 'form.addressResidence',
@@ -213,22 +227,9 @@ export default function PriceForm() {
             success={!!touchedFields.zip && !errors.zip}
             {...register('zip', { required: t('form.requiredFieldText') })}
           />
-          <Controller
-            control={control}
-            name="residence"
-            render={({ field, fieldState }) => (
-              <Select
-                label={t('form.countryPlaceholder')}
-                placeholder={t('form.countryPlaceholder')}
-                options={countries}
-                pathToLabel="ru"
-                state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                {...field}
-              />
-            )}
-          />
         </>
       ),
+      formValue: `${watch('street')}, ${watch('houseRegNumber')}, ${watch('houseNumber')}, ${watch('city')}, ${watch('zip')}`,
     },
     {
       key: 'citizenship',
@@ -253,13 +254,48 @@ export default function PriceForm() {
           />
         </div>
       ),
+      formValue: watch('citizenship.ru'),
     },
   ];
 
-  const [editFields, addEditField, removeEditField] = useListState<string>();
+  const [editFields, { toggle: toggleEditField, add: addEditField, remove: removeEditField }] = useListState<string>();
+  const [savedFields, { toggle: toggleSavedField, add: addSavedField, remove: removeSavedField }] = useListState<string>();
 
   const [activitiesList] = useListState(ACTIVITIES);
   const [isAddingActivities, setIsAddingActivities] = useState(false);
+
+  const editRowRender = (dataItem: DataItem) => (
+    <>
+      <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
+      <AccordionTableCell>
+        {editFields.includes(dataItem.key) && <s>{dataItem.value?.()}</s>}
+        {!editFields.includes(dataItem.key) && !savedFields.includes(dataItem.key) && <div>{dataItem.value?.()}</div>}
+        {!editFields.includes(dataItem.key) && savedFields.includes(dataItem.key) && <p><s style={{ color: '#9e395d' }}>{dataItem.value?.()}</s><span style={{ color: '#10826E' }}>{dataItem.formValue}</span></p> }
+        {editFields.includes(dataItem.key) && (
+          <div className={styles['reg__table-inputs']}>
+            {dataItem.editComponent}
+          </div>
+        )}
+      </AccordionTableCell>
+      <AccordionTableCell>
+        {dataItem.editable !== false && !editFields.includes(dataItem.key) && (
+          <EditIcon className={styles['reg__table-edit']} onClick={() => { addEditField(dataItem.key); removeSavedField(dataItem.key); }} />
+        )}
+        {editFields.includes(dataItem.key) && (
+          <IoSaveOutline
+            size={20}
+            className={styles['reg__table-edit']}
+            onClick={() => {
+              removeEditField(dataItem.key);
+              addSavedField(dataItem.key);
+              // if (dataItem.formValue?.trim()) {
+              // }
+            }}
+          />
+        )}
+      </AccordionTableCell>
+    </>
+  );
 
   return (
     <>
@@ -274,23 +310,7 @@ export default function PriceForm() {
               <AccordionTable title={t('publicData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
                 {PUBLIC_DATA.map((dataItem) => (
                   <AccordionTableRow key={dataItem.key}>
-                    <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
-                    <AccordionTableCell>
-                      {editFields.includes(dataItem.key) ? <s>{dataItem.value()}</s> : <div>{dataItem.value()}</div>}
-                      {editFields.includes(dataItem.key) && (
-                        <div className={styles['reg__table-inputs']}>
-                          {dataItem.editComponent}
-                        </div>
-                      )}
-                    </AccordionTableCell>
-                    <AccordionTableCell>
-                      {dataItem.editable !== false && !editFields.includes(dataItem.key) && (
-                        <EditIcon className={styles['reg__table-edit']} onClick={() => !editFields?.includes(dataItem.key) ? addEditField(dataItem.key) : removeEditField(dataItem.key)} />
-                      )}
-                      {editFields.includes(dataItem.key) && (
-                        <IoSaveOutline size={20} className={styles['reg__table-edit']} />
-                      )}
-                    </AccordionTableCell>
+                    {editRowRender(dataItem)}
                   </AccordionTableRow>
                 ))}
               </AccordionTable>
@@ -313,9 +333,7 @@ export default function PriceForm() {
                         </>
                       )}
                       {activityItem.status === 'closed' && (
-                        <>
-                          <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
-                        </>
+                        <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
                       )}
                     </AccordionTableCell>
                   </AccordionTableRow>
@@ -354,23 +372,7 @@ export default function PriceForm() {
               <AccordionTable title={t('additionalData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
                 {ADDITIONAL_DATA.map((dataItem) => (
                   <AccordionTableRow key={dataItem.key}>
-                    <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
-                    <AccordionTableCell>
-                      {editFields.includes(dataItem.key) ? <s>{dataItem.value()}</s> : <div>{dataItem.value()}</div>}
-                      {editFields.includes(dataItem.key) && (
-                        <div className={styles['reg__table-inputs']}>
-                          {dataItem.editComponent}
-                        </div>
-                      )}
-                    </AccordionTableCell>
-                    <AccordionTableCell>
-                      {!editFields.includes(dataItem.key) && (
-                        <EditIcon className={styles['reg__table-edit']} onClick={() => !editFields?.includes(dataItem.key) ? addEditField(dataItem.key) : removeEditField(dataItem.key)} />
-                      )}
-                      {editFields.includes(dataItem.key) && (
-                        <IoSaveOutline size={20} className={styles['reg__table-edit']} />
-                      )}
-                    </AccordionTableCell>
+                    {editRowRender(dataItem)}
                   </AccordionTableRow>
                 ))}
               </AccordionTable>

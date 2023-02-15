@@ -250,8 +250,7 @@ export default function IndividualInfoForm () {
         </FormItem>
         <FormItem title={t('form.companyName')} number={6}>
           <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
-            <strong>{companyNamePrefix}</strong>
-            <TextField label={t('form.companyName')} {...register('companyName')} />
+            <TextField prefix={`${companyNamePrefix} -`} label={t('form.companyName')} {...register('companyName')} />
           </div>
         </FormItem>
         <FormItem title={t('form.companyNumber')} number={7}>
