@@ -6,6 +6,7 @@ import { ImPause2, ImStop2 } from 'react-icons/im';
 import { IoSaveOutline } from 'react-icons/io5';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
+import { DateTime } from 'luxon';
 
 import Button from 'common/components/Button';
 import Checkbox from 'common/components/forms/Checkbox';
@@ -68,10 +69,10 @@ export default function UpdateDataForm() {
   const { name, surname, namePrefix, namePostfix } = watch();
   const companyNamePrefix = useMemo(() => {
     if (!namePrefix && !name && !surname && !namePostfix) {
-      return individualData?.name;
+      return individualData?.personalName;
     }
     return `${namePrefix?.Value ?? ''} ${name ?? ''} ${surname ?? ''} ${namePostfix?.Value ?? ''}`.trim().replaceAll(/  +/g, ' ');
-  }, [individualData?.name, name, namePostfix, namePrefix, surname]);
+  }, [individualData?.personalName, name, namePostfix, namePrefix, surname]);
 
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
@@ -87,7 +88,7 @@ export default function UpdateDataForm() {
     {
       key: 'personalName',
       label: 'form.personalName',
-      value: () => individualData?.name,
+      value: () => individualData?.personalName,
       editComponent: (
         <>
           <Controller
@@ -137,7 +138,7 @@ export default function UpdateDataForm() {
     {
       key: 'companyName',
       label: 'form.companyName',
-      value: () => individualData?.name,
+      value: () => individualData?.companyName,
       editComponent: (
         <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
           <TextField prefix={`${companyNamePrefix} -`} label={t('form.companyName')} {...register('companyName')} />
@@ -148,7 +149,7 @@ export default function UpdateDataForm() {
     {
       key: 'businessAddress',
       label: 'form.businessAddress',
-      value: () => individualData?.formatted_address,
+      value: () => individualData?.businessAddress,
       editComponent: (
         <Controller
           control={control}
@@ -190,7 +191,7 @@ export default function UpdateDataForm() {
     {
       key: 'addressResidence',
       label: 'form.addressResidence',
-      value: () => individualData?.formatted_address,
+      value: () => individualData?.businessAddress,
       editComponent: (
         <>
           <TextField
@@ -234,7 +235,7 @@ export default function UpdateDataForm() {
     {
       key: 'citizenship',
       label: 'form.citizenship',
-      value: () => individualData?.statutory[0].country,
+      value: () => individualData?.citizenship,
       editComponent: (
         <div className={styles['reg__item-project']}>
           <Controller
@@ -258,8 +259,8 @@ export default function UpdateDataForm() {
     },
   ];
 
-  const [editFields, { toggle: toggleEditField, add: addEditField, remove: removeEditField }] = useListState<string>();
-  const [savedFields, { toggle: toggleSavedField, add: addSavedField, remove: removeSavedField }] = useListState<string>();
+  const [editFields, { add: addEditField, remove: removeEditField }] = useListState<string>();
+  const [savedFields, { add: addSavedField, remove: removeSavedField }] = useListState<string>();
 
   const [activitiesList] = useListState(ACTIVITIES);
   const [isAddingActivities, setIsAddingActivities] = useState(false);
@@ -313,10 +314,10 @@ export default function UpdateDataForm() {
                 ))}
               </AccordionTable>
               <AccordionTable title={t('activities')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
-                {activitiesList.map((activityItem, index) => (
-                  <AccordionTableRow key={`${activityItem.name}${index}`}>
-                    <AccordionTableCell>{index+1}. {activityItem.name}</AccordionTableCell>
-                    <AccordionTableCell>от {activityItem.startDate}</AccordionTableCell>
+                {individualData.activities.map((activityItem: any, index: number) => (
+                  <AccordionTableRow key={`${activityItem.description}${index}`}>
+                    <AccordionTableCell>{index+1}. {activityItem.description}</AccordionTableCell>
+                    <AccordionTableCell>от {DateTime.fromISO(activityItem.effective_from).toFormat('dd.MM.yyyy')}</AccordionTableCell>
                     <AccordionTableCell className={styles['reg__table-actions']}>
                       {activityItem.status === 'open' && (
                         <>
