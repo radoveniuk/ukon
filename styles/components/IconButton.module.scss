@@ -12,6 +12,17 @@
   align-items: center;
   justify-content: center;
   
+  &.default {
+    background: #717171;
+    &:hover {
+      background-color: #9b9b9b;
+    }
+    &:active {
+      border-color: #9b9b9b;
+      background: #717171;
+    }
+  }
+  
   &.primary {
     background: #44998A;
     &:hover {

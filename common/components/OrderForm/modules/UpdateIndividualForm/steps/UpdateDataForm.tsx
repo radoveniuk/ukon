@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { BsPlusLg } from 'react-icons/bs';
 import { FaPlay } from 'react-icons/fa';
@@ -10,6 +10,7 @@ import { DateTime } from 'luxon';
 
 import Button from 'common/components/Button';
 import Checkbox from 'common/components/forms/Checkbox';
+import DatePicker from 'common/components/forms/DatePicker';
 import TextArea from 'common/components/forms/TextArea';
 import IconButton from 'common/components/IconButton';
 import EditIcon from 'common/components/icons/EditIcon';
@@ -30,24 +31,6 @@ import prefixes from '../../../data/prefixes.json';
 import SearchField from '../components/SearchField';
 // import { usePriceContext } from '../contexts/PriceContext';
 
-const ACTIVITIES = [
-  {
-    name: 'Skladovanie a pomocné činnosti',
-    startDate: '28.09.2022',
-    status: 'open',
-  },
-  {
-    name: 'Informatívne testovanie, meranie, analýzy a kontroly',
-    startDate: '28.09.2022',
-    status: 'stopped',
-  },
-  {
-    name: 'Administratívne služby',
-    startDate: '28.09.2022',
-    status: 'closed',
-  },
-];
-
 type DataItem = {
   key: string;
   label: string;
@@ -57,11 +40,25 @@ type DataItem = {
   editable?: boolean;
 };
 
+type Activity = {
+  created_at: string;
+  description: string;
+  effective_from: string;
+  effective_to: string;
+  id: number;
+  organization_id: number;
+  status: 'open' | 'stopped' | 'closed';
+  suspended_from: string;
+  suspended_to: string;
+  updated_at: string;
+  _?: Partial<Activity>;
+}
+
 export default function UpdateDataForm() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, watch, register, formState: { errors, touchedFields } } = useFormContext();
+  const { control, watch, register, formState: { errors, touchedFields }, setValue } = useFormContext();
   // const [, updatePriceList] = usePriceContext();
 
   const [individualData, setIndividualData] = useState<null | any>(null);
@@ -262,8 +259,42 @@ export default function UpdateDataForm() {
   const [editFields, { add: addEditField, remove: removeEditField }] = useListState<string>();
   const [savedFields, { add: addSavedField, remove: removeSavedField }] = useListState<string>();
 
-  const [activitiesList] = useListState(ACTIVITIES);
+  const [activitiesList, setActivitiesList] = useState<Activity[]>(individualData?.activities || []);
   const [isAddingActivities, setIsAddingActivities] = useState(false);
+
+  const changeActivityStatus = (activity: Activity, status: 'open' | 'stopped' | 'closed') => {
+    setActivitiesList((prev) => prev.map((item) => {
+      if (activity.id === item.id) {
+        return {
+          ...activity,
+          _: { status },
+        };
+      }
+      return item;
+    }));
+  };
+
+  useEffect(() => {
+    setValue('activities', activitiesList);
+  }, [activitiesList, setValue]);
+
+
+  const stopActivityButton = (activityItem: Activity) => (
+    <IconButton color={activityItem._?.status === 'stopped' ? 'warning' : 'default'} title={t('stop')} onClick={() => void changeActivityStatus(activityItem, 'stopped')}><ImPause2 size={10} /></IconButton>
+  );
+
+  const closeActivityButton = (activityItem: Activity) => (
+    <IconButton color={activityItem._?.status === 'closed' ? 'error' : 'default'} title={t('close')} onClick={() => void changeActivityStatus(activityItem, 'closed')}><ImStop2 size={10} /></IconButton>
+  );
+
+  const startActivityButton = (activityItem: Activity) => (
+    <IconButton color={activityItem._?.status === 'open' ? 'primary' : 'default'} title={t('start')} onClick={() => void changeActivityStatus(activityItem, 'open')}><FaPlay size={10} /></IconButton>
+  );
+
+  useEffect(() => {
+    if (!individualData) return;
+    setActivitiesList(individualData.activities);
+  }, [individualData]);
 
   const editRowRender = (dataItem: DataItem) => (
     <>
@@ -296,6 +327,9 @@ export default function UpdateDataForm() {
     </>
   );
 
+  console.log(watch());
+
+
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
@@ -314,25 +348,72 @@ export default function UpdateDataForm() {
                 ))}
               </AccordionTable>
               <AccordionTable title={t('activities')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
-                {individualData.activities.map((activityItem: any, index: number) => (
+                {activitiesList?.filter((activityItem) => activityItem.status !== 'closed').map((activityItem: Activity, index: number) => (
                   <AccordionTableRow key={`${activityItem.description}${index}`}>
                     <AccordionTableCell>{index+1}. {activityItem.description}</AccordionTableCell>
-                    <AccordionTableCell>от {DateTime.fromISO(activityItem.effective_from).toFormat('dd.MM.yyyy')}</AccordionTableCell>
+                    <AccordionTableCell>
+                      от {DateTime.fromISO(activityItem.effective_from).toFormat('dd.MM.yyyy')}
+                      {activityItem._?.status === 'open' && (
+                        <Controller
+                          control={control}
+                          name={`activities[${index}]._.suspended_to`}
+                          defaultValue={null}
+                          render={({ field }) => (
+                            <DatePicker
+                              min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                              value={field.value || null}
+                              onChange={field.onChange}
+                              label={t('form.activityStartFrom')}
+                              className={styles['reg__item-input']}
+                            />
+                          )}
+                        />
+                      )}
+                      {activityItem._?.status === 'stopped' && (
+                        <Controller
+                          control={control}
+                          name={`activities[${index}]._.suspended_from`}
+                          defaultValue={null}
+                          render={({ field }) => (
+                            <DatePicker
+                              min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                              value={field.value || null}
+                              onChange={field.onChange}
+                              label={t('form.activityStopFrom')}
+                              className={styles['reg__item-input']}
+                            />
+                          )}
+                        />
+                      )}
+                      {activityItem._?.status === 'closed' && (
+                        <Controller
+                          control={control}
+                          name={`activities[${index}]._.effective_to`}
+                          defaultValue={null}
+                          render={({ field }) => (
+                            <DatePicker
+                              min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                              value={field.value || null}
+                              onChange={field.onChange}
+                              label={t('form.activityCloseFrom')}
+                              className={styles['reg__item-input']}
+                            />
+                          )}
+                        />
+                      )}
+                    </AccordionTableCell>
                     <AccordionTableCell className={styles['reg__table-actions']}>
                       {activityItem.status === 'open' && (
                         <>
-                          <IconButton color="info" title={t('stop')}><ImPause2 size={10} /></IconButton>
-                          <IconButton color="error" title={t('close')}><ImStop2 size={10} /></IconButton>
+                          {stopActivityButton(activityItem)}
+                          {closeActivityButton(activityItem)}
                         </>
                       )}
                       {activityItem.status === 'stopped' && (
                         <>
-                          <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
-                          <IconButton color="error" title={t('close')}><ImStop2 size={10} /></IconButton>
+                          {startActivityButton(activityItem)}
+                          {closeActivityButton(activityItem)}
                         </>
-                      )}
-                      {activityItem.status === 'closed' && (
-                        <IconButton title={t('start')}><FaPlay size={10} /></IconButton>
                       )}
                     </AccordionTableCell>
                   </AccordionTableRow>
