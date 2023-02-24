@@ -45,6 +45,8 @@ const SearchField = ({ onSearchResult }: Props) => {
   useEffect(() => {
     if (debouncedSearchValue.length > 3) {
       fetchSearchResult(debouncedSearchValue);
+    } else {
+      setSearchResults([]);
     }
   }, [debouncedSearchValue]);
 
