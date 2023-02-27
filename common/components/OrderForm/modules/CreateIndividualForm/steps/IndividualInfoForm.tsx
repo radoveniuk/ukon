@@ -80,14 +80,10 @@ export default function IndividualInfoForm () {
         </FormItem>
         <FormItem  title={t('form.numberAndBirthDate')}>
           <div className={styles['reg__item-inputs']}>
-            <TextFieldFormated
-              label={t('form.physicalNumber')}
-              format="######/####"
-              placeholder="XXXXXX/QQQQ"
-              className={classNames('input', 't5')}
-              error={errors.physicalNumber?.message?.toString() || !!errors.physicalNumber}
-              success={!!touchedFields.physicalNumber && !errors.physicalNumber}
-              {...register('physicalNumber', {
+            <Controller
+              control={control}
+              name="physicalNumber"
+              rules={{
                 required: t('form.requiredFieldText'),
                 validate: {
                   minLength: (v) =>  v.replaceAll(' ', '').length === 11,
@@ -123,7 +119,18 @@ export default function IndividualInfoForm () {
                     }
                   }
                 },
-              })}
+              }}
+              render={({ field }) => (
+                <TextFieldFormated
+                  label={t('form.physicalNumber')}
+                  format="######/####"
+                  placeholder="XXXXXX/QQQQ"
+                  className={classNames('input', 't5')}
+                  error={errors.physicalNumber?.message?.toString() || !!errors.physicalNumber}
+                  success={!!touchedFields.physicalNumber && !errors.physicalNumber}
+                  {...field}
+                />
+              )}
             />
             <Controller
               control={control}
@@ -242,7 +249,7 @@ export default function IndividualInfoForm () {
             render={({ field }) => (
               <Radio name="insurance" className={styles['reg__item-radios']}>
                 {insurances.map((item) => (
-                  <RadioButton key={item.Code} onChange={(e) => e.target.checked && field.onChange(item)} defaultChecked={_.isEqual(field.value, item)}>{item.ru}</RadioButton>
+                  <RadioButton key={item.Code} onChange={(e) => e.target.checked && field.onChange(item)} checked={_.isEqual(field.value, item)}>{item.ru}</RadioButton>
                 ))}
               </Radio>
             )}
@@ -275,7 +282,7 @@ export default function IndividualInfoForm () {
                 {field.value !== 'asap' && field.value !== null && (
                   <DatePicker
                     min={DateTime.now().plus({ month: 1 }).toJSDate()}
-                    value={field.value || null}
+                    value={field.value ? new Date(field.value) : null}
                     onChange={field.onChange}
                     label={t('form.registerDate')}
                     className={styles['reg__item-input']}

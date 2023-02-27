@@ -1,4 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form';
+import useFormPersist from 'react-hook-form-persist';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
@@ -104,6 +105,8 @@ function CreateIndividualFormRender () {
 
 export default function CreateIndividualForm () {
   const formMethods = useForm({ mode: 'all' });
+  const { watch, setValue } = formMethods;
+  useFormPersist('CreateIndividualForm', { watch, setValue, storage: window.localStorage });
   return (
     <FormProvider {...formMethods}>
       <StepsProvider>

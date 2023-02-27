@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import { useCombobox, UseComboboxStateChange, useMultipleSelection } from 'downshift';
 import _ from 'lodash-es';
 
-import ReactHtmlParser from 'common/utils/ReactHtmlParser';
-
 import styles from 'styles/components/forms/MultiSelect.module.scss';
 
 import InfoIcon from '../icons/InfoIcon';
@@ -35,10 +33,15 @@ type Props = {
 };
 
 function MultiSelect({
-  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems, handleChange, tooltip,
+  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems, handleChange, tooltip, selectedOptions = [],
 }: Props) {
   const [inputValue, setInputValue] = React.useState('');
-  const [selectedItems, setSelectedItems] = React.useState<unknown[]>([]);
+  const [selectedItems, setSelectedItems] = React.useState<unknown[]>(selectedOptions);
+
+  React.useEffect(() => {
+    setSelectedItems(selectedOptions);
+  }, [selectedOptions]);
+
   const [items, setItems] = React.useState(options);
 
   const tooltipId = React.useId();
@@ -78,7 +81,6 @@ function MultiSelect({
     getInputProps,
     openMenu,
     getItemProps,
-    toggleMenu,
   } = useCombobox({
     items,
     inputValue,

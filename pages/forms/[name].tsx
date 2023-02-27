@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 
-import CreateIndividualForm from 'common/components/OrderForm/modules/CreateIndividualForm/CreateIndividualForm';
+import CreateIndividualForm from 'common/components/OrderForm/modules/CreateIndividualForm';
 import UpdateIndividualForm from 'common/components/OrderForm/modules/UpdateIndividualForm';
 import Position, { PositionItem } from 'common/components/Position';
 

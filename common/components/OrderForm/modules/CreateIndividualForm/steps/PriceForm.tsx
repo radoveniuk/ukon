@@ -113,6 +113,7 @@ export default function PriceForm() {
                   label={t('form.activitySearch')}
                   pathToLabel="ru"
                   options={activities}
+                  selectedOptions={field.value}
                   handleChange={field.onChange}
                   placeholder={t('form.activitySelectPlaceholder')}
                   customRenderMenuItem={(item: any) => (
