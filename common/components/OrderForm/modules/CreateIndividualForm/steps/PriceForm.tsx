@@ -9,7 +9,7 @@ import MultiSelect from '../../../../forms/MultiSelect';
 import Radio, { RadioButton } from '../../../../forms/Radio';
 import Select from '../../../../forms/Select';
 import TextField from '../../../../forms/TextField';
-import FormItem from '../../../components/FormItem';
+import FormItems, { FormItem } from '../../../components/FormItems';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
 import countries from '../../../data/countries.json';
@@ -69,8 +69,8 @@ export default function PriceForm() {
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
-      <div className={styles.reg__items}>
-        <FormItem number={1} title={t('form.mainActivity')}>
+      <FormItems>
+        <FormItem title={t('form.mainActivity')}>
           <div className={styles['reg__item-project']}>
             <Controller
               control={control}
@@ -101,7 +101,7 @@ export default function PriceForm() {
             />
           </div>
         </FormItem>
-        <FormItem number={2} title= {t('form.otherActivities')}>
+        <FormItem title= {t('form.otherActivities')}>
           <div className={styles['reg__item-project']}>
             <Controller
               control={control}
@@ -133,7 +133,7 @@ export default function PriceForm() {
             </div>
           </div>
         </FormItem>
-        <FormItem number={3} title={t('form.citizenshipAndResidence')}>
+        <FormItem title={t('form.citizenshipAndResidence')}>
           <div className={styles['reg__item-project']} style={{ gap: 20 }}>
             <Controller
               control={control}
@@ -172,7 +172,7 @@ export default function PriceForm() {
             />
           </div>
         </FormItem>
-        <FormItem number={4} title={t('form.businessAddress')}>
+        <FormItem title={t('form.businessAddress')}>
           <Controller
             control={control}
             name="businessAddress"
@@ -206,7 +206,7 @@ export default function PriceForm() {
             )}
           />
         </FormItem>
-        <FormItem number={5} title={t('form.vAddressTariff')}>
+        <FormItem title={t('form.vAddressTariff')}>
           <Controller
             control={control}
             name="vAddressTariff"
@@ -225,7 +225,7 @@ export default function PriceForm() {
             )}
           />
         </FormItem>
-        <FormItem number={6} title={t('form.promo')}>
+        {/* <FormItem title={t('form.promo')}>
           <TextField
             label={t('form.inputPromo')}
             className={styles['reg__item-input']}
@@ -238,8 +238,8 @@ export default function PriceForm() {
             }}
             {...register('promo')}
           />
-        </FormItem>
-        <FormItem number={7} title={t('form.isRegistered')}>
+        </FormItem> */}
+        <FormItem title={t('form.isRegistered')}>
           <Radio className={styles['reg__item-radios']} name="isRegistered">
             <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
               {t('yes')}
@@ -251,13 +251,13 @@ export default function PriceForm() {
         </FormItem>
         {isRegistered && (
           <>
-            <FormItem number={8} title={t('form.email')}>
+            <FormItem title={t('form.email')}>
               <TextField
                 label={t('form.email')}
                 className={styles['reg__item-input']}
               />
             </FormItem>
-            <FormItem number={9} title={t('form.pass')}>
+            <FormItem title={t('form.pass')}>
               <TextField
                 label={t('form.pass')}
                 className={styles['reg__item-input']}
@@ -268,13 +268,13 @@ export default function PriceForm() {
         )}
         {!isRegistered && (
           <>
-            <FormItem number={8} title={t('form.email')}>
+            <FormItem title={t('form.email')}>
               <TextField
                 label={t('form.email')}
                 className={styles['reg__item-input']}
               />
             </FormItem>
-            <FormItem number={9} title={t('form.pass')}>
+            <FormItem title={t('form.pass')}>
               <div className={styles['reg__item-project']} style={{ gap: 20 }}>
                 <TextField
                   label={t('form.pass')}
@@ -288,7 +288,7 @@ export default function PriceForm() {
                 />
               </div>
             </FormItem>
-            <FormItem number={10} title={t('form.phone')}>
+            <FormItem title={t('form.phone')}>
               <TextField
                 label={t('form.phone')}
                 className={styles['reg__item-input']}
@@ -296,7 +296,7 @@ export default function PriceForm() {
             </FormItem>
           </>
         )}
-      </div>
+      </FormItems>
     </>
   );
 }

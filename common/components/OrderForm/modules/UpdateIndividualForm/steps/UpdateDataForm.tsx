@@ -23,7 +23,7 @@ import Radio, { RadioButton } from '../../../../forms/Radio';
 import Select from '../../../../forms/Select';
 import TextField, { TextFieldFormated } from '../../../../forms/TextField';
 import AccordionTable, { AccordionTableCell, AccordionTableRow } from '../../../components/AccordionTable';
-import FormItem from '../../../components/FormItem';
+import FormItems, { FormItem } from '../../../components/FormItems';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
 import countries from '../../../data/countries.json';
@@ -144,48 +144,6 @@ export default function UpdateDataForm() {
       formValue: `${companyNamePrefix} - ${watch('companyName')}`,
     },
     {
-      key: 'businessAddress',
-      label: 'form.businessAddress',
-      value: () => individualData?.businessAddress,
-      editComponent: (
-        <Controller
-          control={control}
-          name="businessAddress"
-          rules={{ required: true }}
-          defaultValue="ukon"
-          render={({ field }) => (
-            <>
-              <Radio name="virtual">
-                <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAddressHtml') }} />
-                <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAddressHtml') }}  />
-                <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAddress') }}  />
-              </Radio>
-              {field.value === 'ukon' && (
-                <Controller
-                  control={control}
-                  name="ourBusinessAddress"
-                  defaultValue={addresses[0]}
-                  render={({ field: addressField, fieldState: addressFieldState }) => (
-                    <Select
-                      {...addressField}
-                      className={classNames(styles['reg__item-project-select'], (styles['reg__item-input']))}
-                      label={t('form.address')}
-                      pathToLabel="value"
-                      options={addresses}
-                      state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
-                    />
-                  )}
-                />
-              )}
-            </>
-          )}
-        />
-      ),
-    },
-  ];
-
-  const ADDITIONAL_DATA: DataItem[] = [
-    {
       key: 'addressResidence',
       label: 'form.addressResidence',
       value: () => individualData?.businessAddress,
@@ -230,29 +188,43 @@ export default function UpdateDataForm() {
       formValue: `${watch('street')}, ${watch('houseRegNumber')}, ${watch('houseNumber')}, ${watch('city')}, ${watch('zip')}`,
     },
     {
-      key: 'citizenship',
-      label: 'form.citizenship',
-      value: () => individualData?.citizenship,
+      key: 'businessAddress',
+      label: 'form.businessAddress',
+      value: () => individualData?.businessAddress,
       editComponent: (
-        <div className={styles['reg__item-project']}>
-          <Controller
-            control={control}
-            name="citizenship"
-            rules={{ required: true }}
-            render={({ field, fieldState }) => (
-              <Select
-                {...field}
-                label={t('form.citizenship')}
-                placeholder={t('form.countryPlaceholder')}
-                options={countries}
-                pathToLabel="ru"
-                state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-              />
-            )}
-          />
-        </div>
+        <Controller
+          control={control}
+          name="businessAddress"
+          rules={{ required: true }}
+          defaultValue="ukon"
+          render={({ field }) => (
+            <>
+              <Radio name="virtual">
+                <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAddressHtml') }} />
+                <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAddressHtml') }}  />
+                <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAddress') }}  />
+              </Radio>
+              {field.value === 'ukon' && (
+                <Controller
+                  control={control}
+                  name="ourBusinessAddress"
+                  defaultValue={addresses[0]}
+                  render={({ field: addressField, fieldState: addressFieldState }) => (
+                    <Select
+                      {...addressField}
+                      className={classNames(styles['reg__item-project-select'], (styles['reg__item-input']))}
+                      label={t('form.address')}
+                      pathToLabel="value"
+                      options={addresses}
+                      state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
+                    />
+                  )}
+                />
+              )}
+            </>
+          )}
+        />
       ),
-      formValue: watch('citizenship.ru'),
     },
   ];
 
@@ -327,19 +299,16 @@ export default function UpdateDataForm() {
     </>
   );
 
-  console.log(watch());
-
-
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
-      <div className={styles.reg__items}>
-        <FormItem number={1} title={t('form.nameOrId')}>
+      <FormItems>
+        <FormItem title={t('form.nameOrId')}>
           <SearchField onSearchResult={setIndividualData} />
         </FormItem>
         {!!individualData && (
           <>
-            <FormItem number={2} title={t('form.actualData')}>
+            <FormItem title={t('form.actualData')}>
               <AccordionTable title={t('publicData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
                 {PUBLIC_DATA.map((dataItem) => (
                   <AccordionTableRow key={dataItem.key}>
@@ -449,16 +418,9 @@ export default function UpdateDataForm() {
                   />
                 )}
               </div>
-              <AccordionTable title={t('additionalData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
-                {ADDITIONAL_DATA.map((dataItem) => (
-                  <AccordionTableRow key={dataItem.key}>
-                    {editRowRender(dataItem)}
-                  </AccordionTableRow>
-                ))}
-              </AccordionTable>
             </FormItem>
-            <FormItem number={3} title={t('dataForEditings')}></FormItem>
-            <FormItem title={t('form.orderComment')} number={4}>
+            <FormItem title={t('dataForEditings')}></FormItem>
+            <FormItem title={t('form.orderComment')}>
               <TextArea
                 label={t('form.comment')}
                 placeholder={t('form.inputComment')}
@@ -466,7 +428,7 @@ export default function UpdateDataForm() {
                 {...register('comment')}
               />
             </FormItem>
-            <FormItem number={5} title={t('form.promo')}>
+            {/* <FormItem title={t('form.promo')}>
               <TextField
                 label={t('form.inputPromo')}
                 className={styles['reg__item-input']}
@@ -479,11 +441,11 @@ export default function UpdateDataForm() {
                 }}
                 {...register('promo')}
               />
-            </FormItem>
-            <FormItem title={t('form.saveToProfile')} number={6}>
+            </FormItem> */}
+            {/* <FormItem title={t('form.saveToProfile')}>
               <Checkbox label={t('form.save')} {...register('saveToProfile', { value: true })} />
-            </FormItem>
-            <FormItem number={7} title={t('form.isRegistered')}>
+            </FormItem> */}
+            <FormItem title={t('form.isRegistered')}>
               <Radio className={styles['reg__item-radios']} name="isRegistered">
                 <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
                   {t('yes')}
@@ -495,13 +457,13 @@ export default function UpdateDataForm() {
             </FormItem>
             {isRegistered && (
               <>
-                <FormItem number={8} title={t('form.email')}>
+                <FormItem title={t('form.email')}>
                   <TextField
                     label={t('form.email')}
                     className={styles['reg__item-input']}
                   />
                 </FormItem>
-                <FormItem number={9} title={t('form.pass')}>
+                <FormItem title={t('form.pass')}>
                   <TextField
                     label={t('form.pass')}
                     className={styles['reg__item-input']}
@@ -512,13 +474,13 @@ export default function UpdateDataForm() {
             )}
             {!isRegistered && (
               <>
-                <FormItem number={8} title={t('form.email')}>
+                <FormItem title={t('form.email')}>
                   <TextField
                     label={t('form.email')}
                     className={styles['reg__item-input']}
                   />
                 </FormItem>
-                <FormItem number={9} title={t('form.pass')}>
+                <FormItem title={t('form.pass')}>
                   <div className={styles['reg__item-project']} style={{ gap: 20 }}>
                     <TextField
                       label={t('form.pass')}
@@ -532,7 +494,7 @@ export default function UpdateDataForm() {
                     />
                   </div>
                 </FormItem>
-                <FormItem number={10} title={t('form.phone')}>
+                <FormItem title={t('form.phone')}>
                   <TextField
                     label={t('form.phone')}
                     className={styles['reg__item-input']}
@@ -542,7 +504,7 @@ export default function UpdateDataForm() {
             )}
           </>
         )}
-      </div>
+      </FormItems>
     </>
   );
 }

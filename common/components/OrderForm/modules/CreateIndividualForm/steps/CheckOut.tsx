@@ -12,7 +12,7 @@ import EditIcon from 'common/components/icons/EditIcon';
 import InfoIcon from 'common/components/icons/InfoIcon';
 import UploadIcon from 'common/components/icons/UploadIcon';
 import CheckoutTable, { CheckoutTableCell, CheckoutTableRow } from 'common/components/OrderForm/components/CheckoutTable';
-import FormItem from 'common/components/OrderForm/components/FormItem';
+import FormItems, { FormItem } from 'common/components/OrderForm/components/FormItems';
 import Tooltip from 'common/components/Tooltip';
 
 import styles from 'styles/OrderForm.module.scss';
@@ -172,152 +172,154 @@ export default function CheckOut () {
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('checkoutText') }} />
-      <FormItem number={1} title="Контроль заполненных данных">
-        <div className={styles.reg__tables}>
-          <CheckoutTable title={t('personalData')} colorfull={!isCheckedForm}>
-            {PersonalDataRows.map((row) => (
-              <CheckoutTableRow key={row.name}>
-                <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
-                <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
-                <CheckoutTableCell
-                  className={styles['reg__table-edit']}
-                  onClick={() => {
-                    setStep(row.step);
-                    setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
-                  }}
-                >
-                  <EditIcon />
-                </CheckoutTableCell>
-              </CheckoutTableRow>
-            ))}
-          </CheckoutTable>
-          <CheckoutTable title={t('companyData')} colorfull={!isCheckedForm}>
-            {CompanyDataRows.map((row) => (
-              <CheckoutTableRow key={row.name}>
-                <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
-                <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
-                <CheckoutTableCell
-                  className={styles['reg__table-edit']}
-                  onClick={() => {
-                    setStep(row.step);
-                    setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
-                  }}
-                >
-                  <EditIcon />
-                </CheckoutTableCell>
-              </CheckoutTableRow>
-            ))}
-          </CheckoutTable>
-          <Checkbox label={t('correctData')} className="mb-15" {...register('correctData')} />
-        </div>
-      </FormItem>
-      <FormItem number={2} title={t('docsUpload')}>
-        <div className={styles['reg__docs']}>
-          <div className={styles['reg__doc']}>
-            <div className={styles['reg__doc-title']}>
-              <div className={styles['reg__doc-title-text']}>{t('proxyDoc')}</div>
-              <Tooltip content={t('proxyDoc')}>
-                <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
-              </Tooltip>
-            </div>
-            <div className={classNames(styles['reg__doc-body'], 't4')}>
-              <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-              <div className={styles.filesLink}>{t('sendTemplate')}</div>
-              <div className={styles.filesLink}>{t('signOnline')}</div>
-            </div>
-            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-              <UploadIcon />
-              {t('upload')}
-            </FileInput>
+      <FormItems>
+        <FormItem title="Контроль заполненных данных">
+          <div className={styles.reg__tables}>
+            <CheckoutTable title={t('personalData')} colorfull={!isCheckedForm}>
+              {PersonalDataRows.map((row) => (
+                <CheckoutTableRow key={row.name}>
+                  <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
+                  <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
+                  <CheckoutTableCell
+                    className={styles['reg__table-edit']}
+                    onClick={() => {
+                      setStep(row.step);
+                      setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
+                    }}
+                  >
+                    <EditIcon />
+                  </CheckoutTableCell>
+                </CheckoutTableRow>
+              ))}
+            </CheckoutTable>
+            <CheckoutTable title={t('companyData')} colorfull={!isCheckedForm}>
+              {CompanyDataRows.map((row) => (
+                <CheckoutTableRow key={row.name}>
+                  <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
+                  <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
+                  <CheckoutTableCell
+                    className={styles['reg__table-edit']}
+                    onClick={() => {
+                      setStep(row.step);
+                      setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
+                    }}
+                  >
+                    <EditIcon />
+                  </CheckoutTableCell>
+                </CheckoutTableRow>
+              ))}
+            </CheckoutTable>
+            <Checkbox label={t('correctData')} className="mb-15" {...register('correctData')} />
           </div>
-          <div className={styles['reg__doc']}>
-            <div className={styles['reg__doc-title']}>
-              <div className={styles['reg__doc-title-text']}>{t('realtyDoc')}</div>
-              <Tooltip content={t('realtyDoc')}>
-                <InfoIcon className={styles['reg__doc-info']} id="RealtyInfo" />
-              </Tooltip>
+        </FormItem>
+        <FormItem title={t('docsUpload')}>
+          <div className={styles['reg__docs']}>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('proxyDoc')}</div>
+                <Tooltip content={t('proxyDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
+                </Tooltip>
+              </div>
+              <div className={classNames(styles['reg__doc-body'], 't4')}>
+                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+                <div className={styles.filesLink}>{t('sendTemplate')}</div>
+                <div className={styles.filesLink}>{t('signOnline')}</div>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
             </div>
-            <div className={classNames(styles['reg__doc-body'], 't4')}>
-              <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-              <div className={styles.filesLink}>{t('sendTemplate')}</div>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('realtyDoc')}</div>
+                <Tooltip content={t('realtyDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="RealtyInfo" />
+                </Tooltip>
+              </div>
+              <div className={classNames(styles['reg__doc-body'], 't4')}>
+                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+                <div className={styles.filesLink}>{t('sendTemplate')}</div>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
             </div>
-            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-              <UploadIcon />
-              {t('upload')}
-            </FileInput>
-          </div>
-          <div className={styles['reg__doc']}>
-            <div className={styles['reg__doc-title']}>
-              <div className={styles['reg__doc-title-text']}>{t('nonConvictDoc')}</div>
-              <Tooltip content={t('nonConvictDoc')}>
-                <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
-              </Tooltip>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('nonConvictDoc')}</div>
+                <Tooltip content={t('nonConvictDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
+                </Tooltip>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
             </div>
-            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-              <UploadIcon />
-              {t('upload')}
-            </FileInput>
-          </div>
-          <div className={styles['reg__doc']}>
-            <div className={styles['reg__doc-title']}>
-              <div className={styles['reg__doc-title-text']}>{t('identDoc')}</div>
-              <Tooltip content={t('identDocPlaceholder')}>
-                <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
-              </Tooltip>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('identDoc')}</div>
+                <Tooltip content={t('identDocPlaceholder')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
+                </Tooltip>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
             </div>
-            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-              <UploadIcon />
-              {t('upload')}
-            </FileInput>
-          </div>
-          <div className={styles['reg__doc']}>
-            <div className={styles['reg__doc-title']}>
-              <div className={styles['reg__doc-title-text']}>{t('residenceSkDoc')}</div>
-              <Tooltip content={t('residenceSkDoc')}>
-                <InfoIcon className={styles['reg__doc-info']} id="ResidenceSkDocInfo" />
-              </Tooltip>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('residenceSkDoc')}</div>
+                <Tooltip content={t('residenceSkDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="ResidenceSkDocInfo" />
+                </Tooltip>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
             </div>
-            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-              <UploadIcon />
-              {t('upload')}
-            </FileInput>
-          </div>
-          <div className={styles['reg__doc']}>
-            <div className={styles['reg__doc-title']}>
-              <div className={styles['reg__doc-title-text']}>{t('permitResidenceDoc')} {watch('residence.ru')}</div>
-              <Tooltip content={t('permitResidenceDoc')}>
-                <InfoIcon className={styles['reg__doc-info']} id="PermitResidenceDocInfo" />
-              </Tooltip>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('permitResidenceDoc')} {watch('residence.ru')}</div>
+                <Tooltip content={t('permitResidenceDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="PermitResidenceDocInfo" />
+                </Tooltip>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
             </div>
-            <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-              <UploadIcon />
-              {t('upload')}
-            </FileInput>
           </div>
-        </div>
-      </FormItem>
-      <FormItem number={3} title={t('paymentType')}>
-        <div className={styles['reg__item-payments']}>
-          <div>
-            <div className={styles['reg__item-payments-title']}>{t('paymentLink')}:</div>
-            <Radio className={classNames(styles['reg__item-payments-radios'], 'mb-15')} name="paymentType">
-              <RadioButton checked={paymentType === 'online'} onSelect={() => void setPaymentType('online')}>{t('paymentByCard')}</RadioButton>
-              <RadioButton checked={paymentType === 'invoice'} onSelect={() => void setPaymentType('invoice')}>{t('paymentByInvoice')}</RadioButton>
-            </Radio>
-            {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+        </FormItem>
+        <FormItem title={t('paymentType')}>
+          <div className={styles['reg__item-payments']}>
+            <div>
+              <div className={styles['reg__item-payments-title']}>{t('paymentLink')}:</div>
+              <Radio className={classNames(styles['reg__item-payments-radios'], 'mb-15')} name="paymentType">
+                <RadioButton checked={paymentType === 'online'} onSelect={() => void setPaymentType('online')}>{t('paymentByCard')}</RadioButton>
+                <RadioButton checked={paymentType === 'invoice'} onSelect={() => void setPaymentType('invoice')}>{t('paymentByInvoice')}</RadioButton>
+              </Radio>
+              {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+            </div>
+            <div>
+              <div className={styles['reg__item-payments-title']}>{t('invoiceType')}:</div>
+              <Radio className={classNames(styles['reg__item-payments-radios'])} name="invoiceType">
+                <RadioButton defaultChecked>{t('invoiceToCurrentIdividual')}</RadioButton>
+                <RadioButton>{t('invoiceToOther')}</RadioButton>
+              </Radio>
+            </div>
           </div>
-          <div>
-            <div className={styles['reg__item-payments-title']}>{t('invoiceType')}:</div>
-            <Radio className={classNames(styles['reg__item-payments-radios'])} name="invoiceType">
-              <RadioButton defaultChecked>{t('invoiceToCurrentIdividual')}</RadioButton>
-              <RadioButton>{t('invoiceToOther')}</RadioButton>
-            </Radio>
-          </div>
-        </div>
-      </FormItem>
-      <FormItem number={4} title={t('agree')}>
-        <Checkbox label={t('agreeWithRules')} {...register('agreeWithRules')} />
-      </FormItem>
+        </FormItem>
+        <FormItem title={t('agree')}>
+          <Checkbox label={t('agreeWithRules')} {...register('agreeWithRules')} />
+        </FormItem>
+      </FormItems>
     </>
   );
 }

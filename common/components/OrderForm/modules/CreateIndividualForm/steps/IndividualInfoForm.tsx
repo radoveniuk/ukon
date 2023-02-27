@@ -11,7 +11,7 @@ import Radio, { RadioButton } from 'common/components/forms/Radio';
 import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
-import FormItem from 'common/components/OrderForm/components/FormItem';
+import FormItems, { FormItem } from 'common/components/OrderForm/components/FormItems';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -33,8 +33,8 @@ export default function IndividualInfoForm () {
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('individualInfoText') }} />
-      <div className={styles.reg__items}>
-        <FormItem number={1} title={t('form.physicalInfo')}>
+      <FormItems>
+        <FormItem  title={t('form.physicalInfo')}>
           <div className={styles['reg__item-inputs']}>
             <Controller
               control={control}
@@ -78,7 +78,7 @@ export default function IndividualInfoForm () {
             />
           </div>
         </FormItem>
-        <FormItem number={2} title={t('form.numberAndBirthDate')}>
+        <FormItem  title={t('form.numberAndBirthDate')}>
           <div className={styles['reg__item-inputs']}>
             <TextFieldFormated
               label={t('form.physicalNumber')}
@@ -148,7 +148,7 @@ export default function IndividualInfoForm () {
             />
           </div>
         </FormItem>
-        <FormItem title={t('form.docNumber')} number={3}>
+        <FormItem title={t('form.docNumber')} >
           <TextField
             label={t('form.docNumber')}
             placeholder={t('form.inputDocNumber')}
@@ -158,7 +158,7 @@ export default function IndividualInfoForm () {
             {...register('docNumber', { required: t('form.requiredFieldText') })}
           />
         </FormItem>
-        <FormItem title={t('form.address')} number={4}>
+        <FormItem title={t('form.address')} >
           <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.addressResidence')}</span>
           <div className={styles['reg__item-address-inputs']}>
             <TextField
@@ -235,7 +235,7 @@ export default function IndividualInfoForm () {
             <TextField label={t('form.countryPlaceholder')} value="Slovensko" disabled />
           </div>
         </FormItem>
-        <FormItem id="insurance" title={t('form.insurance')} number={5}>
+        <FormItem id="insurance" title={t('form.insurance')} >
           <Controller
             control={control}
             name="insurance"
@@ -248,12 +248,12 @@ export default function IndividualInfoForm () {
             )}
           />
         </FormItem>
-        <FormItem title={t('form.companyName')} number={6}>
+        <FormItem title={t('form.companyName')} >
           <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
             <TextField prefix={`${companyNamePrefix} -`} label={t('form.companyName')} {...register('companyName')} />
           </div>
         </FormItem>
-        <FormItem title={t('form.companyNumber')} number={7}>
+        <FormItem title={t('form.companyNumber')}>
           <TextFieldFormated
             format="########"
             className={styles['reg__item-input']}
@@ -261,7 +261,7 @@ export default function IndividualInfoForm () {
             {...register('companyNumber')}
           />
         </FormItem>
-        <FormItem id="registerDate" title={t('form.registerDate')} number={8}>
+        <FormItem id="registerDate" title={t('form.registerDate')}>
           <Controller
             control={control}
             name="registerDate"
@@ -285,10 +285,10 @@ export default function IndividualInfoForm () {
             )}
           />
         </FormItem>
-        <FormItem title={t('form.saveToProfile')} number={9}>
+        <FormItem title={t('form.saveToProfile')}>
           <Checkbox label={t('form.save')} {...register('saveToProfile', { value: true })} />
         </FormItem>
-        <FormItem title={t('form.orderComment')} number={10}>
+        <FormItem title={t('form.orderComment')}>
           <TextArea
             label={t('form.comment')}
             placeholder={t('form.inputComment')}
@@ -296,7 +296,7 @@ export default function IndividualInfoForm () {
             {...register('comment')}
           />
         </FormItem>
-      </div>
+      </FormItems>
     </>
   );
 }
