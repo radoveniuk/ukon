@@ -1,4 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form';
+import useFormPersist from 'react-hook-form-persist';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
@@ -48,9 +49,6 @@ function UpdateIndividualFormRender () {
                 <UpdateDataForm />
               </div>
               <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
-                {/* <IndividualInfoForm /> */}
-              </div>
-              <div className={classNames(styles.reg__tab, step === 2 ? styles.active : '')}>
                 {/* <CheckOut /> */}
               </div>
             </div>
@@ -96,6 +94,8 @@ function UpdateIndividualFormRender () {
 
 export default function UpdateIndividualForm () {
   const formMethods = useForm({ mode: 'all' });
+  const { watch, setValue } = formMethods;
+  useFormPersist('UpdateIndividualForm', { watch, setValue, storage: window.localStorage });
   return (
     <FormProvider {...formMethods}>
       <StepsProvider>

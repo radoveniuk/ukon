@@ -274,7 +274,7 @@ export default function UpdateDataForm() {
       <AccordionTableCell>
         {editFields.includes(dataItem.key) && <s>{dataItem.value?.()}</s>}
         {!editFields.includes(dataItem.key) && !savedFields.includes(dataItem.key) && <div>{dataItem.value?.()}</div>}
-        {!editFields.includes(dataItem.key) && savedFields.includes(dataItem.key) && <p><s style={{ color: '#9e395d' }}>{dataItem.value?.()}</s><span style={{ color: '#10826E' }}>{dataItem.formValue}</span></p> }
+        {!editFields.includes(dataItem.key) && savedFields.includes(dataItem.key) && <p><s style={{ color: '#9e395d' }}>{dataItem.value?.()}</s>&nbsp;<span style={{ color: '#10826E' }}>{dataItem.formValue}</span></p> }
         {editFields.includes(dataItem.key) && (
           <div className={styles['reg__table-inputs']}>
             {dataItem.editComponent}

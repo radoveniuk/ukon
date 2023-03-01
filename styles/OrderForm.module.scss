@@ -681,8 +681,13 @@
         grid-gap: 20px 30px;
       }
       @media (max-width: 759px) {
-        grid-gap: 20px;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      label:last-child {
+        grid-column: 2/4;
       }
     }
     &-company-name {
@@ -1200,7 +1205,6 @@
 
 .searchWrapper {
   position: relative;
-  max-width: 400px;
   .searchResults {
     top: 65px;
     position: absolute;
