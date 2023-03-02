@@ -13,7 +13,8 @@ import PrevButton from '../../components/PrevButton';
 
 import PriceProvider, { usePriceContext } from './contexts/PriceContext';
 import StepsProvider, { STEPS, useSteps } from './contexts/StepsContext';
-import UpdateDataForm from './steps/UpdateDataForm';
+import CheckOut from './steps/CheckOut';
+import UpdateData from './steps/UpdateData';
 
 function UpdateIndividualFormRender () {
   const translation = useTranslation('forms');
@@ -46,10 +47,10 @@ function UpdateIndividualFormRender () {
             </div>
             <div className={styles.reg__tabs}>
               <div className={classNames(styles.reg__tab, step === 0 ? styles.active : '')}>
-                <UpdateDataForm />
+                <UpdateData />
               </div>
               <div className={classNames(styles.reg__tab, step === 1 ? styles.active : '')}>
-                {/* <CheckOut /> */}
+                <CheckOut />
               </div>
             </div>
           </div>

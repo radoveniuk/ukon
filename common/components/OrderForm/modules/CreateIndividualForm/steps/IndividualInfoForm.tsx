@@ -16,7 +16,6 @@ import FormItems, { FormItem } from 'common/components/OrderForm/components/Form
 
 import styles from 'styles/OrderForm.module.scss';
 
-import countries from '../../../data/countries.json';
 import insurances from '../../../data/insurance.json';
 import prefixes from '../../../data/prefixes.json';
 
@@ -30,6 +29,15 @@ export default function IndividualInfoForm () {
   const companyNamePrefix = useMemo(() => {
     return `${namePrefix?.Value ?? ''} ${name ?? ''} ${surname ?? ''} ${namePostfix?.Value ?? ''}`.trim().replaceAll(/  +/g, ' ');
   }, [name, namePostfix, namePrefix, surname]);
+
+  const getAddressMode = () => {
+    const countriesMap: { [key: number]: 'sk' | 'cz' } = {
+      703: 'sk',
+      203: 'cz',
+    };
+    const countryCode = watch('residence.Code');
+    return countriesMap[countryCode] || 'google';
+  };
 
   return (
     <>
@@ -178,6 +186,7 @@ export default function IndividualInfoForm () {
                   setValue('city', res.city, { shouldValidate: true });
                   setValue('zip', res.zip, { shouldValidate: true });
                 }}
+                mode={getAddressMode()}
               />
             </div>
             <TextField

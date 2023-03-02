@@ -39,7 +39,9 @@ function MultiSelect({
   const [selectedItems, setSelectedItems] = React.useState<unknown[]>(selectedOptions);
 
   React.useEffect(() => {
-    setSelectedItems(selectedOptions);
+    if (selectedOptions.length) {
+      setSelectedItems(selectedOptions);
+    }
   }, [selectedOptions]);
 
   const [items, setItems] = React.useState(options);

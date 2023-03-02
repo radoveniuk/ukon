@@ -54,7 +54,7 @@ type Activity = {
   _?: Partial<Activity>;
 }
 
-export default function UpdateDataForm() {
+export default function UpdateData() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
