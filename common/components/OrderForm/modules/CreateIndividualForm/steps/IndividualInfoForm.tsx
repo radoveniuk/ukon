@@ -44,47 +44,51 @@ export default function IndividualInfoForm () {
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('individualInfoText') }} />
       <FormItems>
         <FormItem  title={t('form.physicalInfo')}>
-          <div className={styles['reg__item-inputs']}>
-            <Controller
-              control={control}
-              name="namePrefix"
-              render={({ field }) => (
-                <Select
-                  label={t('form.namePrefix')}
-                  placeholder={t('form.inputNamePrefix')}
-                  options={prefixes.filter((item) => item.Type === 'Prefix')}
-                  pathToLabel="Value"
-                  {...field}
-                />
-              )}
-            />
-            <TextField
-              label={t('form.name')}
-              placeholder={t('form.inputName')}
-              error={errors.name?.message?.toString()}
-              success={!!touchedFields.name && !errors.name}
-              {...register('name', { required: t('form.requiredFieldText') })}
-            />
-            <TextField
-              label={t('form.surname')}
-              placeholder={t('form.inputSurname')}
-              error={errors.surname?.message?.toString()}
-              success={!!touchedFields.surname && !errors.surname}
-              {...register('surname', { required: t('form.requiredFieldText') })}
-            />
-            <Controller
-              control={control}
-              name="namePostfix"
-              render={({ field }) => (
-                <Select
-                  label={t('form.namePostfix')}
-                  placeholder={t('form.inputNamePostfix')}
-                  options={prefixes.filter((item) => item.Type === 'Postfix')}
-                  pathToLabel="Value"
-                  {...field}
-                />
-              )}
-            />
+          <div className={styles['reg__item-name-inputs']}>
+            <div className={styles['reg__item-name-inputs-name']}>
+              <Controller
+                control={control}
+                name="namePrefix"
+                render={({ field }) => (
+                  <Select
+                    label={t('form.namePrefix')}
+                    placeholder={t('form.inputNamePrefix')}
+                    options={prefixes.filter((item) => item.Type === 'Prefix')}
+                    pathToLabel="Value"
+                    {...field}
+                  />
+                )}
+              />
+              <TextField
+                label={t('form.name')}
+                placeholder={t('form.inputName')}
+                error={errors.name?.message?.toString()}
+                success={!!touchedFields.name && !errors.name}
+                {...register('name', { required: t('form.requiredFieldText') })}
+              />
+            </div>
+            <div className={styles['reg__item-name-inputs-surname']}>
+              <TextField
+                label={t('form.surname')}
+                placeholder={t('form.inputSurname')}
+                error={errors.surname?.message?.toString()}
+                success={!!touchedFields.surname && !errors.surname}
+                {...register('surname', { required: t('form.requiredFieldText') })}
+              />
+              <Controller
+                control={control}
+                name="namePostfix"
+                render={({ field }) => (
+                  <Select
+                    label={t('form.namePostfix')}
+                    placeholder={t('form.inputNamePostfix')}
+                    options={prefixes.filter((item) => item.Type === 'Postfix')}
+                    pathToLabel="Value"
+                    {...field}
+                  />
+                )}
+              />
+            </div>
           </div>
         </FormItem>
         <FormItem  title={t('form.numberAndBirthDate')}>

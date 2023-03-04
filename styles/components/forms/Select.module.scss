@@ -28,6 +28,10 @@
     border: 1px solid #dd6642;
   }
 
+  div[role=button] {
+    height: 22px;
+  }
+
   input {
     border: none;
     outline: none;

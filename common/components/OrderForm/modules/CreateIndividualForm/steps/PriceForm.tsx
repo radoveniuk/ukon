@@ -129,9 +129,9 @@ export default function PriceForm() {
                 />
               )}
             />
-            <div className={classNames(styles['reg__item-project-btn'], 'btn-text', 'btn-transparent')}>
+            {/* <div className={classNames(styles['reg__item-project-btn'], 'btn-text', 'btn-transparent')}>
               {t('form.activitiesList')}
-            </div>
+            </div> */}
           </div>
         </FormItem>
         <FormItem title={t('form.citizenshipAndResidence')}>

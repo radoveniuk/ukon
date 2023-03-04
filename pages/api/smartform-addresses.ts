@@ -11,7 +11,7 @@ export default function handler(
     method: 'post',
     url: 'https://secure.smartform.cz/smartform-ws/oracle/v10',
     headers: {
-      Authorization: 'Basic bmxBekY3Um56aDprT0h0NFU5Tw==',
+      Authorization: `Basic ${process.env.NEXT_PUBLIC_AUTOFORM_KEY}`,
       'Content-Type': 'application/json',
     },
     data : JSON.stringify({ fieldType:'WHOLE_ADDRESS', values:{ 'WHOLE_ADDRESS': search }, country, limit: 10 }),
