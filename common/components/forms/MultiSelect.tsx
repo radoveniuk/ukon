@@ -199,23 +199,25 @@ function MultiSelect({
           );
         })}
       </div>
-      <div className={styles.dropdownMenuWrapper}>
-        <ul {...getMenuProps({ className: styles.dropdownMenu })}>
-          {isOpen && items.map((item, index) => (
-            <li
-              key={index}
-              {...getItemProps({
-                item,
-                index,
-                className: classNames(styles.menuItem, 't5'),
-              })}
-            >
-              {customRenderMenuItem?.(item) || getLabel(item)}
-              <PlusIcon style={{ minWidth: 24 }} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {isOpen && (
+        <div className={styles.dropdownMenuWrapper}>
+          <ul {...getMenuProps({ className: styles.dropdownMenu })}>
+            {items.map((item, index) => (
+              <li
+                key={index}
+                {...getItemProps({
+                  item,
+                  index,
+                  className: classNames(styles.menuItem, 't5'),
+                })}
+              >
+                {customRenderMenuItem?.(item) || getLabel(item)}
+                <PlusIcon style={{ minWidth: 24 }} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

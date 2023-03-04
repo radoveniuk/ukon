@@ -68,6 +68,9 @@ function ComboBox({
       onChange(newSelectedItem);
     },
   });
+
+
+  console.log(isOpen);
   return (
     <div className={classNames(styles.wrapper, className)} onBlur={onBlur}>
       <label className={classNames('t5', styles['select-label'])} {...getLabelProps()}>
@@ -82,16 +85,24 @@ function ComboBox({
           ref={ref}
           {...getInputProps()}
         />
-        {!value && (<div role="button" className={classNames(styles.toggleBtn, isOpen ? styles.active : '')} {...getToggleButtonProps()}><DropdownIcon /></div>)}
+        {!value && (
+          <div
+            role="button"
+            className={classNames(styles.toggleBtn, isOpen ? styles.active : '')}
+            {...getToggleButtonProps()}
+          >
+            <DropdownIcon />
+          </div>
+        )}
         {!!value && (<div role="button" onClick={() => { onChange(null); }}><MinusIcon /></div>)}
       </div>
-      <div className={styles.dropdownMenuWrapper}>
-        <ul
-          {...getMenuProps()}
-          className={styles.dropdownMenu}
-        >
-          {isOpen &&
-            items.map((item, index) => (
+      {isOpen && (
+        <div className={styles.dropdownMenuWrapper}>
+          <ul
+            {...getMenuProps()}
+            className={styles.dropdownMenu}
+          >
+            {items.map((item, index) => (
               <li
                 className={classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : '')}
                 key={`${index}`}
@@ -100,8 +111,9 @@ function ComboBox({
                 {customRenderMenuItem?.(item) || itemToString(item)}
               </li>
             ))}
-        </ul>
-      </div>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
