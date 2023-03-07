@@ -1,4 +1,4 @@
-import { ChangeEvent, createContext, PropsWithChildren, useContext } from 'react';
+import { ChangeEvent, createContext, CSSProperties,PropsWithChildren, useContext } from 'react';
 import classNames from 'classnames';
 
 import styles from 'styles/components/forms/Radio.module.scss';
@@ -7,13 +7,14 @@ const RadioContext = createContext<{ name: string } | undefined>(undefined);
 
 type RadioProps = PropsWithChildren & {
   name: string;
+  style?: CSSProperties;
   className?: string;
 };
 
-const Radio = ({ children, className, name }: RadioProps) => {
+const Radio = ({ children, name, ...rest }: RadioProps) => {
   return (
     <RadioContext.Provider value={{ name }}>
-      <div className={className}>
+      <div {...rest}>
         {children}
       </div>
     </RadioContext.Provider>
@@ -22,7 +23,7 @@ const Radio = ({ children, className, name }: RadioProps) => {
 
 export default Radio;
 
-type RadioButtonProps = PropsWithChildren & {
+export type RadioButtonProps = PropsWithChildren & {
   className?: string;
   defaultChecked?: boolean;
   checked?: boolean;
@@ -36,16 +37,16 @@ export const RadioButton = ({ children, className, dangerouslySetInnerHTML, onCh
   return (
     <label className={classNames(styles.radio, className)}>
       <span className={styles['radio-input']}>
-        <input 
-          type="radio" 
+        <input
+          type="radio"
           name={context?.name}
           onChange={(e) => {
             onChange?.(e);
             if (e.target.checked) {
               onSelect?.();
             }
-          }} 
-          {...rest} 
+          }}
+          {...rest}
         />
         <svg className={styles['radio-input-svg']} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M10.0001 1.66699C5.41672 1.66699 1.66672 5.41699 1.66672 10.0003C1.66672 14.5837 5.41672 18.3337 10.0001 18.3337C14.5834 18.3337 18.3334 14.5837 18.3334 10.0003C18.3334 5.41699 14.5834 1.66699 10.0001 1.66699ZM10.0001 16.6672C6.33344 16.6672 3.33344 13.6672 3.33344 10.0005C3.33344 6.33388 6.33344 3.33388 10.0001 3.33388C13.6668 3.33388 16.6668 6.33388 16.6668 10.0005C16.6668 13.6672 13.6668 16.6672 10.0001 16.6672Z" fill="#A1A1A1"/>

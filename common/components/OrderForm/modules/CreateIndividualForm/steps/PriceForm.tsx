@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+import { BsCheck2 } from 'react-icons/bs';
+import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
+
+import BuisnessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks } from 'common/components/OrderForm/components/BuisnessAdressSelectCard';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -13,6 +17,7 @@ import FormItems, { FormItem } from '../../../components/FormItems';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
 import countries from '../../../data/countries.json';
+import virtualAddressTariffs from '../../../data/virtualAddressTariffs.json';
 import { usePriceContext } from '../contexts/PriceContext';
 
 export default function PriceForm() {
@@ -181,48 +186,70 @@ export default function PriceForm() {
             defaultValue="ukon"
             render={({ field }) => (
               <>
-                <Radio className={classNames('mb-15', styles['reg__item-radios'])} name="virtual">
-                  <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAddressHtml') }} />
-                  {residence?.en === 'Slovakia' && <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAddressHtml') }}  />}
-                  <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAddress') }}  />
-                </Radio>
-                {field.value === 'ukon' && (
-                  <Controller
-                    control={control}
-                    name="ourBusinessAddress"
-                    defaultValue={addresses[0]}
-                    render={({ field: addressField, fieldState: addressFieldState }) => (
-                      <Select
-                        {...addressField}
-                        className={styles['reg__item-project-select']}
-                        label={t('form.address')}
-                        pathToLabel="value"
-                        options={addresses}
-                        state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
+                <Radio className={classNames('mb-15')} name="businessAddress">
+                  <CardsContainer>
+                    <BuisnessAdressSelectCard
+                      title="Úkon.sk Business Address & Virtual Mail Service"
+                      checked={field.value === 'ukon'}
+                      onSelect={() => void field.onChange('ukon')}
+                    >
+                      <Image height={90} width={90} src="/images/order-form/BuisnessAddressUkon.svg" alt="" />
+                      <div>This will be your principal company address:</div>
+                      <Controller
+                        control={control}
+                        name="ourBusinessAddress"
+                        defaultValue={addresses[0]}
+                        render={({ field: addressField, fieldState: addressFieldState }) => (
+                          <Select
+                            {...addressField}
+                            pathToLabel="value"
+                            options={addresses}
+                            state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
+                          />
+                        )}
                       />
-                    )}
-                  />
-                )}
+                      <Controller
+                        control={control}
+                        name="vAddressTariff"
+                        defaultValue={virtualAddressTariffs[0]}
+                        render={({ field: tariffField, fieldState: tariffFieldState }) => (
+                          <Select
+                            {...tariffField}
+                            pathToLabel="name"
+                            onChange={(value) => {
+                              tariffField.onChange(value);
+                              updatePriceList({ vAddressTariff: value?.price });
+                            }}
+                            options={virtualAddressTariffs.map((tariff) => ({ ...tariff, name: `Package of services — ${tariff.name} (${tariff.price}€)` }))}
+                            state={!tariffField.value && tariffFieldState.isTouched ? 'error' : (tariffFieldState.isDirty ? 'success' : 'draft')}
+                          />
+                        )}
+                      />
+                      <Checkmarks>
+                        <Checkmark checked>Receive up to 100 emails per year</Checkmark>
+                        <Checkmark checked>Instant alerts with 24/7 access to your mail online</Checkmark>
+                      </Checkmarks>
+                      {!!watch('vAddressTariff.price') && (
+                        <>
+                          <div className="h2">{watch('vAddressTariff.price')}&#8364;/Year</div>
+                          <div className="t3">Cancel anytime</div>
+                        </>
+                      )}
+                    </BuisnessAdressSelectCard>
+                    <BuisnessAdressSelectCard
+                      title="Use My Own Address"
+                      checked={field.value === 'own'}
+                      onSelect={() => void field.onChange('own')}
+                    >
+                      <Image height={90} width={90} src="/images/order-form/BuisnessAddressOwn.svg" alt="" />
+                      <div className="mb-15">I will provide my own Slovak business address and will personally keep up with the incoming mail.</div>
+                      <div className="mb-15">Slovakia requires a physical street address (P.O Boxes are not accepted).</div>
+                      <div className="mb-15">Any residential address provided to the state will be listed publicly.</div>
+                      <div className="mb-15">You need authorized representative for mail, which must be a person with permanent residence in Slovakia, or Úkon.sk s.r.o. (40€)</div>
+                    </BuisnessAdressSelectCard>
+                  </CardsContainer>
+                </Radio>
               </>
-            )}
-          />
-        </FormItem>
-        <FormItem title={t('form.vAddressTariff')}>
-          <Controller
-            control={control}
-            name="vAddressTariff"
-            render={({ field }) => (
-              <Radio className={styles['reg__item-radios']} name="vAddressTariff">
-                <RadioButton onSelect={() => { updatePriceList({ vAddressTariff: 19 }); field.onChange(19); }}>
-              «Стив Джобс» (19€)*<span className="t5">*открытие ИП</span>
-                </RadioButton>
-                <RadioButton onSelect={() => { updatePriceList({ vAddressTariff: 69 }); field.onChange(69); }}>
-              «Билл Гейтс» (69€)*<span className="t5">*открытие ИП + Виртуальный адрес - Базовый пакет (до 5 писем в год)</span>
-                </RadioButton>
-                <RadioButton onSelect={() => { updatePriceList({ vAddressTariff: 114 }); field.onChange(114); }}>
-              «Илон Маск» (114€)*<span className="t5">*открытие ИП + Виртуальный адрес - Cтандарт (до 100 писем в год)</span>
-                </RadioButton>
-              </Radio>
             )}
           />
         </FormItem>

@@ -8,13 +8,13 @@ import styles from 'styles/components/forms/Select.module.scss';
 import DropdownIcon from '../icons/DropdownIcon';
 import MinusIcon from '../icons/MinusIcon';
 
-type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
+type CustomRenderMenuItem = (item: any) => React.ReactNode | string;
 
 type ComboBoxProps = {
-  options: unknown[];
+  options: any[];
   pathToLabel?: string;
-  value: unknown | null;
-  onChange(value: unknown): void;
+  value: any | null;
+  onChange(value: any): void;
   label?: string;
   placeholder?: string;
   className?: string;
@@ -38,16 +38,15 @@ function ComboBox({
 ) {
   const [items, setItems] = React.useState(options);
 
-  const itemToString = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) || '' : item) as string;
+  const itemToString = (item: any) => (pathToLabel ? _.get(item, pathToLabel) || '' : item) as string;
 
   function getOptionsFilter (inputValue = '') {
-    return function filter (option: unknown) {
+    return function filter (option: any) {
       return (
         !inputValue || itemToString(option).toLowerCase().includes(inputValue.toLowerCase())
       );
     };
   }
-
 
   const {
     isOpen,
@@ -69,8 +68,6 @@ function ComboBox({
     },
   });
 
-
-  console.log(isOpen);
   return (
     <div className={classNames(styles.wrapper, className)} onBlur={onBlur}>
       <label className={classNames('t5', styles['select-label'])} {...getLabelProps()}>
@@ -96,28 +93,26 @@ function ComboBox({
         )}
         {!!value && (<div role="button" onClick={() => { onChange(null); }}><MinusIcon /></div>)}
       </div>
-      {isOpen && (
-        <div className={styles.dropdownMenuWrapper}>
-          <ul
-            {...getMenuProps()}
-            className={styles.dropdownMenu}
-          >
-            {items.map((item, index) => (
-              <li
-                className={classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : '')}
-                key={`${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {customRenderMenuItem?.(item) || itemToString(item)}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* {isOpen && ( */}
+      <div className={styles.dropdownMenuWrapper}>
+        <ul
+          {...getMenuProps()}
+          className={styles.dropdownMenu}
+        >
+          {isOpen && items.map((item, index) => (
+            <li
+              className={classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : '')}
+              key={`${index}`}
+              {...getItemProps({ item, index })}
+            >
+              {customRenderMenuItem?.(item) || itemToString(item)}
+            </li>
+          ))}
+        </ul>
+      </div>
+      {/* )} */}
     </div>
   );
 }
 
-const Select = React.forwardRef(ComboBox);
-
-export default Select;
+export default React.forwardRef(ComboBox);

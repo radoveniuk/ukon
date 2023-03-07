@@ -35,8 +35,6 @@ type Props = {
 };
 
 const AddressSearch = ({ onSearchResult, mode = 'google' }: Props) => {
-  console.log(mode);
-
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearchValue = useDebounce(searchValue);
   const translation = useTranslation('forms');
@@ -52,6 +50,9 @@ const AddressSearch = ({ onSearchResult, mode = 'google' }: Props) => {
     apiKey: process.env.NEXT_PUBLIC_GOOGLE_PLACES_KEY,
     debounce: 500,
     language: 'sk',
+    options: {
+      // componentRestrictions: { country: 'ua' },
+    },
   });
 
   const [czskAddresses,  setCzskAddresses] = useState<(Address & { description: string })[]>([]);
