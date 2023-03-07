@@ -21,19 +21,26 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 10px 10px 20px;
-      background: #FFFFFF;
+      background-color: #FCFCFC;
       transition-duration: .4s;
       border: 1px solid #E7E7E7;
       cursor: pointer;
       border-radius: 6px;
       outline: none;
       flex-grow: 1;
+
+      div[role=button] {
+        height: 22px;
+      }
   
       input {
         border: none;
         outline: none;
         width: 100%;
-        background-color: #fff;
+        background-color: #FCFCFC;
+        &::placeholder {
+          color: #DDDDDD;
+        }
       }
     }
 
@@ -42,12 +49,14 @@
       cursor: pointer;
     }
   }
-
 }
 
 .dropdownMenuWrapper {
+  &.open {
+    display: block;
+  }
+  display: none;
   position: absolute;
-  top: 72px;
   left: 0;
   width: 100%;
   z-index: 10;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { BsCheck2 } from 'react-icons/bs';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
@@ -14,23 +13,24 @@ import Radio, { RadioButton } from '../../../../forms/Radio';
 import Select from '../../../../forms/Select';
 import TextField from '../../../../forms/TextField';
 import FormItems, { FormItem } from '../../../components/FormItems';
+import { usePriceContext } from '../../../contexts/PriceContext';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
 import countries from '../../../data/countries.json';
 import virtualAddressTariffs from '../../../data/virtualAddressTariffs.json';
-import { usePriceContext } from '../contexts/PriceContext';
 
 export default function PriceForm() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, watch, register, setValue, formState: { errors } } = useFormContext();
+  const { control, watch, setValue } = useFormContext();
   const [, updatePriceList] = usePriceContext();
 
   const residence = watch('residence');
   const mainActivity = watch('mainActivity');
   const otherActivities = watch('otherActivities');
   const citizenship = watch('citizenship');
+  const vAddressPrice = watch('vAddressTariff.price');
   useEffect(() => {
     if (mainActivity) {
       if (mainActivity.Type === 'Volná') {
@@ -66,7 +66,8 @@ export default function PriceForm() {
     } else {
       updatePriceList({ residence: 0 });
     }
-  }, [citizenship?.en, mainActivity, otherActivities, residence?.en, updatePriceList]);
+    updatePriceList({ vAddressTariff: vAddressPrice });
+  }, [citizenship?.en, mainActivity, otherActivities, residence?.en, updatePriceList, vAddressPrice]);
 
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
@@ -218,7 +219,6 @@ export default function PriceForm() {
                             pathToLabel="name"
                             onChange={(value) => {
                               tariffField.onChange(value);
-                              updatePriceList({ vAddressTariff: value?.price });
                             }}
                             options={virtualAddressTariffs.map((tariff) => ({ ...tariff, name: `Package of services — ${tariff.name} (${tariff.price}€)` }))}
                             state={!tariffField.value && tariffFieldState.isTouched ? 'error' : (tariffFieldState.isDirty ? 'success' : 'draft')}

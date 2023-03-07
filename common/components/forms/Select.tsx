@@ -93,13 +93,12 @@ function ComboBox({
         )}
         {!!value && (<div role="button" onClick={() => { onChange(null); }}><MinusIcon /></div>)}
       </div>
-      {/* {isOpen && ( */}
-      <div className={styles.dropdownMenuWrapper}>
+      <div className={classNames(styles.dropdownMenuWrapper, isOpen ? styles.open : '')}>
         <ul
           {...getMenuProps()}
           className={styles.dropdownMenu}
         >
-          {isOpen && items.map((item, index) => (
+          {items.map((item, index) => (
             <li
               className={classNames(styles.menuItem, 't5', index === highlightedIndex ? styles.active : '')}
               key={`${index}`}
@@ -110,7 +109,6 @@ function ComboBox({
           ))}
         </ul>
       </div>
-      {/* )} */}
     </div>
   );
 }

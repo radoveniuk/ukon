@@ -3,6 +3,10 @@
   gap: 40px;
   max-width: 100%;
   flex-wrap: wrap;
+
+  @media (max-width: 759px) {
+    justify-content: center;
+  }
 }
 
 .card {
@@ -40,6 +44,7 @@
     justify-content: center;
     margin-top: auto;
     cursor: pointer;
+    background-color: #DDDDDD33;
   }
 
   .body {

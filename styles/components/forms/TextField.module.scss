@@ -13,10 +13,8 @@
     right: 10px;
   }
   .input {
-    background: #FFFFFF;
-    /* Grayscale/4 */
+    background-color: #FCFCFC;
     outline: none;
-    //user-select: none;
     border: 1px solid #E7E7E7;
     border-radius: 5px;
     padding: 13px 19px;
@@ -25,7 +23,7 @@
     white-space: nowrap;
     
     &::placeholder {
-      color: #D0D0D0;
+      color: #DDDDDD;
     }
     &-success {
       border: 1px solid #44998998;
@@ -40,9 +38,9 @@
       outline: none;
       width: 100%;
       &::placeholder {
-        color: #D0D0D0;
+        color: #DDDDDD;
       }
-      background-color: #fff;
+      background-color: #FCFCFC;
     }
   }
 

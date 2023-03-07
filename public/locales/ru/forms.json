@@ -1,4 +1,5 @@
 {
+  "cart": "Итог Заказа",
   "create-company": {
     "pageTitle": "Оформление ООО"
   },
@@ -75,6 +76,13 @@
       "comment": "Комментарий",
       "inputComment": "Введите коментарий",
       "requiredFieldText": "Обязательное поле"
+    },
+    "priceKeys": {
+      "base": "Оформление ИП",
+      "vAddressTariff": "Пакет виртуального адреса",
+      "citizenship": "Гражданство",
+      "residence": "Место жительства",
+      "sum": "Итого"
     },
     "upload": "Загрузить",
     "yes": "Да",
@@ -182,6 +190,13 @@
       "activityStartFrom": "Возобновить от",
       "activityStopFrom": "Приостановить от",
       "activityCloseFrom": "Закрыть от"
+    },
+    "priceKeys": {
+      "base": "Обновление данных по ИП",
+      "vAddressTariff": "Пакет виртуального адреса",
+      "citizenship": "Гражданство",
+      "residence": "Место жительства",
+      "sum": "Итого"
     },
     "add": "Добавить",
     "publicData": "Общедоступные данные",

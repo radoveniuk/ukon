@@ -1,18 +1,11 @@
 import { createContext, Dispatch, PropsWithChildren, SetStateAction, useCallback, useContext, useState } from 'react';
 
-type ContextType = {
-  base: number,
-  mainActivity: number,
-  otherActivities: number,
-  citizenship: number,
-  residence: number,
-  vAddressTariff: number,
-}
+type ContextType = { [key: string]: number };
 
 const PriceContext = createContext<[ContextType, Dispatch<SetStateAction<ContextType>>] | undefined>(undefined);
 
 const PriceProvider = ({ children }: PropsWithChildren) => {
-  const priceState = useState({
+  const priceState = useState<ContextType>({
     base: 19,
     mainActivity: 0,
     otherActivities: 0,
@@ -37,7 +30,7 @@ export const usePriceContext = () => {
   }
   const [priceList, setPriceList] = context;
   const updatePriceList = useCallback(
-    (update: Partial<ContextType>) => {
+    (update: ContextType) => {
       setPriceList((prev) => ({
         ...prev,
         ...update,

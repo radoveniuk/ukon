@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
-import EditIcon from 'common/components/icons/EditIcon';
 import { iterateMap } from 'common/utils/common';
 
 import styles from 'styles/OrderForm.module.scss';
 
+import Cart, { CartBody, CartHeader, PriceItem } from '../../components/Cart';
 import PrevButton from '../../components/PrevButton';
+import PriceProvider, { usePriceContext } from '../../contexts/PriceContext';
 
-import PriceProvider, { usePriceContext } from './contexts/PriceContext';
 import StepsProvider, { STEPS, useSteps } from './contexts/StepsContext';
 import ValidationProvider, { useValidation } from './contexts/ValidationContext';
 import CheckOut from './steps/CheckOut';
@@ -66,30 +66,17 @@ function CreateIndividualFormRender () {
           </div>
         </div>
         <div className={styles.reg__right}>
-          <div className={styles['reg__right-cont']}>
-            <div className={styles['reg__right-change']} onClick={() => void setStep(0)}>
-              <EditIcon />
-            </div>
-            <div className={classNames(styles['reg__right-title'], 'h4')}>Корзина</div>
-            <div className={styles['reg__right-rows']}>
-              <div className={styles['reg__right-row']}>
-                <div className={styles['reg__right-row-item']}>
-                  <div className={styles['reg__right-row-item-left']}>
-                    <div className={classNames(styles['reg__right-row-item-title'], 'body')}>Оформление ИП</div>
-                  </div>
-                  <div className={styles['reg__right-row-item-right']}>
-                    <div className={classNames('reg__right-row-item-price', 'body')}>19,00 €</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles['reg__right-sum']}>
-              <div className={classNames(styles['reg__right-sum-left'], 'h5')}>Итого:</div>
-              <div className={classNames(styles['reg__right-sum-right'], 'h5')}>
-                {Object.values(priceList).reduce((partialSum, a) => partialSum + a, 0)} €
-              </div>
-            </div>
-          </div>
+          <Cart>
+            <CartHeader onClick={() => void setStep(0)}>
+              {Object.values(priceList).reduce((partialSum, a) => partialSum + a, 0)} €
+            </CartHeader>
+            <CartBody>
+              {Object.keys(priceList).filter((priceKey) => !!priceList[priceKey]).map((priceKey) => (
+                <PriceItem key={priceKey} price={priceList[priceKey]}>{t(`priceKeys.${priceKey}`)}</PriceItem>
+              ))}
+              <PriceItem className="t1" price={Object.values(priceList).reduce((partialSum, a) => partialSum + a, 0)}>{t('priceKeys.sum')}</PriceItem>
+            </CartBody>
+          </Cart>
           <div className={styles['reg__right-img']}>
             <Image width={250} height={173} src="/images/form-order.png" alt="" />
           </div>

@@ -199,10 +199,9 @@ function MultiSelect({
           );
         })}
       </div>
-      {/* {isOpen && ( */}
-      <div className={styles.dropdownMenuWrapper}>
+      <div className={classNames(styles.dropdownMenuWrapper, isOpen ? styles.open : '')}>
         <ul {...getMenuProps({ className: styles.dropdownMenu })}>
-          {isOpen && items.map((item, index) => (
+          {items.map((item, index) => (
             <li
               key={index}
               {...getItemProps({
@@ -217,7 +216,6 @@ function MultiSelect({
           ))}
         </ul>
       </div>
-      {/* )} */}
     </div>
   );
 }
