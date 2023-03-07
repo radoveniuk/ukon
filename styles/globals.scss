@@ -102,7 +102,13 @@ body {
 }
 
 main {
-  margin-top: 120px;
+  height: calc(100vh - 87px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  @media (max-width: 1249px) {
+    height: calc(100vh - 66px);
+  }
 }
 
 a {

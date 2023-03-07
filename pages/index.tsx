@@ -97,8 +97,8 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             </BenefitsTable>
           </SeoTextBody>
         </SeoText>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 };

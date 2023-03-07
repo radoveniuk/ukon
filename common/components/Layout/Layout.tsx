@@ -1,12 +1,10 @@
+import { PropsWithChildren } from 'react';
+
 import ConsentCookies from '../ConsentCookies';
 import Header from '../Header';
 import OrderModal from '../OrderModal';
 
-type Props = {
-  children: React.ReactNode;
-}
-
-export default function Layout ({ children }: Props) {
+export default function Layout ({ children }: PropsWithChildren) {
   return (
     <>
       <Header />

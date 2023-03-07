@@ -87,8 +87,8 @@ export default function Blog({ posts }: InferGetStaticPropsType<typeof getStatic
             </div>
           </div>
         </section>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }

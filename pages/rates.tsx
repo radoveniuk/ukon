@@ -231,8 +231,8 @@ export default function Rates () {
             </div>
           </div>
         </section>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }

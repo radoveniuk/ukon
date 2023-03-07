@@ -262,8 +262,8 @@ export default function Service({ name, subtitles, titleImg, howItems, benefits,
             <SeoTextBody dangerouslySetInnerHTML={{ __html: t('seoText.text') }} />
           </SeoText>
         )}
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }

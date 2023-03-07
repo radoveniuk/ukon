@@ -76,108 +76,57 @@ export default function PriceForm() {
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
       <FormItems>
-        <FormItem title={t('form.mainActivity')}>
-          <div className={styles['reg__item-project']}>
-            <Controller
-              control={control}
-              name="mainActivity"
-              rules={{ required: t('form.requiredFieldText') }}
-              defaultValue={null}
-              render={({ field, fieldState }) => (
-                <Select
-                  options={activities}
-                  pathToLabel="ru"
-                  label={t('form.activitySearch')}
-                  className={styles['reg__item-project-select']}
-                  placeholder={t('form.activitySelectPlaceholder')}
-                  customRenderMenuItem={(item: any) => (
-                    <>
-                      <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
-                        {item.ru}
-                      </span>
-                      <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
-                        {item.Type !== 'Volná' ? 7.5 : 0}€
-                      </span>
-                    </>
-                  )}
-                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                  {...field}
-                />
-              )}
-            />
-          </div>
-        </FormItem>
-        <FormItem title= {t('form.otherActivities')}>
-          <div className={styles['reg__item-project']}>
-            <Controller
-              control={control}
-              name="otherActivities"
-              render={({ field }) => (
-                <MultiSelect
-                  tooltip="<div>В случае добавления ремесленного или регулируемого вида деятельности необходимо установить ответственного представителя имеющего соответствующую квалификацию.<br>Также, будет необходимо приложить к заявке документы подтверждающие квалификацию ответственного лица и его согласие<br>За каждый регулируемый и ремесленный вид деятельности к стоимости добавляется 7,5 евро</div>"
-                  className={styles['reg__item-project-select']}
-                  label={t('form.activitySearch')}
-                  pathToLabel="ru"
-                  options={activities}
-                  selectedOptions={field.value}
-                  handleChange={field.onChange}
-                  placeholder={t('form.activitySelectPlaceholder')}
-                  customRenderMenuItem={(item: any) => (
-                    <>
-                      <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
-                        {item.ru}
-                      </span>
-                      <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
-                        {item.Type !== 'Volná' ? 7.5 : 0}€
-                      </span>
-                    </>
-                  )}
-                />
-              )}
-            />
-            {/* <div className={classNames(styles['reg__item-project-btn'], 'btn-text', 'btn-transparent')}>
-              {t('form.activitiesList')}
-            </div> */}
-          </div>
-        </FormItem>
-        <FormItem title={t('form.citizenshipAndResidence')}>
-          <div className={styles['reg__item-project']} style={{ gap: 20 }}>
-            <Controller
-              control={control}
-              name="citizenship"
-              rules={{ required: true }}
-              render={({ field, fieldState }) => (
-                <Select
-                  {...field}
-                  label={t('form.citizenship')}
-                  placeholder={t('form.countryPlaceholder')}
-                  options={countries}
-                  pathToLabel="ru"
-                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                  onChange={(value) => {
-                    field.onChange(value);
-                    setValue('residence', value, { shouldTouch: true, shouldDirty: true, shouldValidate: true });
-                  }}
-                />
-              )}
-            />
-            <Controller
-              control={control}
-              name="residence"
-              rules={{ required: true }}
-              render={({ field, fieldState }) => (
-                <Select
-                  label={t('form.residence')}
-                  placeholder={t('form.countryPlaceholder')}
-                  className={styles['reg__item-project-country-select']}
-                  options={countries}
-                  pathToLabel="ru"
-                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                  {...field}
-                />
-              )}
-            />
-          </div>
+        <FormItem title={t('activities')}>
+          <Controller
+            control={control}
+            name="mainActivity"
+            rules={{ required: t('form.requiredFieldText') }}
+            defaultValue={null}
+            render={({ field, fieldState }) => (
+              <Select
+                options={activities}
+                pathToLabel="ru"
+                label={t('form.mainActivity')}
+                placeholder={t('form.activitySelectPlaceholder')}
+                customRenderMenuItem={(item: any) => (
+                  <>
+                    <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                      {item.ru}
+                    </span>
+                    <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                      {item.Type !== 'Volná' ? 7.5 : 0}€
+                    </span>
+                  </>
+                )}
+                state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="otherActivities"
+            render={({ field }) => (
+              <MultiSelect
+                label={t('form.otherActivities')}
+                pathToLabel="ru"
+                options={activities}
+                selectedOptions={field.value}
+                handleChange={field.onChange}
+                placeholder={t('form.activitySelectPlaceholder')}
+                customRenderMenuItem={(item: any) => (
+                  <>
+                    <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                      {item.ru}
+                    </span>
+                    <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                      {item.Type !== 'Volná' ? 7.5 : 0}€
+                    </span>
+                  </>
+                )}
+              />
+            )}
+          />
         </FormItem>
         <FormItem title={t('form.businessAddress')}>
           <Controller
@@ -253,6 +202,46 @@ export default function PriceForm() {
             )}
           />
         </FormItem>
+        <FormItem title={t('form.citizenshipAndResidence')}>
+          <div className={styles['reg__item-project']} style={{ gap: 20 }}>
+            <Controller
+              control={control}
+              name="citizenship"
+              rules={{ required: true }}
+              render={({ field, fieldState }) => (
+                <Select
+                  {...field}
+                  label={t('form.citizenship')}
+                  placeholder={t('form.countryPlaceholder')}
+                  options={countries}
+                  pathToLabel="ru"
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
+                  onChange={(value) => {
+                    field.onChange(value);
+                    setValue('residence', value, { shouldTouch: true, shouldDirty: true, shouldValidate: true });
+                  }}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="residence"
+              rules={{ required: true }}
+              render={({ field, fieldState }) => (
+                <Select
+                  label={t('form.residence')}
+                  placeholder={t('form.countryPlaceholder')}
+                  className={styles['reg__item-project-country-select']}
+                  options={countries}
+                  pathToLabel="ru"
+                  state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
+                  {...field}
+                />
+              )}
+            />
+          </div>
+        </FormItem>
+
         {/* <FormItem title={t('form.promo')}>
           <TextField
             label={t('form.inputPromo')}

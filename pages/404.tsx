@@ -43,8 +43,8 @@ export default function NotFoundPage () {
             <Image width={711} height={486} className={styles['not-found__right-img']} src="/images/404.svg" alt="404" />
           </div>
         </div>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }

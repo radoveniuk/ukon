@@ -1,5 +1,6 @@
 .reg {
   margin-top: -84px;
+  background-color: #fafafa;
   @media (max-width: 1549px) {
     margin-top: -66px;
   }
@@ -21,6 +22,7 @@
     }
     @media (max-width: 1249px) {
       padding: 0 20px 40px 20px;
+      width: 100vw;
     }
     &-cont {
       display: flex;
@@ -1045,7 +1047,7 @@
   &__right {
     background-color: #FAFAFA;
     position: sticky;
-    top: 87px;
+    top: 0;
     display: flex;
     height: calc(100vh - 87px);
     flex-direction: column;

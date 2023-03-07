@@ -39,8 +39,8 @@ export default function Terms () {
           <SeoTextTitle>Cookies</SeoTextTitle>
           <SeoTextBody>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, laboriosam explicabo deleniti aliquam, nostrum accusantium nobis dolores iste fugiat ad esse, tenetur porro ratione. Unde, suscipit! Magni eos ab quam.</SeoTextBody>
         </SeoText>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }

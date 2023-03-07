@@ -170,34 +170,6 @@ function MultiSelect({
             </>
           )}
         </div>
-        {selectedItems.map(function renderSelectedItem(
-          selectedItemForRender,
-          index,
-        ) {
-          return (
-            <span
-              key={`selected-item-${index}`}
-              {...getSelectedItemProps({
-                selectedItem: selectedItemForRender,
-                index,
-                className: classNames(styles.selectedItem, 't5') ,
-              })}
-            >
-              <span className={classNames(styles.selectedItemIndex, 't5')}>{index + 1}.&nbsp;</span>
-              {customRenderMenuItem?.(selectedItemForRender) || getLabel(selectedItemForRender)}
-              <div
-                role="button"
-                className={styles.removeSelectedItem}
-                onClick={e => {
-                  e.stopPropagation();
-                  removeSelectedItem(selectedItemForRender);
-                }}
-              >
-                <MinusIcon />
-              </div>
-            </span>
-          );
-        })}
       </div>
       <div className={classNames(styles.dropdownMenuWrapper, isOpen ? styles.open : '')}>
         <ul {...getMenuProps({ className: styles.dropdownMenu })}>
@@ -216,6 +188,34 @@ function MultiSelect({
           ))}
         </ul>
       </div>
+      {selectedItems.map(function renderSelectedItem(
+        selectedItemForRender,
+        index,
+      ) {
+        return (
+          <span
+            key={`selected-item-${index}`}
+            {...getSelectedItemProps({
+              selectedItem: selectedItemForRender,
+              index,
+              className: classNames(styles.selectedItem, 't5') ,
+            })}
+          >
+            <span className={classNames(styles.selectedItemIndex, 't5')}>{index + 1}.&nbsp;</span>
+            {customRenderMenuItem?.(selectedItemForRender) || getLabel(selectedItemForRender)}
+            <div
+              role="button"
+              className={styles.removeSelectedItem}
+              onClick={e => {
+                e.stopPropagation();
+                removeSelectedItem(selectedItemForRender);
+              }}
+            >
+              <MinusIcon />
+            </div>
+          </span>
+        );
+      })}
     </div>
   );
 }
