@@ -14,6 +14,7 @@ export default function FormItems ({ children }: PropsWithChildren) {
 
 type FormItemProps = {
   title: string;
+  id?:string;
 };
 
 export function FormItem ({ title, children } : PropsWithChildren<FormItemProps>) {
