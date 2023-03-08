@@ -73,7 +73,9 @@
       "comment": "Комментарий",
       "inputComment": "Введите коментарий",
       "requiredFieldText": "Обязательное поле",
-      "skPermit": "У вас есть словацкий ВНЖ?"
+      "skPermit": "У вас есть словацкий ВНЖ?",
+      "inputFullname": "Имя, фамилия, титулы",
+      "inputFullnamePlaceholder": "Введите полное имя"
     },
     "priceKeys": {
       "base": "Оформление ИП",
@@ -82,6 +84,9 @@
       "residence": "Место жительства",
       "sum": "Итого"
     },
+    "fullname": "Имя и фамилия предпринимателя",
+    "additionalPersonalData": "Дополнительные персональные данные",
+    "businessData": "Данные о предприятии",
     "upload": "Загрузить",
     "yes": "Да",
     "no": "Нет",

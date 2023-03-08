@@ -31,7 +31,7 @@
 
     .row {
       display: grid;
-      grid-gap: 20px;
+      grid-gap: 15px 20px;
 
       @media (max-width: 999px) {
         grid-template-columns: 1fr !important;

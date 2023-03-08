@@ -5,13 +5,13 @@ import classNames from 'classnames';
 
 import { RadioButton, RadioButtonProps } from 'common/components/forms/Radio';
 
-import styles from 'styles/components/OrderForm/BuisnessAdressSelectCard.module.scss';
+import styles from 'styles/components/OrderForm/BusinessAdressSelectCard.module.scss';
 
 type Props = {
   title: string;
 } & RadioButtonProps;
 
-const BuisnessAdressSelectCard = ({ children, title, ...radioButtonProps }: PropsWithChildren<Props>) => {
+const BusinessAdressSelectCard = ({ children, title, ...radioButtonProps }: PropsWithChildren<Props>) => {
   return (
     <div onClick={radioButtonProps.onSelect} className={classNames(styles.card, radioButtonProps.checked ? styles.active : '', 't5')}>
       <div className={classNames(styles.header, 't3')}>{title}</div>
@@ -21,7 +21,7 @@ const BuisnessAdressSelectCard = ({ children, title, ...radioButtonProps }: Prop
   );
 };
 
-export default BuisnessAdressSelectCard;
+export default BusinessAdressSelectCard;
 
 export const CardsContainer = ({ children }: PropsWithChildren) => (
   <div className={styles.cards}>

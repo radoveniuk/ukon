@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
-import BuisnessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BuisnessAdressSelect';
+import BusinessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BusinessAdressSelect';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -142,12 +142,12 @@ export default function PriceForm() {
                 <>
                   <Radio className={classNames('mb-15')} name="businessAddress">
                     <CardsContainer>
-                      <BuisnessAdressSelectCard
+                      <BusinessAdressSelectCard
                         title="Úkon.sk Business Address & Virtual Mail Service"
                         checked={field.value === 'ukon'}
                         onSelect={() => { field.onChange('ukon'); }}
                       >
-                        <Image height={90} width={90} src="/images/order-form/BuisnessAddressUkon.svg" alt="" />
+                        <Image height={90} width={90} src="/images/order-form/BusinessAddressUkon.svg" alt="" />
                         <div>This will be your principal company address:</div>
                         <Controller
                           control={control}
@@ -186,18 +186,18 @@ export default function PriceForm() {
                             <div className="t3">Cancel anytime</div>
                           </>
                         )}
-                      </BuisnessAdressSelectCard>
-                      <BuisnessAdressSelectCard
+                      </BusinessAdressSelectCard>
+                      <BusinessAdressSelectCard
                         title="Use My Own Address"
                         checked={field.value === 'own'}
                         onSelect={() => { field.onChange('own'); setValue('vAddressTariff', null); }}
                       >
-                        <Image height={90} width={90} src="/images/order-form/BuisnessAddressOwn.svg" alt="" />
+                        <Image height={90} width={90} src="/images/order-form/BusinessAddressOwn.svg" alt="" />
                         <div className="mb-15">I will provide my own Slovak business address and will personally keep up with the incoming mail.</div>
                         <div className="mb-15">Slovakia requires a physical street address (P.O Boxes are not accepted).</div>
                         <div className="mb-15">Any residential address provided to the state will be listed publicly.</div>
                         <div className="mb-15">You need authorized representative for mail, which must be a person with permanent residence in Slovakia, or Úkon.sk s.r.o. (40€)</div>
-                      </BuisnessAdressSelectCard>
+                      </BusinessAdressSelectCard>
                     </CardsContainer>
                   </Radio>
                 </>
@@ -206,7 +206,7 @@ export default function PriceForm() {
             {watch('businessAddress') === 'own' && (
               <Controller
                 control={control}
-                name="ownBuisnessData"
+                name="ownBusinessData"
                 render={({ field }) => (
                   <OwnAddressWrapper>
                     <AddressForm country="sk" label="Company Address (Your Own Address)" value={field.value} onChange={field.onChange} />
@@ -300,15 +300,15 @@ export default function PriceForm() {
                     label={t('form.email')}
                   />
                   <TextField
+                    label={t('form.phone')}
+                  />
+                  <TextField
                     label={t('form.pass')}
                     type="password"
                   />
                   <TextField
                     label={t('form.passRepeat')}
                     type="password"
-                  />
-                  <TextField
-                    label={t('form.phone')}
                   />
                 </>
               )}
