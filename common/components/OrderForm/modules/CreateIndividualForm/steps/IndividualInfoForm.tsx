@@ -11,6 +11,7 @@ import Radio, { RadioButton } from 'common/components/forms/Radio';
 import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
+import AddressForm from 'common/components/OrderForm/components/AddressForm';
 import AddressSearch from 'common/components/OrderForm/components/AddressSearch';
 import FormItems, { FormItem } from 'common/components/OrderForm/components/FormItems';
 
@@ -178,78 +179,30 @@ export default function IndividualInfoForm () {
             {...register('docNumber', { required: t('form.requiredFieldText') })}
           />
         </FormItem>
-        <FormItem title={t('form.address')} >
-          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.addressResidence')}</span>
-          <div className={classNames(styles['reg__item-address-inputs'], 'mb-15')}>
-            <div style={{ gridColumn: '1/4' }}>
-              <AddressSearch
-                onSearchResult={(res) => {
-                  setValue('street', res.street, { shouldValidate: true });
-                  setValue('houseRegNumber', res.houseRegNumber);
-                  setValue('houseNumber', res.houseNumber, { shouldValidate: true });
-                  setValue('city', res.city, { shouldValidate: true });
-                  setValue('zip', res.zip, { shouldValidate: true });
-                }}
-                mode={getAddressMode()}
-              />
-            </div>
-            <TextField
-              label={t('form.street')}
-              placeholder={t('form.inputStreet')}
-              error={errors.street?.message?.toString()}
-              success={!!touchedFields.street && !errors.street}
-              {...register('street', { required: t('form.requiredFieldText') })}
-            />
-            <TextField
-              label={t('form.houseRegNumber')}
-              error={errors.houseRegNumber?.message?.toString()}
-              success={!!touchedFields.houseRegNumber && !errors.houseRegNumber}
-              {...register('houseRegNumber')}
-            />
-            <TextField
-              label={t('form.houseNumber')}
-              error={errors.houseNumber?.message?.toString()}
-              success={!!touchedFields.houseNumber && !errors.houseNumber}
-              {...register('houseNumber', { required: t('form.requiredFieldText') })}
-            />
-            <TextField
-              label={t('form.city')}
-              placeholder={t('form.city')}
-              error={errors.city?.message?.toString()}
-              success={!!touchedFields.city && !errors.city}
-              {...register('city', { required: t('form.requiredFieldText') })}
-            />
-            <TextField
-              // format="#####"
-              label={t('form.zip')}
-              error={errors.zip?.message?.toString()}
-              success={!!touchedFields.zip && !errors.zip}
-              {...register('zip', { required: t('form.requiredFieldText') })}
-            />
-          </div>
-          <span className={classNames('t4', styles['reg__item-subtitle'])}>{t('form.addressSlovakResidence')}</span>
-          <div className={styles['reg__item-address-inputs']}>
-            <TextField disabled label={t('form.street')} placeholder={t('form.inputStreet')} {...register('streetSlovak')} />
-            <TextFieldFormated
-              format="###"
-              disabled
-              label={t('form.houseRegNumber')}
-              {...register('houseRegNumberSlovak')}
-            />
-            <TextFieldFormated
-              format="###"
-              disabled
-              label={t('form.houseNumber')}
-              {...register('houseNumberSlovak')}
-            />
-            <TextField disabled label={t('form.city')} placeholder={t('form.city')} {...register('citySlovak')} />
-            <TextFieldFormated
-              format="#####"
-              disabled
-              label={t('form.zip')}
-              {...register('zipSlovak')}
-            />
-          </div>
+        <FormItem title={t('form.addressResidence')} >
+          <AddressForm
+            country={getAddressMode()}
+            label={t('form.address')}
+            onChange={(values) => {
+              setValue('street', values?.street, { shouldValidate: true });
+              setValue('houseNumber', values?.houseNumber, { shouldValidate: true });
+              setValue('city', values?.city, { shouldValidate: true });
+              setValue('zip', values?.zip, { shouldValidate: true });
+            }}
+          />
+        </FormItem>
+        <FormItem title={t('form.addressSlovakResidence')} >
+          <AddressForm
+            country="sk"
+            label={t('form.address')}
+            onChange={(values) => {
+              setValue('streetSlovak', values?.street, { shouldValidate: true });
+              setValue('houseRegNumberSlovak', values?.houseRegNumber);
+              setValue('houseNumberSlovak', values?.houseNumber, { shouldValidate: true });
+              setValue('citySlovak', values?.city, { shouldValidate: true });
+              setValue('zipSlovak', values?.zip, { shouldValidate: true });
+            }}
+          />
         </FormItem>
         <FormItem id="insurance" title={t('form.insurance')} >
           <Controller

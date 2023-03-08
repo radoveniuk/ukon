@@ -1,3 +1,29 @@
 .wrapper {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    
+    @media (max-width: 999px) {
+      grid-gap: 10px;
+      grid-template-columns: 1fr;
+    }
+
+    .cell {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+
+      label {
+        width: 100%;
+      }
+
+      svg {
+        margin-bottom: 7px;
+      }
+    }
+  }
 }

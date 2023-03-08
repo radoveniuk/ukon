@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { HTMLAttributes,PropsWithChildren } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { VscChromeClose } from 'react-icons/vsc';
 import classNames from 'classnames';
@@ -40,4 +40,8 @@ export const Checkmark = ({ children, checked }: PropsWithChildren<{checked: boo
     {checked ? <BsCheck2 color="#10826E" /> : <VscChromeClose color="red" />}
     {children}
   </div>
+);
+
+export const OwnAddressWrapper = (props: HTMLAttributes<HTMLDivElement>) => (
+  <div className={styles.ownAddressWrapper} {...props} />
 );

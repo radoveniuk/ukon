@@ -144,11 +144,10 @@ function MultiSelect({
 
   return (
     <div className={classNames(styles.wrapper, className)}>
-      <label
-        className={classNames('t5', styles['select-label'])}
-        {...getLabelProps()}
-      >
-        {label}
+      <label className={classNames('t5')} {...getLabelProps()}>
+        <div className={styles['select-label']}>
+          {label}
+        </div>
       </label>
       <div className={styles.selectWrapper} onClick={openMenu}>
         <div className={styles.selectContent}>

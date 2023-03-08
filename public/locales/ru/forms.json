@@ -1,5 +1,7 @@
 {
   "cart": "Итог Заказа",
+  "imRegistered": "Я зарегистрирован на Ukon.sk",
+  "imNotRegistered": "Я НЕ зарегистрирован на Ukon.sk",
   "create-company": {
     "pageTitle": "Оформление ООО"
   },
@@ -36,6 +38,7 @@
       "vAddressTariff": "Пакет виртуального адреса",
       "promo": "Скидочный купон",
       "inputPromo": "Введите промокод",
+      "regAuth": "Регистрация / Авторизация",
       "isRegistered": "Вы зарегистрированны на нашем сайте?",
       "email": "Email",
       "pass": "Пароль",
@@ -56,12 +59,6 @@
       "birthdate": "Дата рождения",
       "docNumber": "Номер удостоверения личности",
       "inputDocNumber": "Число, до 10 символов",
-      "zip": "Индекс",
-      "street": "Улица",
-      "inputStreet": "Введите улицу",
-      "houseRegNumber": "Рег. номер",
-      "houseNumber": "Номер дома",
-      "city": "Населенный пункт",
       "addressResidence": "Адрес прописки",
       "addressSlovakResidence": "Адрес прописки в Словакии",
       "insurance": "Медицинская страховка",
@@ -75,7 +72,8 @@
       "orderComment": "Примечание к заказу",
       "comment": "Комментарий",
       "inputComment": "Введите коментарий",
-      "requiredFieldText": "Обязательное поле"
+      "requiredFieldText": "Обязательное поле",
+      "skPermit": "У вас есть словацкий ВНЖ?"
     },
     "priceKeys": {
       "base": "Оформление ИП",
@@ -118,7 +116,8 @@
     "agree": "Согласие с условиями предоставления услуги",
     "agreeWithRules": "Я согласен с общими условиями предоставления услуги",
     "nextStep": "Следующий шаг",
-    "finish": "Завершить оформление"
+    "finish": "Завершить оформление",
+    "additionalData": "Дополнительные данные"
   },
   "update-company": {
     "pageTitle": "Обновление данных по ООО"
@@ -176,12 +175,6 @@
       "address": "Адрес",
       "vAddressTariff": "Пакет виртуального адреса",
       "addressResidence": "Адрес прописки",
-      "zip": "Индекс",
-      "street": "Улица",
-      "inputStreet": "Введите улицу",
-      "houseRegNumber": "Рег. номер",
-      "houseNumber": "Номер дома",
-      "city": "Населенный пункт",
       "countryPlaceholder": "Страна",
       "activitySearch": "Поиск вида деятельности",
       "activitySelectPlaceholder": "Начните вводить название",

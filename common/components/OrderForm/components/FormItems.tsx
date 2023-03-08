@@ -30,3 +30,11 @@ export function FormItem ({ title, children } : PropsWithChildren<FormItemProps>
     </div>
   );
 };
+
+export function FormItemRow ({ children, cols = 1 } : PropsWithChildren<{ cols: number }>) {
+  return (
+    <div className={styles.row} style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+      {children}
+    </div>
+  );
+};

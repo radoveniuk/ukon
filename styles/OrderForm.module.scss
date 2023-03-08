@@ -467,104 +467,12 @@
         gap: 10px;
       }
     }
-    &-radios {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px 40px;
-      max-width: 880px;
-      @media (max-width: 1549px) {
-        max-width: 100%;
-        grid-gap: 10px 30px;
-        grid-template-columns: repeat(2, 1fr);
-      }
-      @media (max-width: 1249px) {
-        grid-gap: 15px 20px;
-      }
-      @media (max-width: 759px) {
-        grid-template-columns: 1fr;
-        grid-gap: 15px;
-      }
-      &-cont {
-        display: flex;
-        flex-direction: column;
-        &-institution {
-          margin-top: 20px;
-        }
-        &-label {
-          color: #131313;
-          margin-bottom: 10px;
-        }
-      }
-    }
     &-pay-btn {
       margin-top: 20px;
       margin-right: auto;
       display: none;
       &.active {
         display: block;
-      }
-    }
-
-    &-radio {
-      display: flex;
-      align-items: center;
-      &-have-true-label, &-have-false-label, &-old-true-label, &-old-false-label, &-have-true-label-2, &-have-false-label-2, &-old-true-label-2, &-old-false-label-2 {
-        display: none;
-        margin-top: 10px;
-        max-width: 823px;
-        color: #A1A1A1;
-        &.active {
-          display: block;
-        }
-      }
-      &-with-i {
-        & > svg {
-          margin-left: 10px;
-        }
-      }
-      &-input {
-        display: flex;
-        position: relative;
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        input {
-          width: 20px;
-          height: 20px;
-          opacity: 0;
-          &:checked~svg {
-            display: none;
-          }
-          &:checked~.reg__item-radio-input-svg-selected {
-            display: block;
-          }
-        }
-        svg {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 20px;
-          height: 20px;
-          pointer-events: none;
-        }
-        &-svg-selected {
-          display: none;
-        }
-      }
-      &-title {
-        span {
-          margin-top: 5px;
-          color: #A1A1A1;
-          display: block;
-        }
-        br {
-          @media (max-width: 759px) {
-            display: none;
-          }
-        }
-      }
-      &-with-sub {
-        align-items: unset;
       }
     }
     &-virtual {
@@ -686,33 +594,17 @@
         display: grid;
         grid-template-columns: 140px 230px;
         grid-gap: 5px;
+        @media (max-width: 999px) {
+          grid-template-columns: 1fr;
+        }
       }
       &-surname {
         display: grid;
         grid-template-columns: 230px 140px;
         grid-gap: 5px;
-      }
-    }
-
-    &-address-inputs {
-      display: grid;
-      grid-gap: 20px 30px;
-      grid-template-columns: 300px 150px 150px;
-      @media (max-width: 1899px) {
-        grid-template-columns: 280px 120px 120px;
-      }
-      @media (max-width: 1549px) {
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 20px 30px;
-      }
-      @media (max-width: 759px) {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      label:last-child {
-        grid-column: 2/4;
+        @media (max-width: 999px) {
+          grid-template-columns: 1fr;
+        }
       }
     }
     &-company-name {
@@ -1253,4 +1145,11 @@
       }
     }
   }
+}
+
+.registeredRadio {
+  background-color: #FCFCFC;
+  padding: 11px;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
 }

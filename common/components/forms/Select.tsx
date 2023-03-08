@@ -70,7 +70,7 @@ function ComboBox({
 
   return (
     <div className={classNames(styles.wrapper, className)} onBlur={onBlur}>
-      <label className={classNames('t5', styles['select-label'])} {...getLabelProps()}>
+      <label className={classNames('t5')} {...getLabelProps()}>
         <div className={styles['select-label']}>
           {label}
         </div>

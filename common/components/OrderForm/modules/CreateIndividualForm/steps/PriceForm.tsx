@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
-import BuisnessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks } from 'common/components/OrderForm/components/BuisnessAdressSelectCard';
+import AddressForm from 'common/components/OrderForm/components/AddressForm';
+import BuisnessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BuisnessAdressSelect';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -12,7 +13,7 @@ import MultiSelect from '../../../../forms/MultiSelect';
 import Radio, { RadioButton } from '../../../../forms/Radio';
 import Select from '../../../../forms/Select';
 import TextField from '../../../../forms/TextField';
-import FormItems, { FormItem } from '../../../components/FormItems';
+import FormItems, { FormItem, FormItemRow } from '../../../components/FormItems';
 import { usePriceContext } from '../../../contexts/PriceContext';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
@@ -66,11 +67,13 @@ export default function PriceForm() {
     } else {
       updatePriceList({ residence: 0 });
     }
-    updatePriceList({ vAddressTariff: vAddressPrice });
+    updatePriceList({ vAddressTariff: vAddressPrice || 0 });
   }, [citizenship?.en, mainActivity, otherActivities, residence?.en, updatePriceList, vAddressPrice]);
 
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
+
+  const tariffs = virtualAddressTariffs.map((tariff) => ({ ...tariff, name: `Package of services — ${tariff.name} (${tariff.price}€)` }));
 
   return (
     <>
@@ -129,81 +132,92 @@ export default function PriceForm() {
           />
         </FormItem>
         <FormItem title={t('form.businessAddress')}>
-          <Controller
-            control={control}
-            name="businessAddress"
-            rules={{ required: true }}
-            defaultValue="ukon"
-            render={({ field }) => (
-              <>
-                <Radio className={classNames('mb-15')} name="businessAddress">
-                  <CardsContainer>
-                    <BuisnessAdressSelectCard
-                      title="Úkon.sk Business Address & Virtual Mail Service"
-                      checked={field.value === 'ukon'}
-                      onSelect={() => void field.onChange('ukon')}
-                    >
-                      <Image height={90} width={90} src="/images/order-form/BuisnessAddressUkon.svg" alt="" />
-                      <div>This will be your principal company address:</div>
-                      <Controller
-                        control={control}
-                        name="ourBusinessAddress"
-                        defaultValue={addresses[0]}
-                        render={({ field: addressField, fieldState: addressFieldState }) => (
-                          <Select
-                            {...addressField}
-                            pathToLabel="value"
-                            options={addresses}
-                            state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
-                          />
+          <>
+            <Controller
+              control={control}
+              name="businessAddress"
+              rules={{ required: true }}
+              defaultValue="ukon"
+              render={({ field }) => (
+                <>
+                  <Radio className={classNames('mb-15')} name="businessAddress">
+                    <CardsContainer>
+                      <BuisnessAdressSelectCard
+                        title="Úkon.sk Business Address & Virtual Mail Service"
+                        checked={field.value === 'ukon'}
+                        onSelect={() => { field.onChange('ukon'); }}
+                      >
+                        <Image height={90} width={90} src="/images/order-form/BuisnessAddressUkon.svg" alt="" />
+                        <div>This will be your principal company address:</div>
+                        <Controller
+                          control={control}
+                          name="ourBusinessAddress"
+                          defaultValue={addresses[0]}
+                          render={({ field: addressField, fieldState: addressFieldState }) => (
+                            <Select
+                              {...addressField}
+                              pathToLabel="value"
+                              options={addresses}
+                            />
+                          )}
+                        />
+                        <Controller
+                          control={control}
+                          name="vAddressTariff"
+                          defaultValue={tariffs[0]}
+                          render={({ field: tariffField }) => (
+                            <Select
+                              {...tariffField}
+                              pathToLabel="name"
+                              onChange={(value) => {
+                                tariffField.onChange(value);
+                              }}
+                              options={tariffs}
+                            />
+                          )}
+                        />
+                        <Checkmarks>
+                          <Checkmark checked>Receive up to 100 emails per year</Checkmark>
+                          <Checkmark checked>Instant alerts with 24/7 access to your mail online</Checkmark>
+                        </Checkmarks>
+                        {!!watch('vAddressTariff.price') && (
+                          <>
+                            <div className="h2">{watch('vAddressTariff.price')}&#8364;/Year</div>
+                            <div className="t3">Cancel anytime</div>
+                          </>
                         )}
-                      />
-                      <Controller
-                        control={control}
-                        name="vAddressTariff"
-                        defaultValue={virtualAddressTariffs[0]}
-                        render={({ field: tariffField, fieldState: tariffFieldState }) => (
-                          <Select
-                            {...tariffField}
-                            pathToLabel="name"
-                            onChange={(value) => {
-                              tariffField.onChange(value);
-                            }}
-                            options={virtualAddressTariffs.map((tariff) => ({ ...tariff, name: `Package of services — ${tariff.name} (${tariff.price}€)` }))}
-                            state={!tariffField.value && tariffFieldState.isTouched ? 'error' : (tariffFieldState.isDirty ? 'success' : 'draft')}
-                          />
-                        )}
-                      />
-                      <Checkmarks>
-                        <Checkmark checked>Receive up to 100 emails per year</Checkmark>
-                        <Checkmark checked>Instant alerts with 24/7 access to your mail online</Checkmark>
-                      </Checkmarks>
-                      {!!watch('vAddressTariff.price') && (
-                        <>
-                          <div className="h2">{watch('vAddressTariff.price')}&#8364;/Year</div>
-                          <div className="t3">Cancel anytime</div>
-                        </>
-                      )}
-                    </BuisnessAdressSelectCard>
-                    <BuisnessAdressSelectCard
-                      title="Use My Own Address"
-                      checked={field.value === 'own'}
-                      onSelect={() => void field.onChange('own')}
-                    >
-                      <Image height={90} width={90} src="/images/order-form/BuisnessAddressOwn.svg" alt="" />
-                      <div className="mb-15">I will provide my own Slovak business address and will personally keep up with the incoming mail.</div>
-                      <div className="mb-15">Slovakia requires a physical street address (P.O Boxes are not accepted).</div>
-                      <div className="mb-15">Any residential address provided to the state will be listed publicly.</div>
-                      <div className="mb-15">You need authorized representative for mail, which must be a person with permanent residence in Slovakia, or Úkon.sk s.r.o. (40€)</div>
-                    </BuisnessAdressSelectCard>
-                  </CardsContainer>
-                </Radio>
-              </>
+                      </BuisnessAdressSelectCard>
+                      <BuisnessAdressSelectCard
+                        title="Use My Own Address"
+                        checked={field.value === 'own'}
+                        onSelect={() => { field.onChange('own'); setValue('vAddressTariff', null); }}
+                      >
+                        <Image height={90} width={90} src="/images/order-form/BuisnessAddressOwn.svg" alt="" />
+                        <div className="mb-15">I will provide my own Slovak business address and will personally keep up with the incoming mail.</div>
+                        <div className="mb-15">Slovakia requires a physical street address (P.O Boxes are not accepted).</div>
+                        <div className="mb-15">Any residential address provided to the state will be listed publicly.</div>
+                        <div className="mb-15">You need authorized representative for mail, which must be a person with permanent residence in Slovakia, or Úkon.sk s.r.o. (40€)</div>
+                      </BuisnessAdressSelectCard>
+                    </CardsContainer>
+                  </Radio>
+                </>
+              )}
+            />
+            {watch('businessAddress') === 'own' && (
+              <Controller
+                control={control}
+                name="ownBuisnessData"
+                render={({ field }) => (
+                  <OwnAddressWrapper>
+                    <AddressForm country="sk" label="Company Address (Your Own Address)" value={field.value} onChange={field.onChange} />
+                  </OwnAddressWrapper>
+                )}
+              />
             )}
-          />
+          </>
         </FormItem>
-        <FormItem title={t('form.citizenshipAndResidence')}>
-          <div className={styles['reg__item-project']} style={{ gap: 20 }}>
+        <FormItem title={t('additionalData')}>
+          <FormItemRow cols={2}>
             <Controller
               control={control}
               name="citizenship"
@@ -231,7 +245,6 @@ export default function PriceForm() {
                 <Select
                   label={t('form.residence')}
                   placeholder={t('form.countryPlaceholder')}
-                  className={styles['reg__item-project-country-select']}
                   options={countries}
                   pathToLabel="ru"
                   state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
@@ -239,80 +252,69 @@ export default function PriceForm() {
                 />
               )}
             />
-          </div>
+            {watch('residence.en') !== 'Slovakia' && (
+              <>
+                <Controller
+                  control={control}
+                  name="skPermit"
+                  defaultValue={{ value: true, name: t('yes') }}
+                  render={({ field }) => (
+                    <Select
+                      label={t('form.skPermit')}
+                      options={[
+                        { value: true, name: t('yes') },
+                        { value: false, name: t('no') },
+                      ]}
+                      pathToLabel="name"
+                      {...field}
+                    />
+                  )}
+                />
+              </>
+            )}
+          </FormItemRow>
         </FormItem>
-
-        {/* <FormItem title={t('form.promo')}>
-          <TextField
-            label={t('form.inputPromo')}
-            className={styles['reg__item-input']}
-            onKeyDown={(event) => {
-              const allowed = /^[a-zA-Z]+$/;
-              if (!Number.isNaN(Number(event.key)) || allowed.test(event.key)) {
-                return true;
-              }
-              event.preventDefault();
-            }}
-            {...register('promo')}
-          />
-        </FormItem> */}
-        <FormItem title={t('form.isRegistered')}>
-          <Radio className={styles['reg__item-radios']} name="isRegistered">
-            <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
-              {t('yes')}
-            </RadioButton>
-            <RadioButton checked={!isRegistered} onSelect={() => void setIsRegistered(false)}>
-              {t('no')}
-            </RadioButton>
+        <FormItem title={t('form.regAuth')}>
+          <Radio name="isRegistered">
+            <FormItemRow cols={2}>
+              <RadioButton className={styles.registeredRadio} checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
+                {translation.t('imRegistered')}
+              </RadioButton>
+              <RadioButton className={styles.registeredRadio} checked={!isRegistered} onSelect={() => void setIsRegistered(false)}>
+                {translation.t('imNotRegistered')}
+              </RadioButton>
+              {isRegistered && (
+                <>
+                  <TextField
+                    label={t('form.email')}
+                  />
+                  <TextField
+                    label={t('form.pass')}
+                    type="password"
+                  />
+                </>
+              )}
+              {!isRegistered && (
+                <>
+                  <TextField
+                    label={t('form.email')}
+                  />
+                  <TextField
+                    label={t('form.pass')}
+                    type="password"
+                  />
+                  <TextField
+                    label={t('form.passRepeat')}
+                    type="password"
+                  />
+                  <TextField
+                    label={t('form.phone')}
+                  />
+                </>
+              )}
+            </FormItemRow>
           </Radio>
         </FormItem>
-        {isRegistered && (
-          <>
-            <FormItem title={t('form.email')}>
-              <TextField
-                label={t('form.email')}
-                className={styles['reg__item-input']}
-              />
-            </FormItem>
-            <FormItem title={t('form.pass')}>
-              <TextField
-                label={t('form.pass')}
-                className={styles['reg__item-input']}
-                type="password"
-              />
-            </FormItem>
-          </>
-        )}
-        {!isRegistered && (
-          <>
-            <FormItem title={t('form.email')}>
-              <TextField
-                label={t('form.email')}
-                className={styles['reg__item-input']}
-              />
-            </FormItem>
-            <FormItem title={t('form.pass')}>
-              <div className={styles['reg__item-project']} style={{ gap: 20 }}>
-                <TextField
-                  label={t('form.pass')}
-                  className={styles['reg__item-input']}
-                  type="password"
-                />
-                <TextField
-                  label={t('form.passRepeat')}
-                  className={styles['reg__item-input']}
-                  type="password"
-                />
-              </div>
-            </FormItem>
-            <FormItem title={t('form.phone')}>
-              <TextField
-                label={t('form.phone')}
-                className={styles['reg__item-input']}
-              />
-            </FormItem>
-          </>
-        )}
       </FormItems>
     </>
   );

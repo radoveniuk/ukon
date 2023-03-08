@@ -106,7 +106,7 @@ main {
   overflow-y: auto;
   overflow-x: hidden;
   
-  @media (max-width: 1249px) {
+  @media (max-width: 999px) {
     height: calc(100vh - 66px);
   }
 }

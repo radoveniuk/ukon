@@ -31,10 +31,11 @@ const ADDRESS_MAP = { street: 'route', houseNumber: 'street_number', city: 'loca
 
 type Props = {
   onSearchResult(result: Address): void;
-  mode?: 'google' | 'sk' | 'cz';
+  mode?: string;
+  label?: string;
 };
 
-const AddressSearch = ({ onSearchResult, mode = 'google' }: Props) => {
+const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearchValue = useDebounce(searchValue);
   const translation = useTranslation('forms');
@@ -82,7 +83,7 @@ const AddressSearch = ({ onSearchResult, mode = 'google' }: Props) => {
   return (
     <div className={styles.searchWrapper} ref={searchBoxRef}>
       <TextField
-        label={t('form.address')}
+        label={label || t('form.address')}
         placeholder={t('form.address')}
         value={searchValue}
         onChange={(evt) => {
