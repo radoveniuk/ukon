@@ -5,7 +5,7 @@ import _ from 'lodash-es';
 import { DateTime } from 'luxon';
 
 import FileInput from 'common/components/forms/FileInput';
-import SearchSelect from 'common/components/forms/SearchSelect';
+import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
 import InfoIcon from 'common/components/icons/InfoIcon';
@@ -155,7 +155,7 @@ export default function IndividualInfoForm () {
               control={control}
               name="insurance"
               render={({ field }) => (
-                <SearchSelect
+                <Select
                   label={t('form.insurance')}
                   options={insurances}
                   pathToLabel="ru"

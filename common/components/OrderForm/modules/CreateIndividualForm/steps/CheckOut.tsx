@@ -40,8 +40,8 @@ const PersonalDataRows: CheckoutRow[] = [
       if (!address) {
         return '';
       }
-      const { street, houseNumber, city, zip, residence } = address;
-      return `${street}, ${houseNumber}, ${city}, ${zip}, ${residence?.sk}`;
+      const { street, houseNumber, city, zip } = address;
+      return `${street}, ${houseNumber}, ${city}, ${zip}, ${watch('residence.sk')}`;
     },
   },
   {
