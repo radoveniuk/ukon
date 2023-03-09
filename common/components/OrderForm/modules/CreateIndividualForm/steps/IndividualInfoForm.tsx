@@ -1,28 +1,22 @@
-import { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import _ from 'lodash-es';
 import { DateTime } from 'luxon';
 
-import Checkbox from 'common/components/forms/Checkbox';
-import DatePicker from 'common/components/forms/DatePicker';
 import FileInput from 'common/components/forms/FileInput';
-import Radio, { RadioButton } from 'common/components/forms/Radio';
-import Select from 'common/components/forms/Select';
+import SearchSelect from 'common/components/forms/SearchSelect';
 import TextArea from 'common/components/forms/TextArea';
 import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
 import InfoIcon from 'common/components/icons/InfoIcon';
 import UploadIcon from 'common/components/icons/UploadIcon';
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
-import AddressSearch from 'common/components/OrderForm/components/AddressSearch';
 import FormItems, { FormItem, FormItemRow } from 'common/components/OrderForm/components/FormItems';
 import Tooltip from 'common/components/Tooltip';
 
 import styles from 'styles/OrderForm.module.scss';
 
 import insurances from '../../../data/insurance.json';
-import prefixes from '../../../data/prefixes.json';
 
 export default function IndividualInfoForm () {
   const translation = useTranslation('forms');
@@ -43,7 +37,7 @@ export default function IndividualInfoForm () {
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('individualInfoText') }} />
       <FormItems>
-        <FormItem  title={t('fullname')}>
+        <FormItem iconSrc="/images/order-form/form-items/Profile.svg" title={t('fullname')}>
           <FormItemRow cols={2}>
             <TextField
               label={t('form.inputFullname')}
@@ -54,32 +48,35 @@ export default function IndividualInfoForm () {
             />
           </FormItemRow>
         </FormItem>
-        <FormItem title={t('form.addressResidence')} >
-          <AddressForm
-            country={getAddressMode()}
-            label={t('form.address')}
-            onChange={(values) => {
-              setValue('street', values?.street, { shouldValidate: true });
-              setValue('houseNumber', values?.houseNumber, { shouldValidate: true });
-              setValue('city', values?.city, { shouldValidate: true });
-              setValue('zip', values?.zip, { shouldValidate: true });
-            }}
+        <FormItem iconSrc="/images/order-form/form-items/Residence.svg" title={t('form.addressResidence')}>
+          <Controller
+            control={control}
+            name="address"
+            render={({ field }) => (
+              <AddressForm
+                country={getAddressMode()}
+                label={t('form.address')}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
           />
         </FormItem>
-        <FormItem title={t('form.addressSlovakResidence')} >
-          <AddressForm
-            country="sk"
-            label={t('form.address')}
-            onChange={(values) => {
-              setValue('streetSlovak', values?.street, { shouldValidate: true });
-              setValue('houseRegNumberSlovak', values?.houseRegNumber);
-              setValue('houseNumberSlovak', values?.houseNumber, { shouldValidate: true });
-              setValue('citySlovak', values?.city, { shouldValidate: true });
-              setValue('zipSlovak', values?.zip, { shouldValidate: true });
-            }}
+        <FormItem iconSrc="/images/order-form/form-items/ResidenceSk.svg" title={t('form.addressSlovakResidence')} >
+          <Controller
+            control={control}
+            name="addressSk"
+            render={({ field }) => (
+              <AddressForm
+                country="sk"
+                label={t('form.address')}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
           />
         </FormItem>
-        <FormItem title={t('additionalPersonalData')}>
+        <FormItem iconSrc="/images/order-form/form-items/AdditionalProfile.svg" title={t('additionalPersonalData')}>
           <FormItemRow cols={2}>
             <Controller
               control={control}
@@ -158,7 +155,7 @@ export default function IndividualInfoForm () {
               control={control}
               name="insurance"
               render={({ field }) => (
-                <Select
+                <SearchSelect
                   label={t('form.insurance')}
                   options={insurances}
                   pathToLabel="ru"
@@ -176,7 +173,7 @@ export default function IndividualInfoForm () {
             />
           </FormItemRow>
         </FormItem>
-        <FormItem title={t('businessData')}>
+        <FormItem iconSrc="/images/order-form/form-items/BusinessData.svg" title={t('businessData')}>
           <FormItemRow cols={2}>
             <TextField prefix={`${watch('fullname')} -`} label={t('form.companyName')} {...register('companyName')} />
             <TextFieldFormated
@@ -187,7 +184,7 @@ export default function IndividualInfoForm () {
             />
           </FormItemRow>
         </FormItem>
-        <FormItem title={t('form.orderComment')}>
+        <FormItem iconSrc="/images/order-form/form-items/Note.svg" title={t('form.orderComment')}>
           <TextArea
             label={t('form.comment')}
             placeholder={t('form.inputComment')}
@@ -195,7 +192,7 @@ export default function IndividualInfoForm () {
             {...register('comment')}
           />
         </FormItem>
-        <FormItem title={t('docsUpload')}>
+        <FormItem iconSrc="/images/order-form/form-items/Docs.svg" title={t('docsUpload')}>
           <div className={styles['reg__docs']}>
             <div className={styles['reg__doc']}>
               <div className={styles['reg__doc-title']}>

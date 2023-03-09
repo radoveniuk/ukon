@@ -1,5 +1,6 @@
-import { createContext, Dispatch, PropsWithChildren, SetStateAction, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { isEmpty } from 'lodash-es';
 
 import { useSteps } from './StepsContext';
 
@@ -14,7 +15,7 @@ const ValidationProvider = ({ children }: PropsWithChildren) => {
     // 0 step requires
     mainActivity, citizenship, residence,
     // 1 step requires
-    name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip,
+    fullname, physicalNumber, birthdate, docNumber, address, addressSk,
     // 2 step requires
     correctData, agreeWithRules,
   } = watch();
@@ -24,13 +25,13 @@ const ValidationProvider = ({ children }: PropsWithChildren) => {
       return !!mainActivity && !!citizenship && !!residence;
     }
     if (step === 1) {
-      return [name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip, residence].every(item => !!item);
+      return [fullname, physicalNumber, birthdate, docNumber, address, addressSk].every(item => !isEmpty(item));
     }
     if (step === 2) {
       return [correctData, agreeWithRules].every(item => !!item);
     }
     return false;
-  }, [step, mainActivity, citizenship, residence, name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip, correctData, agreeWithRules]);
+  }, [step, mainActivity, citizenship, residence, fullname, physicalNumber, birthdate, docNumber, address, addressSk, correctData, agreeWithRules]);
 
   return (
     <ValidationContext.Provider value={isValid}>

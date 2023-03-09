@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RxSlash } from 'react-icons/rx';
 import { useTranslation } from 'next-i18next';
+import { isEqual } from 'lodash-es';
 
 import TextField from 'common/components/forms/TextField';
 import { Address } from 'common/types/address';
@@ -34,6 +35,13 @@ const AddressForm = ({ country, label, value, onChange }: Props) => {
     onChange(address);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address]);
+
+  useEffect(() => {
+    if (!isEqual(value, address)) {
+      setAddress(value);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return (
     <div className={styles.wrapper}>

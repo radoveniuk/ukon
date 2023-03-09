@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
+import Select from 'common/components/forms/Select';
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
 import BusinessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BusinessAdressSelect';
 
@@ -11,7 +12,7 @@ import styles from 'styles/OrderForm.module.scss';
 
 import MultiSelect from '../../../../forms/MultiSelect';
 import Radio, { RadioButton } from '../../../../forms/Radio';
-import Select from '../../../../forms/Select';
+import SearchSelect from '../../../../forms/SearchSelect';
 import TextField from '../../../../forms/TextField';
 import FormItems, { FormItem, FormItemRow } from '../../../components/FormItems';
 import { usePriceContext } from '../../../contexts/PriceContext';
@@ -33,26 +34,18 @@ export default function PriceForm() {
   const citizenship = watch('citizenship');
   const vAddressPrice = watch('vAddressTariff.price');
   useEffect(() => {
-    if (mainActivity) {
-      if (mainActivity.Type === 'Volná') {
-        updatePriceList({ mainActivity: 0 });
-      } else {
-        updatePriceList({ mainActivity: 7.5 });
-      }
-    } else {
-      updatePriceList({ mainActivity: 0 });
+    let activitiesPrice = 0;
+    if (mainActivity && mainActivity.Type !== 'Volná') {
+      activitiesPrice += 7.5;
     }
     if (otherActivities?.length) {
-      let otherActivitiesPrice = 0;
       otherActivities.forEach((activity: any) => {
         if (activity.Type !== 'Volná') {
-          otherActivitiesPrice += 7.5;
+          activitiesPrice += 7.5;
         }
       });
-      updatePriceList({ otherActivities: otherActivitiesPrice });
-    } else {
-      updatePriceList({ otherActivities: 0 });
     }
+    updatePriceList({ activities: activitiesPrice });
     if (citizenship?.en === 'Russia') {
       updatePriceList({ citizenship: 120 });
     } else if (citizenship?.en === 'Belarus') {
@@ -79,14 +72,14 @@ export default function PriceForm() {
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
       <FormItems>
-        <FormItem title={t('activities')}>
+        <FormItem iconSrc="/images/order-form/form-items/Activities.svg" title={t('activities')}>
           <Controller
             control={control}
             name="mainActivity"
             rules={{ required: t('form.requiredFieldText') }}
             defaultValue={null}
             render={({ field, fieldState }) => (
-              <Select
+              <SearchSelect
                 options={activities}
                 pathToLabel="ru"
                 label={t('form.mainActivity')}
@@ -131,7 +124,7 @@ export default function PriceForm() {
             )}
           />
         </FormItem>
-        <FormItem title={t('form.businessAddress')}>
+        <FormItem iconSrc="/images/order-form/form-items/BusinessAddress.svg" title={t('form.businessAddress')}>
           <>
             <Controller
               control={control}
@@ -143,12 +136,12 @@ export default function PriceForm() {
                   <Radio className={classNames('mb-15')} name="businessAddress">
                     <CardsContainer>
                       <BusinessAdressSelectCard
-                        title="Úkon.sk Business Address & Virtual Mail Service"
+                        title={t('form.ourBusinessAddress')}
                         checked={field.value === 'ukon'}
-                        onSelect={() => { field.onChange('ukon'); }}
+                        onSelect={() => { field.onChange('ukon'); updatePriceList({ vAddressTariff: watch('vAddressTariff.price') }); }}
                       >
                         <Image height={90} width={90} src="/images/order-form/BusinessAddressUkon.svg" alt="" />
-                        <div>This will be your principal company address:</div>
+                        <div>{t('form.ourBusinessAddressSelect')}</div>
                         <Controller
                           control={control}
                           name="ourBusinessAddress"
@@ -188,9 +181,9 @@ export default function PriceForm() {
                         )}
                       </BusinessAdressSelectCard>
                       <BusinessAdressSelectCard
-                        title="Use My Own Address"
+                        title={t('form.ownBusinessAddress')}
                         checked={field.value === 'own'}
-                        onSelect={() => { field.onChange('own'); setValue('vAddressTariff', null); }}
+                        onSelect={() => { field.onChange('own'); updatePriceList({ vAddressTariff: 0 }); }}
                       >
                         <Image height={90} width={90} src="/images/order-form/BusinessAddressOwn.svg" alt="" />
                         <div className="mb-15">I will provide my own Slovak business address and will personally keep up with the incoming mail.</div>
@@ -206,7 +199,7 @@ export default function PriceForm() {
             {watch('businessAddress') === 'own' && (
               <Controller
                 control={control}
-                name="ownBusinessData"
+                name="ownBusinessAddress"
                 render={({ field }) => (
                   <OwnAddressWrapper>
                     <AddressForm country="sk" label="Company Address (Your Own Address)" value={field.value} onChange={field.onChange} />
@@ -216,14 +209,14 @@ export default function PriceForm() {
             )}
           </>
         </FormItem>
-        <FormItem title={t('additionalData')}>
+        <FormItem iconSrc="/images/order-form/form-items/AdditionalData.svg" title={t('additionalData')}>
           <FormItemRow cols={2}>
             <Controller
               control={control}
               name="citizenship"
               rules={{ required: true }}
               render={({ field, fieldState }) => (
-                <Select
+                <SearchSelect
                   {...field}
                   label={t('form.citizenship')}
                   placeholder={t('form.countryPlaceholder')}
@@ -242,7 +235,7 @@ export default function PriceForm() {
               name="residence"
               rules={{ required: true }}
               render={({ field, fieldState }) => (
-                <Select
+                <SearchSelect
                   label={t('form.residence')}
                   placeholder={t('form.countryPlaceholder')}
                   options={countries}
@@ -274,7 +267,7 @@ export default function PriceForm() {
             )}
           </FormItemRow>
         </FormItem>
-        <FormItem title={t('form.regAuth')}>
+        <FormItem iconSrc="/images/order-form/form-items/Auth.svg" title={t('form.regAuth')}>
           <Radio name="isRegistered">
             <FormItemRow cols={2}>
               <RadioButton className={styles.registeredRadio} checked={isRegistered} onSelect={() => void setIsRegistered(true)}>

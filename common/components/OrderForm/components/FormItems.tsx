@@ -14,14 +14,17 @@ export default function FormItems ({ children }: PropsWithChildren) {
 
 type FormItemProps = {
   title: string;
+  iconSrc?: string;
   id?:string;
 };
 
-export function FormItem ({ title, children } : PropsWithChildren<FormItemProps>) {
+const DEFAULT_ICON = '/images/order-form/FormItem.svg';
+
+export function FormItem ({ title, children, iconSrc = DEFAULT_ICON } : PropsWithChildren<FormItemProps>) {
   return (
     <div className={classNames(styles.card)}>
       <div className={styles.header}>
-        <Image src="/images/order-form/FormItem.svg" alt={title} height={20.15} width={23} />
+        <Image src={iconSrc} alt={title} height={20.15} width={23} />
         <div>{title}</div>
       </div>
       <div className={styles.body}>

@@ -1,4 +1,5 @@
-import { DetailedHTMLProps, ForwardedRef, forwardRef, InputHTMLAttributes, PropsWithChildren } from 'react';
+import { DetailedHTMLProps, ForwardedRef, forwardRef, InputHTMLAttributes, PropsWithChildren, useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { PatternFormat, PatternFormatProps } from 'react-number-format';
 import classNames from 'classnames';
 
@@ -28,16 +29,28 @@ type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputE
   prefix?: string;
 };
 
-function TextField ({ labelClassName, className, label, error, success, prefix, ...rest }: Props, ref: ForwardedRef<HTMLInputElement>) {
+function TextField ({ labelClassName, className, label, error, success, prefix, ...props }: Props, ref: ForwardedRef<HTMLInputElement>) {
+  const [type, setType] = useState(props.type);
   return (
     <label className={classNames(labelClassName, styles.label)} >
       <span className="t5">{label}</span>
       <div className={classNames(className, styles.input, 't5', error ? styles['input-error'] : '', success ? styles['input-success'] : '')}>
         {!!prefix && <>{prefix}&nbsp;</>}
         <input
+          {...props}
           ref={ref}
-          {...rest}
+          type={type}
         />
+        {props.type === 'password' && (
+          <div
+            role="button"
+            onClick={() => {
+              setType((prev) => prev === 'password' ? 'text' : 'password');
+            }}
+          >
+            {type === 'password' ? <AiOutlineEyeInvisible size={20} color="#717171" /> : <AiOutlineEye color="#44998A" size={20} />}
+          </div>
+        )}
       </div>
       {!!error && typeof error === 'string' && <span className={styles.error}>{error}</span>}
     </label>

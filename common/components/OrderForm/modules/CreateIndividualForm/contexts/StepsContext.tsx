@@ -27,7 +27,10 @@ export const useSteps = () => {
   return {
     step,
     setStep,
-    nextStep: () => void setStep(prev => prev + 1 !== STEPS ? prev + 1 : prev),
+    nextStep: () => {
+      document.getElementsByTagName('main')[0].scrollTo(0, 0);
+      setStep(prev => prev + 1 !== STEPS ? prev + 1 : prev);
+    },
     prevStep: () => void setStep(prev => prev !== 0 ? prev - 1 : prev),
   };
 };

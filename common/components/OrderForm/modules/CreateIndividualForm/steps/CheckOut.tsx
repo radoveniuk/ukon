@@ -2,18 +2,15 @@ import { ReactNode, useState } from 'react';
 import { useFormContext, UseFormWatch } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
-import { DateTime } from 'luxon';
 
 import Button from 'common/components/Button';
 import Checkbox from 'common/components/forms/Checkbox';
-import FileInput from 'common/components/forms/FileInput';
 import Radio, { RadioButton } from 'common/components/forms/Radio';
+import SearchSelect from 'common/components/forms/SearchSelect';
+import Select from 'common/components/forms/Select';
 import EditIcon from 'common/components/icons/EditIcon';
-import InfoIcon from 'common/components/icons/InfoIcon';
-import UploadIcon from 'common/components/icons/UploadIcon';
-import CheckoutTable, { CheckoutTableCell, CheckoutTableRow } from 'common/components/OrderForm/components/CheckoutTable';
-import FormItems, { FormItem } from 'common/components/OrderForm/components/FormItems';
-import Tooltip from 'common/components/Tooltip';
+import AccordionTable, { AccordionTableCell, AccordionTableRow } from 'common/components/OrderForm/components/AccordionTable';
+import FormItems, { FormItem, FormItemRow } from 'common/components/OrderForm/components/FormItems';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -31,8 +28,34 @@ const PersonalDataRows: CheckoutRow[] = [
   {
     name: 'personalName',
     step: 1,
-    anchorField: 'name',
-    getValue: (watch) => `${watch('namePrefix.Value') || ''} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value') || ''}`,
+    anchorField: 'fullname',
+    getValue: (watch) => watch('fullname'),
+  },
+  {
+    name: 'form.addressResidence',
+    step: 1,
+    anchorField: 'address',
+    getValue: (watch) => {
+      const address = watch('address');
+      if (!address) {
+        return '';
+      }
+      const { street, houseNumber, city, zip, residence } = address;
+      return `${street}, ${houseNumber}, ${city}, ${zip}, ${residence?.sk}`;
+    },
+  },
+  {
+    name: 'form.addressSlovakResidence',
+    step: 1,
+    anchorField: 'addressSk',
+    getValue: (watch) => {
+      const address = watch('addressSk');
+      if (!address) {
+        return '';
+      }
+      const { street, houseRegNumber, houseNumber, city, zip } = address;
+      return `${street}, ${houseRegNumber} / ${houseNumber}, ${city}, ${zip}`;
+    },
   },
   {
     name: 'form.physicalNumber',
@@ -47,38 +70,29 @@ const PersonalDataRows: CheckoutRow[] = [
     getValue: (watch) => watch('birthdate'),
   },
   {
-    name: 'form.docNumber',
-    step: 1,
-    anchorField: 'docNumber',
-    getValue: (watch) => watch('docNumber'),
-  },
-  {
-    name: 'form.addressResidence',
-    step: 1,
-    anchorField: 'street',
-    getValue: (watch) => `${watch('street')}, ${watch('houseRegNumber')}, ${watch('houseNumber')}, ${watch('city')}, ${watch('zip')}, ${watch('country.ru')}`,
-  },
-  {
-    name: 'form.addressSlovakResidence',
-    step: 1,
-    anchorField: 'streetSlovak',
-    getValue: (watch) => `${watch('streetSlovak')}, ${watch('houseRegNumberSlovak')}, ${watch('houseNumberSlovak')}, ${watch('citySlovak')}, ${watch('zipSlovak')}, Slovensko`,
-  },
-  {
     name: 'form.insurance',
     step: 1,
     anchorField: 'insurance',
     getValue: (watch) => watch('insurance.ru'),
     customField: true,
   },
-];
-
-const CompanyDataRows: CheckoutRow[] = [
+  {
+    name: 'form.docNumber',
+    step: 1,
+    anchorField: 'docNumber',
+    getValue: (watch) => watch('docNumber'),
+  },
   {
     name: 'form.companyName',
     step: 1,
     anchorField: 'companyName',
-    getValue: (watch) => `${watch('namePrefix.Value')} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value')} ${watch('companyName') ? `— ${watch('companyName')}` : ''}`,
+    getValue: (watch) => `${watch('fullname')} ${watch('companyName') ? `— ${watch('companyName')}` : ''}`,
+  },
+  {
+    name: 'form.companyNumber',
+    step: 1,
+    anchorField: 'companyNumber',
+    getValue: (watch) => watch('companyNumber'),
   },
   {
     name: 'activities',
@@ -96,12 +110,6 @@ const CompanyDataRows: CheckoutRow[] = [
     ),
   },
   {
-    name: 'form.companyNumber',
-    step: 1,
-    anchorField: 'companyNumber',
-    getValue: (watch) => watch('companyNumber'),
-  },
-  {
     name: 'form.businessAddress',
     step: 0,
     anchorField: '',
@@ -111,32 +119,19 @@ const CompanyDataRows: CheckoutRow[] = [
       if (businessAddress === 'ukon') {
         const ourBusinessAddress = watch('ourBusinessAddress.value');
         const vAddressTariff = watch('vAddressTariff');
-        output += `${t('form.ourBusinessAddress')}, ${ourBusinessAddress}, пакет ${vAddressTariff}€/год`;
+        output += `${t('form.ourBusinessAddress')}, ${ourBusinessAddress}, пакет ${vAddressTariff?.price}€/год`;
       }
       if (businessAddress === 'own') {
-        output += t('form.ownBusinessAddress');
-      }
-      if (businessAddress === 'other') {
-        output += t('form.otherBusinessAddress');
+        const address = watch('ownBusinessAddress');
+        if (!address) {
+          return '';
+        }
+        const { street, houseRegNumber, houseNumber, city, zip } = address;
+        output += `${street}, ${houseRegNumber} / ${houseNumber}, ${city}, ${zip}`;
+
       }
       return output;
     },
-  },
-  {
-    name: 'form.registerDate',
-    step: 1,
-    anchorField: 'registerDate',
-    getValue: (watch, t) => {
-      const value = watch('registerDate');
-      if (value  === 'asap') {
-        return t('form.asap');
-      }
-      if (DateTime.fromJSDate(value).isValid) {
-        return DateTime.fromJSDate(value).toFormat('dd.MM.yyyy');
-      }
-      return '';
-    },
-    customField: true,
   },
   {
     name: 'form.orderComment',
@@ -154,6 +149,7 @@ export default function CheckOut () {
   const { watch, setFocus, register } = useFormContext();
 
   const [paymentType, setPaymentType] = useState<'online' | 'invoice'>('online');
+  const [invoiceTo, setInvoiceTo] = useState<'me' | 'other'>('me');
 
   const goToField = (id: string, scroll = false) => {
     setFocus(id, { shouldSelect: true });
@@ -167,20 +163,28 @@ export default function CheckOut () {
     }
   };
 
-  const isCheckedForm = watch('correctData');
+  const PAYMENT_TYPES = [
+    { value: 'online', name: t('paymentByCard') },
+    { value: 'invoice', name: t('paymentByInvoice') },
+  ];
+
+  const INVOICE_OPTIONS = [
+    { value: 'me', name: watch('fullname') },
+    { value: 'other', name: t('invoiceToOther') },
+  ];
 
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('checkoutText') }} />
       <FormItems>
-        <FormItem title="Контроль заполненных данных">
-          <div className={styles.reg__tables}>
-            <CheckoutTable title={t('personalData')} colorfull={!isCheckedForm}>
+        <FormItem title={translation.t('data')}>
+          <FormItemRow cols={1}>
+            <AccordionTable title={t('completedDataControl')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
               {PersonalDataRows.map((row) => (
-                <CheckoutTableRow key={row.name}>
-                  <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
-                  <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
-                  <CheckoutTableCell
+                <AccordionTableRow key={row.name}>
+                  <AccordionTableCell className="t4">{t(row.name)}</AccordionTableCell>
+                  <AccordionTableCell className="t4">{row.getValue(watch, t)}</AccordionTableCell>
+                  <AccordionTableCell
                     className={styles['reg__table-edit']}
                     onClick={() => {
                       setStep(row.step);
@@ -188,51 +192,68 @@ export default function CheckOut () {
                     }}
                   >
                     <EditIcon />
-                  </CheckoutTableCell>
-                </CheckoutTableRow>
+                  </AccordionTableCell>
+                </AccordionTableRow>
               ))}
-            </CheckoutTable>
-            <CheckoutTable title={t('companyData')} colorfull={!isCheckedForm}>
-              {CompanyDataRows.map((row) => (
-                <CheckoutTableRow key={row.name}>
-                  <CheckoutTableCell className="t4">{t(row.name)}</CheckoutTableCell>
-                  <CheckoutTableCell className="t4">{row.getValue(watch, t)}</CheckoutTableCell>
-                  <CheckoutTableCell
-                    className={styles['reg__table-edit']}
-                    onClick={() => {
-                      setStep(row.step);
-                      setTimeout(() => { goToField(row.anchorField, row.customField); }, 100);
-                    }}
-                  >
-                    <EditIcon />
-                  </CheckoutTableCell>
-                </CheckoutTableRow>
-              ))}
-            </CheckoutTable>
-            <Checkbox label={t('correctData')} className="mb-15" {...register('correctData')} />
+            </AccordionTable>
+          </FormItemRow>
+          <Checkbox label={t('correctData')} className="mb-15" {...register('correctData')} />
+        </FormItem>
+        <FormItem title={translation.t('docs')}>
+          <div className={styles.reg__tables}>
+            <AccordionTable title={t('uploadDocsControl')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
+              <AccordionTableRow>
+                <AccordionTableCell className="t4">{t('proxyDoc')}</AccordionTableCell>
+                <AccordionTableCell className={classNames('t4', styles.filesLink)}>{t('proxyDoc')}</AccordionTableCell>
+                <AccordionTableCell
+                  className={styles['reg__table-edit']}
+                >
+                  <EditIcon />
+                </AccordionTableCell>
+              </AccordionTableRow>
+              <AccordionTableRow>
+                <AccordionTableCell className="t4">{t('identDoc')}</AccordionTableCell>
+                <AccordionTableCell className={classNames('t4', styles.filesLink)}>{t('identDoc')}</AccordionTableCell>
+                <AccordionTableCell
+                  className={styles['reg__table-edit']}
+                >
+                  <EditIcon />
+                </AccordionTableCell>
+              </AccordionTableRow>
+              <AccordionTableRow>
+                <AccordionTableCell className="t4">{t('nonConvictDoc')}</AccordionTableCell>
+                <AccordionTableCell className={classNames('t4', styles.filesLink)}>{t('nonConvictDoc')}</AccordionTableCell>
+                <AccordionTableCell
+                  className={styles['reg__table-edit']}
+                >
+                  <EditIcon />
+                </AccordionTableCell>
+              </AccordionTableRow>
+            </AccordionTable>
           </div>
         </FormItem>
-        <FormItem title={t('paymentType')}>
-          <div className={styles['reg__item-payments']}>
-            <div>
-              <div className={styles['reg__item-payments-title']}>{t('paymentLink')}:</div>
-              <Radio className={classNames(styles['reg__item-payments-radios'], 'mb-15')} name="paymentType">
-                <RadioButton checked={paymentType === 'online'} onSelect={() => void setPaymentType('online')}>{t('paymentByCard')}</RadioButton>
-                <RadioButton checked={paymentType === 'invoice'} onSelect={() => void setPaymentType('invoice')}>{t('paymentByInvoice')}</RadioButton>
-              </Radio>
-              {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
-            </div>
-            <div>
-              <div className={styles['reg__item-payments-title']}>{t('invoiceType')}:</div>
-              <Radio className={classNames(styles['reg__item-payments-radios'])} name="invoiceType">
-                <RadioButton defaultChecked>{t('invoiceToCurrentIdividual')}</RadioButton>
-                <RadioButton>{t('invoiceToOther')}</RadioButton>
-              </Radio>
-            </div>
-          </div>
-        </FormItem>
-        <FormItem title={t('agree')}>
-          <Checkbox label={t('agreeWithRules')} {...register('agreeWithRules')} />
+        <FormItem title={translation.t('billing')}>
+          <FormItemRow cols={2}>
+            <Select
+              options={PAYMENT_TYPES}
+              pathToLabel="name"
+              label={`${t('paymentLink')}:`}
+              value={PAYMENT_TYPES.find((item) => item.value === paymentType)}
+              onChange={({ value }) => {
+                setPaymentType(value);
+              }}
+            />
+            <Select
+              options={INVOICE_OPTIONS}
+              pathToLabel="name"
+              label={t('invoiceType')}
+              value={INVOICE_OPTIONS.find((item) => item.value === invoiceTo)}
+              onChange={({ value }) => {
+                setInvoiceTo(value);
+              }}
+            />
+            {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+          </FormItemRow>
         </FormItem>
       </FormItems>
     </>

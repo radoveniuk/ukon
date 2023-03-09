@@ -9,7 +9,6 @@ import classNames from 'classnames';
 import { DateTime } from 'luxon';
 
 import Button from 'common/components/Button';
-import Checkbox from 'common/components/forms/Checkbox';
 import DatePicker from 'common/components/forms/DatePicker';
 import TextArea from 'common/components/forms/TextArea';
 import IconButton from 'common/components/IconButton';
@@ -20,16 +19,14 @@ import styles from 'styles/OrderForm.module.scss';
 
 import MultiSelect from '../../../../forms/MultiSelect';
 import Radio, { RadioButton } from '../../../../forms/Radio';
-import Select from '../../../../forms/Select';
+import SearchSelect from '../../../../forms/SearchSelect';
 import TextField, { TextFieldFormated } from '../../../../forms/TextField';
 import AccordionTable, { AccordionTableCell, AccordionTableRow } from '../../../components/AccordionTable';
 import FormItems, { FormItem } from '../../../components/FormItems';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
-import countries from '../../../data/countries.json';
 import prefixes from '../../../data/prefixes.json';
 import SearchField from '../components/SearchField';
-// import { usePriceContext } from '../contexts/PriceContext';
 
 type DataItem = {
   key: string;
@@ -92,7 +89,7 @@ export default function UpdateData() {
             control={control}
             name="namePrefix"
             render={({ field }) => (
-              <Select
+              <SearchSelect
                 label={t('form.namePrefix')}
                 placeholder={t('form.inputNamePrefix')}
                 options={prefixes.filter((item) => item.Type === 'Prefix')}
@@ -119,7 +116,7 @@ export default function UpdateData() {
             control={control}
             name="namePostfix"
             render={({ field }) => (
-              <Select
+              <SearchSelect
                 label={t('form.namePostfix')}
                 placeholder={t('form.inputNamePostfix')}
                 options={prefixes.filter((item) => item.Type === 'Postfix')}
@@ -210,7 +207,7 @@ export default function UpdateData() {
                   name="ourBusinessAddress"
                   defaultValue={addresses[0]}
                   render={({ field: addressField, fieldState: addressFieldState }) => (
-                    <Select
+                    <SearchSelect
                       {...addressField}
                       className={classNames(styles['reg__item-project-select'], (styles['reg__item-input']))}
                       label={t('form.address')}

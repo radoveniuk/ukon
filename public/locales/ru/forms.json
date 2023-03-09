@@ -2,6 +2,9 @@
   "cart": "Итог Заказа",
   "imRegistered": "Я зарегистрирован на Ukon.sk",
   "imNotRegistered": "Я НЕ зарегистрирован на Ukon.sk",
+  "data": "Данные",
+  "docs": "Документы",
+  "billing": "Оплата",
   "create-company": {
     "pageTitle": "Оформление ООО"
   },
@@ -14,7 +17,7 @@
     ],
     "entryText": "Давайте сформулируем стоимость со всеми необходимыми для вас документами. <br /> <strong>Данные необходимо заполнять латиницей.</strong>",
     "individualInfoText": "Необходимо ввести данные предпринимателя. Если вы были зарегестрированы, а хотите оформить документы на другого человека просто замените данные в заполненых полях.",
-    "checkoutText": "Давайте проверим, все ли правильно введено и загрузим документы",
+    "checkoutText": "Давайте проверим, все ли правильно введено",
     "form": {
       "mainActivity": "Основной вид деятельности (КВЭД)",
       "otherActivities": "Другие виды деятельности (КВЭДы)",
@@ -30,7 +33,7 @@
       "businessAddress": "Адрес регистрации предприятия",
       "ourBusinessAddress": "Виртуальный адрес от Úkon.sk",
       "ourBusinessAddressHtml": "Виртуальный адрес от <br / >Úkon.sk",
-      "ownBusinessAddress": "Адрес постоянного места жительства (прописки)",
+      "ownBusinessAddress": "Собственный адрес",
       "ownBusinessAddressHtml": "Адрес постоянного места <br />жительства (прописки)",
       "otherBusinessAddress": "Другой адрес",
       "ourBusinessAddressSelect": "Ваш виртуальный адрес от Úkon.sk",
@@ -78,11 +81,12 @@
       "inputFullnamePlaceholder": "Введите полное имя"
     },
     "priceKeys": {
-      "base": "Оформление ИП",
+      "base": "Обновление данных по ИП",
       "vAddressTariff": "Пакет виртуального адреса",
       "citizenship": "Гражданство",
       "residence": "Место жительства",
-      "sum": "Итого"
+      "sum": "Итого",
+      "activities": "Платные виды деятельности"
     },
     "fullname": "Имя и фамилия предпринимателя",
     "additionalPersonalData": "Дополнительные персональные данные",
@@ -122,7 +126,9 @@
     "agreeWithRules": "Я согласен с общими условиями предоставления услуги",
     "nextStep": "Следующий шаг",
     "finish": "Завершить оформление",
-    "additionalData": "Дополнительные данные"
+    "additionalData": "Дополнительные данные",
+    "completedDataControl": "Контроль заполненых данных",
+    "uploadDocsControl": "Контроль загруженых документов"
   },
   "update-company": {
     "pageTitle": "Обновление данных по ООО"
@@ -173,7 +179,7 @@
       "inputNamePostfix": "Введите титул после именем",
       "ourBusinessAddress": "Виртуальный адрес от Úkon.sk",
       "ourBusinessAddressHtml": "Виртуальный адрес от <br / >Úkon.sk",
-      "ownBusinessAddress": "Адрес постоянного места жительства (прописки)",
+      "ownBusinessAddress": "Собственный адрес",
       "ownBusinessAddressHtml": "Адрес постоянного места <br />жительства (прописки)",
       "otherBusinessAddress": "Другой адрес",
       "ourBusinessAddressSelect": "Ваш виртуальный адрес от Úkon.sk",
@@ -194,7 +200,8 @@
       "vAddressTariff": "Пакет виртуального адреса",
       "citizenship": "Гражданство",
       "residence": "Место жительства",
-      "sum": "Итого"
+      "sum": "Итого",
+      "activities": "Платные виды деятельности"
     },
     "add": "Добавить",
     "publicData": "Общедоступные данные",
