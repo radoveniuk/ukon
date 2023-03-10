@@ -1,6 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import useFormPersist from 'react-hook-form-persist';
-import Image from 'next/image';
+import { AiOutlineSave } from 'react-icons/ai';
+import { HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
@@ -8,8 +9,8 @@ import { iterateMap } from 'common/utils/common';
 
 import styles from 'styles/OrderForm.module.scss';
 
+import BottomActions, { BottomAction, BottomActionText } from '../../components/BottomActions';
 import Cart, { CartBody, CartHeader, PriceItem } from '../../components/Cart';
-import PrevButton from '../../components/PrevButton';
 import PriceProvider, { usePriceContext } from '../../contexts/PriceContext';
 
 import StepsProvider, { STEPS, useSteps } from './contexts/StepsContext';
@@ -33,12 +34,11 @@ function CreateIndividualFormRender () {
     <>
       <div className={styles.reg__cont}>
         <div className={styles.reg__left}>
-          <div className={classNames(styles['reg-title'], 'h2')}>
+          {/* <div className={classNames(styles['reg-title'], 'h2')}>
             {t('pageTitle')}
-          </div>
+          </div> */}
           <div className={styles['reg__left-cont']}>
             <div className={styles['reg__left-top']}>
-              <PrevButton disabled={step === 0} onClick={prevStep} />
               <div className={classNames(styles['reg__left-top-title'], 'h5')}>
                 {t(`steps.${step}`)}
               </div>
@@ -77,15 +77,21 @@ function CreateIndividualFormRender () {
               <PriceItem className="t1" price={Object.values(priceList).reduce((partialSum, a) => partialSum + a, 0)}>{t('priceKeys.sum')}</PriceItem>
             </CartBody>
           </Cart>
-          <div className={styles['reg__right-img']}>
-            <Image width={250} height={173} src="/images/form-order.png" alt="" />
-          </div>
         </div>
       </div>
-      <button onClick={nextStep} disabled={!isValidStep} className={classNames(styles['reg-next'], isValidStep ? styles.active : '', 'btn-text')}>
-        {step === STEPS - 1 && t('finish')}
-        {step !== STEPS - 1 && t('nextStep')}
-      </button>
+      <BottomActions>
+        <BottomAction disabled={step === 0} onClick={prevStep}><HiArrowNarrowLeft /><BottomActionText>{translation.t('prevStep')}</BottomActionText></BottomAction>
+        <BottomAction
+          onClick={step !== STEPS - 1 ? nextStep : undefined}
+        >
+          <BottomActionText>
+            {step === STEPS - 1 && t('finish')}
+            {step !== STEPS - 1 && translation.t('nextStep')}
+          </BottomActionText>
+          <HiArrowNarrowRight />
+        </BottomAction>
+        <BottomAction variant="outlined"><AiOutlineSave /><BottomActionText>{translation.t('saveForFuture')}</BottomActionText></BottomAction>
+      </BottomActions>
     </>
   );
 }

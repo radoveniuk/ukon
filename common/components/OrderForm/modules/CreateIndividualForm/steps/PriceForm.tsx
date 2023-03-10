@@ -86,10 +86,10 @@ export default function PriceForm() {
                 placeholder={t('form.activitySelectPlaceholder')}
                 customRenderMenuItem={(item: any) => (
                   <>
-                    <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                    <span>
                       {item.ru}
                     </span>
-                    <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                    <span className={styles.activityOptionPrice}>
                       {item.Type !== 'Volná' ? 7.5 : 0}€
                     </span>
                   </>
@@ -112,10 +112,10 @@ export default function PriceForm() {
                 placeholder={t('form.activitySelectPlaceholder')}
                 customRenderMenuItem={(item: any) => (
                   <>
-                    <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
+                    <span>
                       {item.ru}
                     </span>
-                    <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                    <span className={styles.activityOptionPrice}>
                       {item.Type !== 'Volná' ? 7.5 : 0}€
                     </span>
                   </>
@@ -202,7 +202,7 @@ export default function PriceForm() {
                 name="ownBusinessAddress"
                 render={({ field }) => (
                   <OwnAddressWrapper>
-                    <AddressForm country="sk" label="Company Address (Your Own Address)" value={field.value} onChange={field.onChange} />
+                    <AddressForm country="sk" label={t('form.ownBusinessAddress')} value={field.value} onChange={field.onChange} />
                   </OwnAddressWrapper>
                 )}
               />

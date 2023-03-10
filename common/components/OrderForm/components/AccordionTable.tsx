@@ -1,4 +1,4 @@
-import { HTMLAttributes, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { HTMLAttributes, PropsWithChildren, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import DropdownIcon from 'common/components/icons/DropdownIcon';

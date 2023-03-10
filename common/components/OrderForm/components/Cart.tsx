@@ -17,10 +17,10 @@ const Cart = ({ children }: PropsWithChildren) => {
 
 export default Cart;
 
-export const CartHeader = ({ children, onClick }: HTMLAttributes<HTMLDivElement>) => {
+export const CartHeader = ({ children, onClick, ...rest }: HTMLAttributes<HTMLDivElement>) => {
   const { t } = useTranslation('forms');
   return (
-    <div className={styles.header}>
+    <div className={styles.header} {...rest}>
       <div className={classNames(styles.top)}>
         {t('cart')}
         <div role="button" onClick={onClick}>

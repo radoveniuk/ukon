@@ -209,7 +209,6 @@ export default function UpdateData() {
                   render={({ field: addressField, fieldState: addressFieldState }) => (
                     <SearchSelect
                       {...addressField}
-                      className={classNames(styles['reg__item-project-select'], (styles['reg__item-input']))}
                       label={t('form.address')}
                       pathToLabel="value"
                       options={addresses}
@@ -394,7 +393,6 @@ export default function UpdateData() {
                     render={({ field }) => (
                       <MultiSelect
                         tooltip="<div>В случае добавления ремесленного или регулируемого вида деятельности необходимо установить ответственного представителя имеющего соответствующую квалификацию.<br>Также, будет необходимо приложить к заявке документы подтверждающие квалификацию ответственного лица и его согласие<br>За каждый регулируемый и ремесленный вид деятельности к стоимости добавляется 7,5 евро</div>"
-                        className={styles['reg__item-project-select']}
                         label={t('form.activitySearch')}
                         pathToLabel="ru"
                         options={activities}
@@ -402,10 +400,8 @@ export default function UpdateData() {
                         placeholder={t('form.activitySelectPlaceholder')}
                         customRenderMenuItem={(item: any) => (
                           <>
-                            <span className={styles['reg__item-project-select-wrapper-bot-item-title']}>
-                              {item.ru}
-                            </span>
-                            <span className={styles['reg__item-project-select-wrapper-bot-item-price']}>
+                            <span>{item.ru}</span>
+                            <span className={styles.activityOptionPrice}>
                               {item.Type !== 'Volná' ? 7.5 : 0}€
                             </span>
                           </>
