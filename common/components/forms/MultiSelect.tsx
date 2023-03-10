@@ -91,7 +91,7 @@ function MultiSelect({
     onInputValueChange: ({ inputValue = '', selectedItem }) => {
       if (selectedItem) return;
       setItems(getFilteredItems(options.filter(item => (
-        getLabel(item).toLowerCase().includes(inputValue.toLowerCase())
+        getLabel?.(item)?.toLowerCase()?.includes(inputValue?.toLowerCase())
       )), selectedItems));
     },
     stateReducer(state, actionAndChanges) {

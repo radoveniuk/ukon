@@ -230,7 +230,6 @@ export default function PriceForm() {
             />
             {watch('isPrevIndividual.value') && (
               <TextField
-                className={styles['reg__item-input']}
                 label={t('form.companyNumber')}
                 {...register('companyNumber')}
               />

@@ -17,7 +17,7 @@ export type CountrySelectProps = {
 
 const CountrySelect = forwardRef((props: CountrySelectProps, ref: ForwardedRef<HTMLInputElement>) => {
   const flagImg = (countryCode: string) => {
-    let sizes = countryCode.toLowerCase() !== 'ch' ? { width: 28, height: 14 } : { width: 14, height: 14 };
+    let sizes = countryCode?.toLowerCase() !== 'ch' ? { width: 28, height: 14 } : { width: 14, height: 14 };
     return <Image {...sizes} alt={countryCode} src={`https://flagcdn.com/w320/${countryCode?.toLowerCase()}.png`} style={{ marginRight: 10 }} />;
   };
   return (

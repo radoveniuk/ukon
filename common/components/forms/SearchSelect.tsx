@@ -45,7 +45,7 @@ function ComboBox({
   function getOptionsFilter (inputValue = '') {
     return function filter (option: any) {
       return (
-        !inputValue || itemToString(option).toLowerCase().includes(inputValue.toLowerCase())
+        !inputValue || itemToString?.(option)?.toLowerCase().includes(inputValue?.toLowerCase())
       );
     };
   }
