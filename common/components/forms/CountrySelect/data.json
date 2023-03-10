@@ -5,7 +5,8 @@
     "sk": "Slovensko",
     "ru": "Словакия",
     "uk": "Словаччина",
-    "en": "Slovakia"
+    "en": "Slovakia",
+    "CountryCode": "SK"
   },
   {
     "Code": 804,
@@ -13,7 +14,8 @@
     "sk": "Ukrajina",
     "ru": "Украина",
     "uk": "Україна",
-    "en": "Ukraine"
+    "en": "Ukraine",
+    "CountryCode": "UA"
   },
   {
     "Code": 203,
@@ -21,7 +23,8 @@
     "sk": "Český",
     "ru": "Чехия",
     "uk": "Чеський",
-    "en": "Czech"
+    "en": "Czech",
+    "CountryCode": "CZ"
   },
   {
     "Code": 268,
@@ -29,7 +32,8 @@
     "sk": "Gruzínsko",
     "ru": "Грузия",
     "uk": "Грузія",
-    "en": "Georgia"
+    "en": "Georgia",
+    "CountryCode": "GE"
   },
   {
     "Code": "070",
@@ -37,7 +41,8 @@
     "sk": "Bosna a Hercegovina",
     "ru": "Босния и Герцеговина",
     "uk": "Боснія і Герцеговина",
-    "en": "Bosnia and Herzegovina"
+    "en": "Bosnia and Herzegovina",
+    "CountryCode": "BA"
   },
   {
     "Code": 499,
@@ -45,7 +50,8 @@
     "sk": "Čierna Hora",
     "ru": "Черногория",
     "uk": "Чорногорія",
-    "en": "Montenegro"
+    "en": "Montenegro",
+    "CountryCode": "ME"
   },
   {
     "Code": 498,
@@ -53,7 +59,8 @@
     "sk": "Moldavia",
     "ru": "Молдова",
     "uk": "Молдова",
-    "en": "Moldova"
+    "en": "Moldova",
+    "CountryCode": "MD"
   },
   {
     "Code": 616,
@@ -61,7 +68,8 @@
     "sk": "Poľsko",
     "ru": "Польша",
     "uk": "Польща",
-    "en": "Poland"
+    "en": "Poland",
+    "CountryCode": "PL"
   },
   {
     "Code": "040",
@@ -69,7 +77,8 @@
     "sk": "Rakúsko",
     "ru": "Австрия",
     "uk": "Австрія",
-    "en": "Austria"
+    "en": "Austria",
+    "CountryCode": "AT"
   },
   {
     "Code": 276,
@@ -77,7 +86,8 @@
     "sk": "Nemecko",
     "ru": "Германия",
     "uk": "Німеччина",
-    "en": "Germany"
+    "en": "Germany",
+    "CountryCode": "DE"
   },
   {
     "Code": 380,
@@ -85,7 +95,8 @@
     "sk": "Taliansko",
     "ru": "Италия",
     "uk": "Італія",
-    "en": "Italy"
+    "en": "Italy",
+    "CountryCode": "IT"
   },
   {
     "Code": 428,
@@ -93,7 +104,8 @@
     "sk": "Lotyšsko",
     "ru": "Латвия",
     "uk": "Латвія",
-    "en": "Latvia"
+    "en": "Latvia",
+    "CountryCode": "LV"
   },
   {
     "Code": 440,
@@ -101,7 +113,8 @@
     "sk": "Litva",
     "ru": "Литва",
     "uk": "Литва",
-    "en": "Lithuania"
+    "en": "Lithuania",
+    "CountryCode": "LT"
   },
   {
     "Code": 233,
@@ -109,7 +122,8 @@
     "sk": "Estónsko",
     "ru": "Эстония",
     "uk": "Естонія",
-    "en": "Estonia"
+    "en": "Estonia",
+    "CountryCode": "EE"
   },
   {
     "Code": 250,
@@ -117,7 +131,8 @@
     "sk": "Francúzsko",
     "ru": "Франция",
     "uk": "Франція",
-    "en": "France"
+    "en": "France",
+    "CountryCode": "FR"
   },
   {
     "Code": "056",
@@ -125,7 +140,8 @@
     "sk": "Belgicko",
     "ru": "Бельгия",
     "uk": "Бельгія",
-    "en": "Belgium"
+    "en": "Belgium",
+    "CountryCode": "BE"
   },
   {
     "Code": 752,
@@ -133,7 +149,8 @@
     "sk": "Švédsko",
     "ru": "Швеция",
     "uk": "Швеція",
-    "en": "Sweden"
+    "en": "Sweden",
+    "CountryCode": "SE"
   },
   {
     "Code": 372,
@@ -141,7 +158,8 @@
     "sk": "Írsko",
     "ru": "Ирландия",
     "uk": "Ірландія",
-    "en": "Ireland"
+    "en": "Ireland",
+    "CountryCode": "IE"
   },
   {
     "Code": 246,
@@ -149,7 +167,8 @@
     "sk": "Fínsko",
     "ru": "Финляндия",
     "uk": "Фінляндія",
-    "en": "Finland"
+    "en": "Finland",
+    "CountryCode": "FI"
   },
   {
     "Code": 208,
@@ -157,7 +176,8 @@
     "sk": "Dánsko",
     "ru": "Дания",
     "uk": "Данія",
-    "en": "Denmark"
+    "en": "Denmark",
+    "CountryCode": "DK"
   },
   {
     "Code": 528,
@@ -165,7 +185,8 @@
     "sk": "Holandsko",
     "ru": "Нидерланды",
     "uk": "Нідерланди",
-    "en": "Netherlands"
+    "en": "Netherlands",
+    "CountryCode": "NL"
   },
   {
     "Code": 724,
@@ -173,7 +194,8 @@
     "sk": "Španielsko",
     "ru": "Испания",
     "uk": "Іспанія",
-    "en": "Spain"
+    "en": "Spain",
+    "CountryCode": "ES"
   },
   {
     "Code": 191,
@@ -181,7 +203,8 @@
     "sk": "Chorvátsko",
     "ru": "Хорватия",
     "uk": "Хорватія",
-    "en": "Croatia"
+    "en": "Croatia",
+    "CountryCode": "HR"
   },
   {
     "Code": 300,
@@ -189,7 +212,8 @@
     "sk": "Grécko",
     "ru": "Греция",
     "uk": "Греція",
-    "en": "Greece"
+    "en": "Greece",
+    "CountryCode": "GR"
   },
   {
     "Code": 470,
@@ -197,7 +221,8 @@
     "sk": "Malta",
     "ru": "Мальта",
     "uk": "Мальта",
-    "en": "Malta"
+    "en": "Malta",
+    "CountryCode": "MT"
   },
   {
     "Code": 620,
@@ -205,7 +230,8 @@
     "sk": "Portugalsko",
     "ru": "Португалия",
     "uk": "Португалія",
-    "en": "Portugal"
+    "en": "Portugal",
+    "CountryCode": "PT"
   },
   {
     "Code": 442,
@@ -213,7 +239,8 @@
     "sk": "Luxembursko",
     "ru": "Люксембург",
     "uk": "Люксембург",
-    "en": "Luxembourg"
+    "en": "Luxembourg",
+    "CountryCode": "LU"
   },
   {
     "Code": 705,
@@ -221,7 +248,8 @@
     "sk": "Slovinsko",
     "ru": "Словения",
     "uk": "Словенія",
-    "en": "Slovenia"
+    "en": "Slovenia",
+    "CountryCode": "SI"
   },
   {
     "Code": 348,
@@ -229,7 +257,8 @@
     "sk": "Maďarsko",
     "ru": "Венгрия",
     "uk": "Угорщина",
-    "en": "Hungary"
+    "en": "Hungary",
+    "CountryCode": "HU"
   },
   {
     "Code": 100,
@@ -237,7 +266,8 @@
     "sk": "Bulharsko",
     "ru": "Болгария",
     "uk": "Болгарія",
-    "en": "Bulgaria"
+    "en": "Bulgaria",
+    "CountryCode": "BG"
   },
   {
     "Code": 642,
@@ -245,7 +275,8 @@
     "sk": "Rumunsko",
     "ru": "Румыния",
     "uk": "Румунія",
-    "en": "Romania"
+    "en": "Romania",
+    "CountryCode": "RO"
   },
   {
     "Code": 196,
@@ -253,7 +284,8 @@
     "sk": "Cyper",
     "ru": "Кипр",
     "uk": "Кіпр",
-    "en": "Cyprus"
+    "en": "Cyprus",
+    "CountryCode": "CY"
   },
   {
     "Code": "050",
@@ -261,7 +293,8 @@
     "sk": "Bangladéš",
     "ru": "Бангладеш",
     "uk": "Бангладеш",
-    "en": "Bangladesh"
+    "en": "Bangladesh",
+    "CountryCode": "BD"
   },
   {
     "Code": 144,
@@ -269,7 +302,8 @@
     "sk": "Srí Lanka",
     "ru": "Шри-Ланка",
     "uk": "Шрі Ланка",
-    "en": "Sri Lanka"
+    "en": "Sri Lanka",
+    "CountryCode": "LK"
   },
   {
     "Code": 840,
@@ -277,7 +311,8 @@
     "sk": "Spojené štáty americké",
     "ru": "Соединенные Штаты Америки",
     "uk": "Сполучені Штати Америки",
-    "en": "United States of America"
+    "en": "United States of America",
+    "CountryCode": "US"
   },
   {
     "Code": 124,
@@ -285,7 +320,8 @@
     "sk": "Kanada",
     "ru": "Канада",
     "uk": "Канада",
-    "en": "Canada"
+    "en": "Canada",
+    "CountryCode": "CA"
   },
   {
     "Code": 826,
@@ -293,7 +329,8 @@
     "sk": "Spojene kralovstvo",
     "ru": "Великобритания",
     "uk": "Об'єднане Королівство",
-    "en": "United Kingdom"
+    "en": "United Kingdom",
+    "CountryCode": "GB"
   },
   {
     "Code": "036",
@@ -301,7 +338,8 @@
     "sk": "Austrália",
     "ru": "Австралия",
     "uk": "Австралія",
-    "en": "Australia"
+    "en": "Australia",
+    "CountryCode": "AU"
   },
   {
     "Code": 152,
@@ -309,7 +347,8 @@
     "sk": "Chile",
     "ru": "Чили",
     "uk": "Чилі",
-    "en": "Chile"
+    "en": "Chile",
+    "CountryCode": "CL"
   },
   {
     "Code": 156,
@@ -317,7 +356,8 @@
     "sk": "Čína",
     "ru": "Китай",
     "uk": "Китай",
-    "en": "China"
+    "en": "China",
+    "CountryCode": "CN"
   },
   {
     "Code": "076",
@@ -325,7 +365,8 @@
     "sk": "Brazília",
     "ru": "Бразилия",
     "uk": "Бразилія",
-    "en": "Brazil"
+    "en": "Brazil",
+    "CountryCode": "BR"
   },
   {
     "Code": "004",
@@ -333,7 +374,8 @@
     "sk": "Afganistan",
     "ru": "Афганистан",
     "uk": "Афганістан",
-    "en": "Afghanistan"
+    "en": "Afghanistan",
+    "CountryCode": "AF"
   },
   {
     "Code": "008",
@@ -341,7 +383,8 @@
     "sk": "Albánsko",
     "ru": "Албания",
     "uk": "Албанія",
-    "en": "Albania"
+    "en": "Albania",
+    "CountryCode": "AL"
   },
   {
     "Code": "031",
@@ -349,7 +392,8 @@
     "sk": "Azerbajdžan",
     "ru": "Азербайджан",
     "uk": "Азербайджан",
-    "en": "Azerbaijan"
+    "en": "Azerbaijan",
+    "CountryCode": "AZ"
   },
   {
     "Code": "051",
@@ -357,7 +401,8 @@
     "sk": "Arménsko",
     "ru": "Армения",
     "uk": "Вірменія",
-    "en": "Armenia"
+    "en": "Armenia",
+    "CountryCode": "AM"
   },
   {
     "Code": 158,
@@ -365,7 +410,8 @@
     "sk": "Taiwan",
     "ru": "Тайвань",
     "uk": "Тайвань",
-    "en": "Taiwan"
+    "en": "Taiwan",
+    "CountryCode": "TW"
   },
   {
     "Code": 170,
@@ -373,7 +419,8 @@
     "sk": "Kolumbia",
     "ru": "Колумбия",
     "uk": "Колумбія",
-    "en": "Colombia"
+    "en": "Colombia",
+    "CountryCode": "CO"
   },
   {
     "Code": 275,
@@ -381,7 +428,8 @@
     "sk": "Palestína",
     "ru": "Палестина",
     "uk": "Палестина",
-    "en": "Palestine"
+    "en": "Palestine",
+    "CountryCode": "PS"
   },
   {
     "Code": 336,
@@ -389,7 +437,8 @@
     "sk": "Vatikán",
     "ru": "Ватикан",
     "uk": "Ватикан",
-    "en": "Vatican"
+    "en": "Vatican",
+    "CountryCode": "VA"
   },
   {
     "Code": 344,
@@ -397,7 +446,8 @@
     "sk": "Hongkong",
     "ru": "Гонконг",
     "uk": "Гонконг",
-    "en": "Hong Kong"
+    "en": "Hong Kong",
+    "CountryCode": "HK"
   },
   {
     "Code": 352,
@@ -405,7 +455,8 @@
     "sk": "Islam",
     "ru": "Ислания",
     "uk": "Іслам",
-    "en": "Islam"
+    "en": "Islam",
+    "CountryCode": "IS"
   },
   {
     "Code": 356,
@@ -413,7 +464,8 @@
     "sk": "India",
     "ru": "Индия",
     "uk": "Індія",
-    "en": "India"
+    "en": "India",
+    "CountryCode": "IN"
   },
   {
     "Code": 360,
@@ -421,7 +473,8 @@
     "sk": "Indonézia",
     "ru": "Индонезия",
     "uk": "Індонезія",
-    "en": "Indonesia"
+    "en": "Indonesia",
+    "CountryCode": "ID"
   },
   {
     "Code": 376,
@@ -429,7 +482,8 @@
     "sk": "Izrael",
     "ru": "Израиль",
     "uk": "Ізраїль",
-    "en": "Israel"
+    "en": "Israel",
+    "CountryCode": "IL"
   },
   {
     "Code": 392,
@@ -437,7 +491,8 @@
     "sk": "Japonsko",
     "ru": "Япония",
     "uk": "Японія",
-    "en": "Japan"
+    "en": "Japan",
+    "CountryCode": "JP"
   },
   {
     "Code": 398,
@@ -445,7 +500,8 @@
     "sk": "Kazachstan",
     "ru": "Казахстан",
     "uk": "Казахстан",
-    "en": "Kazakhstan"
+    "en": "Kazakhstan",
+    "CountryCode": "KZ"
   },
   {
     "Code": 762,
@@ -453,7 +509,8 @@
     "sk": "Tadžikistan",
     "ru": "Таджикистан",
     "uk": "Таджикистан",
-    "en": "Tajikistan"
+    "en": "Tajikistan",
+    "CountryCode": "TJ"
   },
   {
     "Code": 410,
@@ -461,7 +518,8 @@
     "sk": "Južná Kórea",
     "ru": "Южная Корея",
     "uk": "Південна Корея",
-    "en": "South Korea"
+    "en": "South Korea",
+    "CountryCode": "KR"
   },
   {
     "Code": 417,
@@ -469,7 +527,8 @@
     "sk": "Kirgizsko",
     "ru": "Киргизстан",
     "uk": "Киргизстан",
-    "en": "Kyrgyzstan"
+    "en": "Kyrgyzstan",
+    "CountryCode": "KG"
   },
   {
     "Code": 438,
@@ -477,7 +536,8 @@
     "sk": "Lichtenstein",
     "ru": "Лихтенштейн",
     "uk": "Ліхтенштейн",
-    "en": "Liechtenstein"
+    "en": "Liechtenstein",
+    "CountryCode": "LI"
   },
   {
     "Code": 458,
@@ -485,7 +545,8 @@
     "sk": "Malajzia",
     "ru": "Малайзия",
     "uk": "Малайзія",
-    "en": "Malaysia"
+    "en": "Malaysia",
+    "CountryCode": "MY"
   },
   {
     "Code": 484,
@@ -493,7 +554,8 @@
     "sk": "Mexiko",
     "ru": "Мексика",
     "uk": "Мексика",
-    "en": "Mexico"
+    "en": "Mexico",
+    "CountryCode": "MX"
   },
   {
     "Code": 492,
@@ -501,7 +563,8 @@
     "sk": "Monako",
     "ru": "Монако",
     "uk": "Монако",
-    "en": "Monaco"
+    "en": "Monaco",
+    "CountryCode": "MC"
   },
   {
     "Code": 578,
@@ -509,7 +572,8 @@
     "sk": "Nórsko",
     "ru": "Норвегия",
     "uk": "Норвегія",
-    "en": "Norway"
+    "en": "Norway",
+    "CountryCode": "NO"
   },
   {
     "Code": 586,
@@ -517,7 +581,8 @@
     "sk": "Pakistan",
     "ru": "Пакистан",
     "uk": "Пакистан",
-    "en": "Pakistan"
+    "en": "Pakistan",
+    "CountryCode": "PK"
   },
   {
     "Code": 674,
@@ -525,7 +590,8 @@
     "sk": "Sanmarino",
     "ru": "Санмарино",
     "uk": "Санмаріно",
-    "en": "Sanmarino"
+    "en": "Sanmarino",
+    "CountryCode": "SM"
   },
   {
     "Code": 682,
@@ -533,7 +599,8 @@
     "sk": "Saudská Arábia",
     "ru": "Саудовская Аравия",
     "uk": "Саудівська Аравія",
-    "en": "Saudi Arabia"
+    "en": "Saudi Arabia",
+    "CountryCode": "SA"
   },
   {
     "Code": 688,
@@ -541,7 +608,8 @@
     "sk": "Srbsko",
     "ru": "Сербия",
     "uk": "Сербія",
-    "en": "Serbia"
+    "en": "Serbia",
+    "CountryCode": "RS"
   },
   {
     "Code": 702,
@@ -549,7 +617,8 @@
     "sk": "Singapur",
     "ru": "Сингапур",
     "uk": "Сінгапур",
-    "en": "Singapore"
+    "en": "Singapore",
+    "CountryCode": "SG"
   },
   {
     "Code": 704,
@@ -557,7 +626,8 @@
     "sk": "Vietnam",
     "ru": "Вьетнам",
     "uk": "В'єтнам",
-    "en": "Vietnam"
+    "en": "Vietnam",
+    "CountryCode": "VN"
   },
   {
     "Code": 710,
@@ -565,7 +635,8 @@
     "sk": "Juhoafrická republika",
     "ru": "Южно-Африканская Республика",
     "uk": "Південно-Африканська Республіка",
-    "en": "South African Republic"
+    "en": "South African Republic",
+    "CountryCode": "ZA"
   },
   {
     "Code": 756,
@@ -573,7 +644,8 @@
     "sk": "Švajčiarsko",
     "ru": "Швейцария",
     "uk": "Швейцарія",
-    "en": "Switzerland"
+    "en": "Switzerland",
+    "CountryCode": "CH"
   },
   {
     "Code": 764,
@@ -581,7 +653,8 @@
     "sk": "Thajsko",
     "ru": "Таиланд",
     "uk": "Таїланд",
-    "en": "Thailand"
+    "en": "Thailand",
+    "CountryCode": "TH"
   },
   {
     "Code": 784,
@@ -589,15 +662,17 @@
     "sk": "Spojené Arabské Emiráty",
     "ru": "Объединенные Арабские Эмираты",
     "uk": "Об'єднані Арабські Емірати",
-    "en": "United Arab Emirates"
+    "en": "United Arab Emirates",
+    "CountryCode": "AE"
   },
   {
     "Code": 792,
     "Value": "Turecká republika",
-    "sk": "Moriak",
+    "sk": "Turecko",
     "ru": "Турция",
     "uk": "Туреччина",
-    "en": "Turkey"
+    "en": "Turkey",
+    "CountryCode": "TR"
   },
   {
     "Code": 807,
@@ -605,7 +680,8 @@
     "sk": "Macedónsko",
     "ru": "Македония",
     "uk": "Македонія",
-    "en": "Macedonia"
+    "en": "Macedonia",
+    "CountryCode": "MK"
   },
   {
     "Code": 818,
@@ -613,7 +689,8 @@
     "sk": "Egypt",
     "ru": "Египет",
     "uk": "Єгипет",
-    "en": "Egypt"
+    "en": "Egypt",
+    "CountryCode": "EG"
   },
   {
     "Code": 860,
@@ -621,7 +698,8 @@
     "sk": "Uzbekistan",
     "ru": "Узбекистан",
     "uk": "Узбекистан",
-    "en": "Uzbekistan"
+    "en": "Uzbekistan",
+    "CountryCode": "UZ"
   },
   {
     "Code": 112,
@@ -629,7 +707,8 @@
     "sk": "Bielorusko",
     "ru": "Беларусь",
     "uk": "Білорус",
-    "en": "Belarus"
+    "en": "Belarus",
+    "CountryCode": "BY"
   },
   {
     "Code": 643,
@@ -637,6 +716,7 @@
     "sk": "Rusko",
     "ru": "Россия",
     "uk": "Росія",
-    "en": "Russia"
+    "en": "Russia",
+    "CountryCode": "RU"
   }
 ]

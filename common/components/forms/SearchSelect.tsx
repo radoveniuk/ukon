@@ -10,7 +10,7 @@ import MinusIcon from '../icons/MinusIcon';
 
 type CustomRenderMenuItem = (item: any) => React.ReactNode | string;
 
-type ComboBoxProps = {
+export type ComboBoxProps = {
   options: any[];
   pathToLabel?: string;
   value: any | null;
@@ -21,6 +21,7 @@ type ComboBoxProps = {
   onBlur?(e: any): void;
   customRenderMenuItem?: CustomRenderMenuItem;
   state?: 'draft' | 'error' | 'success';
+  valuePrefix?: CustomRenderMenuItem;
 };
 
 function ComboBox({
@@ -34,6 +35,7 @@ function ComboBox({
   placeholder,
   customRenderMenuItem,
   state = 'draft',
+  valuePrefix,
 }: ComboBoxProps, ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const [items, setItems] = React.useState(options);
@@ -76,6 +78,7 @@ function ComboBox({
         </div>
       </label>
       <div className={classNames(styles.select, styles[state])}>
+        <>{valuePrefix?.(value)}</>
         <input
           placeholder={placeholder}
           className="t5"

@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef, useState }  from 'react';
 import usePlacesAutocompleteService from 'react-google-autocomplete/lib/usePlacesAutocompleteService';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
-import { debounce, delay } from 'lodash-es';
 
 import TextField from 'common/components/forms/TextField';
 import useDebounce from 'common/hooks/useDebounce';
@@ -31,11 +30,13 @@ const ADDRESS_MAP = { street: 'route', houseNumber: 'street_number', city: 'loca
 
 type Props = {
   onSearchResult(result: Address): void;
-  mode?: string;
+  country?: string;
   label?: string;
 };
 
-const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
+const isCzSk = (country: string) => ['cz', 'sk'].includes(country.toLowerCase());
+
+const AddressSearch = ({ onSearchResult, country = 'google', label }: Props) => {
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearchValue = useDebounce(searchValue);
   const translation = useTranslation('forms');
@@ -52,7 +53,7 @@ const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
     debounce: 500,
     language: 'sk',
     options: {
-      // componentRestrictions: { country: 'ua' },
+      componentRestrictions: { country: country !== 'google' ? country : undefined },
     },
   });
 
@@ -63,7 +64,7 @@ const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
     headers.append('Authorization', 'Basic bmxBekY3Um56aDprT0h0NFU5Tw==');
     headers.append('Content-Type', 'application/json');
 
-    fetch(`/api/smartform-addresses?search=${search}&country=${mode}`, {
+    fetch(`/api/smartform-addresses?search=${search}&country=${country}`, {
       method: 'POST',
       headers,
       redirect: 'follow' })
@@ -72,13 +73,13 @@ const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
         setCzskAddresses(result.data);
       })
       .catch(error => console.log('error', error));
-  }, [mode]);
+  }, [country]);
 
   useEffect(() => {
-    if (mode !== 'google' && debouncedSearchValue.length) {
+    if (isCzSk(country) && debouncedSearchValue.length) {
       getCzskSearchResults(debouncedSearchValue);
     }
-  }, [debouncedSearchValue, getCzskSearchResults, mode]);
+  }, [debouncedSearchValue, getCzskSearchResults, country]);
 
   return (
     <div className={styles.searchWrapper} ref={searchBoxRef}>
@@ -88,7 +89,7 @@ const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
         value={searchValue}
         onChange={(evt) => {
           setSearchValue(evt.target.value);
-          if (mode === 'google') {
+          if (!isCzSk(country)) {
             getPlacePredictions({ input: evt.target.value });
           }
         }}
@@ -96,7 +97,7 @@ const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
       />
       {openSearchBox && (
         <div className={styles.searchResults}>
-          {(mode === 'google' ? placePredictions : czskAddresses).map((item: any) => (
+          {(!isCzSk(country) ? placePredictions : czskAddresses).map((item: any) => (
             <div
               key={item.description}
               role="button"
@@ -104,7 +105,7 @@ const AddressSearch = ({ onSearchResult, mode = 'google', label }: Props) => {
               onClick={() => {
                 setOpenSearchBox(false);
                 setSearchValue(item.description);
-                if (mode === 'google') {
+                if (!isCzSk(country)) {
                   placesService?.getDetails(
                     { placeId: item.place_id },
                     ({ address_components }: GooglePlaceDetailes) => {

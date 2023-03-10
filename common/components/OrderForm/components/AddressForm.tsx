@@ -45,7 +45,7 @@ const AddressForm = ({ country, label, value, onChange }: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.row}><AddressSearch mode={country} onSearchResult={updateAddress} label={label} /></div>
+      <div className={styles.row}><AddressSearch key={country} country={country} onSearchResult={updateAddress} label={label} /></div>
       <div className={styles.row}>
         <TextField
           label={t('street')}

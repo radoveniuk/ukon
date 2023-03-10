@@ -24,14 +24,7 @@ export default function IndividualInfoForm () {
 
   const { control, register, setValue, watch, formState: { errors, touchedFields } } = useFormContext();
 
-  const getAddressMode = () => {
-    const countriesMap: { [key: number]: 'sk' | 'cz' } = {
-      703: 'sk',
-      203: 'cz',
-    };
-    const countryCode = watch('residence.Code');
-    return countriesMap[countryCode] || 'google';
-  };
+  const countryCode = watch('residence.CountryCode');
 
   return (
     <>
@@ -54,7 +47,7 @@ export default function IndividualInfoForm () {
             name="address"
             render={({ field }) => (
               <AddressForm
-                country={getAddressMode()}
+                country={countryCode?.toLowerCase() || 'google'}
                 label={t('form.address')}
                 value={field.value}
                 onChange={field.onChange}

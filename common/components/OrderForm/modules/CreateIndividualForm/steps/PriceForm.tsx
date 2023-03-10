@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
+import CountrySelect from 'common/components/forms/CountrySelect';
 import Select from 'common/components/forms/Select';
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
 import BusinessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BusinessAdressSelect';
@@ -18,7 +19,6 @@ import FormItems, { FormItem, FormItemRow } from '../../../components/FormItems'
 import { usePriceContext } from '../../../contexts/PriceContext';
 import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
-import countries from '../../../data/countries.json';
 import virtualAddressTariffs from '../../../data/virtualAddressTariffs.json';
 
 export default function PriceForm() {
@@ -240,12 +240,10 @@ export default function PriceForm() {
               name="citizenship"
               rules={{ required: true }}
               render={({ field, fieldState }) => (
-                <SearchSelect
+                <CountrySelect
                   {...field}
                   label={t('form.citizenship')}
                   placeholder={t('form.countryPlaceholder')}
-                  options={countries}
-                  pathToLabel="ru"
                   state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   onChange={(value) => {
                     field.onChange(value);
@@ -259,11 +257,9 @@ export default function PriceForm() {
               name="residence"
               rules={{ required: true }}
               render={({ field, fieldState }) => (
-                <SearchSelect
+                <CountrySelect
                   label={t('form.residence')}
                   placeholder={t('form.countryPlaceholder')}
-                  options={countries}
-                  pathToLabel="ru"
                   state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
                   {...field}
                 />
