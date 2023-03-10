@@ -81,8 +81,10 @@ function CreateIndividualFormRender () {
       </div>
       <BottomActions>
         <BottomAction disabled={step === 0} onClick={prevStep}><HiArrowNarrowLeft /><BottomActionText>{translation.t('prevStep')}</BottomActionText></BottomAction>
+        <BottomAction variant="outlined"><AiOutlineSave /><BottomActionText>{translation.t('saveForFuture')}</BottomActionText></BottomAction>
         <BottomAction
           onClick={step !== STEPS - 1 ? nextStep : undefined}
+          disabled={!isValidStep}
         >
           <BottomActionText>
             {step === STEPS - 1 && t('finish')}
@@ -90,7 +92,6 @@ function CreateIndividualFormRender () {
           </BottomActionText>
           <HiArrowNarrowRight />
         </BottomAction>
-        <BottomAction variant="outlined"><AiOutlineSave /><BottomActionText>{translation.t('saveForFuture')}</BottomActionText></BottomAction>
       </BottomActions>
     </>
   );
