@@ -81,7 +81,8 @@
       "requiredFieldText": "Обязательное поле",
       "skPermit": "У вас есть словацкий ВНЖ?",
       "inputFullname": "Имя, фамилия, титулы",
-      "inputFullnamePlaceholder": "Введите полное имя"
+      "inputFullnamePlaceholder": "Введите полное имя",
+      "prevIndividual": "У вас раньше был ИП в Словакии?"
     },
     "priceKeys": {
       "base": "Обновление данных по ИП",

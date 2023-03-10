@@ -174,15 +174,7 @@ export default function IndividualInfoForm () {
           </FormItemRow>
         </FormItem>
         <FormItem iconSrc="/images/order-form/form-items/BusinessData.svg" title={t('businessData')}>
-          <FormItemRow cols={2}>
-            <TextField prefix={`${watch('fullname')} -`} label={t('form.companyName')} {...register('companyName')} />
-            <TextFieldFormated
-              format="########"
-              className={styles['reg__item-input']}
-              label={t('form.companyNumber')}
-              {...register('companyNumber')}
-            />
-          </FormItemRow>
+          <TextField prefix={`${watch('fullname')} -`} label={t('form.companyName')} {...register('companyName')} />
         </FormItem>
         <FormItem iconSrc="/images/order-form/form-items/Note.svg" title={t('form.orderComment')}>
           <TextArea

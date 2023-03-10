@@ -25,7 +25,7 @@ export default function PriceForm() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:create-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, watch, setValue } = useFormContext();
+  const { control, watch, setValue, register } = useFormContext();
   const [, updatePriceList] = usePriceContext();
 
   const residence = watch('residence');
@@ -67,6 +67,10 @@ export default function PriceForm() {
   const [isRegistered, setIsRegistered] = useState(true);
 
   const tariffs = virtualAddressTariffs.map((tariff) => ({ ...tariff, name: `Package of services — ${tariff.name} (${tariff.price}€)` }));
+
+  const TRUE_OPTION = { value: true, name: t('yes') };
+  const FALSE_OPTION = { value: false, name: t('no') };
+  const BOOLEAN_OPTIONS = [TRUE_OPTION, FALSE_OPTION];
 
   return (
     <>
@@ -213,6 +217,26 @@ export default function PriceForm() {
           <FormItemRow cols={2}>
             <Controller
               control={control}
+              name="isPrevIndividual"
+              defaultValue={FALSE_OPTION}
+              render={({ field }) => (
+                <Select
+                  label={t('form.prevIndividual')}
+                  options={BOOLEAN_OPTIONS}
+                  pathToLabel="name"
+                  {...field}
+                />
+              )}
+            />
+            {watch('isPrevIndividual.value') && (
+              <TextField
+                className={styles['reg__item-input']}
+                label={t('form.companyNumber')}
+                {...register('companyNumber')}
+              />
+            )}
+            <Controller
+              control={control}
               name="citizenship"
               rules={{ required: true }}
               render={({ field, fieldState }) => (
@@ -250,14 +274,11 @@ export default function PriceForm() {
                 <Controller
                   control={control}
                   name="skPermit"
-                  defaultValue={{ value: true, name: t('yes') }}
+                  defaultValue={TRUE_OPTION}
                   render={({ field }) => (
                     <Select
                       label={t('form.skPermit')}
-                      options={[
-                        { value: true, name: t('yes') },
-                        { value: false, name: t('no') },
-                      ]}
+                      options={BOOLEAN_OPTIONS}
                       pathToLabel="name"
                       {...field}
                     />
