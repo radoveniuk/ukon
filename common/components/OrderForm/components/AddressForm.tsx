@@ -17,7 +17,7 @@ type Props = {
   onChange(v: Address | undefined): void;
 };
 
-const needRegNumber = (country: string) => ['cz', 'sk'].includes(country.toLowerCase());
+const needRegNumber = (country: string) => ['cz', 'sk'].includes(country?.toLowerCase());
 
 const AddressForm = ({ country, label, value, onChange }: Props) => {
   const [address, setAddress] = useState<Address | undefined>(value);

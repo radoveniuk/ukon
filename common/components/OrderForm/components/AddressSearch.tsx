@@ -34,7 +34,7 @@ type Props = {
   label?: string;
 };
 
-const isCzSk = (country: string) => ['cz', 'sk'].includes(country.toLowerCase());
+const isCzSk = (country: string) => ['cz', 'sk'].includes(country?.toLowerCase());
 
 const AddressSearch = ({ onSearchResult, country = 'google', label }: Props) => {
   const [searchValue, setSearchValue] = useState('');
