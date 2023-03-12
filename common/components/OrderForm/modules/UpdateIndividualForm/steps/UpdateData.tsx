@@ -1,41 +1,28 @@
-import { ReactNode, useEffect, useMemo, useState } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
-import { BsPlusLg } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { FaPlay } from 'react-icons/fa';
 import { ImPause2, ImStop2 } from 'react-icons/im';
-import { IoSaveOutline } from 'react-icons/io5';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
-import { DateTime } from 'luxon';
 
 import Button from 'common/components/Button';
-import DatePicker from 'common/components/forms/DatePicker';
+import FileInput from 'common/components/forms/FileInput';
+import Radio, { RadioButton } from 'common/components/forms/Radio';
+import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
+import TextField from 'common/components/forms/TextField';
 import IconButton from 'common/components/IconButton';
-import EditIcon from 'common/components/icons/EditIcon';
+import InfoIcon from 'common/components/icons/InfoIcon';
+import UploadIcon from 'common/components/icons/UploadIcon';
+import Tooltip from 'common/components/Tooltip';
 import useListState from 'common/hooks/useListState';
 
 import styles from 'styles/OrderForm.module.scss';
 
-import MultiSelect from '../../../../forms/MultiSelect';
-import Radio, { RadioButton } from '../../../../forms/Radio';
-import SearchSelect from '../../../../forms/SearchSelect';
-import TextField, { TextFieldFormated } from '../../../../forms/TextField';
-import AccordionTable, { AccordionTableCell, AccordionTableRow } from '../../../components/AccordionTable';
-import FormItems, { FormItem } from '../../../components/FormItems';
-import activities from '../../../data/activities.json';
-import addresses from '../../../data/address.json';
-import prefixes from '../../../data/prefixes.json';
-import SearchField from '../components/SearchField';
-
-type DataItem = {
-  key: string;
-  label: string;
-  value?(): string;
-  editComponent?: ReactNode;
-  formValue?: string;
-  editable?: boolean;
-};
+import BusinessSearch from '../../../components/BusinessSearch';
+import FormItems, { FormItem, FormItemRow } from '../../../components/FormItems';
+import PersonalInfo from '../components/PersonalInfo';
+import { useData } from '../contexts/DataContext';
 
 type Activity = {
   created_at: string;
@@ -55,177 +42,13 @@ export default function UpdateData() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { control, watch, register, formState: { errors, touchedFields }, setValue } = useFormContext();
+  const { setValue, register, watch } = useFormContext();
   // const [, updatePriceList] = usePriceContext();
 
-  const [individualData, setIndividualData] = useState<null | any>(null);
-
-  const { name, surname, namePrefix, namePostfix } = watch();
-  const companyNamePrefix = useMemo(() => {
-    if (!namePrefix && !name && !surname && !namePostfix) {
-      return individualData?.personalName;
-    }
-    return `${namePrefix?.Value ?? ''} ${name ?? ''} ${surname ?? ''} ${namePostfix?.Value ?? ''}`.trim().replaceAll(/  +/g, ' ');
-  }, [individualData?.personalName, name, namePostfix, namePrefix, surname]);
+  const [individualData, setIndividualData] = useData();
 
   // auth
   const [isRegistered, setIsRegistered] = useState(true);
-
-
-  const PUBLIC_DATA: DataItem[] = [
-    {
-      key: 'id',
-      label: 'form.companyId',
-      value: () => individualData?.cin,
-      editable: false,
-    },
-    {
-      key: 'personalName',
-      label: 'form.personalName',
-      value: () => individualData?.personalName,
-      editComponent: (
-        <>
-          <Controller
-            control={control}
-            name="namePrefix"
-            render={({ field }) => (
-              <SearchSelect
-                label={t('form.namePrefix')}
-                placeholder={t('form.inputNamePrefix')}
-                options={prefixes.filter((item) => item.Type === 'Prefix')}
-                pathToLabel="Value"
-                {...field}
-              />
-            )}
-          />
-          <TextField
-            label={t('form.name')}
-            placeholder={t('form.inputName')}
-            error={errors.name?.message?.toString()}
-            success={!!touchedFields.name && !errors.name}
-            {...register('name', { required: t('form.requiredFieldText') })}
-          />
-          <TextField
-            label={t('form.surname')}
-            placeholder={t('form.inputSurname')}
-            error={errors.surname?.message?.toString()}
-            success={!!touchedFields.surname && !errors.surname}
-            {...register('surname', { required: t('form.requiredFieldText') })}
-          />
-          <Controller
-            control={control}
-            name="namePostfix"
-            render={({ field }) => (
-              <SearchSelect
-                label={t('form.namePostfix')}
-                placeholder={t('form.inputNamePostfix')}
-                options={prefixes.filter((item) => item.Type === 'Postfix')}
-                pathToLabel="Value"
-                {...field}
-              />
-            )}
-          />
-        </>
-      ),
-      formValue: `${watch('namePrefix.Value') || ''} ${watch('name')} ${watch('surname')} ${watch('namePostfix.Value') || ''}`,
-    },
-    {
-      key: 'companyName',
-      label: 'form.companyName',
-      value: () => individualData?.companyName,
-      editComponent: (
-        <div className={classNames(styles['reg__item-input'], styles['reg__item-company-name'])}>
-          <TextField prefix={`${companyNamePrefix} -`} label={t('form.companyName')} {...register('companyName')} />
-        </div>
-      ),
-      formValue: `${companyNamePrefix} - ${watch('companyName')}`,
-    },
-    {
-      key: 'addressResidence',
-      label: 'form.addressResidence',
-      value: () => individualData?.businessAddress,
-      editComponent: (
-        <>
-          <TextField
-            label={t('form.street')}
-            placeholder={t('form.inputStreet')}
-            error={errors.street?.message?.toString()}
-            success={!!touchedFields.street && !errors.street}
-            {...register('street', { required: t('form.requiredFieldText') })}
-          />
-          <TextFieldFormated
-            format="########"
-            label={t('form.houseRegNumber')}
-            error={errors.houseRegNumber?.message?.toString()}
-            success={!!touchedFields.houseRegNumber && !errors.houseRegNumber}
-            {...register('houseRegNumber', { required: t('form.requiredFieldText') })}
-          />
-          <TextField
-            label={t('form.houseNumber')}
-            error={errors.houseNumber?.message?.toString()}
-            success={!!touchedFields.houseNumber && !errors.houseNumber}
-            {...register('houseNumber', { required: t('form.requiredFieldText') })}
-          />
-          <TextField
-            label={t('form.city')}
-            placeholder={t('form.city')}
-            error={errors.city?.message?.toString()}
-            success={!!touchedFields.city && !errors.city}
-            {...register('city', { required: t('form.requiredFieldText') })}
-          />
-          <TextFieldFormated
-            format="#####"
-            label={t('form.zip')}
-            error={errors.zip?.message?.toString()}
-            success={!!touchedFields.zip && !errors.zip}
-            {...register('zip', { required: t('form.requiredFieldText') })}
-          />
-        </>
-      ),
-      formValue: `${watch('street')}, ${watch('houseRegNumber')}, ${watch('houseNumber')}, ${watch('city')}, ${watch('zip')}`,
-    },
-    {
-      key: 'businessAddress',
-      label: 'form.businessAddress',
-      value: () => individualData?.businessAddress,
-      editComponent: (
-        <Controller
-          control={control}
-          name="businessAddress"
-          rules={{ required: true }}
-          defaultValue="ukon"
-          render={({ field }) => (
-            <>
-              <Radio name="virtual">
-                <RadioButton checked={field.value === 'ukon'} onSelect={() => void field.onChange('ukon')} dangerouslySetInnerHTML={{ __html: t('form.ourBusinessAddressHtml') }} />
-                <RadioButton checked={field.value === 'own'} onSelect={() => void field.onChange('own')} dangerouslySetInnerHTML={{ __html: t('form.ownBusinessAddressHtml') }}  />
-                <RadioButton checked={field.value === 'other'} onSelect={() => void field.onChange('other')} dangerouslySetInnerHTML={{ __html: t('form.otherBusinessAddress') }}  />
-              </Radio>
-              {field.value === 'ukon' && (
-                <Controller
-                  control={control}
-                  name="ourBusinessAddress"
-                  defaultValue={addresses[0]}
-                  render={({ field: addressField, fieldState: addressFieldState }) => (
-                    <SearchSelect
-                      {...addressField}
-                      label={t('form.address')}
-                      pathToLabel="value"
-                      options={addresses}
-                      state={!addressField.value && addressFieldState.isTouched ? 'error' : (addressFieldState.isDirty ? 'success' : 'draft')}
-                    />
-                  )}
-                />
-              )}
-            </>
-          )}
-        />
-      ),
-    },
-  ];
-
-  const [editFields, { add: addEditField, remove: removeEditField }] = useListState<string>();
-  const [savedFields, { add: addSavedField, remove: removeSavedField }] = useListState<string>();
 
   const [activitiesList, setActivitiesList] = useState<Activity[]>(individualData?.activities || []);
   const [isAddingActivities, setIsAddingActivities] = useState(false);
@@ -259,59 +82,167 @@ export default function UpdateData() {
     <IconButton color={activityItem._?.status === 'open' ? 'primary' : 'default'} title={t('start')} onClick={() => void changeActivityStatus(activityItem, 'open')}><FaPlay size={10} /></IconButton>
   );
 
-  useEffect(() => {
-    if (!individualData) return;
-    setActivitiesList(individualData.activities);
-  }, [individualData]);
+  // useEffect(() => {
+  //   if (!individualData) return;
+  //   setActivitiesList(individualData.activities);
+  // }, [individualData]);
+  const [paymentType, setPaymentType] = useState<'online' | 'invoice'>('online');
+  const [invoiceTo, setInvoiceTo] = useState<'me' | 'other'>('me');
+  const PAYMENT_TYPES = [
+    { value: 'online', name: t('paymentByCard') },
+    { value: 'invoice', name: t('paymentByInvoice') },
+  ];
 
-  const editRowRender = (dataItem: DataItem) => (
-    <>
-      <AccordionTableCell>{t(dataItem.label)}</AccordionTableCell>
-      <AccordionTableCell>
-        {editFields.includes(dataItem.key) && <s>{dataItem.value?.()}</s>}
-        {!editFields.includes(dataItem.key) && !savedFields.includes(dataItem.key) && <div>{dataItem.value?.()}</div>}
-        {!editFields.includes(dataItem.key) && savedFields.includes(dataItem.key) && <p><s style={{ color: '#9e395d' }}>{dataItem.value?.()}</s>&nbsp;<span style={{ color: '#10826E' }}>{dataItem.formValue}</span></p> }
-        {editFields.includes(dataItem.key) && (
-          <div className={styles['reg__table-inputs']}>
-            {dataItem.editComponent}
-          </div>
-        )}
-      </AccordionTableCell>
-      <AccordionTableCell>
-        {dataItem.editable !== false && !editFields.includes(dataItem.key) && (
-          <EditIcon className={styles['reg__table-edit']} onClick={() => { addEditField(dataItem.key); removeSavedField(dataItem.key); }} />
-        )}
-        {editFields.includes(dataItem.key) && (
-          <IoSaveOutline
-            size={20}
-            className={styles['reg__table-edit']}
-            onClick={() => {
-              removeEditField(dataItem.key);
-              addSavedField(dataItem.key);
-            }}
-          />
-        )}
-      </AccordionTableCell>
-    </>
-  );
+  const INVOICE_OPTIONS = [
+    { value: 'me', name: watch('fullname') || individualData?.name },
+    { value: 'other', name: t('invoiceToOther') },
+  ];
+
 
   return (
     <>
       <div className={classNames(styles['reg-p'], 't2')} dangerouslySetInnerHTML={{ __html: t('entryText') }} />
       <FormItems>
-        <FormItem title={t('form.nameOrId')}>
-          <SearchField onSearchResult={setIndividualData} />
+        <FormItem iconSrc="/images/order-form/form-items/CheckData.svg" title={t('form.nameOrId')}>
+          <FormItemRow cols={2}>
+            <BusinessSearch
+              onSearchResult={(res) => {
+                setIndividualData(res);
+                fetch(`/api/get-activities?id=${res.cin}`).then((res) => res.json())
+                  .then((res: { data: Activity[] }) => {
+                    setIndividualData((prev) => prev ? ({
+                      ...prev,
+                      activities: res.data,
+                    }) : null);
+                  });;
+              }}
+            />
+          </FormItemRow>
         </FormItem>
-        {!!individualData && (
+        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Profile.svg" title={t('form.actualData')}>
+          <PersonalInfo />
+        </FormItem>
+        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Auth.svg" title={t('form.regAuth')}>
+          <Radio name="isRegistered">
+            <FormItemRow cols={2}>
+              <RadioButton className={styles.registeredRadio} checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
+                {translation.t('imRegistered')}
+              </RadioButton>
+              <RadioButton className={styles.registeredRadio} checked={!isRegistered} onSelect={() => void setIsRegistered(false)}>
+                {translation.t('imNotRegistered')}
+              </RadioButton>
+              {isRegistered && (
+                <>
+                  <TextField
+                    label={t('form.email')}
+                  />
+                  <TextField
+                    label={t('form.pass')}
+                    type="password"
+                  />
+                </>
+              )}
+              {!isRegistered && (
+                <>
+                  <TextField
+                    label={t('form.email')}
+                  />
+                  <TextField
+                    label={t('form.phone')}
+                  />
+                  <TextField
+                    label={t('form.pass')}
+                    type="password"
+                  />
+                  <TextField
+                    label={t('form.passRepeat')}
+                    type="password"
+                  />
+                </>
+              )}
+            </FormItemRow>
+          </Radio>
+        </FormItem>
+        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Note.svg" title={t('form.orderComment')}>
+          <TextArea
+            label={t('form.comment')}
+            placeholder={t('form.inputComment')}
+            style={{ height: 120 }}
+            {...register('comment')}
+          />
+        </FormItem>
+        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Docs.svg" title={t('docsUpload')}>
+          <div className={styles['reg__docs']}>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('proxyDoc')}</div>
+                <Tooltip content={t('proxyDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
+                </Tooltip>
+              </div>
+              <div className={classNames(styles['reg__doc-body'], 't4')}>
+                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
+                <div className={styles.filesLink}>{t('sendTemplate')}</div>
+                <div className={styles.filesLink}>{t('signOnline')}</div>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
+            </div>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('identDoc')}</div>
+                <Tooltip content={t('identDocPlaceholder')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
+                </Tooltip>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
+            </div>
+            <div className={styles['reg__doc']}>
+              <div className={styles['reg__doc-title']}>
+                <div className={styles['reg__doc-title-text']}>{t('nonConvictDoc')}</div>
+                <Tooltip content={t('nonConvictDoc')}>
+                  <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
+                </Tooltip>
+              </div>
+              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
+                <UploadIcon />
+                {t('upload')}
+              </FileInput>
+            </div>
+          </div>
+        </FormItem>
+        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Billing.svg" title={translation.t('billing')}>
+          <FormItemRow cols={2}>
+            <Select
+              options={PAYMENT_TYPES}
+              pathToLabel="name"
+              label={`${t('paymentLink')}:`}
+              value={PAYMENT_TYPES.find((item) => item.value === paymentType)}
+              onChange={({ value }) => {
+                setPaymentType(value);
+              }}
+            />
+            <Select
+              options={INVOICE_OPTIONS}
+              pathToLabel="name"
+              label={t('invoiceType')}
+              value={INVOICE_OPTIONS.find((item) => item.value === invoiceTo)}
+              onChange={({ value }) => {
+                setInvoiceTo(value);
+              }}
+            />
+            {paymentType === 'online' && <Button>{t('paymentLink')}</Button>}
+          </FormItemRow>
+        </FormItem>
+
+        {/* {!!individualData && (
           <>
             <FormItem title={t('form.actualData')}>
-              <AccordionTable title={t('publicData')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen expanding={false}>
-                {PUBLIC_DATA.map((dataItem) => (
-                  <AccordionTableRow key={dataItem.key}>
-                    {editRowRender(dataItem)}
-                  </AccordionTableRow>
-                ))}
-              </AccordionTable>
               <AccordionTable title={t('activities')} gridTemplateColumns="356fr 634fr 1fr" className="t4" defaultOpen>
                 {activitiesList?.filter((activityItem) => activityItem.status !== 'closed').map((activityItem: Activity, index: number) => (
                   <AccordionTableRow key={`${activityItem.description}${index}`}>
@@ -413,14 +344,7 @@ export default function UpdateData() {
               </div>
             </FormItem>
             <FormItem title={t('dataForEditings')}></FormItem>
-            <FormItem title={t('form.orderComment')}>
-              <TextArea
-                label={t('form.comment')}
-                placeholder={t('form.inputComment')}
-                style={{ height: 120 }}
-                {...register('comment')}
-              />
-            </FormItem>
+            
             {/* <FormItem title={t('form.promo')}>
               <TextField
                 label={t('form.inputPromo')}
@@ -435,10 +359,10 @@ export default function UpdateData() {
                 {...register('promo')}
               />
             </FormItem> */}
-            {/* <FormItem title={t('form.saveToProfile')}>
+        {/* <FormItem title={t('form.saveToProfile')}>
               <Checkbox label={t('form.save')} {...register('saveToProfile', { value: true })} />
             </FormItem> */}
-            <FormItem title={t('form.isRegistered')}>
+        {/* <FormItem title={t('form.isRegistered')}>
               <Radio className={styles['reg__item-radios']} name="isRegistered">
                 <RadioButton checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
                   {t('yes')}
@@ -496,7 +420,7 @@ export default function UpdateData() {
               </>
             )}
           </>
-        )}
+        )} */}
       </FormItems>
     </>
   );

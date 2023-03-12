@@ -16,15 +16,16 @@ type FormItemProps = {
   title: string;
   iconSrc?: string;
   id?:string;
+  disabled?: boolean;
 };
 
 const DEFAULT_ICON = '/images/order-form/FormItem.svg';
 
-export function FormItem ({ title, children, iconSrc = DEFAULT_ICON } : PropsWithChildren<FormItemProps>) {
+export function FormItem ({ title, children, iconSrc = DEFAULT_ICON, disabled = false } : PropsWithChildren<FormItemProps>) {
   return (
-    <div className={classNames(styles.card)}>
+    <div className={classNames(styles.card, disabled ? styles.disabled : '')}>
       <div className={styles.header}>
-        <Image src={iconSrc} alt={title} height={20.15} width={23} />
+        <Image priority={false} src={iconSrc} alt={title} height={20.15} width={23} />
         <div>{title}</div>
       </div>
       <div className={styles.body}>

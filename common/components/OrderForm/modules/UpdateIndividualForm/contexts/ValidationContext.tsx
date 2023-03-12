@@ -1,13 +1,10 @@
 import { createContext, Dispatch, PropsWithChildren, SetStateAction, useContext, useEffect, useMemo, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { useSteps } from './StepsContext';
-
 
 const ValidationContext = createContext<boolean>(false);
 
 const ValidationProvider = ({ children }: PropsWithChildren) => {
-  const { step } = useSteps();
   const { watch } = useFormContext();
 
   const {
@@ -20,20 +17,11 @@ const ValidationProvider = ({ children }: PropsWithChildren) => {
   } = watch();
 
   const isValid = useMemo(() => {
-    if (step === 0) {
-      return !!mainActivity && !!citizenship && !!residence;
-    }
-    if (step === 1) {
-      return [name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip, residence].every(item => !!item);
-    }
-    if (step === 2) {
-      return [correctData, agreeWithRules].every(item => !!item);
-    }
-    return false;
-  }, [step, mainActivity, citizenship, residence, name, surname, physicalNumber, birthdate, docNumber, street, houseRegNumber, houseNumber, city, zip, correctData, agreeWithRules]);
+
+  }, []);
 
   return (
-    <ValidationContext.Provider value={isValid}>
+    <ValidationContext.Provider value={false}>
       {children}
     </ValidationContext.Provider>
   );

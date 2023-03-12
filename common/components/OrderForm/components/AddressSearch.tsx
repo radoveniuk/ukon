@@ -7,7 +7,7 @@ import TextField from 'common/components/forms/TextField';
 import useDebounce from 'common/hooks/useDebounce';
 import useOutsideClick from 'common/hooks/useOutsideClick';
 
-import styles from 'styles/OrderForm.module.scss';
+import styles from 'styles/components/OrderForm/Search.module.scss';
 
 type GooglePlaceDetailes = {
   address_components: {

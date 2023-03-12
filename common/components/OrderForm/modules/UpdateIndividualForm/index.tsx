@@ -1,6 +1,1 @@
-import dynamic from 'next/dynamic';
-
-export default dynamic(
-  () => import('./UpdateIndividualForm'),
-  { ssr: false }
-);
+export { default } from './UpdateIndividualForm';

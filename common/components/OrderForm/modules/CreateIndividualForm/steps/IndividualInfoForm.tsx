@@ -4,15 +4,11 @@ import classNames from 'classnames';
 import _ from 'lodash-es';
 import { DateTime } from 'luxon';
 
-import FileInput from 'common/components/forms/FileInput';
 import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField, { TextFieldFormated } from 'common/components/forms/TextField';
-import InfoIcon from 'common/components/icons/InfoIcon';
-import UploadIcon from 'common/components/icons/UploadIcon';
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
 import FormItems, { FormItem, FormItemRow } from 'common/components/OrderForm/components/FormItems';
-import Tooltip from 'common/components/Tooltip';
 
 import styles from 'styles/OrderForm.module.scss';
 
@@ -176,91 +172,6 @@ export default function IndividualInfoForm () {
             style={{ height: 120 }}
             {...register('comment')}
           />
-        </FormItem>
-        <FormItem iconSrc="/images/order-form/form-items/Docs.svg" title={t('docsUpload')}>
-          <div className={styles['reg__docs']}>
-            <div className={styles['reg__doc']}>
-              <div className={styles['reg__doc-title']}>
-                <div className={styles['reg__doc-title-text']}>{t('proxyDoc')}</div>
-                <Tooltip content={t('proxyDoc')}>
-                  <InfoIcon className={styles['reg__doc-info']} id="ProxyInfo" />
-                </Tooltip>
-              </div>
-              <div className={classNames(styles['reg__doc-body'], 't4')}>
-                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-                <div className={styles.filesLink}>{t('sendTemplate')}</div>
-                <div className={styles.filesLink}>{t('signOnline')}</div>
-              </div>
-              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-                <UploadIcon />
-                {t('upload')}
-              </FileInput>
-            </div>
-            {/* <div className={styles['reg__doc']}>
-              <div className={styles['reg__doc-title']}>
-                <div className={styles['reg__doc-title-text']}>{t('realtyDoc')}</div>
-                <Tooltip content={t('realtyDoc')}>
-                  <InfoIcon className={styles['reg__doc-info']} id="RealtyInfo" />
-                </Tooltip>
-              </div>
-              <div className={classNames(styles['reg__doc-body'], 't4')}>
-                <div className={styles.filesLink}>{t('downloadTemplate')}</div>
-                <div className={styles.filesLink}>{t('sendTemplate')}</div>
-              </div>
-              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-                <UploadIcon />
-                {t('upload')}
-              </FileInput>
-            </div> */}
-            <div className={styles['reg__doc']}>
-              <div className={styles['reg__doc-title']}>
-                <div className={styles['reg__doc-title-text']}>{t('identDoc')}</div>
-                <Tooltip content={t('identDocPlaceholder')}>
-                  <InfoIcon className={styles['reg__doc-info']} id="IdentDocInfo" />
-                </Tooltip>
-              </div>
-              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-                <UploadIcon />
-                {t('upload')}
-              </FileInput>
-            </div>
-            <div className={styles['reg__doc']}>
-              <div className={styles['reg__doc-title']}>
-                <div className={styles['reg__doc-title-text']}>{t('nonConvictDoc')}</div>
-                <Tooltip content={t('nonConvictDoc')}>
-                  <InfoIcon className={styles['reg__doc-info']} id="NotConvictInfo" />
-                </Tooltip>
-              </div>
-              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-                <UploadIcon />
-                {t('upload')}
-              </FileInput>
-            </div>
-            {/* <div className={styles['reg__doc']}>
-              <div className={styles['reg__doc-title']}>
-                <div className={styles['reg__doc-title-text']}>{t('residenceSkDoc')}</div>
-                <Tooltip content={t('residenceSkDoc')}>
-                  <InfoIcon className={styles['reg__doc-info']} id="ResidenceSkDocInfo" />
-                </Tooltip>
-              </div>
-              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-                <UploadIcon />
-                {t('upload')}
-              </FileInput>
-            </div> */}
-            {/* <div className={styles['reg__doc']}>
-              <div className={styles['reg__doc-title']}>
-                <div className={styles['reg__doc-title-text']}>{t('permitResidenceDoc')} {watch('residence.ru')}</div>
-                <Tooltip content={t('permitResidenceDoc')}>
-                  <InfoIcon className={styles['reg__doc-info']} id="PermitResidenceDocInfo" />
-                </Tooltip>
-              </div>
-              <FileInput className={classNames(styles['reg__doc-fileinput'], 't2')}>
-                <UploadIcon />
-                {t('upload')}
-              </FileInput>
-            </div> */}
-          </div>
         </FormItem>
       </FormItems>
     </>

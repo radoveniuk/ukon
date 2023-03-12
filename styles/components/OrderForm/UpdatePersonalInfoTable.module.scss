@@ -1,0 +1,14 @@
+.tableWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 50px;
+  .row {
+    display: contents;
+    .cell, .editCell {
+      padding: 10px;
+      border-bottom: 1px solid #E7E7E7;
+    }
+    .editCell {
+      grid-column: 1 / 4;
+    }
+  }
+}

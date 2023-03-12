@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import https  from 'https';
+import axios from 'axios';
 
+const INDIVIDUAL_TYPE = 'Podnikateľ-fyzická osoba-nezapísaný v obchodnom registri';
 
 export default function handler(
   req: NextApiRequest,
@@ -8,21 +9,27 @@ export default function handler(
 ) {
   const { search } = req.query;
 
-  const url = `https://autoform.ekosystem.slovensko.digital/api/corporate_bodies/search?q=${Number.isNaN(Number(search)) ? `name:${search}` : `cin:${search}`}&private_access_token=755e6dd8af690571fc0ed957dde2adc56ce823e6549c2286914295ffad427bd387b651eb3dc593e1`;
-  https.get(url, (resp) => {
-    let data = '';
-    resp.on('data', (chunk) => {
-      data += chunk;
+  axios({
+    method: 'GET',
+    url: `https://autoform.ekosystem.slovensko.digital/api/corporate_bodies/search?q=${Number.isNaN(Number(search)) ? `name:${search}` : `cin:${search}`}&private_access_token=${process.env.NEXT_PUBLIC_SLOVENSKO_DIGITAL_BASE_TOKEN}`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(({ data }) => {
+    res.status(200).json({
+      data: data.map((item: any) => {
+        const addressData = item.statutory_bodies[0];
+        return {
+          cin: item.cin,
+          type: item.legal_form === INDIVIDUAL_TYPE ? 'individual' : 'company',
+          name: item.name,
+          companyName: item.name,
+          businessAddress: item.formatted_address,
+          address: `${addressData?.street}, ${addressData?.reg_number || addressData?.building_number}, ${addressData?.postal_code}, ${addressData?.municipality}, ${addressData?.country}`,
+        };
+      }),
     });
-    resp.on('end', () => {
-      try {
-        res.status(200).json(JSON.parse(data));
-      } catch (error) {
-        res.status(500);
-      }
-    });
-  }).on('error', (err) => {
-    console.log('Error: ' + err.message);
+  }).catch(() => {
     res.status(404);
   });
 }

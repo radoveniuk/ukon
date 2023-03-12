@@ -196,7 +196,8 @@
       "requiredFieldText": "Обязательное поле",
       "activityStartFrom": "Возобновить от",
       "activityStopFrom": "Приостановить от",
-      "activityCloseFrom": "Закрыть от"
+      "activityCloseFrom": "Закрыть от",
+      "regAuth": "Регистрация / Авторизация"
     },
     "priceKeys": {
       "base": "Обновление данных по ИП",

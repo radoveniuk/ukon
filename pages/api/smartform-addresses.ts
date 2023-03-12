@@ -14,19 +14,21 @@ export default function handler(
       Authorization: `Basic ${process.env.NEXT_PUBLIC_AUTOFORM_KEY}`,
       'Content-Type': 'application/json',
     },
-    data : JSON.stringify({ fieldType:'WHOLE_ADDRESS', values:{ 'WHOLE_ADDRESS': search }, country, limit: 10 }),
+    data: JSON.stringify({ fieldType:'WHOLE_ADDRESS', values:{ 'WHOLE_ADDRESS': search }, country, limit: 10 }),
   };
 
   axios(config)
-    .then(function (response) {
-      res.status(200).json({ data: response.data.suggestions.map(({ values }: any) => ({
-        city: values.CITY,
-        street: values.STREET,
-        houseRegNumber: values.NUMBER?.split('/')?.[0],
-        houseNumber: values.NUMBER?.split('/')?.[1],
-        description: values.WHOLE_ADDRESS,
-        zip: values.ZIP,
-      })) });
+    .then((response) => {
+      res.status(200).json({
+        data: response.data.suggestions.map(({ values }: any) => ({
+          city: values.CITY,
+          street: values.STREET,
+          houseRegNumber: values.NUMBER?.split('/')?.[0],
+          houseNumber: values.NUMBER?.split('/')?.[1],
+          description: values.WHOLE_ADDRESS,
+          zip: values.ZIP,
+        })),
+      });
     })
     .catch(function (error) {
       res.status(404).json({ error });

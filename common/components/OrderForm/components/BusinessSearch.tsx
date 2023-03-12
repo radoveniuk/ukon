@@ -6,39 +6,33 @@ import TextField from 'common/components/forms/TextField';
 import useDebounce from 'common/hooks/useDebounce';
 import useOutsideClick from 'common/hooks/useOutsideClick';
 
-import styles from 'styles/OrderForm.module.scss';
+import styles from 'styles/components/OrderForm/Search.module.scss';
+
+import { CorporateBody } from '../types';
 
 type Props = {
-  onSearchResult(result: unknown): void;
+  onSearchResult(result: CorporateBody): void;
 };
 
-const SearchField = ({ onSearchResult }: Props) => {
+const BusinessSearch = ({ onSearchResult }: Props) => {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearchValue = useDebounce(searchValue);
 
   const [searchResults, setSearchResults] = useState([]);
-  const [openSearchBox, setOpenSeacrhBox] = useState(false);
+  const [openSearchBox, setOpenSearchBox] = useState(false);
   const searchBoxRef = useRef<HTMLDivElement>(null);
   useOutsideClick(searchBoxRef, () => {
-    setOpenSeacrhBox(false);
+    setOpenSearchBox(false);
   });
 
   const fetchSearchResult = (s: string) => {
     fetch(`/api/corporate-bodies-search?search=${s}`)
       .then((res) => res.json())
       .then((res) => {
-        setOpenSeacrhBox(true);
-        setSearchResults(res.filter((item: any) => item.legal_form === 'Podnikateľ-fyzická osoba-nezapísaný v obchodnom registri'));
-      });
-  };
-
-  const fetchSelectedItem = (s: string) => {
-    fetch(`/api/corporate-bodies?search=${s}`)
-      .then((res) => res.json())
-      .then((res) => {
-        onSearchResult(res.data);
+        setOpenSearchBox(true);
+        setSearchResults(res.data.filter((item: CorporateBody) => item.type === 'individual'));
       });
   };
 
@@ -60,18 +54,18 @@ const SearchField = ({ onSearchResult }: Props) => {
         onChange={(e) => {
           setSearchValue(e.target.value);
         }}
-        onClick={() => void setOpenSeacrhBox(true)}
+        onClick={() => void setOpenSearchBox(true)}
       />
       {openSearchBox && (
         <div className={styles.searchResults}>
-          {searchResults.map((item: any) => (
+          {searchResults.map((item: CorporateBody) => (
             <div
-              key={item.id}
+              key={item.cin}
               role="button"
               className={classNames(styles.searchResultItem, 't4')}
               onClick={() => {
-                setOpenSeacrhBox(false);
-                fetchSelectedItem(item.cin);
+                setOpenSearchBox(false);
+                onSearchResult(item);
               }}
             >
               {item.name}, IČO {item.cin}
@@ -83,4 +77,4 @@ const SearchField = ({ onSearchResult }: Props) => {
   );
 };
 
-export default SearchField;
+export default BusinessSearch;
