@@ -5,37 +5,39 @@ import _ from 'lodash-es';
 
 import styles from 'styles/components/forms/MultiSelect.module.scss';
 
-import InfoIcon from '../icons/InfoIcon';
-import MinusIcon from '../icons/MinusIcon';
-import PlusIcon from '../icons/PlusIcon';
-import SearchIcon from '../icons/SearchIcon';
+import { CloseIcon, InfoIcon, PlusIcon, SearchIcon } from '../icons';
 import Tooltip from '../Tooltip';
 
-type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
+type CustomRenderMenuItem = (item: any) => React.ReactNode;
 
 type Props = {
-  options: unknown[];
-  selectedOptions?: unknown[];
-  handleSelectedItemChange?: (changes: UseComboboxStateChange<unknown>) => void;
-  handleChange?: (items: unknown[]) => void;
+  options: any[];
+  selectedOptions?: any[];
+  handleSelectedItemChange?: (changes: UseComboboxStateChange<any>) => void;
+  handleChange?: (items: any[]) => void;
   pathToLabel?: string;
-  itemToStrimg?: (item: unknown) => string;
+  itemToStrimg?: (item: any) => string;
   customRenderMenuItem?: CustomRenderMenuItem;
   className?: string;
   style?: React.CSSProperties;
   label?: string;
-  placeholder?: string;
+  placeholder?: string | null;
   tooltip?: string;
   isLoading?: boolean;
   disabled?: boolean;
   maxItems?: number;
+  actions?: boolean;
+  customRenderValueItem?(item: any, index: number, removeFn: (v: any) => void): React.ReactNode;
+  endAdorment?: React.ReactNode;
 };
 
 function MultiSelect({
-  placeholder, label,  pathToLabel, options, handleSelectedItemChange, customRenderMenuItem, className, maxItems, handleChange, tooltip, selectedOptions = [],
+  placeholder = '', label,  pathToLabel, options, handleSelectedItemChange,
+  customRenderMenuItem, className, maxItems, handleChange, tooltip, selectedOptions = [], actions,
+  customRenderValueItem, endAdorment,
 }: Props) {
   const [inputValue, setInputValue] = React.useState('');
-  const [selectedItems, setSelectedItems] = React.useState<unknown[]>(selectedOptions);
+  const [selectedItems, setSelectedItems] = React.useState<any[]>(selectedOptions);
 
   React.useEffect(() => {
     if (selectedOptions.length) {
@@ -47,9 +49,9 @@ function MultiSelect({
 
   const tooltipId = React.useId();
 
-  const getLabel = (item: unknown) => (pathToLabel ? _.get(item, pathToLabel) : item) as string;
+  const getLabel = (item: any) => (pathToLabel ? _.get(item, pathToLabel) : item) as string;
 
-  const getFilteredItems = (prevItems: unknown[], selectedItems: unknown[]) => {
+  const getFilteredItems = (prevItems: any[], selectedItems: any[]) => {
     const filteredItems = (
       prevItems.filter(item => selectedItems.every((selectedItem) => !_.isEqual(selectedItem, item)))
     );
@@ -93,9 +95,8 @@ function MultiSelect({
         getLabel?.(item)?.toLowerCase()?.includes(inputValue?.toLowerCase())
       )), selectedItems));
     },
-    stateReducer(state, actionAndChanges) {
+    stateReducer(state, actionAndChanges: any) {
       const { changes, type } = actionAndChanges;
-
       switch (type) {
       case useCombobox.stateChangeTypes.InputKeyDownEnter:
       case useCombobox.stateChangeTypes.ItemClick:
@@ -142,56 +143,66 @@ function MultiSelect({
   });
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
-      <label className={classNames('t5')} {...getLabelProps()}>
-        <div className={styles['select-label']}>
-          {label}
-        </div>
-      </label>
-      <div className={styles.selectWrapper} onClick={openMenu}>
-        <div className={styles.selectContent}>
-          <div className={styles.select}>
-            <input
-              {...getInputProps(getDropdownProps({
-                preventKeyAction: isOpen,
-                placeholder,
-                className: classNames('t5'),
-              }))}
-            />
-            <div role="button" {...getToggleButtonProps()}><SearchIcon /></div>
+    <>
+      <div className={classNames(styles.wrapper, className)}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20 }}>
+          <div style={{ position: 'relative', flexGrow: 1 }}>
+            <label className={classNames('t5')} {...getLabelProps()}>
+              <div className={styles['select-label']}>
+                {label}
+              </div>
+            </label>
+            <div className={styles.selectWrapper} onClick={openMenu}>
+              <div className={styles.selectContent}>
+                <div className={styles.select}>
+                  <input
+                    {...getInputProps(getDropdownProps({
+                      preventKeyAction: isOpen,
+                      placeholder: placeholder || undefined,
+                      className: classNames('t5'),
+                    }))}
+                  />
+                  {actions && <div role="button" {...getToggleButtonProps()}><SearchIcon /></div>}
+                </div>
+                {!!tooltip && (
+                  <>
+                    <Tooltip content={tooltip}>
+                      <InfoIcon id={tooltipId} />
+                    </Tooltip>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className={classNames(styles.dropdownMenuWrapper, isOpen ? styles.open : '')}>
+              <ul {...getMenuProps({ className: styles.dropdownMenu })}>
+                {items.map((item, index) => (
+                  <li
+                    key={index}
+                    {...getItemProps({
+                      item,
+                      index,
+                      className: classNames(styles.menuItem, 't5'),
+                    })}
+                  >
+                    {customRenderMenuItem?.(item) || getLabel(item)}
+                    <PlusIcon style={{ minWidth: 24 }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          {!!tooltip &&(
-            <>
-              <Tooltip content={tooltip}>
-                <InfoIcon id={tooltipId} />
-              </Tooltip>
-            </>
-          )}
+          {endAdorment}
         </div>
-      </div>
-      <div className={classNames(styles.dropdownMenuWrapper, isOpen ? styles.open : '')}>
-        <ul {...getMenuProps({ className: styles.dropdownMenu })}>
-          {items.map((item, index) => (
-            <li
-              key={index}
-              {...getItemProps({
-                item,
-                index,
-                className: classNames(styles.menuItem, 't5'),
-              })}
-            >
-              {customRenderMenuItem?.(item) || getLabel(item)}
-              <PlusIcon style={{ minWidth: 24 }} />
-            </li>
-          ))}
-        </ul>
       </div>
       {selectedItems.map(function renderSelectedItem(
         selectedItemForRender,
         index,
       ) {
+        if (!!customRenderValueItem) {
+          return customRenderValueItem(selectedItemForRender, index, removeSelectedItem);
+        }
         return (
-          <span
+          <div
             key={`selected-item-${index}`}
             {...getSelectedItemProps({
               selectedItem: selectedItemForRender,
@@ -209,12 +220,12 @@ function MultiSelect({
                 removeSelectedItem(selectedItemForRender);
               }}
             >
-              <MinusIcon />
+              <CloseIcon size={20} />
             </div>
-          </span>
+          </div>
         );
       })}
-    </div>
+    </>
   );
 }
 

@@ -16,12 +16,13 @@ export type ComboBoxProps = {
   value: any | null;
   onChange(value: any): void;
   label?: string;
-  placeholder?: string;
+  placeholder?: string | null;
   className?: string;
   onBlur?(e: any): void;
   customRenderMenuItem?: CustomRenderMenuItem;
   state?: 'draft' | 'error' | 'success';
   valuePrefix?: CustomRenderMenuItem;
+  actions?: boolean;
 };
 
 function ComboBox({
@@ -36,6 +37,7 @@ function ComboBox({
   customRenderMenuItem,
   state = 'draft',
   valuePrefix,
+  actions = true,
 }: ComboBoxProps, ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const [items, setItems] = React.useState(options);
@@ -85,7 +87,7 @@ function ComboBox({
           ref={ref}
           {...getInputProps()}
         />
-        {!value && (
+        {!value && actions && (
           <div
             role="button"
             className={classNames(styles.toggleBtn, isOpen ? styles.active : '')}
@@ -94,7 +96,7 @@ function ComboBox({
             <DropdownIcon />
           </div>
         )}
-        {!!value && (<div role="button" onClick={() => { onChange(null); }}><MinusIcon /></div>)}
+        {!!value && actions && (<div role="button" onClick={() => { onChange(null); }}><MinusIcon /></div>)}
       </div>
       <div className={classNames(styles.dropdownMenuWrapper, isOpen ? styles.open : '')}>
         <ul

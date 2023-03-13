@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 
@@ -8,7 +8,8 @@ import Radio, { RadioButton } from 'common/components/forms/Radio';
 import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField from 'common/components/forms/TextField';
-import { PauseIcon, PlayIcon, TrashIcon } from 'common/components/icons';
+import { PauseIcon, PlayIcon, PlusIcon, TrashIcon } from 'common/components/icons';
+import ActivityMultiselect from 'common/components/OrderForm/components/ActivityMultiselect';
 import Docs, { Doc,DocSignature, DocTemplateDownload, DocUpload } from 'common/components/OrderForm/components/Docs';
 import { Activity } from 'common/components/OrderForm/types';
 
@@ -25,7 +26,7 @@ export default function UpdateData() {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
 
-  const { register, watch } = useFormContext();
+  const { register, watch, control } = useFormContext();
   // const [, updatePriceList] = usePriceContext();
 
   const [individualData, setIndividualData] = useData();
@@ -44,6 +45,8 @@ export default function UpdateData() {
     { value: 'me', name: watch('fullname') || individualData?.name },
     { value: 'other', name: translation.t('invoiceToOther') },
   ];
+
+  const [isAddingActivities, setIsAddingActivities] = useState(false);
 
   return (
     <>
@@ -73,8 +76,26 @@ export default function UpdateData() {
             <FormItemButton disabled><PlayIcon size={20} />{t('start')}</FormItemButton>
           </div>
         </FormItem>
-        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Profile.svg" title={t('activities')}>
+        <FormItem
+          disabled={!individualData}
+          iconSrc="/images/order-form/form-items/Profile.svg"
+          title={t('activities')}
+          actions={<Button variant="outlined" onClick={() => void setIsAddingActivities(true)}><PlusIcon size={20} />{t('add')}</Button>}
+        >
           <Activities />
+          {isAddingActivities && (
+            <Controller
+              control={control}
+              name="newActivities"
+              render={({ field }) => (
+                <ActivityMultiselect
+                  label={t('activities')}
+                  value={field.value}
+                  onChange={field.onChange}
+                />
+              )}
+            />
+          )}
         </FormItem>
         <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Auth.svg" title={t('form.regAuth')}>
           <Radio name="isRegistered">

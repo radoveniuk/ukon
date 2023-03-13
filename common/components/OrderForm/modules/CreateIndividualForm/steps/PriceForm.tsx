@@ -6,6 +6,8 @@ import classNames from 'classnames';
 
 import CountrySelect from 'common/components/forms/CountrySelect';
 import Select from 'common/components/forms/Select';
+import ActivityMultiselect from 'common/components/OrderForm/components/ActivityMultiselect';
+import ActivitySelect from 'common/components/OrderForm/components/ActivitySelect';
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
 import BusinessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BusinessAdressSelect';
 
@@ -82,24 +84,11 @@ export default function PriceForm() {
             name="mainActivity"
             rules={{ required: t('form.requiredFieldText') }}
             defaultValue={null}
-            render={({ field, fieldState }) => (
-              <SearchSelect
-                options={activities}
-                pathToLabel="ru"
+            render={({ field }) => (
+              <ActivitySelect
                 label={t('form.mainActivity')}
-                placeholder={t('form.activitySelectPlaceholder')}
-                customRenderMenuItem={(item: any) => (
-                  <>
-                    <span>
-                      {item.ru}
-                    </span>
-                    <span className={styles.activityOptionPrice}>
-                      {item.Type !== 'Volná' ? 7.5 : 0}€
-                    </span>
-                  </>
-                )}
-                state={fieldState.error ? 'error' : (fieldState.isDirty ? 'success' : 'draft')}
-                {...field}
+                value={field.value}
+                onChange={field.onChange}
               />
             )}
           />
@@ -107,23 +96,10 @@ export default function PriceForm() {
             control={control}
             name="otherActivities"
             render={({ field }) => (
-              <MultiSelect
+              <ActivityMultiselect
                 label={t('form.otherActivities')}
-                pathToLabel="ru"
-                options={activities}
-                selectedOptions={field.value}
-                handleChange={field.onChange}
-                placeholder={t('form.activitySelectPlaceholder')}
-                customRenderMenuItem={(item: any) => (
-                  <>
-                    <span>
-                      {item.ru}
-                    </span>
-                    <span className={styles.activityOptionPrice}>
-                      {item.Type !== 'Volná' ? 7.5 : 0}€
-                    </span>
-                  </>
-                )}
+                value={field.value}
+                onChange={field.onChange}
               />
             )}
           />

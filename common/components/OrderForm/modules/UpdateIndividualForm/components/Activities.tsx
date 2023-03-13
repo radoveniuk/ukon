@@ -77,7 +77,7 @@ const Activities = () => {
           <div className={classNames(styles.cell)}>{t('activityActions')}</div>
         </div>
         {(isExpanded ? activitiesList : activitiesList.slice(0, 6)).map((activityItem, index) => (
-          <div key={activityItem.id} className={styles.row}>
+          <div key={activityItem.id} className={classNames(styles.row, activityItem._?.status === 'open' ? styles.starting : '', activityItem._?.status === 'stopped' ? styles.stopping : '', activityItem._?.status === 'closed' ? styles.closing : '', activityItem.status === 'closed' ? styles.closed : '')}>
             <div className={styles.cell}>{getIndex(index + 1)}</div>
             <div className={styles.cell}>{activityItem.description}</div>
             <div className={styles.cell}>{getDate(activityItem.effective_from)}</div>
@@ -93,6 +93,9 @@ const Activities = () => {
                   {startActivityButton(activityItem)}
                   {closeActivityButton(activityItem)}
                 </>
+              )}
+              {activityItem.status === 'closed' && (
+                <>—</>
               )}
             </div>
           </div>

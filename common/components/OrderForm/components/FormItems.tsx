@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 
@@ -17,16 +17,18 @@ type FormItemProps = {
   iconSrc?: string;
   id?:string;
   disabled?: boolean;
+  actions?: ReactNode;
 };
 
 const DEFAULT_ICON = '/images/order-form/FormItem.svg';
 
-export function FormItem ({ title, children, iconSrc = DEFAULT_ICON, disabled = false } : PropsWithChildren<FormItemProps>) {
+export function FormItem ({ title, children, iconSrc = DEFAULT_ICON, disabled = false, actions } : PropsWithChildren<FormItemProps>) {
   return (
     <div className={classNames(styles.card, disabled ? styles.disabled : '')}>
       <div className={styles.header}>
         <Image priority={false} src={iconSrc} alt={title} height={20.15} width={23} />
         <div>{title}</div>
+        {actions && <div className={styles.actions}>{actions}</div>}
       </div>
       <div className={styles.body}>
         {children}

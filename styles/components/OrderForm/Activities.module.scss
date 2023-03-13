@@ -28,10 +28,27 @@
       .actions {
         display: flex;
         gap: 10px;
+        justify-content: center;
   
         div[role=button] {
           cursor: pointer;
         }
+      }
+
+      &.starting > .cell {
+        background-color: #c6ffd7;
+      }
+
+      &.stopping > .cell {
+        background-color: #F3EADA;
+      }
+
+      &.closing > .cell {
+        background-color: #FFE7FF;
+      }
+
+      &.closed > .cell {
+        background-color: #E7E7E7;
       }
     }
   }
