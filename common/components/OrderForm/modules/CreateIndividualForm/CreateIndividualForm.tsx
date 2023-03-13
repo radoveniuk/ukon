@@ -19,8 +19,6 @@ import CheckOut from './steps/CheckOut';
 import IndividualInfoForm from './steps/IndividualInfoForm';
 import PriceForm from './steps/PriceForm';
 
-
-
 function CreateIndividualFormRender () {
   const { step, prevStep, nextStep, setStep }= useSteps();
   const translation = useTranslation('forms');

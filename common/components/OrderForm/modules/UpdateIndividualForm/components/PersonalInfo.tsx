@@ -52,8 +52,8 @@ const PersonalInfo = () => {
       value: () => data?.name,
       editComponent: (
         <TextField
-          label={t('form.name')}
-          placeholder={t('form.inputName')}
+          label={t('inputFullname')}
+          placeholder={t('inputFullnamePlaceholder')}
           error={errors.name?.message?.toString()}
           success={!!touchedFields.name && !errors.name}
           {...register('fullname', { required: t('form.requiredFieldText') })}
@@ -194,16 +194,20 @@ const PersonalInfo = () => {
       </div>
       <div className={styles.cell}>
         {dataItem.editable !== false && !editFields.includes(dataItem.key) && (
-          <EditIcon onClick={() => { addEditField(dataItem.key); removeSavedField(dataItem.key); }} />
+          <div role="button">
+            <EditIcon onClick={() => { addEditField(dataItem.key); removeSavedField(dataItem.key); }} />
+          </div>
         )}
         {editFields.includes(dataItem.key) && (
-          <IoSaveOutline
-            size={20}
-            onClick={() => {
-              removeEditField(dataItem.key);
-              addSavedField(dataItem.key);
-            }}
-          />
+          <div role="button">
+            <IoSaveOutline
+              size={20}
+              onClick={() => {
+                removeEditField(dataItem.key);
+                addSavedField(dataItem.key);
+              }}
+            />
+          </div>
         )}
       </div>
       {editFields.includes(dataItem.key) && (

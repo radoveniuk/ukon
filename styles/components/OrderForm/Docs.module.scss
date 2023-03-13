@@ -1,0 +1,32 @@
+.docs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .docUpload {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    .header, .actions, .action {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .header {
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    .action {
+      color: #10826E;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.activities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .table {
+    display: grid;
+    grid-template-columns: 50px 1fr 200px 100px;
+
+    .header {
+      color: #717171;
+      .cell {
+        border-bottom: 2px solid #E7E7E7 !important;
+      }
+    }
+  
+    .row {
+      display: contents;
+  
+      .cell {
+        border-bottom: 1px solid #E7E7E7;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+      }
+  
+      .actions {
+        display: flex;
+        gap: 10px;
+  
+        div[role=button] {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

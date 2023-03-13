@@ -10,7 +10,6 @@ import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import SearchIcon from '../icons/SearchIcon';
 import Tooltip from '../Tooltip';
-// import Tooltip from '../Tooltip';
 
 type CustomRenderMenuItem = (item: unknown) => React.ReactNode;
 

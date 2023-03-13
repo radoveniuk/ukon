@@ -18,14 +18,14 @@ export default async function handler(
   }).then(({ data }) => {
     res.status(200).json({
       data: data.map((item: any) => {
-        const addressData = item.statutory_bodies[0];
+        const [statutoryBody] = item.statutory_bodies;
         return {
           cin: item.cin,
           type: item.legal_form === INDIVIDUAL_TYPE ? 'individual' : 'company',
-          name: item.name,
+          name: `${statutoryBody.prefixes} ${statutoryBody.first_name} ${statutoryBody.last_name} ${statutoryBody.postfixes}`.trim(),
           companyName: item.name,
           businessAddress: item.formatted_address,
-          address: `${addressData?.street}, ${addressData?.reg_number || addressData?.building_number}, ${addressData?.postal_code}, ${addressData?.municipality}, ${addressData?.country}`,
+          address: `${statutoryBody?.street}, ${statutoryBody?.reg_number || statutoryBody?.building_number}, ${statutoryBody?.postal_code}, ${statutoryBody?.municipality}, ${statutoryBody?.country}`,
         };
       }),
     });

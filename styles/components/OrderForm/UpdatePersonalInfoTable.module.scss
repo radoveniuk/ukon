@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 1fr 50px;
   .row {
     display: contents;
+    div[role=button] {
+      cursor: pointer;
+    }
     .cell, .editCell {
       padding: 10px;
       border-bottom: 1px solid #E7E7E7;
