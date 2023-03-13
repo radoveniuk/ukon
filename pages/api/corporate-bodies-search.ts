@@ -3,13 +3,13 @@ import axios from 'axios';
 
 const INDIVIDUAL_TYPE = 'Podnikateľ-fyzická osoba-nezapísaný v obchodnom registri';
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
   const { search } = req.query;
 
-  axios({
+  await axios({
     method: 'GET',
     url: `https://autoform.ekosystem.slovensko.digital/api/corporate_bodies/search?q=${Number.isNaN(Number(search)) ? `name:${search}` : `cin:${search}`}&private_access_token=${process.env.NEXT_PUBLIC_SLOVENSKO_DIGITAL_BASE_TOKEN}`,
     headers: {

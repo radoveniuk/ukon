@@ -7,14 +7,14 @@ const getActivityStatus = (activity: any) => {
   return 'closed';
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
   const { id } = req.query;
 
   if (id) {
-    axios({
+    await axios({
       method: 'GET',
       url: `https://datahub.ekosystem.slovensko.digital/api/datahub/corporate_bodies/search?q=cin:${id}&expand=rpo_organizations&access_token=${process.env.NEXT_PUBLIC_SLOVENSKO_DIGITAL_PREMIUM_TOKEN}`,
       headers: {
@@ -29,6 +29,6 @@ export default function handler(
       });
     });
   } else {
-    res.status(404).json({ error: 'Id is cannot be empty' });
+    res.status(400).json({ error: 'Id is cannot be empty' });
   }
 }
