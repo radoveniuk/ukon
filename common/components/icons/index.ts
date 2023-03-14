@@ -1,4 +1,4 @@
-export { default as DropdownIcon } from './DropdownIcon';
+export { BsChevronDown as DropdownIcon } from 'react-icons/bs';
 export { default as EditIcon } from './EditIcon';
 export { default as InfoIcon } from './InfoIcon';
 export { default as MinusIcon } from './MinusIcon';

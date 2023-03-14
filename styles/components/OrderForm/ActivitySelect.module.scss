@@ -1,19 +1,20 @@
-.activitySelectWrapper {
-  .top {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    align-items: end;
-    grid-gap: 20px;
+.selectFromListButton {
+  max-height: 44px;
+  min-width: 100%;
+}
 
-    @media (max-width: 999px) {
-      grid-template-columns: 1fr;
-    }
+.top {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  align-items: end;
+  grid-gap: 20px;
 
-    .selectFromListButton {
-      max-height: 44px;
-      min-width: 100%;
-    }
+  @media (max-width: 999px) {
+    grid-template-columns: 1fr;
   }
+}
+
+.activitySelectWrapper {
   .valueWrapper {
     display: flex;
     flex-direction: column;

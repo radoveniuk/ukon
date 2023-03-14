@@ -9,7 +9,7 @@ import Select from 'common/components/forms/Select';
 import TextArea from 'common/components/forms/TextArea';
 import TextField from 'common/components/forms/TextField';
 import { PauseIcon, PlayIcon, PlusIcon, TrashIcon } from 'common/components/icons';
-import ActivityMultiselect from 'common/components/OrderForm/components/ActivityMultiselect';
+import ActivityMultiselect from 'common/components/OrderForm/components/activities/ActivityMultiselect';
 import Docs, { Doc,DocSignature, DocTemplateDownload, DocUpload } from 'common/components/OrderForm/components/Docs';
 import { Activity } from 'common/components/OrderForm/types';
 

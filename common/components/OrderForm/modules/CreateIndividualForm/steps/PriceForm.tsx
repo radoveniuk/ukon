@@ -6,8 +6,8 @@ import classNames from 'classnames';
 
 import CountrySelect from 'common/components/forms/CountrySelect';
 import Select from 'common/components/forms/Select';
-import ActivityMultiselect from 'common/components/OrderForm/components/ActivityMultiselect';
-import ActivitySelect from 'common/components/OrderForm/components/ActivitySelect';
+import ActivityMultiselect from 'common/components/OrderForm/components/activities/ActivityMultiselect';
+import ActivitySelect from 'common/components/OrderForm/components/activities/ActivitySelect';
 import AddressForm from 'common/components/OrderForm/components/AddressForm';
 import BusinessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAddressWrapper } from 'common/components/OrderForm/components/BusinessAdressSelect';
 

@@ -7,6 +7,8 @@
   .table {
     display: grid;
     grid-template-columns: 50px 1fr 200px 100px;
+    overflow: auto;
+    max-width: 100%;
 
     .header {
       color: #717171;

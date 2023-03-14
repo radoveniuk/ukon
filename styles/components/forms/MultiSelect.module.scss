@@ -3,6 +3,13 @@
   margin-bottom: 5px;
 }
 
+.contentWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .selectWrapper {
   display: flex;
   flex-direction: column;

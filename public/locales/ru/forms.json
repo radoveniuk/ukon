@@ -21,6 +21,11 @@
   "invoiceToCompany": "Юридическое лицо",
   "activitySelectPlaceholder": "Начните вводить название",
   "selectFromList": "Выбрать со списка",
+  "activity": "Вид деятельности",
+  "freeActivities": "Свободные виды деятельности",
+  "controllableActivities": "Регулируемые виды деятельности",
+  "craftActivities": "Ремесленные виды деятельности",
+  "addAll": "Добавить все",
   "create-company": {
     "pageTitle": "Оформление ООО"
   },

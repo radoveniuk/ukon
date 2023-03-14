@@ -19,6 +19,7 @@ type Props = {
   itemToStrimg?: (item: any) => string;
   customRenderMenuItem?: CustomRenderMenuItem;
   className?: string;
+  contentClassName?: string;
   style?: React.CSSProperties;
   label?: string;
   placeholder?: string | null;
@@ -34,7 +35,7 @@ type Props = {
 function MultiSelect({
   placeholder = '', label,  pathToLabel, options, handleSelectedItemChange,
   customRenderMenuItem, className, maxItems, handleChange, tooltip, selectedOptions = [], actions,
-  customRenderValueItem, endAdorment,
+  customRenderValueItem, endAdorment, contentClassName,
 }: Props) {
   const [inputValue, setInputValue] = React.useState('');
   const [selectedItems, setSelectedItems] = React.useState<any[]>(selectedOptions);
@@ -145,7 +146,7 @@ function MultiSelect({
   return (
     <>
       <div className={classNames(styles.wrapper, className)}>
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20 }}>
+        <div className={classNames(styles.contentWrapper, contentClassName)}>
           <div style={{ position: 'relative', flexGrow: 1 }}>
             <label className={classNames('t5')} {...getLabelProps()}>
               <div className={styles['select-label']}>

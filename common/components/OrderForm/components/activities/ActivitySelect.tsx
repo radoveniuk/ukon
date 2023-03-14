@@ -11,21 +11,11 @@ import { CloseIcon } from 'common/components/icons';
 
 import styles from 'styles/components/OrderForm/ActivitySelect.module.scss';
 
-import activities from '../data/activities.json';
+import activities from '../../data/activities.json';
 
-type Activity = {
-  Id: number;
-  List: string;
-  Type: string;
-  Code: number | string;
-  Value: string;
-  ru: string;
-  uk: string;
-  en: string;
-  representative?: any;
-};
-
-const FREE_TYPE = 'Volná';
+import ActivitiesListDialog from './ActivitiesListDialog';
+import { FREE_TYPE } from './constants';
+import { Activity } from './types';
 
 type Props = {
   label: string;
@@ -36,6 +26,8 @@ type Props = {
 const ActivitySelect = ({ label, value: defaulValue, onChange }: Props) => {
   const translation = useTranslation('forms');
   const [value, setValue] = useState<null | Activity>(null);
+
+  const [isOpenDialogList, setIsOpenDialogList] = useState(false);
 
   useEffect(() => {
     if (!isEqual(value, defaulValue)) {
@@ -69,7 +61,7 @@ const ActivitySelect = ({ label, value: defaulValue, onChange }: Props) => {
             }}
             value={value}
           />
-          <Button variant="outlined" className={styles.selectFromListButton}>{translation.t('selectFromList')}</Button>
+          <Button variant="outlined" className={styles.selectFromListButton} onClick={() => void setIsOpenDialogList(true)}>{translation.t('selectFromList')}</Button>
         </div>
       )}
       {!!value && (
@@ -101,6 +93,7 @@ const ActivitySelect = ({ label, value: defaulValue, onChange }: Props) => {
           )}
         </div>
       )}
+      <ActivitiesListDialog onSelect={(activity) => void onChange(activity)} visible={isOpenDialogList} onClose={() => { setIsOpenDialogList(false); }} closeAfterSelect />
     </div>
   );
 };
