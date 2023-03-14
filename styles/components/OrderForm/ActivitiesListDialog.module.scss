@@ -69,6 +69,10 @@
           border-bottom: 1px solid #E7E7E7;
           cursor: pointer;
 
+          &.active {
+            background-color: #E7E7E7;
+          }
+
           &__title {
             margin-right: auto;
           }

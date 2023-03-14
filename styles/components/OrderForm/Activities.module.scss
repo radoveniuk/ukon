@@ -24,11 +24,13 @@
         border-bottom: 1px solid #E7E7E7;
         padding: 10px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column;
       }
   
       .actions {
         display: flex;
+        flex-direction: row;
         gap: 10px;
         justify-content: center;
   

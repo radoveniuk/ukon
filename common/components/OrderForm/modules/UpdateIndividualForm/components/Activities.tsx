@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
 
+import DatePicker from 'common/components/forms/DatePicker';
 import { PauseIcon, PlayIcon, TrashIcon } from 'common/components/icons';
 import FormItemButton from 'common/components/OrderForm/components/FormItemButton';
 import { Activity } from 'common/components/OrderForm/types';
@@ -30,6 +31,7 @@ const Activities = () => {
   const translation = useTranslation('forms');
   const t = (path: string) => translation.t(`forms:update-individual:${path}`, { interpolation: { escapeValue: false } });
   const { setValue } = useFormContext();
+  const { control } = useFormContext();
 
   const [activitiesList, setActivitiesList] = useState<Activity[]>(data?.activities || []);
   useEffect(() => {
@@ -80,7 +82,57 @@ const Activities = () => {
           <div key={activityItem.id} className={classNames(styles.row, activityItem._?.status === 'open' ? styles.starting : '', activityItem._?.status === 'stopped' ? styles.stopping : '', activityItem._?.status === 'closed' ? styles.closing : '', activityItem.status === 'closed' ? styles.closed : '')}>
             <div className={styles.cell}>{getIndex(index + 1)}</div>
             <div className={styles.cell}>{activityItem.description}</div>
-            <div className={styles.cell}>{getDate(activityItem.effective_from)}</div>
+            <div className={styles.cell}>
+              <div>{getDate(activityItem.effective_from)}</div>
+              {activityItem._?.status === 'open' && (
+                <Controller
+                  control={control}
+                  name={`activities[${index}]._.suspended_to`}
+                  defaultValue={null}
+                  render={({ field }) => (
+                    <DatePicker
+                      min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                      value={field.value || null}
+                      onChange={field.onChange}
+                      label={t('form.activityStartFrom')}
+                      className={styles['reg__item-input']}
+                    />
+                  )}
+                />
+              )}
+              {activityItem._?.status === 'stopped' && (
+                <Controller
+                  control={control}
+                  name={`activities[${index}]._.suspended_from`}
+                  defaultValue={null}
+                  render={({ field }) => (
+                    <DatePicker
+                      min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                      value={field.value || null}
+                      onChange={field.onChange}
+                      label={t('form.activityStopFrom')}
+                      className={styles['reg__item-input']}
+                    />
+                  )}
+                />
+              )}
+              {activityItem._?.status === 'closed' && (
+                <Controller
+                  control={control}
+                  name={`activities[${index}]._.effective_to`}
+                  defaultValue={null}
+                  render={({ field }) => (
+                    <DatePicker
+                      min={DateTime.now().plus({ month: 1 }).toJSDate()}
+                      value={field.value || null}
+                      onChange={field.onChange}
+                      label={t('form.activityCloseFrom')}
+                      className={styles['reg__item-input']}
+                    />
+                  )}
+                />
+              )}
+            </div>
             <div className={classNames(styles.cell, styles.actions)}>
               {activityItem.status === 'open' && (
                 <>

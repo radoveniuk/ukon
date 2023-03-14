@@ -84,11 +84,27 @@ const ActivityMultiselect = ({ label, value, onChange }: Props) => {
           </div>
         )}
       />
-      <ActivitiesListDialog onSelect={(activity) => {
-        if (!value.some(item => item.Id === activity.Id)) {
-          onChange([...value, activity]);
-        }
-      }} visible={isOpenDialogList} onClose={() => { setIsOpenDialogList(false); }} />
+      <ActivitiesListDialog
+        onSelect={(activity) => {
+          if (!value || !value.some(item => item.Id === activity.Id)) {
+            onChange([...(value || []), activity]);
+          }
+        }}
+        onUnSelect={(activity) => {
+          onChange(value.filter((item) => item.Id !== activity.Id));
+        }}
+        onSelectMany={(activities) => {
+          if (!value?.length) {
+            onChange(activities);
+            return;
+          }
+          const activitiesToAdd = activities.filter((activity) => !value.some((valueActivity) => valueActivity.Id === activity.Id));
+          onChange([...value, ...activitiesToAdd]);
+        }}
+        selectedItems={value}
+        visible={isOpenDialogList}
+        onClose={() => { setIsOpenDialogList(false); }}
+      />
     </>
   );
 };
