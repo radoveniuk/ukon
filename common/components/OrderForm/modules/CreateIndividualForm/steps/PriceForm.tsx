@@ -13,13 +13,10 @@ import BusinessAdressSelectCard, { CardsContainer, Checkmark, Checkmarks, OwnAdd
 
 import styles from 'styles/OrderForm.module.scss';
 
-import MultiSelect from '../../../../forms/MultiSelect';
 import Radio, { RadioButton } from '../../../../forms/Radio';
-import SearchSelect from '../../../../forms/SearchSelect';
 import TextField from '../../../../forms/TextField';
 import FormItems, { FormItem, FormItemRow } from '../../../components/FormItems';
 import { usePriceContext } from '../../../contexts/PriceContext';
-import activities from '../../../data/activities.json';
 import addresses from '../../../data/address.json';
 import virtualAddressTariffs from '../../../data/virtualAddressTariffs.json';
 
@@ -126,7 +123,7 @@ export default function PriceForm() {
                           control={control}
                           name="ourBusinessAddress"
                           defaultValue={addresses[0]}
-                          render={({ field: addressField, fieldState: addressFieldState }) => (
+                          render={({ field: addressField }) => (
                             <Select
                               {...addressField}
                               pathToLabel="value"
@@ -259,7 +256,7 @@ export default function PriceForm() {
             )}
           </FormItemRow>
         </FormItem>
-        <FormItem iconSrc="/images/order-form/form-items/Auth.svg" title={t('form.regAuth')}>
+        <FormItem iconSrc="/images/order-form/form-items/Auth.svg" title={translation.t('regAuth')}>
           <Radio name="isRegistered">
             <FormItemRow cols={2}>
               <RadioButton className={styles.registeredRadio} checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
@@ -271,10 +268,10 @@ export default function PriceForm() {
               {isRegistered && (
                 <>
                   <TextField
-                    label={t('form.email')}
+                    label={translation.t('email')}
                   />
                   <TextField
-                    label={t('form.pass')}
+                    label={translation.t('pass')}
                     type="password"
                   />
                 </>
@@ -282,17 +279,17 @@ export default function PriceForm() {
               {!isRegistered && (
                 <>
                   <TextField
-                    label={t('form.email')}
+                    label={translation.t('email')}
                   />
                   <TextField
-                    label={t('form.phone')}
+                    label={translation.t('phone')}
                   />
                   <TextField
-                    label={t('form.pass')}
+                    label={translation.t('pass')}
                     type="password"
                   />
                   <TextField
-                    label={t('form.passRepeat')}
+                    label={translation.t('passRepeat')}
                     type="password"
                   />
                 </>

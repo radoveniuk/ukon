@@ -26,6 +26,12 @@
   "controllableActivities": "Регулируемые виды деятельности",
   "craftActivities": "Ремесленные виды деятельности",
   "addAll": "Добавить все",
+  "regAuth": "Регистрация / Авторизация",
+  "isRegistered":"Вы зарегистрированны на нашем сайте?",
+  "email": "Email",
+  "pass": "Пароль",
+  "passRepeat": "Повторите пароль",
+  "phone": "Телефон",
   "create-company": {
     "pageTitle": "Оформление ООО"
   },
@@ -61,12 +67,6 @@
       "vAddressTariff": "Пакет виртуального адреса",
       "promo": "Скидочный купон",
       "inputPromo": "Введите промокод",
-      "regAuth": "Регистрация / Авторизация",
-      "isRegistered": "Вы зарегистрированны на нашем сайте?",
-      "email": "Email",
-      "pass": "Пароль",
-      "passRepeat": "Повторите пароль",
-      "phone": "Телефон",
       "physicalInfo": "Данные физического лица",
       "namePrefix": "Титул перед именем",
       "inputNamePrefix": "Введите титул перед именем",
@@ -144,11 +144,6 @@
       "companyId": "ID предприятия",
       "companyDistrict": "Районное ведомство",
       "companyRegisterNumber": "Номер записи в реестре предприятий",
-      "isRegistered":"Вы зарегистрированны на нашем сайте?",
-      "email": "Email",
-      "pass": "Пароль",
-      "passRepeat": "Повторите пароль",
-      "phone": "Телефон",
       "actualData": "Актуальные персональные данные предпринимателя",
       "physicalNumber": "Личный номер",
       "birthdate": "Дата рождения",
@@ -191,8 +186,7 @@
       "requiredFieldText": "Обязательное поле",
       "activityStartFrom": "Возобновить от",
       "activityStopFrom": "Приостановить от",
-      "activityCloseFrom": "Закрыть от",
-      "regAuth": "Регистрация / Авторизация"
+      "activityCloseFrom": "Закрыть от"
     },
     "priceKeys": {
       "base": "Обновление данных по ИП",
@@ -223,6 +217,20 @@
     "inputFullnamePlaceholder": "Введите полное имя"
   },
   "v-address": {
-    "pageTitle": "Оформление виртуального адреса"
+    "pageTitle": "Оформление виртуального адреса",
+    "priceKeys": {
+      "vAddressTariff": "Пакет виртуального адреса",
+      "sum": "Итого"
+    },
+    "form": {
+      "addressInfo":"Данные адреса",
+      "registrationDetails":"Данные для регистрации",
+      "businessData":"Данные компании",
+      "orderComment":"Примечание к заказу",
+      "comment":"Комментарий",
+      "inputComment":"Введите коментарий",
+      "tariff": "Тарифный план",
+      "address": "Адрес"
+    }
   }
 }

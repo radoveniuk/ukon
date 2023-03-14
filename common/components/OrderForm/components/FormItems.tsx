@@ -44,3 +44,11 @@ export function FormItemRow ({ children, cols = 1 } : PropsWithChildren<{ cols: 
     </div>
   );
 };
+
+export function FormItemSideInfo ({ children }: PropsWithChildren) {
+  return (
+    <div className={styles.sideInfo}>
+      {children}
+    </div>
+  );
+}

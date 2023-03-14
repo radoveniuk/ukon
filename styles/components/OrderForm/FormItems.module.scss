@@ -4,6 +4,7 @@
   gap: 20px;
   align-items: center;
 }
+
 .card {
   border-radius: 5px;
   background-color: #fff;
@@ -53,5 +54,11 @@
         grid-template-columns: 1fr !important;
       }
     }
+  }
+
+  .sideInfo {
+    border-radius: 5px;
+    border: 1px solid #D0D0D0;
+    padding: 15px;
   }
 }

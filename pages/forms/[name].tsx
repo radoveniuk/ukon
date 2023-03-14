@@ -6,6 +6,7 @@ import { NextSeo } from 'next-seo';
 
 import CreateIndividualForm from 'common/components/OrderForm/modules/CreateIndividualForm';
 import UpdateIndividualForm from 'common/components/OrderForm/modules/UpdateIndividualForm';
+import VirtualAddressForm from 'common/components/OrderForm/modules/VirtualAddressForm';
 import Position, { PositionItem } from 'common/components/Position';
 
 import styles from 'styles/OrderForm.module.scss';
@@ -51,6 +52,7 @@ export default function Form({ name }: InferGetStaticPropsType<typeof getStaticP
         <section className={styles.reg}>
           {name === 'create-individual' && <CreateIndividualForm />}
           {name === 'update-individual' && <UpdateIndividualForm />}
+          {name === 'v-address' && <VirtualAddressForm />}
         </section>
       </main>
     </>

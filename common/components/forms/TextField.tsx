@@ -23,7 +23,7 @@ export function TextFieldLabel ({ className, label, error, children }: PropsWith
 
 type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   labelClassName?: string;
-  label?: string;
+  label?: string | null;
   error?: string | boolean;
   success?: boolean;
   prefix?: string;

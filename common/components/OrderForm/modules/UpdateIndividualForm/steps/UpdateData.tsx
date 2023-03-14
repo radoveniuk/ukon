@@ -97,7 +97,7 @@ export default function UpdateData() {
             />
           )}
         </FormItem>
-        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Auth.svg" title={t('form.regAuth')}>
+        <FormItem disabled={!individualData} iconSrc="/images/order-form/form-items/Auth.svg" title={translation.t('regAuth')}>
           <Radio name="isRegistered">
             <FormItemRow cols={2}>
               <RadioButton className={styles.registeredRadio} checked={isRegistered} onSelect={() => void setIsRegistered(true)}>
@@ -109,10 +109,10 @@ export default function UpdateData() {
               {isRegistered && (
                 <>
                   <TextField
-                    label={t('form.email')}
+                    label={translation.t('email')}
                   />
                   <TextField
-                    label={t('form.pass')}
+                    label={translation.t('pass')}
                     type="password"
                   />
                 </>
@@ -120,17 +120,17 @@ export default function UpdateData() {
               {!isRegistered && (
                 <>
                   <TextField
-                    label={t('form.email')}
+                    label={translation.t('email')}
                   />
                   <TextField
-                    label={t('form.phone')}
+                    label={translation.t('phone')}
                   />
                   <TextField
-                    label={t('form.pass')}
+                    label={translation.t('pass')}
                     type="password"
                   />
                   <TextField
-                    label={t('form.passRepeat')}
+                    label={translation.t('passRepeat')}
                     type="password"
                   />
                 </>
